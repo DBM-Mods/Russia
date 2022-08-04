@@ -40,12 +40,12 @@ module.exports = {
 		<tab-system style="margin-top: 0;">
 			<tab label="Текст" icon="align left">
 					<div style="padding-top:12px">
-			<span class="dbminputlabel">Texto</span><br>
+			<span class="dbminputlabel">Текст</span><br>
 				<textarea id="text" rows="10" placeholder="Введите текст здесь..." style="width: 100%; white-space: nowrap; resize: yes;"></textarea>
 			</div></div>
 		</tab>
 			
-		<tab label="Posição" icon="move">
+		<tab label="Позиция" icon="move">
 		<div style="padding-top:12px">
 					<span class="dbminputlabel">Позиция текста</span>
 					<div style="width:100%;background:rgba(50,50,50,0.5);-webkit-border-radius: 10px;-moz-border-radius: 10px;border-radius: 10px;padding:8px 4px">
