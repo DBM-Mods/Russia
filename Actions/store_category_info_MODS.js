@@ -10,7 +10,7 @@ module.exports = {
   },
 
   subtitle(data) {
-    const categories = ['You cheater!', 'Variavel temporaria', 'Variavel Servidor', 'Variavel Global'];
+    const categories = ['Ты обманщик!', 'Временная переменная', 'Серверная переменная', 'Глобальная переменная'];
     const info = [
       "ID Категории",
       "Название Категории",
