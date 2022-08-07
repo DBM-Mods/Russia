@@ -132,7 +132,7 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 1.2</div>
+    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 1.3</div>
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить" selectId="channel" variableInputId="varName"></send-reply-target-input>
@@ -853,7 +853,7 @@ module.exports = {
     let content;
 
     if (data.embeds?.length > 0 || data.attachments?.length > 0 || data.buttons?.length > 0 || data.selectMenus?.length > 0) {
-      content = this.evalMessage(message, 10);
+      content = this.evalMessage(message, cache);
     } else {
       content = this.evalMessage(message || "\u200b", cache);
     }
