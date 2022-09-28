@@ -77,7 +77,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   meta: {
-    version: "2.1.6",
+    version: "2.4.1",
     preciseCheck: true,
     author: "[Modificado por XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]",
     authorUrl: 'https://github.com/DBM-Mods/Russia',
@@ -696,7 +696,7 @@ module.exports = {
       
       <div style="width:96%;display:block">
       <div style="padding-bottom: 12px;" id="xin1">
-        <retrieve-from-variable allowNone dropdownLabel="Editar mensagem" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
+        <retrieve-from-variable allowNone dropdownLabel="Изменить сообщение" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
           <option value="intUpdate">Interaction Update</option>
         </retrieve-from-variable>
       
