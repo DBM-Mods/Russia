@@ -674,7 +674,7 @@ module.exports = {
   </tab>
 
 
-  <tab label="Config" icon="cogs">
+  <tab label="Конфиг" icon="cogs">
     <div style="padding: 8px;height: calc(100vh - 292px);overflow-y: scroll;overflow-x: hidden;width:100%">
     <div id="xincheck">
     <span class="dbminputlabel">Конфиг</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
