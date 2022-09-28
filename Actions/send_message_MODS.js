@@ -726,7 +726,7 @@ module.exports = {
     </div>
       <br><br><br>
       <div style="padding-top: 12px">
-        <store-in-variable allowNone dropdownLabel="Armazenar em" selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer2"></store-in-variable>
+        <store-in-variable allowNone dropdownLabel="Хрнаить в" selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer2"></store-in-variable>
       </div>
 
       <br><br><br>
@@ -748,8 +748,8 @@ module.exports = {
 
       <div style="padding-bottom: 12px;padding-top: 12px">
       <table style="width:100%;"><tr>
-      <td><span class="dbminputlabel">Descrição da Action</span><br><input type="text" class="round" id="description" placeholder="Deixe vazio para remover"></td>
-      <td style="padding:0px 0px 0px 10px;width:55px"><span class="dbminputlabel">Cor</span><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+      <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы удалить"></td>
+      <td style="padding:0px 0px 0px 10px;width:55px"><span class="dbminputlabel">Цвет</span><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
       </tr></table>
       </div>
 
