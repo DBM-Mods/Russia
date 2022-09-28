@@ -674,10 +674,10 @@ module.exports = {
   </tab>
 
 
-  <tab label="Настройки" icon="cogs">
+  <tab label="Config" icon="cogs">
     <div style="padding: 8px;height: calc(100vh - 292px);overflow-y: scroll;overflow-x: hidden;width:100%">
     <div id="xincheck">
-    <span class="dbminputlabel">Opções</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
+    <span class="dbminputlabel">Конфиг</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
       <dbm-checkbox id="reply" label="Отвечайте на обращение, если это возможно" checked></dbm-checkbox>
       <xinspace>
       <dbm-checkbox id="ephemeral" label="Сделать ответ приватным"></dbm-checkbox>
