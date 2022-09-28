@@ -22,7 +22,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   subtitle(data, presets) {
-    return `Checar ${presets.getVariableText(data.storage, data.varName)} com ${data.branches.length} possibilidades`;
+    return `Проверять ${presets.getVariableText(data.storage, data.varName)} с ${data.branches.length} возможности`;
   },
 
   //---------------------------------------------------------------------
