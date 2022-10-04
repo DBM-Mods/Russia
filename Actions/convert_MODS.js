@@ -84,7 +84,7 @@ module.exports = {
             <br>
             <span class="dbminputlabel">Конвертировать в</span><br>
             <select id="into" class="round" onchange="glob.onChange1(this)">
-                    <optgroup label="Números">
+                    <optgroup label="Числа">
                     <option value="0" selected>Целое число (округление = пример: 5,52 = 5)</option>
                     <option value="1">Целое число (вверх - например: 5,52 = 6)</option>
                     <option value="2">Целое число (вниз - например: 5,52 = 5)</option>
