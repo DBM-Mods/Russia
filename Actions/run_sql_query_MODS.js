@@ -6,7 +6,7 @@ module.exports = {
     preciseCheck: true,
     author: '[XinXyla - 172782058396057602]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
-    downloadURL: 'https://github.com/dbm-network/mods/blob/master/actions/math_operation_plus_MOD.js',
+    downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
     },
 
   variableStorage (data, varType) {
