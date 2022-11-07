@@ -26,19 +26,19 @@ module.exports = {
     if (data.message) {
       text = `"${data.message.replace(/[\n\r]+/, " ↲ ")}"`;
     } else if (data.embeds?.length > 0) {
-      text = `${data.embeds.length} Эмбедов`;
+      text = `${data.embeds.length} Ембедов`;
     } else if (data.attachments?.length > 0) {
-      text = `${data.attachments.length} Файловый менеджер`;
+      text = `${data.attachments.length} Файлы`;
     } else if (data.buttons?.length > 0 || data.selectMenus?.length > 0) {
       text = `${data.buttons.length} Кнопки и ${data.selectMenus.length} Меню выбора`;
     } else if (data.editMessage && data.editMessage !== "0") {
       if (data.editMessage === "intUpdate") {
-        text = "Параметры сообщения - Изменить взаимодействие"
+        text = "Параметры сообщения - редактировать взаимодействие"
       } else {
-        text = `Опции сообщения - ${presets.getVariableText(data.editMessage, data.editMessageVarName)}`;
+        text = `Параметры сообщения - ${presets.getVariableText(data.editMessage, data.editMessageVarName)}`;
       }
     } else {
-      text = `Ничего (Может привести к ошибке)`;
+      text = `Ничего (может вызвать ошибку)`;
     }
     if (data.dontSend) {
       return `Хранить данные: ${text}`;
@@ -47,7 +47,7 @@ module.exports = {
       data.descriptioncolor = "#ffffff"
     }
     if (data.storagewebhook > "0") {
-      return `Отправка через Webhook: ${data.varwebhook}`;
+      return `Отправить через WebHook: ${data.varwebhook}`;
     }
     return data.description
       ? `<font color="${data.descriptioncolor}">${data.description}</font>`
@@ -134,13 +134,13 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 2.4</div>
+    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 2.5</div>
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 
-    <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить" selectId="channel" variableInputId="varName"></send-reply-target-input>
+    <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
 </div><div id="xin3"><div style="float: left; width: 35%">
-<span class="dbminputlabel">Отправить</span><br>
+<span class="dbminputlabel">Отправить на</span><br>
 <select class="round">
 <option value="0" selected>Webhook</option>
 </select>
@@ -153,20 +153,20 @@ module.exports = {
 
   <tab label="Текст" icon="align left">
     <div style="padding: 8px;">
-      <textarea id="message" class="dbm_monospace" rows="9" placeholder="Введите сообщение здесь..." style="height: calc(100vh - 309px); white-space: nowrap;"></textarea>
+      <textarea id="message" class="dbm_monospace" rows="9" placeholder="Введите сообщение здесь ..." style="height: calc(100vh - 309px); white-space: nowrap;"></textarea>
     </div>
   </tab>
 
 
-  <tab label="Эмбеды" icon="book image">
+  <tab label="Ембеды" icon="book image">
     <div style="padding: 8px;">
 
-      <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl"]' dialogTitle="Embed Info" dialogWidth="540" dialogHeight="460" listLabel="Эмбеды" listStyle="height: calc(100vh - 350px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
+      <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl"]' dialogTitle="Embed Info" dialogWidth="540" dialogHeight="460" listLabel="Ембеды" listStyle="height: calc(100vh - 350px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
         <div style="padding: 16px 16px 0px 16px;">
 
           <tab-system>
 
-            <tab label="Главное" icon="certificate">
+            <tab label="Общий" icon="certificate">
               <div style="padding: 8px">
                 <div style="float: left; width: calc(50% - 12px);">
                   <span class="dbminputlabel">Заголовок</span><br>
@@ -174,8 +174,8 @@ module.exports = {
 
                   <br>
 
-                  <span class="dbminputlabel">Цвет (Только HEX)</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="colorrandom" label="Случайный"></dbm-checkbox></div><br>
-                  <table style="width:100%"><tr><td><input id="color" name="actionxinxyla" class="round" type="text" placeholder="Оставьте пустым по умолчанию..."><td>
+                  <span class="dbminputlabel">Цвет</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="colorrandom" label="Случайный"></dbm-checkbox></div><br>
+                  <table style="width:100%"><tr><td><input id="color" name="actionxinxyla" class="round" type="text" placeholder="Оставьте это пустым для стандарта ..."><td>
                   <td style="width:40px;text-align:center;padding:4px"><a id="btr1" style="cursor:pointer" onclick="(function(){
                      document.getElementById('color').type = 'color'
                     document.getElementById('btr1').style.display = 'none';
@@ -191,12 +191,12 @@ module.exports = {
 
                 <div style="float: right; width: calc(50% - 12px);">
                   <span class="dbminputlabel">URL</span><br>
-                  <input id="url" class="round" type="text" placeholder="Оставьте пустым, если нет...">
+                  <input id="url" class="round" type="text" placeholder="Оставьте это поле пустым для нечего ...">
 
                   <br>
 
-                  <span class="dbminputlabel">Использовать отметку времени</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="timestamp" label="Sim" checked></dbm-checkbox></div><br>
-                  <input id="timestampper" class="round" type="text" placeholder="Оставьте пустым для текушей">
+                  <span class="dbminputlabel">Временная метка</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="timestamp" label="Вкл" checked></dbm-checkbox></div><br>
+                  <input id="timestampper" class="round" type="text" placeholder="Оставьте это пустым для текущего">
                 </div>
 
                 <br><br><br><br><br><br><br>
@@ -205,19 +205,19 @@ module.exports = {
 
                 <br>
 
-                <span class="dbminputlabel">URL-адрес изображения/имя вложения</span><br>
-                <input id="imageUrl" class="round" type="text" placeholder="Оставьте пустым, если нет, image.png или ссылка http">
+                <span class="dbminputlabel">URL изображение / имя Файла</span><br>
+                <input id="imageUrl" class="round" type="text" placeholder="Оставьте это пустым ни для ничего, image.png или http link">
 
                 <br>
 
-                <span class="dbminputlabel">URL миниатюры/имя вложения</span><br>
-                <input id="thumbUrl" class="round" type="text" placeholder="Оставьте пустым, если нет, image.png или ссылка http">
+                <span class="dbminputlabel">URL мини изображение / имя Файла</span><br>
+                <input id="thumbUrl" class="round" type="text" placeholder="Оставьте это пустым ни для одного, image.png или http link">
               </div>
             </tab>
 
             <tab label="Описание" icon="file image">
               <div style="padding: 8px">
-                <textarea id="description" class="dbm_monospace" rows="10" placeholder="Введите описание здесь..." style="height: calc(100vh - 149px); white-space: nowrap; resize: none;"></textarea>
+                <textarea id="description" class="dbm_monospace" rows="10" placeholder="Введите описание здесь ..." style="height: calc(100vh - 149px); white-space: nowrap; resize: none;"></textarea>
                 </div>
             </tab>
 
@@ -228,11 +228,11 @@ module.exports = {
 
                   <div style="padding: 16px;background:rgba(0,0,0,0.3)">
 
-                  <span class="dbminputlabel">Имя поля</span><br>
+                  <span class="dbminputlabel">Отображение</span><br>
                   <select id="formula" class="round">
-                  <option value="0" selected>Всегда отображать поле / игнорировать Действие ниже</option>
-                  <option value="1">Поле отображения только в том случае, если Действие имеет значение false</option>
-                  <option value="2">Поле отображения, только если Действие сушествует</option>
+                  <option value="0" selected>Всегда отображайте поле / игнорируйте сравнения ниже</option>
+                  <option value="1">Поле отображать только если сравнение подделка</option>
+                  <option value="2">Поле отображать только если сравнение верен</option>
                 </select>
 
                 <br>
@@ -242,36 +242,36 @@ module.exports = {
                     <input id="val1" class="round" type="text">
                     </td>
                     <td>
-                    <span class="dbminputlabel">Действия</span><br>
+                    <span class="dbminputlabel">Сравнения</span><br>
                     <select id="comparar" class="round">
-                    <option value="0">Значение А — существует</option>
-                    <option value="1" выбрано > равно</option>
+                    <option value="0">Значение A - существует</option>
+                    <option value="1" selected>Равно</option>
                     <option value="2">Точно так же</option>
-                    <option value="3">Меньше, чем</option>
+                    <option value="3">Меньше чем</option>
                     <option value="13">Меньше или равно</option>
-                    <option value="4">Тогда больше</option>
+                    <option value="4">Больше тогда</option>
                     <option value="12">Больше или равно</option>
-                    <option value="5">Включает?</option>
-                    <option value="6">Соответствия регулярным выражениям</option>
-                    <option value="14">Полные совпадения с регулярными выражениями</option>
-                    <option value="7">Длина больше, чем</option>
-                    <option value="8">Длина меньше, чем</option>
-                    <option value="9">Длина равна</option>
+                    <option value="5">Включают</option>
+                    <option value="6">Соответствует регулярному выражению</option>
+                    <option value="14">Соответствует полному регулярному выражению</option>
+                    <option value="7">Длина длиннее, чем</option>
+                    <option value="8">Длина ниже, чем</option>
+                    <option value="9">Длина равена</option>
                     <option value="10">Начинается с</option>
-                    <option value="11">Заканчивается на</option>
-                    <option value="16">Имеет ли значение A акценты?</option>
+                    <option value="11">Заканчивается</option>
+                    <option value="16">Значение А имеет акценты?</option>
                     <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-                    <option value="18">Это как слова  ["a" , "b" , "c"]</option>
-                    <option value="19">Значение А является четным числом?</option>
-                    <option value="20">Значение A является нечетным числом?</option>
-                    <option value="21">Значение А является числом?</option>
-                    <option value="24">Является ли значение А текстом?</option>
-                    <option value="23">Значение A является URL-адресом изображения?</option>
-                    <option value="25">Значение А является URL?</option>
+                    <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+                    <option value="19">Значение A - это чётное число?</option>
+                    <option value="20">Значение A - это нечетное число?</option>
+                    <option value="21">Значение A является числом?</option>
+                    <option value="24">Значение A - это текст?</option>
+                    <option value="23">Значение A - это URL -адрес изображения?</option>
+                    <option value="25">Значение A - это URL?</option>
                   </select>
                    </td>
                     <td>
-                    <span class="dbminputlabel">Значение Б</span><br>
+                    <span class="dbminputlabel">Значение B</span><br>
                     <input id="val2" class="round" type="text">
                     </td>
                     </tr></table>
@@ -287,49 +287,49 @@ module.exports = {
                     </div>
                     
                     <div style="float: right; width: calc(50% - 12px);">
-                      <span class="dbminputlabel">В соответствии?</span><br>
+                      <span class="dbminputlabel">В строке?</span><br>
                       <select id="inline" class="round">
-                        <option value="true">Да</option>
+                        <option value="true">Вкл</option>
                         <option value="false" selected>Нет</option>
                       </select>
                     </div>
 
                     <br><br><br>
 
-                    <span class="dbminputlabel">Значение поля</span><br>
-                    <textarea id="value" class="dbm_monospace" rows="7" placeholder="Введите текст поля здесь..." style="height: calc(100vh - 320px); white-space: nowrap;"></textarea>
+                    <span class="dbminputlabel">Поле текст</span><br>
+                    <textarea id="value" class="dbm_monospace" rows="7" placeholder="Вставьте текст поля здесь ..." style="height: calc(100vh - 320px); white-space: nowrap;"></textarea>
 
                   </div>
                 </dialog-list>
               </div>
             </tab>
 
-            <tab label="Autor" icon="user circle">
+            <tab label="Автор" icon="user circle">
               <div style="padding: 8px">
-                <span class="dbminputlabel">Текст автора</span>
-                <input id="author" class="round" type="text" placeholder="Оставьте пустым, если нет....">
+                <span class="dbminputlabel">Автор имя</span>
+                <input id="author" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
                 <br>
 
-                <span class="dbminputlabel">URL-адрес автора</span><br>
-                <input id="authorUrl" class="round" type="text" placeholder="Оставьте пустым, если нет...">
+                <span class="dbminputlabel">Автор URL</span><br>
+                <input id="authorUrl" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
                 <br>
 
-                <span class="dbminputlabel">URL значка автора / имя вложения</span><br>
-                <input id="authorIcon" class="round" type="text" placeholder="Оставьте пустым, если нет...">
+                <span class="dbminputlabel">Автор фото URL / Имя файла</span><br>
+                <input id="authorIcon" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
               </div>
             </tab>
 
             <tab label="Footer" icon="map outline">
               <div style="padding: 8px;">
-                <span class="dbminputlabel">URL значка нижнего поля (Footer URL) / имя вложения</span><br>
-                <input id="footerIconUrl" class="round" type="text" placeholder="Оставьте пустым, если нет...">
+                <span class="dbminputlabel">URL-адрес значка нижнего текста / Имя файла</span><br>
+                <input id="footerIconUrl" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
                 <br>
 
-                <span class="dbminputlabel">Текст нижнего поля (Footer Text)</span><br>
-                <textarea id="footerText" class="dbm_monospace" rows="10" placeholder="Оставьте пустым, если нет..." style="height: calc(100vh - 234px); white-space: nowrap; resize: none;"></textarea>
+                <span class="dbminputlabel">Нижний текст</span><br>
+                <textarea id="footerText" class="dbm_monospace" rows="10" placeholder="Оставьте это пустым для ничего ...." style="height: calc(100vh - 234px); white-space: nowrap; resize: none;"></textarea>
               </div>
             </tab>
 
@@ -341,14 +341,79 @@ module.exports = {
     </div>
   </tab>
 
-  <tab label="Кнопка" icon="clone">
+  <tab label="Кнопки" icon="clone">
   <div style="padding: 16px;text-align:center"id="xin4n">Webhook не поддерживает кнопки</div>
     <div style="padding: 8px;" id="xin4">
 
-      <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "disabled", "mode", "time", "actions"]' dialogTitle="Button Info" dialogWidth="600" dialogHeight="700" listLabel="Кнопки" listStyle="height: calc(100vh - 350px);" itemName="Button" itemCols="4" itemHeight="40px;" itemTextFunction="data.name" itemStyle="text-align: center; line-height: 40px;">
+      <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "disabled", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Кнопки" listStyle="height: calc(100vh - 350px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
+
+        <tab-system>
+
+        <tab label="Действия" icon="list">
+
+        <action-list-input mode="BUTTON" id="actions" height="calc(100vh - 180px)"></action-list-input>
+        </tab>
+
+        <tab label="Кнопка / конфигурация" icon="cogs">
+        <div style="height: calc(100vh - 138px);overflow-y: scroll;overflow-x: hidden;width:100%">
+
+        <div style="padding: 16px;background:rgba(0,0,0,0.3)">
+        <span class="dbminputlabel">Отображение</span><br>
+        <select id="formula" class="round">
+       
+        <option value="0" selected>Всегда отображайте кнопку / игнорируйте сравнения ниже</option>
+        <option value="1">Кнопку отображать только если сравнение подделка</option>
+        <option value="2">Кнопку отображать только если сравнение верен</option>
+      </select>
+
+      <br>
+
+      <table style="width:100%"><tr><td>
+      <span class="dbminputlabel">Значение А</span><br>
+      <input id="val1" class="round" type="text">
+      </td>
+      <td>
+      <span class="dbminputlabel">Сравнения</span><br>
+      <select id="comparar" class="round">
+      <option value="0">Значение A - существует</option>
+      <option value="1" selected>Равно</option>
+      <option value="2">Точно так же</option>
+      <option value="3">Меньше чем</option>
+      <option value="13">Меньше или равно</option>
+      <option value="4">Больше тогда</option>
+      <option value="12">Больше или равно</option>
+      <option value="5">Включают</option>
+      <option value="6">Соответствует регулярному выражению</option>
+      <option value="14">Соответствует полному регулярному выражению</option>
+      <option value="7">Длина длиннее, чем</option>
+      <option value="8">Длина ниже, чем</option>
+      <option value="9">Длина равена</option>
+      <option value="10">Начинается с</option>
+      <option value="11">Заканчивается</option>
+      <option value="16">Значение А имеет акценты?</option>
+      <option value="17">Включает слова  ["a" , "b" , "c"]</option>
+      <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+      <option value="19">Значение A - это чётное число?</option>
+      <option value="20">Значение A - это нечетное число?</option>
+      <option value="21">Значение A является числом?</option>
+      <option value="24">Значение A - это текст?</option>
+      <option value="23">Значение A - это URL -адрес изображения?</option>
+      <option value="25">Значение A - это URL?</option>
+    </select>
+         </td>
+          <td>
+          <span class="dbminputlabel">Значение B</span><br>
+          <input id="val2" class="round" type="text">
+          </td>
+          </tr></table>
+
+
+          </div>
+<br>
+
           <div style="width: calc(50%); float: left;">
-            <span class="dbminputlabel">Название</span>
+            <span class="dbminputlabel">Имя</span>
             <input id="name" class="round" type="text">
 
             <br>
@@ -359,59 +424,58 @@ module.exports = {
               document.getElementById('bxin2').style.display = 'block';
              })()"><button class="tiny compact ui icon button">Текст</button></a></div><br>
             <select id="type" class="round">
-              <option value="PRIMARY" selected> ОСНОВНОЙ (Синий/Размытый)</option>
-              <option value="SECONDARY">ВТОРИЧНЫЙ (серый)</option>
-              <option value="SUCCESS">УСПЕХ (зеленый)</option>
-              <option value="DANGER">ОПАСНО (красный)</option>
-              <option value="LINK">ССЫЛКА (серый)</option>
-            </select></td><td id="bxin2" style="display:none"><span class="dbminputlabel">Тип/переменная</span><div style="float:right;margin-top:-5px"><a style="cursor:pointer" onclick="(function(){
+              <option value="PRIMARY" selected>PRIMARY (Синий)</option>
+              <option value="SECONDARY">SECONDARY (Серый)</option>
+              <option value="SUCCESS">SUCCESS (Зеленый)</option>
+              <option value="DANGER">DANGER (Красный)</option>
+              <option value="LINK">LINK (Серый)</option>
+            </select></td><td id="bxin2" style="display:none"><span class="dbminputlabel">Тип / переменная</span><div style="float:right;margin-top:-5px"><a style="cursor:pointer" onclick="(function(){
               document.getElementById('bxin2').style.display = 'none';
               document.getElementById('bxin1').style.display = 'block';
-               })()"><button class="tiny compact ui icon button">Меню</button></a></div><br><input placeholder="Оставьте пустым, чтобы использовать меню" id="typeper" class="round" type="text"></td></tr></table>
+               })()"><button class="tiny compact ui icon button">Меню</button></a></div><br><input placeholder="Оставьте это пустым, чтобы использовать меню" id="typeper" class="round" type="text"></td></tr></table>
 
 
             <br>
 
-            <span class="dbminputlabel">URL-ссылка</span>
-            <input id="url" placeholder="Оставьте пустым, если нет..." class="round" type="text">
+            <span class="dbminputlabel">Ссылка URL</span>
+            <input id="url" placeholder="Оставьте это пустым для ничего ..." class="round" type="text">
 
             <br>
 
             <span class="dbminputlabel">
-            Режим дейсвия
+            Режим ответа действия
               <help-icon type="ACTION_RESPONSE_MODE"></help-icon>
             </span><br>
             <select id="mode" class="round">
-            <option value="PERSONAL">Один раз только для командного пользователя</option>
-            <option value="PUBLIC">Один раз любой может использовать</option>
+            <option value="PERSONAL">Однажды, только для командного пользователя</option>
+            <option value="PUBLIC">Однажды каждый может использовать</option>
             <option value="MULTIPERSONAL">Многоразовая, только для командного пользователя</option>
-            <option value="MULTI" selected>Многоразовая, каждый может использовать</option>
+            <option value="MULTI" selected>Многоразовая, любой может использовать</option>
             <option value="PERSISTENT">Бесконечная</option>
             </select>
           </div>
           <div style="width: calc(50% - 12px); float: right;">
-            <span class="dbminputlabel">ID кнопки</span>
-            <input id="id" placeholder="Оставьте пустым для автоматического создания..." class="round" type="text">
+            <span class="dbminputlabel">Уникальный идентификатор (ID)</span>
+            <input id="id" placeholder="Оставьте это пустым, чтобы автоматически генерировать ..." class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Линия кнопки (1 - 5)</span>
-            <input id="row" placeholder="Оставьте пустым по умолчанию..." class="round" type="text">
+            <span class="dbminputlabel">Линия действия (1 - 5)</span>
+            <input id="row" placeholder="Оставьте это пустым для стандарта ..." class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Эмоджи</span>
-            <input id="emoji" placeholder="Оставьте пустым, если нет..." class="round" type="text">
+            <span class="dbminputlabel">Эмодзи</span>
+            <input id="emoji" placeholder="Оставьте это пустым ни для кого ..." class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Время работы (миллисекунды)</span>
+            <span class="dbminputlabel">Ограничение по времени (миллисекунд)</span>
             <input id="time" placeholder="60000" class="round" type="text">
           </div>
-
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-          <action-list-input mode="BUTTON" id="actions" height="calc(100vh - 460px)"></action-list-input>
+          </div>
+          </tab>
+          </tab-system>
 
         </div>
       </dialog-list>
@@ -427,61 +491,61 @@ module.exports = {
       <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions"]' dialogTitle="Select Menu Info" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="data.placeholder + '<br>' + data.options" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
-            <span class="dbminputlabel">Название Меню</span>
+            <span class="dbminputlabel">Название меню</span>
             <input id="placeholder" class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Название временной переменной</span>
-            <input id="tempVarName" placeholder="Сохраняет выбранное значение..." class="round" type="text">
+            <span class="dbminputlabel">Временное имя переменной</span>
+            <input id="tempVarName" placeholder="Хранит выбранное значение ..." class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Минимальное количество выбора</span>
+            <span class="dbminputlabel">Минимальный номер выбора</span>
             <input id="min" class="round" type="text" value="1">
 
             <br>
 
             <span class="dbminputlabel">
-            Режим действия
+            Режим ответа действия
               <help-icon type="ACTION_RESPONSE_MODE"></help-icon>
             </span><br>
             <select id="mode" class="round">
-            <option value="PERSONAL">Один раз только для командного пользователя</option>
-            <option value="PUBLIC">Один раз любой может использовать</option>
+            <option value="PERSONAL">Однажды, только для командного пользователя</option>
+            <option value="PUBLIC">Однажды каждый может использовать</option>
             <option value="MULTIPERSONAL">Многоразовая, только для командного пользователя</option>
-            <option value="MULTI" selected>Многоразовая, каждый может использовать</option>
+            <option value="MULTI" selected>Многоразовая, любой может использовать</option>
             <option value="PERSISTENT">Бесконечная</option>
             </select>
           </div>
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
-            <span class="dbminputlabel">ID меню</span>
-            <input id="id" placeholder="Оставьте пустым для автоматического создания..." class="round" type="text">
+            <span class="dbminputlabel">Уникальный идентификатор (ID)</span>
+            <input id="id" placeholder="Оставьте это пустым, чтобы автоматически генерировать ..." class="round" type="text">
 
             <br>
 
             <span class="dbminputlabel">Линия действия (1 - 5)</span>
-            <input id="row" placeholder="Оставьте пустым по умолчанию..." class="round" type="text">
+            <input id="row" placeholder="Оставьте это поле пустым для шаблона..." class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Макс количество выбора</span>
+            <span class="dbminputlabel">Максимальный номер выбора</span>
             <input id="max" class="round" type="text" value="1">
 
             <br>
 
-            <span class="dbminputlabel">Время ожидания (миллисекунды)</span>
+            <span class="dbminputlabel">Ограничение по времени (миллисекунд)</span>
             <input id="time" placeholder="60000" class="round" type="text">
           </div>
           <div style="width: calc(34% - 8px); height: 300px; float: left; margin-left: 8px;">
 
-            <dialog-list id="options" fields='["label", "description", "value", "emoji", "default", "val1", "val2", "comparar", "formula"]' dialogTitle="Select Menu Option Info" dialogWidth="460" dialogHeight="570" listLabel="Options" listStyle="height: 210px;" itemName="Option" itemCols="1" itemHeight="20px;" itemTextFunction="'[ ' + (data.formula || 'Отображать') + ' ] ' + data.label" itemStyle="text-align: left; line-height: 20px;">
+            <dialog-list id="options" fields='["label", "description", "value", "emoji", "default", "val1", "val2", "comparar", "formula"]' dialogTitle="Select Menu Option Info" dialogWidth="460" dialogHeight="570" listLabel="Options" listStyle="height: 210px;" itemName="Option" itemCols="1" itemHeight="20px;" itemTextFunction="'[ ' + (data.formula || 'Exibir') + ' ] ' + data.label" itemStyle="text-align: left; line-height: 20px;">
             <div style="padding: 16px;background:rgba(0,0,0,0.3)">
-                 <span class="dbminputlabel">Отображать</span><br>
+                 <span class="dbminputlabel">Отображение</span><br>
                  <select id="formula" class="round">
-                 <option value="Отображать" selected>Опция Всегда отображать / Игнорировать действие ниже</option>
-                 <option value="Нету">Опция отображения только в том случае, если действие имеет значение false</option>
-                 <option value="Сушествует">Опция отображения, только если действие сушествует</option>
+                 <option value="Отображать" selected>Всегда отображайте / игнорируйте сравнения ниже</option>
+                 <option value="ЛОЖЬ">Отобразить вариант только в том случае, если сравнение подделка</option>
+                 <option value="Настоящий">Отобразить вариант только в том случае, если сравнение верен</option>
                </select>
                <br>
                   <table style="width:100%"><tr><td>
@@ -489,43 +553,43 @@ module.exports = {
                     <input id="val1" class="round" type="text">
                     </td>
                     <td>
-                    <span class="dbminputlabel">Действия</span><br>
+                    <span class="dbminputlabel">Сравнения</span><br>
                     <select id="comparar" class="round">
-                    <option value="0">Значение A-Существует</option>
-                    <option value="1" Выбрано > равно</option>
+                    <option value="0">Значение A - существует</option>
+                    <option value="1" selected>Равно</option>
                     <option value="2">Точно так же</option>
-                    <option value="3">Меньше, чем</option>
+                    <option value="3">Меньше чем</option>
                     <option value="13">Меньше или равно</option>
-                    <option value="4">Тогда больше</option>
+                    <option value="4">Больше тогда</option>
                     <option value="12">Больше или равно</option>
-                    <option value="5">Включает</option>
-                    <option value="6">Соответствия регулярным выражениям</option>
-                    <option value="14">Полные совпадения с регулярными выражениями</option>
-                    <option value="7">Длина больше, чем</option>
-                    <option value="8">Длина меньше, чем</option>
-                    <option value="9">Длина равна</option>
+                    <option value="5">Включают</option>
+                    <option value="6">Соответствует регулярному выражению</option>
+                    <option value="14">Соответствует полному регулярному выражению</option>
+                    <option value="7">Длина длиннее, чем</option>
+                    <option value="8">Длина ниже, чем</option>
+                    <option value="9">Длина равена</option>
                     <option value="10">Начинается с</option>
                     <option value="11">Заканчивается</option>
-                    <option value="16">Имеет ли значение A акценты?</option>
+                    <option value="16">Значение А имеет акценты?</option>
                     <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-                    <option value="18">Это как слова  ["a" , "b" , "c"]</option>
-                    <option value="19">Значение А является четным числом?</option>
-                    <option value="20">Значение A является нечетным числом?</option>
-                    <option value="21">Значение А является числом?</option>
-                    <option value="24">Является ли значение А текстом?</option>
-                    <option value="23">Значение A является URL-адресом изображения?</option>
-                    <option value="25">Значение А является URL?</option>
+                    <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+                    <option value="19">Значение A - это чётное число?</option>
+                    <option value="20">Значение A - это нечетное число?</option>
+                    <option value="21">Значение A является числом?</option>
+                    <option value="24">Значение A - это текст?</option>
+                    <option value="23">Значение A - это URL -адрес изображения?</option>
+                    <option value="25">Значение A - это URL?</option>
                   </select>
                    </td>
                     <td>
-                    <span class="dbminputlabel">Значение Б</span><br>
+                    <span class="dbminputlabel">Значение B</span><br>
                     <input id="val2" class="round" type="text">
                     </td>
                     </tr></table>
 
         </div>
         <div style="padding: 16px">
-                <span class="dbminputlabel">Название</span>
+                <span class="dbminputlabel">Имя</span>
                 <input id="label" class="round" type="text">
 
                 <br>
@@ -535,13 +599,13 @@ module.exports = {
 
                 <br>
 
-                <span class="dbminputlabel">Переменая</span>
-                <input id="value" placeholder="Текст, переданный в переменную temp..." class="round" type="text">
+                <span class="dbminputlabel">Значение</span>
+                <input id="value" placeholder="Текст передается в переменную temp..." class="round" type="text">
 
                 <br>
 
-                <span class="dbminputlabel">Эмоджи</span>
-                <input id="emoji" placeholder="Оставьте пустым, если нет..." class="round" type="text">
+                <span class="dbminputlabel">Эмодзи</span>
+                <input id="emoji" placeholder="Оставьте это пустым для ничего ..." class="round" type="text">
 
                 <br>
 
@@ -576,7 +640,7 @@ module.exports = {
   <tab label="Файлы" icon="file image">
     <div style="padding: 8px;">
 
-      <dialog-list id="attachments" fields='["tipo", "url", "canvasvar", "canvasnome", "compress", "name", "spoiler"]' dialogTitle="Информация о вложении" dialogWidth="400" dialogHeight="480" listLabel="Файлы" listStyle="height: calc(100vh - 350px);" itemName="File" itemCols="1" itemHeight="30px;" itemTextFunction="glob.formatItem(data)" itemStyle="text-align: left; line-height: 30px;">
+      <dialog-list id="attachments" fields='["tipo", "url", "canvasvar", "canvasnome", "compress", "name", "spoiler"]' dialogTitle="Informação do Anexo" dialogWidth="400" dialogHeight="480" listLabel="Файлы" listStyle="height: calc(100vh - 350px);" itemName="File" itemCols="1" itemHeight="30px;" itemTextFunction="glob.formatItem(data)" itemStyle="text-align: left; line-height: 30px;">
         <div style="padding: 16px;" onmouseover="(function(){
 
           var aselect = document.getElementById('tipo');
@@ -626,12 +690,12 @@ module.exports = {
     }      
         
         })()">>
-          <option value="0">Локальный/веб-URL вложения</option>
+          <option value="0">Локальный/Веб-АДРЕС URL</option>
           <option value="1">Canvas</option>
-          <option value="2">Изображения DBM</option>
+          <option value="2">DBM изображения</option>
         </select>
         <br><div id="xinxyla2">
-          <span class="dbminputlabel">Локальный/веб-URL вложения</span>
+          <span class="dbminputlabel">Локальный/Веб-АДРЕС URL</span>
           <input id="url" class="round" type="text" value="resources/">
 
           <br></div>
@@ -641,7 +705,7 @@ module.exports = {
       ${data.variables[1]}
     </select>
 <br>
-          <span class="dbminputlabel">Название переменной</span>
+          <span class="dbminputlabel">Имя переменной</span>
           <input id="canvasnome" class="round" type="text" list="variableList">
 <br>
 <div id="xinxyla3">
@@ -660,8 +724,8 @@ module.exports = {
           </select>
           <br></div></div>
 
-          <span class="dbminputlabel">Название вложения</span>
-          <input id="name" class="round" type="text" placeholder="Оставьте пустым по умолчанию...">
+          <span class="dbminputlabel">Файла имя</span>
+          <input id="name" class="round" type="text" placeholder="Оставьте это пустым для стандарта ...">
 
           <br>
 
@@ -677,27 +741,27 @@ module.exports = {
   <tab label="Конфиг" icon="cogs">
     <div style="padding: 8px;height: calc(100vh - 292px);overflow-y: scroll;overflow-x: hidden;width:100%">
     <div id="xincheck">
-    <span class="dbminputlabel">Конфиг</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-      <dbm-checkbox id="reply" label="Отвечайте на обращение, если это возможно" checked></dbm-checkbox>
+    <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
+      <dbm-checkbox id="reply" label="Ответьте на взаимодействие, если это возможно" checked></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="ephemeral" label="Сделать ответ приватным"></dbm-checkbox>
+      <dbm-checkbox id="ephemeral" label="Приватное сообщение"></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="mentions" label="@ Уведомить членов/должности" checked></dbm-checkbox>
+      <dbm-checkbox id="mentions" label="@ Уведомления о юзера / роли" checked></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="messageoff" label="Добавить/Заменить текст" checked></dbm-checkbox>
+      <dbm-checkbox id="messageoff" label="Добавить/заменить текст" checked></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="tts" label="Текст в речь"></dbm-checkbox>
+      <dbm-checkbox id="tts" label="Текст В Речь"></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="overwrite" label="Перезаписать изменения"></dbm-checkbox>
+      <dbm-checkbox id="overwrite" label="Заменить изменения"></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="dontSend" label="Не отправлять сообщение"></dbm-checkbox>
+      <dbm-checkbox id="dontSend" label="Не отправляйте сообщение"></dbm-checkbox>
       
       </div><br></div>
       
       <div style="width:96%;display:block">
       <div style="padding-bottom: 12px;" id="xin1">
-        <retrieve-from-variable allowNone dropdownLabel="Изменить сообщение" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
-          <option value="intUpdate">Interaction Update</option>
+        <retrieve-from-variable allowNone dropdownLabel="Редактировать сообщение" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
+          <option value="intUpdate">Обновление взаимодействия</option>
         </retrieve-from-variable>
       
 
@@ -708,25 +772,25 @@ module.exports = {
       <div style="float: left; width: 35%">
       <span class="dbminputlabel">Отправить как webhook</span><br>
       <select id="storagewebhook" class="round" onchange="glob.onComparisonChanged2(this)">
-      <option value="0" selecionado>Нет</option>
+      <option value="0" selecionado>Отлючить</option>
       <option value="1">Временная переменная</option>
-      <option value="2">Переменная сервера</option>
+      <option value="2">Переменный сервер</option>
       <option value="3">Глобальная переменная</option>
     </select>
     </div>
-    <div id="webhookdiv" style="display: none; float: right; width: 60%;"><span id="ifName" class="dbminputlabel">Имя переменной</span><br><input list="variableList" id="varwebhook" class="round" name="actionxinxyla" type="text"></div>
+    <div id="webhookdiv" style="display: none; float: right; width: 60%;"><span id="ifName" class="dbminputlabel">Nome da Variavel</span><br><input list="variableList" id="varwebhook" class="round" name="actionxinxyla" type="text"></div>
     <div id="webhookdiv2" style="display: none;padding-top: 12px;">
     <br><br><br>
-    <span class="dbminputlabel">Название Webhook</span><br>
+    <span class="dbminputlabel">Имя Webhook</span><br>
     <input id="webhookname" class="round" type="text" style="width:100%" placeholder="Opcional">
     <br>
-    <span class="dbminputlabel">URL изображения аватара webhook</span><br>
+    <span class="dbminputlabel">URL-адрес изображения Webhook</span><br>
     <input id="webhookavatar" class="round" type="text" style="width:100%" placeholder="Opcional"><br>
     <hr class="subtlebar" style="margin-top: 4px; margin-bottom: -54px">
     </div>
       <br><br><br>
       <div style="padding-top: 12px">
-        <store-in-variable allowNone dropdownLabel="Хрнаить в" selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer2"></store-in-variable>
+        <store-in-variable allowNone dropdownLabel="Хранить в" selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer2"></store-in-variable>
       </div>
 
       <br><br><br>
@@ -734,21 +798,21 @@ module.exports = {
       <br>
       <div>
       <div style="float: left; width: 35%">
-      <span class="dbminputlabel">Если сообщение не отправляется</span><br>
+      <span class="dbminputlabel">Если сообщение не отправилось</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-      <option value="0">Продолжить действия</option>
+      <option value="0">Продолжать</option>
       <option value="1" selecionado>Остановить последовательность действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующие действия</option>
-      <option value="4">Перейти к якорю действия</option>
+      <option value="4">Перейти к якову действия</option>
     </select>
     </div>
-    <div id="iffalseContainer" style="display: none; float: right; width: 60%;"><span id="ifName" class="dbminputlabel">Para</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
+    <div id="iffalseContainer" style="display: none; float: right; width: 60%;"><span id="ifName" class="dbminputlabel">Для</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
       <br><br><br>
 
       <div style="padding-bottom: 12px;padding-top: 12px">
       <table style="width:100%;"><tr>
-      <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы удалить"></td>
+      <td><span class="dbminputlabel">Действие описание</span><br><input type="text" class="round" id="description" placeholder="Оставить пустым, чтобы было обычное"></td>
       <td style="padding:0px 0px 0px 10px;width:55px"><span class="dbminputlabel">Цвет</span><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
       </tr></table>
       </div>
@@ -841,12 +905,25 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           result += "Canvas: " + data.canvasnome;
           break;
         case "2":
-          result += "Изображения DBM: " + data.canvasnome;
+          result += "DBM изображения: " + data.canvasnome;
           break;
       }
       result += "</div>";
       return result;
-    };
+    }
+    
+    glob.formatItem2 = function (data) {
+      let result = '<div style="display: inline-block; width: 100%; padding-left: 8px;"><table><tr><td style="width:100%">';
+      const comp = "0";
+      switch (comp) {
+        case "0":
+          result += data.emoji + ' ' + data.name;
+          break;
+      }
+      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>"+data.id+"</td></tr></table></div>";
+      return result;
+    }
+  
 
   },
   //---------------------------------------------------------------------
@@ -1194,6 +1271,112 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     if (Array.isArray(data.buttons)) {
       for (let i = 0; i < data.buttons.length; i++) {
+        
+        const botoesconfig = data.buttons;
+        const fbot = botoesconfig[i];
+
+        val1 = this.evalMessage(fbot.val1, cache);
+        val2 = this.evalMessage(fbot.val2, cache);
+        result = true;
+
+        if(fbot.formula == "1" || fbot.formula == "2") {
+        const compare = parseInt(fbot.comparar, 10);
+        if (compare !== 6){
+          val1 = this.evalIfPossible(val1, cache)
+          val2 = this.evalIfPossible(val2, cache)
+        }
+        switch (compare) {
+            case 0:
+              result = val1.toString() !== "undefined";
+              break;
+            case 1:
+              result = val1 == val2;
+              break;
+            case 2:
+              result = val1 === val2;
+              break;
+            case 3:
+              result = parseFloat(val1) < parseFloat(val2);
+              break;
+            case 4:
+              result = parseFloat(val1) > parseFloat(val2);
+              break;
+            case 5:
+              if (typeof val1?.toString().includes === "function") {
+                result = val1.toString().includes(val2);
+              }
+              break;
+            case 6:
+              result = Boolean(val1.toString().match(new RegExp('^' + val2 + '$', 'i')));
+              break;
+            case 7:
+              result = Boolean(val1.toString().length > val2);
+              break;
+            case 8:
+              result = Boolean(val1.toString().length < val2);
+              break;
+            case 9:
+              result = Boolean(val1.toString().length == val2);
+              break;
+            case 10:
+              result = val1.toString().startsWith(val2);
+              break;
+            case 11:
+              result = val1.toString().endsWith(val2);
+              break;
+            case 12:
+              result = Boolean(val1 >= val2);
+              break;
+            case 13:
+              result = Boolean(val1 <= val2);
+              break;
+            case 14:
+              result = Boolean(val1.toString().match(new RegExp(val2)))
+              break;
+            case 16:
+              const conditions = ["Ä","Å","Á","Â","À","Ã","Ā","Ă","Ą","ā","ă","ą","ä","á","â","à","ã","É","Ê","Ë","È","Ė","Ę","Ě","Ĕ","Ē","ė","ę","ě","ĕ","ē","é","ê","ë","è","Í","Î","Ï","Ì","İ","Į","Ī","ı","į","ī","í","î","ï","ì","Ö","Ó","Ô","Ò","Õ","Ő","Ō","ő","ō","ö","ó","ô","ò","õ","Ü","Ú","Û","Ų","Ű","Ů","Ū","ų","ű","ů","ū","ü","ú","û","ù","Ç","Ć","Č","ç","ć","č","Ñ","Ň","Ņ","Ń","ñ","ň","ņ","ń","Ÿ","Ý","ý","Ź","Ż","Ž","ź","ż","ž","Ł","Ľ","Ļ","Ĺ","ł","ľ","ĺ","Ķ","ķ","Ģ","Ğ","ģ","ğ","Ď","ď","Ś","Š","Ş","ś","š","ş","Ť","Ț","Ţ","ť","ț","ţ","Ŕ","Ř","ŕ","ř"]
+              result = conditions.some(el => val1.includes(el));
+              break;
+            case 17:
+              const conditionsX = val2
+              result = conditionsX.some(els => val1.includes(els));
+              break;
+            case 18:
+              const conditionsZ = val2
+              result = conditionsZ.some(elz => val1 == (elz));
+              break;
+            case 19:
+              result = val1 % 2 == 0
+              break;
+            case 20:
+              result = val1 % 2 == 1
+              break;
+            case 21:
+              result = Boolean(!isNaN(parseFloat(val1.toString().replace(",", "."))));
+              break;
+            case 23:
+              const isImageUrl = require('is-image-url');
+              result = isImageUrl(val1);
+              break;
+            case 24:
+              result = typeof val1 === "string";
+              break;
+            case 25:
+              const isUrl = require("is-url");
+              result = isUrl(val1);
+        }
+      }
+    
+
+      if(fbot.formula == "1") {
+        if(result == false) {
+          result = true
+        } else {result = false}
+      }
+
+
+if(result == true){
+
         if(!data.buttons[i].name) data.buttons[i].name = "\u200b";
         const button = data.buttons[i];
         if(button.typeper == "" || button.typeper == undefined){
@@ -1216,7 +1399,12 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             data: button,
           });
         }
+
       }
+
+    }
+
+      
     }
 
     if (Array.isArray(data.selectMenus)) {
@@ -1513,7 +1701,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       } else if (cache?.interaction?.update) {
         promise = cache.interaction.update(messageOptions);
       } else {
-        this.displayError(data, cache, "Send Message -> Message/Options to Edit -> Interaction Update / Could not find interaction to edit");
+        this.displayError(data, cache, "Отправить сообщение -> Сообщение /Параметры для редактирования -> Обновление взаимодействия / Не удалось найти взаимодействие для редактирования");
       }
 
       if (promise) {
