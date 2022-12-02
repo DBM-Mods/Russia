@@ -3,7 +3,7 @@ module.exports = {
   name: "Check Variable MOD",
   section: "Conditions",
   meta: {
-    version: '2.1.5',
+    version: '2.1.6',
     preciseCheck: true,
     author: '[XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
@@ -11,68 +11,96 @@ module.exports = {
   },
 
   subtitle(data, presets) {
-    return `${presets.getConditionsText(data)}`;
+    if(data.descriptionx == true){
+    desccor = data.descriptioncolor
+    } else {
+      desccor = 'none'
+    }
+
+    return data.description
+    ? `<font style="color:${desccor}">${data.description}</font>`
+    : `<font style="color:${desccor}">${presets.getConditionsText(data)}</font>`
+
   },
 
-  fields: ["storage", "varName", "comparison", "value", "value2","branch"],
+  fields: ["storage", "varName", "comparison", "value", "value2","branch","descriptioncolor","description","descriptionx"],
 
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 1.4</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
-<retrieve-from-variable allowSlashParams dropdownLabel="Переменная" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></retrieve-from-variable>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.5</div>
+
+    <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
+
+    <div id="flutuador" style="padding:0px 0px 15px 0px">
+<table style="width:100%;"><tr>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+</tr></table>
+</div>
+
+   <retrieve-from-variable allowSlashParams dropdownLabel="Переменные" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></retrieve-from-variable>
 
 <br><br><br>
 
 <div style="padding-top: 8px;">
-	<div style="float: left; width: 35%;">
-		<span class="dbminputlabel">Тип сравнения</span><br>
+	<div style="float: left; width: 35%">
+		<span class="dbminputlabel">Типы сравнения</span><br>
 		<select id="comparison" class="round" onchange="glob.onComparisonChanged(this)">
-			<option value="0">Существует</option>
-			<option value="1" selected>Равна</option>
-			<option value="2">Точно так же, как</option>
-			<option value="3">Меньше</option>
+			<option value="0">Существует ли</option>
+			<option value="1" selected>Равно</option>
+			<option value="2">Точно так же</option>
+			<option value="3">Меньше чем</option>
       <option value="13">Меньше или равно</option>
-			<option value="4">Больше</option>
+			<option value="4">Больше тогда</option>
       <option value="12">Больше или равно</option>
-			<option value="5">Включает</option>
-			<option value="6">Соответствует Регулярному выражению</option>
-      <option value="14">Соответствует Полному Регулярному Выражению</option>
-      <option value="7">Длина больше, чем</option>
+			<option value="5">Включают</option>
+			<option value="6">Соответствует регулярному выражению</option>
+      <option value="14">Соответствует полному регулярному выражению</option>
+      <option value="7">Длина длиннее, чем</option>
 			<option value="8">Длина меньше, чем</option>
 			<option value="9">Длина равна</option>
 			<option value="10">Начинается с</option>
-			<option value="11">Заканчивается на</option>
+			<option value="11">Заканчивается</option>
       <option value="15">Между</option>
-      <option value="16">Имеет подчеркивание?</option>
-      <option value="17">Включает слова ["a", "b", "c"]</option>
-      <option value="18">Равен словам ["a", "b", "c"]</option>
-      <option value="19">Четное число?</option>
+      <option value="16">У вас есть акценты?</option>
+      <option value="17">Включает слова  ["a" , "b" , "c"]</option>
+      <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+      <option value="19">Это чётное число?</option>
       <option value="20">Это нечетное число?</option>
       <option value="21">Это число?</option>
       <option value="24">Это текст?</option>
       <option value="22">Это список?</option>
-      <option value="23">Это URL-адрес изображения?</option>
-      <option value="25">Это URL-адрес?</option>
+      <option value="23">Это URL -адрес изображения?</option>
+      <option value="25">Это URL?</option>
 		</select>
 	</div>
-	<table style="float: right;width: 65%;"><tr><td style="padding:0px 8px"><div style="width: 100%" id="directValue">
+	<table style="float: right;width: 65%;"><tr><td style="padding:0px 0px 0px 22px"><div style="width: 100%" id="directValue">
 		<span class="dbminputlabel">Значение для сравнения</span>
 		<input id="value" class="round" type="text">
-	</div></td><td style="padding:0px 3px";> <div style="width: 100%;" id="containerxin">
-  <span class="dbminputlabel">e</span><br>
+	</div></td><td><div style="width: 100%;padding:0px 0px 0px 8px" id="containerxin">
+  <span class="dbminputlabel">Допольнительное значение</span><br>
   <input id="value2" class="round" type="text"></td></tr></table>
-</div></div>
+</div>
 
-<br><br><br><br>
+<br><br><br>
 
 
 <hr class="subtlebar">
 
-<br>
+
 <div>
-<conditional-input id="branch" style="padding-top: 8px;"></conditional-input></div>`;
+<conditional-input id="branch" style="padding-top: 8px;"></conditional-input></div>
+
+</div>
+
+<style>
+
+.dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+.dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
+
+</style>`;
   },
 
 
@@ -104,6 +132,21 @@ module.exports = {
     };
 
     glob.onComparisonChanged(document.getElementById("comparison"));
+
+
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+       xinelaslink.setAttribute('title', url);
+       xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
   
 
   },
