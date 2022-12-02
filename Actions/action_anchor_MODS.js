@@ -28,7 +28,7 @@ module.exports = {
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.5</div>
 <tab-system>
 
-    <tab label="Âncora" icon="anchor">
+    <tab label="Якорь" icon="anchor">
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
 <div style="float:left;width:75%">
