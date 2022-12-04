@@ -96,7 +96,7 @@ module.exports = {
        xinelaslink.setAttribute('title', url);
        xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Launching URL: [${url}] in your default browser.`);
+          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
