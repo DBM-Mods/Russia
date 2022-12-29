@@ -265,10 +265,10 @@ module.exports = {
         result = targetChannel.type;
         break;
       case 19:
-        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='member').map(p => `**Usuário**: <@${p.id}>\n • Habilitado: ${p.allow.toArray().length>=1?p.allow.toArray():'Nada'}\n • Desabilitado: ${p.deny.toArray().length>=1?p.deny.toArray():'Nada'}`).join('\n\n');
+        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='member').map(p => `**Пользователь**: <@${p.id}>\n • Разрешено: ${p.allow.toArray().length>=1?p.allow.toArray():'Ничего'}\n • Отключено: ${p.deny.toArray().length>=1?p.deny.toArray():'Ничего'}`).join('\n\n');
         break;
        case 20:
-        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='role').map(p => `**Cargo**: <@&${p.id}>\n • Habilitado: ${p.allow.toArray().length>=1?p.allow.toArray():'Nada'}\n • Desabilitado: ${p.deny.toArray().length>=1?p.deny.toArray():'Nada'}`).join('\n\n');
+        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='role').map(p => `**Роль**: <@&${p.id}>\n • Разрешено: ${p.allow.toArray().length>=1?p.allow.toArray():'Ничего'}\n • Запрещено: ${p.deny.toArray().length>=1?p.deny.toArray():'Ничего'}`).join('\n\n');
         break;
       case 21:
         result = await targetChannel.permissionOverwrites.cache;
@@ -277,10 +277,10 @@ module.exports = {
         result = await targetChannel.permissionOverwrites.cache;
         break;
       case 23:
-        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='member').map(p => `**Usuário**: <@${p.id}>\n • Habilitado: ${p.allow.toArray().length>=1?p.allow.toArray():'Nada'}\n • Desabilitado: ${p.deny.toArray().length>=1?p.deny.toArray():'Nada'}`);
+        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='member').map(p => `**Пользователь**: <@${p.id}>\n • Разрешено: ${p.allow.toArray().length>=1?p.allow.toArray():'Ничего'}\n • Запрещено: ${p.deny.toArray().length>=1?p.deny.toArray():'Ничего'}`);
         break;
       case 24:
-       result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='role').map(p => `**Cargo**: <@&${p.id}>\n • Habilitado: ${p.allow.toArray().length>=1?p.allow.toArray():'Nada'}\n • Desabilitado: ${p.deny.toArray().length>=1?p.deny.toArray():'Nada'}`);
+       result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='role').map(p => `**Роль**: <@&${p.id}>\n • Разрешено: ${p.allow.toArray().length>=1?p.allow.toArray():'Ничего'}\n • Запрещено: ${p.deny.toArray().length>=1?p.deny.toArray():'Ничего'}`);
        break;
        case 25:
        result = targetChannel.rateLimitPerUser;
