@@ -26,7 +26,7 @@ module.exports = {
     if (data.message) {
       text = `"${data.message.replace(/[\n\r]+/, " ↲ ")}"`;
     } else if (data.embeds?.length > 0) {
-      text = `${data.embeds.length} Ембедов`;
+      text = `${data.embeds.length} Эмбедов`;
     } else if (data.attachments?.length > 0) {
       text = `${data.attachments.length} Файлы`;
     } else if (data.buttons?.length > 0 || data.selectMenus?.length > 0) {
@@ -143,7 +143,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 2.6</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 2.7</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
@@ -481,8 +481,12 @@ module.exports = {
 
             <span class="dbminputlabel">Ограничение по времени (миллисекунд)</span>
             <input id="time" placeholder="60000" class="round" type="text">
-          </div>
-          </div>
+
+            </div>
+            </div>
+            <center>
+              <dbm-checkbox id="disabled" style="margin-top: -30px;" label="Отключена-ли кнопка?"></dbm-checkbox>
+            <center>
           </tab>
           </tab-system>
 
@@ -497,7 +501,7 @@ module.exports = {
   <div style="padding: 16px;text-align:center"id="xin5n">Webhook не поддерживает меню</div>
     <div style="padding: 8px;" id="xin5">
 
-      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions"]' dialogTitle="Select Menu Info" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="data.placeholder + '<br>' + data.options" itemStyle="text-align: left; line-height: 40px;">
+      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Select Menu Info" dialogWidth="800" dialogHeight="700" listLabel="Menus" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Название меню</span>
@@ -527,6 +531,7 @@ module.exports = {
             <option value="PERSISTENT">Бесконечная</option>
             </select>
           </div>
+          <dbm-checkbox id="disabled" style="margin-top: 15px;" label="Отключено-ли меню?"></dbm-checkbox>
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Уникальный идентификатор (ID)</span>
             <input id="id" placeholder="Оставьте это пустым, чтобы автоматически генерировать ..." class="round" type="text">
@@ -625,7 +630,6 @@ module.exports = {
                 </select>
               </div>
             </dialog-list>
-
           </div>
 
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -758,11 +762,11 @@ module.exports = {
     </div>
 
     <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-      <dbm-checkbox id="reply" label="Ответьте на взаимодействие, если это возможно" checked></dbm-checkbox>
+      <dbm-checkbox id="reply" label="Ответить на взаимодействие, если это возможно" checked></dbm-checkbox>
       <xinspace>
       <dbm-checkbox id="ephemeral" label="Приватное сообщение"></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="mentions" label="@ Уведомления о юзера / роли" checked></dbm-checkbox>
+      <dbm-checkbox id="mentions" label="Включить упоминание участника" checked></dbm-checkbox>
       <xinspace>
       <dbm-checkbox id="messageoff" label="Добавить/заменить текст" checked></dbm-checkbox>
       <xinspace>
@@ -770,7 +774,7 @@ module.exports = {
       <xinspace>
       <dbm-checkbox id="overwrite" label="Заменить изменения"></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="dontSend" label="Не отправляйте сообщение"></dbm-checkbox>
+      <dbm-checkbox id="dontSend" label="Не отправлять сообщение"></dbm-checkbox>
       
       </div><br></div>
       
@@ -790,7 +794,7 @@ module.exports = {
       <select id="storagewebhook" class="round" onchange="glob.onComparisonChanged2(this)">
       <option value="0" selecionado>Отлючить</option>
       <option value="1">Временная переменная</option>
-      <option value="2">Переменный сервер</option>
+      <option value="2">Переменная сервера</option>
       <option value="3">Глобальная переменная</option>
     </select>
     </div>
@@ -817,7 +821,7 @@ module.exports = {
       <span class="dbminputlabel">Если сообщение не отправилось</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
       <option value="0">Продолжать</option>
-      <option value="1" selecionado>Остановить последовательность действий</option>
+      <option value="1" selected>Остановить последовательность действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующие действия</option>
       <option value="4">Перейти к якову действия</option>
@@ -922,7 +926,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       result += "</div>";
       return result;
     }
-    
+
     glob.formatItem2 = function (data) {
       let result = '<div style="display: inline-block; width: 100%; padding-left: 8px;"><table><tr><td style="width:100%">';
       const comp = "0";
@@ -931,11 +935,22 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           result += data.emoji + ' ' + data.name;
           break;
       }
-      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>"+data.id+"</td></tr></table></div>";
+      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>" + data.id + "</td></tr></table></div>";
       return result;
     }
-  
     
+    glob.formatItem3 = function (data) {
+      let result = '<div style="display: inline-block; width: 100%; padding-left: 8px;"><table><tr><td style="width:100%">';
+      const comp = "0";
+      switch (comp) {
+        case "0":
+          result += data.placeholder;
+          break;
+      }
+      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>" + data.id + "</td></tr></table></div>";
+      return result;
+    }
+
     const xinelaslinks = document.getElementsByClassName('xinelaslink');
     for (let x = 0; x < xinelaslinks.length; x++) {
       const xinelaslink = xinelaslinks[x];
@@ -1025,7 +1040,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     const data = cache.actions[cache.index];
     var messageoff = data.messageoff;
-    if(messageoff == undefined){messageoff = true}
+    if (messageoff == undefined) { messageoff = true }
     const channel = parseInt(data.channel, 10);
     const message = this.evalMessage(data.message, cache);
     const storagewebhook = parseInt(data.storagewebhook)
@@ -1068,12 +1083,13 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     let content;
 
-    if(messageoff == true){
-    if (message.length > 0) {
-      content = this.evalMessage(message, cache);
-    } else {
-      content = this.evalMessage("", cache);
-    }}
+    if (messageoff == true) {
+      if (message.length > 0) {
+        content = this.evalMessage(message, cache);
+      } else {
+        content = this.evalMessage("", cache);
+      }
+    }
 
 
     if (content) {
@@ -1100,7 +1116,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         if (embedData.colorrandom == true) {
           embed.setColor("RANDOM");
         }
-        if (embedData.color){
+        if (embedData.color) {
           if (embedData.colorrandom == true) {
             embed.setColor("RANDOM");
           } else {
@@ -1109,7 +1125,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         }
 
         if (embedData.timestamp == "true" || embedData.timestamp == true) {
-          if(embedData.timestampper == "" || embedData.timestampper == undefined) {
+          if (embedData.timestampper == "" || embedData.timestampper == undefined) {
             embed.setTimestamp()
           } else{
             embed.setTimestamp(parseFloat(this.evalMessage(embedData.timestampper, cache)))
@@ -1118,18 +1134,18 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
         var imgURL = this.evalMessage(embedData.imageUrl, cache);
 
-        if(imgURL) {
-          if(imgURL.toString().startsWith("http")) {
+        if (imgURL) {
+          if (imgURL.toString().startsWith("http")) {
             embed.setImage(imgURL);
           } else {
             embed.setImage("attachment://" + imgURL);
-          } 
+          }
         }
 
         var thumb = this.evalMessage(embedData.thumbUrl, cache);
 
-        if(thumb) {
-          if(thumb.toString().startsWith("http")) {
+        if (thumb) {
+          if (thumb.toString().startsWith("http")) {
             embed.setThumbnail(thumb);
           } else {
             embed.setThumbnail("attachment://" + thumb);
@@ -1147,13 +1163,13 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             val2 = this.evalMessage(f.val2, cache);
             result = true;
 
-            if(f.formula == "1" || f.formula == "2") {
-            const compare = parseInt(f.comparar, 10);
-            if (compare !== 6){
-              val1 = this.evalIfPossible(val1, cache)
-              val2 = this.evalIfPossible(val2, cache)
-            }
-            switch (compare) {
+            if (f.formula == "1" || f.formula == "2") {
+              const compare = parseInt(f.comparar, 10);
+              if (compare !== 6) {
+                val1 = this.evalIfPossible(val1, cache)
+                val2 = this.evalIfPossible(val2, cache)
+              }
+              switch (compare) {
                 case 0:
                   result = val1.toString() !== "undefined";
                   break;
@@ -1202,7 +1218,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                   result = Boolean(val1.toString().match(new RegExp(val2)))
                   break;
                 case 16:
-                  const conditions = ["Ä","Å","Á","Â","À","Ã","Ā","Ă","Ą","ā","ă","ą","ä","á","â","à","ã","É","Ê","Ë","È","Ė","Ę","Ě","Ĕ","Ē","ė","ę","ě","ĕ","ē","é","ê","ë","è","Í","Î","Ï","Ì","İ","Į","Ī","ı","į","ī","í","î","ï","ì","Ö","Ó","Ô","Ò","Õ","Ő","Ō","ő","ō","ö","ó","ô","ò","õ","Ü","Ú","Û","Ų","Ű","Ů","Ū","ų","ű","ů","ū","ü","ú","û","ù","Ç","Ć","Č","ç","ć","č","Ñ","Ň","Ņ","Ń","ñ","ň","ņ","ń","Ÿ","Ý","ý","Ź","Ż","Ž","ź","ż","ž","Ł","Ľ","Ļ","Ĺ","ł","ľ","ĺ","Ķ","ķ","Ģ","Ğ","ģ","ğ","Ď","ď","Ś","Š","Ş","ś","š","ş","Ť","Ț","Ţ","ť","ț","ţ","Ŕ","Ř","ŕ","ř"]
+                  const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
                   result = conditions.some(el => val1.includes(el));
                   break;
                 case 17:
@@ -1235,14 +1251,15 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             }
           }
 
-          if(f.formula == "1") {
-            if(result == false) {
+          if (f.formula == "1") {
+            if (result == false) {
               result = true
-            } else {result = false}
+            } else { result = false }
           }
 
-          if(result == true){
-            embed.addField(this.evalMessage(f.name || '\u200B', cache), this.evalMessage(f.value || '\u200B', cache), f.inline === "true")};
+            if (result == true) {
+              embed.addField(this.evalMessage(f.name || '\u200B', cache), this.evalMessage(f.value || '\u200B', cache), f.inline === "true")
+            };
           }
         }
 
@@ -1252,21 +1269,21 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           authorIcon = "attachment://" + authorIcon;
         }
 
-        if(embedData.author) {
+        if (embedData.author) {
           embed.setAuthor({
             name: this.evalMessage(embedData.author, cache),
             iconURL: authorIcon,
             url: embedData.authorUrl ? this.evalMessage(embedData.authorUrl, cache) : null,
           });
         }
-        
+
         var iconURL = this.evalMessage(embedData.footerIconUrl, cache) || null;
 
-        if(!iconURL?.toString().startsWith("http")) {
+        if (!iconURL?.toString().startsWith("http")) {
           iconURL = "attachment://" + iconURL;
         }
 
-        if(embedData.footerText) {
+        if (embedData.footerText) {
           embed.setFooter({
             text: this.evalMessage(embedData.footerText, cache),
             iconURL: iconURL,
@@ -1277,11 +1294,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       }
     }
 
-    if(data.mentions == false){
-    messageOptions.allowedMentions = {};
-    messageOptions.allowedMentions.repliedUser = []
-    messageOptions.allowedMentions.repliedUser = data.mentions
-  }
+    if (data.mentions == false) {
+      messageOptions.allowedMentions = {};
+      messageOptions.allowedMentions.repliedUser = []
+      messageOptions.allowedMentions.repliedUser = data.mentions
+    }
 
     let componentsArr = [];
     let awaitResponses = [];
@@ -1304,13 +1321,13 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         val2 = this.evalMessage(fbot.val2, cache);
         result = true;
 
-        if(fbot.formula == "1" || fbot.formula == "2") {
-        const compare = parseInt(fbot.comparar, 10);
-        if (compare !== 6){
-          val1 = this.evalIfPossible(val1, cache)
-          val2 = this.evalIfPossible(val2, cache)
-        }
-        switch (compare) {
+        if (fbot.formula == "1" || fbot.formula == "2") {
+          const compare = parseInt(fbot.comparar, 10);
+          if (compare !== 6) {
+            val1 = this.evalIfPossible(val1, cache)
+            val2 = this.evalIfPossible(val2, cache)
+          }
+          switch (compare) {
             case 0:
               result = val1.toString() !== "undefined";
               break;
@@ -1356,10 +1373,10 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               result = Boolean(val1 <= val2);
               break;
             case 14:
-              result = Boolean(val1.toString().match(new RegExp(val2)))
+              result = Boolean(val1.toString().match(new RegExp(val2)));
               break;
             case 16:
-              const conditions = ["Ä","Å","Á","Â","À","Ã","Ā","Ă","Ą","ā","ă","ą","ä","á","â","à","ã","É","Ê","Ë","È","Ė","Ę","Ě","Ĕ","Ē","ė","ę","ě","ĕ","ē","é","ê","ë","è","Í","Î","Ï","Ì","İ","Į","Ī","ı","į","ī","í","î","ï","ì","Ö","Ó","Ô","Ò","Õ","Ő","Ō","ő","ō","ö","ó","ô","ò","õ","Ü","Ú","Û","Ų","Ű","Ů","Ū","ų","ű","ů","ū","ü","ú","û","ù","Ç","Ć","Č","ç","ć","č","Ñ","Ň","Ņ","Ń","ñ","ň","ņ","ń","Ÿ","Ý","ý","Ź","Ż","Ž","ź","ż","ž","Ł","Ľ","Ļ","Ĺ","ł","ľ","ĺ","Ķ","ķ","Ģ","Ğ","ģ","ğ","Ď","ď","Ś","Š","Ş","ś","š","ş","Ť","Ț","Ţ","ť","ț","ţ","Ŕ","Ř","ŕ","ř"]
+              const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
               result = conditions.some(el => val1.includes(el));
               break;
             case 17:
@@ -1371,16 +1388,16 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               result = conditionsZ.some(elz => val1 == (elz));
               break;
             case 19:
-              result = val1 % 2 == 0
+              result = val1 % 2 == 0;
               break;
             case 20:
-              result = val1 % 2 == 1
+              result = val1 % 2 == 1;
               break;
             case 21:
               result = Boolean(!isNaN(parseFloat(val1.toString().replace(",", "."))));
               break;
             case 23:
-              const isImageUrl = require('is-image-url');
+              const isImageUrl = require("is-image-url");
               result = isImageUrl(val1);
               break;
             case 24:
@@ -1393,25 +1410,37 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       }
     
 
-      if(fbot.formula == "1") {
-        if(result == false) {
-          result = true
-        } else {result = false}
+      if (fbot.formula == "1") {
+        if (result == false) {
+          result = true;
+        } else {
+          result = false;
+        }
       }
 
 
-if(result == true){
+      if (result == true) {
 
-        if(!data.buttons[i].name) data.buttons[i].name = "\u200b";
+        if (!data.buttons[i].name) data.buttons[i].name = "\u200b";
+
+        if (data.buttons[i]?.disabled) {
+          data.buttons[i].disabled = true;
+        } else {
+          data.buttons[i].disabled = false;
+        }
+
         const button = data.buttons[i];
-        if(button.typeper == "" || button.typeper == undefined){
-          button.type = this.evalMessage(button.type, cache)
-        }else{
-          check = this.evalMessage(button.typeper, cache)
-          if(check == "PRIMARY" || check == "SECONDARY" || check == "SUCCESS" || check == "DANGER" || check == "LINK"){
-          button.type = this.evalMessage(button.typeper, cache)}
+        if (button.typeper == "" || button.typeper == undefined) {
+          button.type = this.evalMessage(button.type, cache);
+        } else {
+          check = this.evalMessage(button.typeper, cache);
+          if (check == "PRIMARY" || check == "SECONDARY" || check == "SUCCESS" || check == "DANGER" || check == "LINK") {
+            button.type = this.evalMessage(button.typeper, cache);
+          }
         }
         const buttonData = this.generateButton(button, cache);
+        buttonData.disabled = button.disabled;
+
         this.addButtonToActionRowArray(componentsArr, this.evalMessage(button.row, cache), buttonData, cache);
 
         if (button.mode !== "PERSISTENT") {
@@ -1434,25 +1463,32 @@ if(result == true){
 
     if (Array.isArray(data.selectMenus)) {
       for (let i = 0; i < data.selectMenus.length; i++) {
-           const select = data.selectMenus[i];
+        const select = data.selectMenus[i];
 
-      totales = data.selectMenus[i].options.length
+        totales = data.selectMenus[i].options.length;
+
+        if (select?.disabled) {
+          select.disabled = true;
+        } else {
+          select.disabled = false;
+        }
        
         
         for (let ix = 0; ix < totales; ix++) {
           val1 = this.evalMessage(data.selectMenus[i].options[ix].val1, cache);
           val2 = this.evalMessage(data.selectMenus[i].options[ix].val2, cache);
       
+          
           result = true;
 
-          if(data.selectMenus[i].options[ix].formula == "Falso" || data.selectMenus[i].options[ix].formula == "Verdadeiro") {
-          const compare = parseInt(data.selectMenus[i].options[ix].comparar, 10);
-          if (compare !== 6){
-            val1 = this.evalIfPossible(val1, cache)
-            val2 = this.evalIfPossible(val2, cache)
-          }
+          if (data.selectMenus[i].options[ix].formula == "Falso" || data.selectMenus[i].options[ix].formula == "Verdadeiro") {
+            const compare = parseInt(data.selectMenus[i].options[ix].comparar, 10);
+            if (compare !== 6) {
+              val1 = this.evalIfPossible(val1, cache)
+              val2 = this.evalIfPossible(val2, cache)
+            }
 
-          switch (compare) {
+            switch (compare) {
               case 0:
                 result = val1.toString() !== "undefined";
                 break;
@@ -1501,7 +1537,7 @@ if(result == true){
                 result = Boolean(val1.toString().match(new RegExp(val2)))
                 break;
               case 16:
-                const conditions = ["Ä","Å","Á","Â","À","Ã","Ā","Ă","Ą","ā","ă","ą","ä","á","â","à","ã","É","Ê","Ë","È","Ė","Ę","Ě","Ĕ","Ē","ė","ę","ě","ĕ","ē","é","ê","ë","è","Í","Î","Ï","Ì","İ","Į","Ī","ı","į","ī","í","î","ï","ì","Ö","Ó","Ô","Ò","Õ","Ő","Ō","ő","ō","ö","ó","ô","ò","õ","Ü","Ú","Û","Ų","Ű","Ů","Ū","ų","ű","ů","ū","ü","ú","û","ù","Ç","Ć","Č","ç","ć","č","Ñ","Ň","Ņ","Ń","ñ","ň","ņ","ń","Ÿ","Ý","ý","Ź","Ż","Ž","ź","ż","ž","Ł","Ľ","Ļ","Ĺ","ł","ľ","ĺ","Ķ","ķ","Ģ","Ğ","ģ","ğ","Ď","ď","Ś","Š","Ş","ś","š","ş","Ť","Ț","Ţ","ť","ț","ţ","Ŕ","Ř","ŕ","ř"]
+                const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
                 result = conditions.some(el => val1.includes(el));
                 break;
               case 17:
@@ -1534,22 +1570,23 @@ if(result == true){
           }
         }
         
-        if(data.selectMenus[i].options[ix].formula == "Falso") {
-          if(result == false) {
+        if (data.selectMenus[i].options[ix].formula == "Falso") {
+          if (result == false) {
             result = true
-          } else {result = false}
+          } else { result = false }
         }
 
-        if(result == false){
-        data.selectMenus[i].options.splice([ix], 1);
-        ix = parseFloat([ix]) - 1
-        totales = totales - 1
+        if (result == false) {
+          data.selectMenus[i].options.splice([ix], 1);
+          ix = parseFloat([ix]) - 1
+          totales = totales - 1
         }
 
 
       }
         
       const selectData = this.generateSelectMenu(select, cache);
+      selectData.disabled = select.disabled;
       this.addSelectToActionRowArray(componentsArr, this.evalMessage(select.row, cache), selectData, cache);
 
         if (select.mode !== "PERSISTENT") {
@@ -1832,5 +1869,5 @@ if(result == true){
   // functions you wish to overwrite.
   //---------------------------------------------------------------------
 
-  mod() { },
+  mod() {},
 };
