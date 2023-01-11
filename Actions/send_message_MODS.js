@@ -316,7 +316,7 @@ module.exports = {
 
             <tab label="Автор" icon="user circle">
               <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
-                <span class="dbminputlabel">Автор имя</span>
+                <span class="dbminputlabel">Имя автора</span>
                 <input id="author" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
                 <br>
@@ -326,7 +326,7 @@ module.exports = {
 
                 <br>
 
-                <span class="dbminputlabel">Автор фото URL / Имя файла</span><br>
+                <span class="dbminputlabel">Аватар автора (URL / Имя файла)</span><br>
                 <input id="authorIcon" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
               </div>
             </tab>
@@ -355,7 +355,7 @@ module.exports = {
   <div style="padding: 16px;text-align:center"id="xin4n">Webhook не поддерживает кнопки</div>
     <div style="padding: 8px;" id="xin4">
 
-    <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Botões" listStyle="height: calc(100vh - 350px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
+    <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Кнопки" listStyle="height: calc(100vh - 350px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
 
         <tab-system>
