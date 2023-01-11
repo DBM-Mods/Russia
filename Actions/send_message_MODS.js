@@ -143,7 +143,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 2.7</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 2.8</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
@@ -170,13 +170,13 @@ module.exports = {
   <tab label="Ембеды" icon="book image">
     <div style="padding: 8px;">
 
-      <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl"]' dialogTitle="Embed Info" dialogWidth="540" dialogHeight="460" listLabel="Ембеды" listStyle="height: calc(100vh - 350px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
+    <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl"]' dialogTitle="Embed Info" dialogResizable dialogWidth="540" dialogHeight="460" listLabel="Embeds" listStyle="height: calc(100vh - 350px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
         <div style="padding: 16px 16px 0px 16px;">
 
           <tab-system>
 
             <tab label="Общий" icon="certificate">
-              <div style="padding: 8px">
+              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
                 <div style="float: left; width: calc(50% - 12px);">
                   <span class="dbminputlabel">Заголовок</span><br>
                   <input id="title" class="round" type="text">
@@ -204,7 +204,7 @@ module.exports = {
 
                   <br>
 
-                  <span class="dbminputlabel">Временная метка</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="timestamp" label="Вкл" checked></dbm-checkbox></div><br>
+                  <span class="dbminputlabel">Временная метка</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="timestamp" label="Вкл"></dbm-checkbox></div><br>
                   <input id="timestampper" class="round" type="text" placeholder="Оставьте это пустым для текущего">
                 </div>
 
@@ -225,23 +225,24 @@ module.exports = {
             </tab>
 
             <tab label="Описание" icon="file image">
-              <div style="padding: 8px">
+              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
                 <textarea id="description" class="dbm_monospace" rows="10" placeholder="Введите описание здесь ..." style="height: calc(100vh - 149px); white-space: nowrap; resize: none;"></textarea>
                 </div>
             </tab>
 
             <tab label="Поля" icon="list">
-              <div style="padding: 8px">
-                <dialog-list id="fields" fields='["name", "value", "inline", "val1", "val2", "comparar", "formula"]' dialogTitle="Field Info" dialogWidth="540" dialogHeight="500" listLabel="Fields" listStyle="height: calc(100vh - 190px);" itemName="Field" itemCols="1" itemHeight="30px;" itemTextFunction="data.name + '<br>' + data.value" itemStyle="text-align: left; line-height: 30px;">
+            <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
+            <dialog-list id="fields" fields='["name", "value", "inline", "val1", "val2", "comparar", "formula"]' dialogTitle="Field Info" dialogResizable dialogWidth="540" dialogHeight="500" listLabel="Fields" listStyle="height: calc(100vh - 190px);" itemName="Field" itemCols="1" itemHeight="50px;" itemTextFunction="'Имя: ' + data.name + '<br/>' + 'Значение: '+ data.value" itemStyle="text-align: left; line-height: 25px;">
+                              <div style="height: calc(100vh - 60px);overflow:auto">
                                   
 
                   <div style="padding: 16px;background:rgba(0,0,0,0.3)">
 
-                  <span class="dbminputlabel">Отображение</span><br>
+                  <span class="dbminputlabel">Отображение поля</span><br>
                   <select id="formula" class="round">
-                  <option value="0" selected>Всегда отображайте поле / игнорируйте сравнения ниже</option>
-                  <option value="1">Поле отображать только если сравнение подделка</option>
-                  <option value="2">Поле отображать только если сравнение верен</option>
+                  <option value="0" selected>Всегда отображать поле / игнорировать сравнения ниже</option>
+                  <option value="1">Отображать поле, если получено значение False</option>
+                  <option value="2">Отображать поле, если получено значение True</option>
                 </select>
 
                 <br>
@@ -308,13 +309,13 @@ module.exports = {
                     <span class="dbminputlabel">Поле текст</span><br>
                     <textarea id="value" class="dbm_monospace" rows="7" placeholder="Вставьте текст поля здесь ..." style="height: calc(100vh - 320px); white-space: nowrap;"></textarea>
 
-                  </div>
+                  </div></div>
                 </dialog-list>
               </div>
             </tab>
 
             <tab label="Автор" icon="user circle">
-              <div style="padding: 8px">
+              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
                 <span class="dbminputlabel">Автор имя</span>
                 <input id="author" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
@@ -331,7 +332,7 @@ module.exports = {
             </tab>
 
             <tab label="Footer" icon="map outline">
-              <div style="padding: 8px;">
+              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
                 <span class="dbminputlabel">URL-адрес значка нижнего текста / Имя файла</span><br>
                 <input id="footerIconUrl" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
@@ -354,7 +355,7 @@ module.exports = {
   <div style="padding: 16px;text-align:center"id="xin4n">Webhook не поддерживает кнопки</div>
     <div style="padding: 8px;" id="xin4">
 
-      <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "disabled", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Кнопки" listStyle="height: calc(100vh - 350px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
+    <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Botões" listStyle="height: calc(100vh - 350px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
 
         <tab-system>
@@ -368,12 +369,15 @@ module.exports = {
         <div style="height: calc(100vh - 138px);overflow-y: scroll;overflow-x: hidden;width:100%">
 
         <div style="padding: 16px;background:rgba(0,0,0,0.3)">
-        <span class="dbminputlabel">Отображение</span><br>
+        <span class="dbminputlabel">Отображение кнопки</span><br>
         <select id="formula" class="round">
        
-        <option value="0" selected>Всегда отображайте кнопку / игнорируйте сравнения ниже</option>
-        <option value="1">Кнопку отображать только если сравнение подделка</option>
-        <option value="2">Кнопку отображать только если сравнение верен</option>
+        <option value="0" selected>Всегда отображать кнопку / игнорировать сравнения ниже</option>
+        <option value="1">Кнопку отображать только если получено значение False</option>
+        <option value="2">Кнопку отображать только если получено значение True</option>
+        <option value="3">Отключить кнопку, если получено значение False</option>
+        <option value="4">Отключить кнопку, если получено значение True</option>
+        <option value="5">Отключить кнопку</option>
       </select>
 
       <br>
@@ -484,9 +488,6 @@ module.exports = {
 
             </div>
             </div>
-            <center>
-              <dbm-checkbox id="disabled" style="margin-top: -30px;" label="Отключена-ли кнопка?"></dbm-checkbox>
-            <center>
           </tab>
           </tab-system>
 
@@ -501,7 +502,7 @@ module.exports = {
   <div style="padding: 16px;text-align:center"id="xin5n">Webhook не поддерживает меню</div>
     <div style="padding: 8px;" id="xin5">
 
-      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Select Menu Info" dialogWidth="800" dialogHeight="700" listLabel="Menus" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
+      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Информация о селект меню" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Название меню</span>
@@ -530,8 +531,9 @@ module.exports = {
             <option value="MULTI" selected>Многоразовая, любой может использовать</option>
             <option value="PERSISTENT">Бесконечная</option>
             </select>
+
+            <dbm-checkbox id="disabled" style="margin-top: 15px;" label="Отключено-ли меню?"></dbm-checkbox>
           </div>
-          <dbm-checkbox id="disabled" style="margin-top: 15px;" label="Отключено-ли меню?"></dbm-checkbox>
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Уникальный идентификатор (ID)</span>
             <input id="id" placeholder="Оставьте это пустым, чтобы автоматически генерировать ..." class="round" type="text">
@@ -553,13 +555,13 @@ module.exports = {
           </div>
           <div style="width: calc(34% - 8px); height: 300px; float: left; margin-left: 8px;">
 
-            <dialog-list id="options" fields='["label", "description", "value", "emoji", "default", "val1", "val2", "comparar", "formula"]' dialogTitle="Select Menu Option Info" dialogWidth="460" dialogHeight="570" listLabel="Options" listStyle="height: 210px;" itemName="Option" itemCols="1" itemHeight="20px;" itemTextFunction="'[ ' + (data.formula || 'Exibir') + ' ] ' + data.label" itemStyle="text-align: left; line-height: 20px;">
+            <dialog-list id="options" fields='["label", "description", "value", "emoji", "default", "val1", "val2", "comparar", "formula"]' dialogTitle="Select Menu Option Info" dialogWidth="460" dialogHeight="570" listLabel="Варианты выбора" listStyle="height: 210px;" itemName="Option" itemCols="1" itemHeight="20px;" itemTextFunction="'[ ' + (data.formula || 'Exibir') + ' ] ' + data.label" itemStyle="text-align: left; line-height: 20px;">
             <div style="padding: 16px;background:rgba(0,0,0,0.3)">
                  <span class="dbminputlabel">Отображение</span><br>
                  <select id="formula" class="round">
-                 <option value="Отображать" selected>Всегда отображайте / игнорируйте сравнения ниже</option>
-                 <option value="ЛОЖЬ">Отобразить вариант только в том случае, если сравнение подделка</option>
-                 <option value="Настоящий">Отобразить вариант только в том случае, если сравнение верен</option>
+                 <option value="Отображать" selected>Всегда отображать / игнорировать сравнения ниже</option>
+                 <option value="Falso">Отобразить вариант, если получено значение False</option>
+                 <option value="Verdadeiro">Отобразить вариант, если получено значение True</option>
                </select>
                <br>
                   <table style="width:100%"><tr><td>
@@ -1112,7 +1114,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         const embedData = embedDatas[i];
         const embed = new MessageEmbed();
         if (embedData.title) embed.setTitle(this.evalMessage(embedData.title, cache));
-        if (embedData.url) embed.setURL(this.evalMessage(embedData.url, cache));
+        if (this.evalMessage(embedData.url, cache)) embed.setURL(this.evalMessage(embedData.url, cache));
         if (embedData.colorrandom == true) {
           embed.setColor("RANDOM");
         }
@@ -1264,6 +1266,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         }
 
         var authorIcon = this.evalMessage(embedData.authorIcon, cache) || null;
+        var authorURL = this.evalMessage(embedData.authorUrl, cache) || null;
 
         if(!authorIcon?.toString().startsWith("http")) {
           authorIcon = "attachment://" + authorIcon;
@@ -1273,7 +1276,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           embed.setAuthor({
             name: this.evalMessage(embedData.author, cache),
             iconURL: authorIcon,
-            url: embedData.authorUrl ? this.evalMessage(embedData.authorUrl, cache) : null,
+            url: authorURL,
           });
         }
 
@@ -1321,7 +1324,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         val2 = this.evalMessage(fbot.val2, cache);
         result = true;
 
-        if (fbot.formula == "1" || fbot.formula == "2") {
+        if (fbot.formula == "1" || fbot.formula == "2" || fbot.formula == "3" || fbot.formula == "4") {
           const compare = parseInt(fbot.comparar, 10);
           if (compare !== 6) {
             val1 = this.evalIfPossible(val1, cache)
@@ -1419,14 +1422,41 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       }
 
 
-      if (result == true) {
+      if (result == true || fbot.formula == "3" || fbot.formula == "4" || fbot.formula == "5") {
 
         if (!data.buttons[i].name) data.buttons[i].name = "\u200b";
 
-        if (data.buttons[i]?.disabled) {
-          data.buttons[i].disabled = true;
-        } else {
-          data.buttons[i].disabled = false;
+        data.buttons[i].disabled = false
+
+          if (fbot.formula == "3") {
+
+            if (result == false) {
+              result = true;
+            } else {
+              result = false;
+            }
+
+            if (result == true) {
+              data.buttons[i].disabled = true
+            } else {
+              data.buttons[i].disabled = false
+            }
+
+          }
+          if (fbot.formula == "4") {
+
+
+            if (result == true) {
+              data.buttons[i].disabled = true
+            } else {
+              data.buttons[i].disabled = false
+            }
+
+          }
+
+          if (fbot.formula == "5") {
+
+            data.buttons[i].disabled = true
         }
 
         const button = data.buttons[i];
@@ -1869,5 +1899,5 @@ xinspace{padding:5px 0px 0px 0px;display:block}
   // functions you wish to overwrite.
   //---------------------------------------------------------------------
 
-  mod() {},
+  mod() { },
 };
