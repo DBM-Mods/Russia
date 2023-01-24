@@ -143,7 +143,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 2.8</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 2.9</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
@@ -1173,7 +1173,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               }
               switch (compare) {
                 case 0:
-                  result = val1.toString() !== "undefined";
+                  if (typeof val1 !== 'undefined') {
+                    result = true
+                  } else {
+                    result = false
+                  }
                   break;
                 case 1:
                   result = val1 == val2;
@@ -1332,7 +1336,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           }
           switch (compare) {
             case 0:
-              result = val1.toString() !== "undefined";
+              if (typeof val1 !== 'undefined') {
+                result = true
+              } else {
+                result = false
+              }
               break;
             case 1:
               result = val1 == val2;
@@ -1520,7 +1528,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
             switch (compare) {
               case 0:
-                result = val1.toString() !== "undefined";
+                if (typeof val1 !== 'undefined') {
+                  result = true
+                } else {
+                  result = false
+                }
                 break;
               case 1:
                 result = val1 == val2;
