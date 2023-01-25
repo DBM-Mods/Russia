@@ -86,7 +86,7 @@ module.exports = {
 
 </div>
 </tab>
-    <tab label="Элимент" icon="align left">
+    <tab label="Элемент" icon="align left">
     <div style="width: 100%; padding: 10px;height: calc(100vh - 210px);overflow:auto">
 
 
