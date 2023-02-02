@@ -127,6 +127,10 @@ module.exports = {
     "webhookavatar",
     "messageoff",
     "mentions",
+    "actionsError",
+    "storageError",
+    "varNameError",
+    "errcmd"
   ],
 
   //---------------------------------------------------------------------
@@ -143,7 +147,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.1</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.2</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
@@ -820,18 +824,44 @@ module.exports = {
       <hr class="subtlebar" style="margin-top: 4px; margin-bottom: 4px">
       <br>
       <div>
-      <div style="float: left; width: 35%">
-      <span class="dbminputlabel">Если сообщение не отправилось</span><br>
+      <span class="dbminputlabel">Доп опции</span>
+      <br>
+    <div style="padding: 10px; background: rgba(0,0,0,0.2);">
+      <dbm-checkbox id="errcmd" label="Отображение ошибки в консоли" checked></dbm-checkbox>
+    </div>
+    <br>
+    <div id="divValueError2" style="float: left; width: 35%">
+      <span class="dbminputlabel">Если возникает ошибка</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-      <option value="0">Продолжать</option>
-      <option value="1" selected>Остановить последовательность действий</option>
+      <option value="0">Продолжить действия</option>
+      <option value="1" selecionado>Остановить последовательность действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующие действия</option>
-      <option value="4">Перейти к якову действия</option>
+      <option value="4">Перейти к якорю действий</option>
+      <option value="5">Выполнить действия и останавливиться</option>
+      <option value="99">Выполнить действия и продолжить</option>
     </select>
+  </div>
+  <div id="iffalseContainer" style="display: none; float: right; width: 55%;">
+    <span id="xinelasT" class="dbminputlabel">Для</span>
+    <input id="iffalseVal" class="round" type="text">
+  </div>
+  <action-list-input id="actionsError" style="margin-top: 50px;" height="calc(100vh - 430px)"></action-list-input>
+            
+  <br><br><br>
+  <div id="divValueError" style="margin-top: 10px;">
+    <div style="float: left; width: 35%;">
+      <span class="dbminputlabel">Хранить ошибку в</span>
+      <select id="storageError" class="round" onchange="glob.variableChangeError(this, 'varNameContainer')">
+        ${data.variables[0]}
+      </select>
     </div>
-    <div id="iffalseContainer" style="display: none; float: right; width: 60%;"><span id="ifName" class="dbminputlabel">Для</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
-      <br><br><br>
+  
+    <div id="varNameContainerError" style="float: right; display: none; width: 60%;">
+      <span class="dbminputlabel">Имя переменной</span>
+      <input id="varNameError" class="round" type="text">
+     </div>
+    </div>
 
       </div>
 
@@ -859,15 +889,43 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
 
     glob.onComparisonChanged = function (event) {
-      if (event.value > "1") {
-        document.getElementById("iffalseContainer").style.display = null;
-      } else {
+      if(event.value == "0" || event.value == "1" || event.value == "7") {
         document.getElementById("iffalseContainer").style.display = "none";
+        document.getElementById("actionsError").style.display = "none";
+      } else if(event.value == "5" || event.value == "99") {
+        document.getElementById("iffalseContainer").style.display = "none";
+        document.getElementById("actionsError").style.display = null;
+      } else {
+        document.getElementById("iffalseContainer").style.display = null;
+        document.getElementById("actionsError").style.display = "none";
+      }
+
+      if(event.value > "4") {
+        document.getElementById("divValueError").style.marginTop = "-50px";
+      } else {
+        document.getElementById("divValueError").style.marginTop = "10px";
       }
     }
 
-    glob.onComparisonChanged(document.getElementById("iffalse"));
+    if (event.value == "2") {
+      document.querySelector("[id='xinelasT']").innerText = "Номер действия";
+    }
 
+    if (event.value == "3") {
+      document.querySelector("[id='xinelasT']").innerText = "Пропустить действия";
+    }
+
+    if (event.value == "4") {
+      document.querySelector("[id='xinelasT']").innerText = "Имя якоря";
+      }
+
+   glob.variableChangeError = function (event) {
+    if(event.value == "0") {
+      document.getElementById("varNameContainerError").style.display = "none";
+    } else {
+      document.getElementById("varNameContainerError").style.display = null;
+    }
+  }
 
     glob.onComparisonChanged2 = function (event) {
       if (event.value > "0") {
@@ -910,7 +968,9 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
     glob.onComparisonChanged2(document.getElementById("storagewebhook"));
+    glob.onComparisonChanged(document.getElementById("iffalse"));
 
+    glob.variableChangeError(document.getElementById("storageError"));
 
     glob.formatItem = function (data) {
       let result = '<div style="display: inline-block; width: 200px; padding-left: 8px;">';
@@ -1043,7 +1103,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
   //---------------------------------------------------------------------
 
   async action(cache) {
-
+    const _this = this;
     const data = cache.actions[cache.index];
     var messageoff = data.messageoff;
     if (messageoff == undefined) { messageoff = true }
@@ -1831,7 +1891,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       if (promise) {
         promise
           .then(onComplete)
-          .catch((err) => this.displayError(data, cache, err) || this.executeResults(false, data, cache));
+          .catch((err) => erro(err));
       }
     }
 
@@ -1839,14 +1899,14 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       target
         .edit(messageOptions)
         .then(onComplete)
-        .catch((err) => this.displayError(data, cache, err) || this.executeResults(false, data, cache));;
+        .catch((err) => erro(err));
     }
 
     else if (isMessageTarget && target?.reply) {
       target
         .reply(messageOptions)
         .then(onComplete)
-        .catch((err) => this.displayError(data, cache, err) || this.executeResults(false, data, cache));
+        .catch((err) => erro(err));
     }
 
     else if (data.reply === true && canReply) {
@@ -1870,12 +1930,12 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         webhook
           .send(messageOptions)
           .then(onComplete)
-          .catch((err) => this.displayError(data, cache, err) || this.executeResults(false, data, cache));
+          .catch((err) => erro(err));
       } else {
         target
           .send(messageOptions)
           .then(onComplete)
-          .catch((err) => this.displayError(data, cache, err) || this.executeResults(false, data, cache));
+          .catch((err) => erro(err));
       }
 
     }
@@ -1885,6 +1945,17 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     else {
       this.callNextAction(cache);
     }
+    function erro(err) {
+      if(data.errcmd) _this.displayError(data, cache, err);
+
+      _this.storeValue(err, parseInt(data.storageError), _this.evalMessage(data.varNameError, cache), cache);
+
+      if(data.iffalse == "5") return _this.executeSubActions(data.actionsError, cache);
+      if(data.iffalse == "99") return _this.executeSubActionsThenNextAction(data.actionsError, cache);
+
+      return _this.executeResults(false, data, cache);
+    }
+
 
   },
 
@@ -1908,7 +1979,9 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         if (button.mode === "PERSISTENT") {
           this.registerButtonInteraction(button.id, button);
         } else {
-          this.registerTempButtonInteraction(button.id, button);
+          try {
+            this.registerTempButtonInteraction(button.id, button);
+          } catch {}
         }
         this.prepareActions(button.actions);
       }
@@ -1919,7 +1992,9 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         if (select.mode === "PERSISTENT") {
           this.registerSelectMenuInteraction(select.id, select);
         } else {
-          this.registerTempSelectMenuInteraction(select.id, select);
+          try {
+            this.registerTempSelectMenuInteraction(select.id, select);
+          } catch {}
         }
         this.prepareActions(select.actions);
       }
