@@ -20,4 +20,7 @@
 
 Необходимые модули и их версии, чтобы все работало нормально:
 ===========
+1 - Нажмите на адресную строку вашего проекта<br>
+2 - Введите cmd<br>
+3 - Вставить...<br>
 > npm i chalk@4.1.2 chart.js@3.9.1 canvas qrcode opentype.js imagedata-filters tesseract.js libsodium-wrappers @discordjs/voice ffmpeg-static request fs fs-extra jsonpath jsonpath-plus path moment moment-timezone weather-js https normalize-date email-existence is-image-url is-url valid-url get-mp3-duration sequelize google-it fast-sort scrape-yt crypto-js
