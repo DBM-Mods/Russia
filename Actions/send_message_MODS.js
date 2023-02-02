@@ -26,7 +26,7 @@ module.exports = {
     if (data.message) {
       text = `"${data.message.replace(/[\n\r]+/, " ↲ ")}"`;
     } else if (data.embeds?.length > 0) {
-      text = `${data.embeds.length} Ембедов`;
+      text = `${data.embeds.length} Эмбедов`;
     } else if (data.attachments?.length > 0) {
       text = `${data.attachments.length} Файлы`;
     } else if (data.buttons?.length > 0 || data.selectMenus?.length > 0) {
@@ -49,9 +49,16 @@ module.exports = {
     if (data.storagewebhook > "0") {
       return `Отправить через WebHook: ${data.varwebhook}`;
     }
+    
+    if(data.descriptionx == true){
+      desccor = data.descriptioncolor
+      } else {
+        desccor = 'none'
+      }
+
     return data.description
-      ? `<font color="${data.descriptioncolor}">${data.description}</font>`
-      : `<font color="${data.descriptioncolor}">${presets.getSendReplyTargetText(data.channel, data.varName)}: ${text}</font>`
+    ? `<font style="color:${desccor}">${data.description}</font>`
+    : `<font style="color:${desccor}">${presets.getSendReplyTargetText(data.channel, data.varName)}: ${text}</font>`
   },
 
   //---------------------------------------------------------------------
@@ -113,6 +120,7 @@ module.exports = {
     "iffalseVal",
     "descriptioncolor",
     "description",
+    "descriptionx",
     "storagewebhook",
     "varwebhook",
     "webhookname",
@@ -134,8 +142,8 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 2.5</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.1</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
@@ -152,7 +160,8 @@ module.exports = {
 
 
   <tab label="Текст" icon="align left">
-    <div style="padding: 8px;">
+  <div style="width: 100%; padding:8px;height: calc(100vh - 290px);overflow:auto">
+    
       <textarea id="message" class="dbm_monospace" rows="9" placeholder="Введите сообщение здесь ..." style="height: calc(100vh - 309px); white-space: nowrap;"></textarea>
     </div>
   </tab>
@@ -161,13 +170,13 @@ module.exports = {
   <tab label="Ембеды" icon="book image">
     <div style="padding: 8px;">
 
-      <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl"]' dialogTitle="Embed Info" dialogWidth="540" dialogHeight="460" listLabel="Ембеды" listStyle="height: calc(100vh - 350px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
+    <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl"]' dialogTitle="Embed Info" dialogResizable dialogWidth="540" dialogHeight="460" listLabel="Embeds" listStyle="height: calc(100vh - 350px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
         <div style="padding: 16px 16px 0px 16px;">
 
           <tab-system>
 
             <tab label="Общий" icon="certificate">
-              <div style="padding: 8px">
+              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
                 <div style="float: left; width: calc(50% - 12px);">
                   <span class="dbminputlabel">Заголовок</span><br>
                   <input id="title" class="round" type="text">
@@ -195,7 +204,7 @@ module.exports = {
 
                   <br>
 
-                  <span class="dbminputlabel">Временная метка</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="timestamp" label="Вкл" checked></dbm-checkbox></div><br>
+                  <span class="dbminputlabel">Временная метка</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="timestamp" label="Вкл"></dbm-checkbox></div><br>
                   <input id="timestampper" class="round" type="text" placeholder="Оставьте это пустым для текущего">
                 </div>
 
@@ -216,23 +225,24 @@ module.exports = {
             </tab>
 
             <tab label="Описание" icon="file image">
-              <div style="padding: 8px">
+              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
                 <textarea id="description" class="dbm_monospace" rows="10" placeholder="Введите описание здесь ..." style="height: calc(100vh - 149px); white-space: nowrap; resize: none;"></textarea>
                 </div>
             </tab>
 
             <tab label="Поля" icon="list">
-              <div style="padding: 8px">
-                <dialog-list id="fields" fields='["name", "value", "inline", "val1", "val2", "comparar", "formula"]' dialogTitle="Field Info" dialogWidth="540" dialogHeight="500" listLabel="Fields" listStyle="height: calc(100vh - 190px);" itemName="Field" itemCols="1" itemHeight="30px;" itemTextFunction="data.name + '<br>' + data.value" itemStyle="text-align: left; line-height: 30px;">
+            <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
+            <dialog-list id="fields" fields='["name", "value", "inline", "val1", "val2", "comparar", "formula"]' dialogTitle="Field Info" dialogResizable dialogWidth="540" dialogHeight="500" listLabel="Fields" listStyle="height: calc(100vh - 190px);" itemName="Field" itemCols="1" itemHeight="50px;" itemTextFunction="'Имя: ' + data.name + '<br/>' + 'Значение: '+ data.value" itemStyle="text-align: left; line-height: 25px;">
+                              <div style="height: calc(100vh - 60px);overflow:auto">
                                   
 
                   <div style="padding: 16px;background:rgba(0,0,0,0.3)">
 
-                  <span class="dbminputlabel">Отображение</span><br>
+                  <span class="dbminputlabel">Отображение поля</span><br>
                   <select id="formula" class="round">
-                  <option value="0" selected>Всегда отображайте поле / игнорируйте сравнения ниже</option>
-                  <option value="1">Поле отображать только если сравнение подделка</option>
-                  <option value="2">Поле отображать только если сравнение верен</option>
+                  <option value="0" selected>Всегда отображать поле / игнорировать сравнения ниже</option>
+                  <option value="1">Отображать поле, если получено значение False</option>
+                  <option value="2">Отображать поле, если получено значение True</option>
                 </select>
 
                 <br>
@@ -299,14 +309,14 @@ module.exports = {
                     <span class="dbminputlabel">Поле текст</span><br>
                     <textarea id="value" class="dbm_monospace" rows="7" placeholder="Вставьте текст поля здесь ..." style="height: calc(100vh - 320px); white-space: nowrap;"></textarea>
 
-                  </div>
+                  </div></div>
                 </dialog-list>
               </div>
             </tab>
 
             <tab label="Автор" icon="user circle">
-              <div style="padding: 8px">
-                <span class="dbminputlabel">Автор имя</span>
+              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
+                <span class="dbminputlabel">Имя автора</span>
                 <input id="author" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
                 <br>
@@ -316,13 +326,13 @@ module.exports = {
 
                 <br>
 
-                <span class="dbminputlabel">Автор фото URL / Имя файла</span><br>
+                <span class="dbminputlabel">Аватар автора (URL / Имя файла)</span><br>
                 <input id="authorIcon" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
               </div>
             </tab>
 
             <tab label="Footer" icon="map outline">
-              <div style="padding: 8px;">
+              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
                 <span class="dbminputlabel">URL-адрес значка нижнего текста / Имя файла</span><br>
                 <input id="footerIconUrl" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
@@ -345,7 +355,7 @@ module.exports = {
   <div style="padding: 16px;text-align:center"id="xin4n">Webhook не поддерживает кнопки</div>
     <div style="padding: 8px;" id="xin4">
 
-      <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "disabled", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Кнопки" listStyle="height: calc(100vh - 350px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
+    <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Кнопки" listStyle="height: calc(100vh - 350px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
 
         <tab-system>
@@ -359,12 +369,15 @@ module.exports = {
         <div style="height: calc(100vh - 138px);overflow-y: scroll;overflow-x: hidden;width:100%">
 
         <div style="padding: 16px;background:rgba(0,0,0,0.3)">
-        <span class="dbminputlabel">Отображение</span><br>
+        <span class="dbminputlabel">Отображение кнопки</span><br>
         <select id="formula" class="round">
        
-        <option value="0" selected>Всегда отображайте кнопку / игнорируйте сравнения ниже</option>
-        <option value="1">Кнопку отображать только если сравнение подделка</option>
-        <option value="2">Кнопку отображать только если сравнение верен</option>
+        <option value="0" selected>Всегда отображать кнопку / игнорировать сравнения ниже</option>
+        <option value="1">Кнопку отображать только если получено значение False</option>
+        <option value="2">Кнопку отображать только если получено значение True</option>
+        <option value="3">Отключить кнопку, если получено значение False</option>
+        <option value="4">Отключить кнопку, если получено значение True</option>
+        <option value="5">Отключить кнопку</option>
       </select>
 
       <br>
@@ -472,8 +485,9 @@ module.exports = {
 
             <span class="dbminputlabel">Ограничение по времени (миллисекунд)</span>
             <input id="time" placeholder="60000" class="round" type="text">
-          </div>
-          </div>
+
+            </div>
+            </div>
           </tab>
           </tab-system>
 
@@ -488,7 +502,7 @@ module.exports = {
   <div style="padding: 16px;text-align:center"id="xin5n">Webhook не поддерживает меню</div>
     <div style="padding: 8px;" id="xin5">
 
-      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions"]' dialogTitle="Select Menu Info" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="data.placeholder + '<br>' + data.options" itemStyle="text-align: left; line-height: 40px;">
+      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Информация о селект меню" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 350px);" itemName="Select Menu" itemCols="1" itemHeight="40px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Название меню</span>
@@ -517,6 +531,8 @@ module.exports = {
             <option value="MULTI" selected>Многоразовая, любой может использовать</option>
             <option value="PERSISTENT">Бесконечная</option>
             </select>
+
+            <dbm-checkbox id="disabled" style="margin-top: 15px;" label="Отключено-ли меню?"></dbm-checkbox>
           </div>
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Уникальный идентификатор (ID)</span>
@@ -539,13 +555,13 @@ module.exports = {
           </div>
           <div style="width: calc(34% - 8px); height: 300px; float: left; margin-left: 8px;">
 
-            <dialog-list id="options" fields='["label", "description", "value", "emoji", "default", "val1", "val2", "comparar", "formula"]' dialogTitle="Select Menu Option Info" dialogWidth="460" dialogHeight="570" listLabel="Options" listStyle="height: 210px;" itemName="Option" itemCols="1" itemHeight="20px;" itemTextFunction="'[ ' + (data.formula || 'Exibir') + ' ] ' + data.label" itemStyle="text-align: left; line-height: 20px;">
+            <dialog-list id="options" fields='["label", "description", "value", "emoji", "default", "val1", "val2", "comparar", "formula"]' dialogTitle="Select Menu Option Info" dialogWidth="460" dialogHeight="570" listLabel="Варианты выбора" listStyle="height: 210px;" itemName="Option" itemCols="1" itemHeight="20px;" itemTextFunction="'[ ' + (data.formula || 'Exibir') + ' ] ' + data.label" itemStyle="text-align: left; line-height: 20px;">
             <div style="padding: 16px;background:rgba(0,0,0,0.3)">
                  <span class="dbminputlabel">Отображение</span><br>
                  <select id="formula" class="round">
-                 <option value="Отображать" selected>Всегда отображайте / игнорируйте сравнения ниже</option>
-                 <option value="ЛОЖЬ">Отобразить вариант только в том случае, если сравнение подделка</option>
-                 <option value="Настоящий">Отобразить вариант только в том случае, если сравнение верен</option>
+                 <option value="Отображать" selected>Всегда отображать / игнорировать сравнения ниже</option>
+                 <option value="Falso">Отобразить вариант, если получено значение False</option>
+                 <option value="Verdadeiro">Отобразить вариант, если получено значение True</option>
                </select>
                <br>
                   <table style="width:100%"><tr><td>
@@ -616,7 +632,6 @@ module.exports = {
                 </select>
               </div>
             </dialog-list>
-
           </div>
 
           <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -640,7 +655,7 @@ module.exports = {
   <tab label="Файлы" icon="file image">
     <div style="padding: 8px;">
 
-      <dialog-list id="attachments" fields='["tipo", "url", "canvasvar", "canvasnome", "compress", "name", "spoiler"]' dialogTitle="Informação do Anexo" dialogWidth="400" dialogHeight="480" listLabel="Файлы" listStyle="height: calc(100vh - 350px);" itemName="File" itemCols="1" itemHeight="30px;" itemTextFunction="glob.formatItem(data)" itemStyle="text-align: left; line-height: 30px;">
+      <dialog-list id="attachments" fields='["tipo", "url", "canvasvar", "canvasnome", "compress", "name", "spoiler"]' dialogTitle="Информация о приложении" dialogWidth="500" dialogHeight="480" listLabel="Файлы" listStyle="height: calc(100vh - 350px);" itemName="File" itemCols="1" itemHeight="30px;" itemTextFunction="glob.formatItem(data)" itemStyle="text-align: left; line-height: 30px;">
         <div style="padding: 16px;" onmouseover="(function(){
 
           var aselect = document.getElementById('tipo');
@@ -657,7 +672,7 @@ module.exports = {
           document.getElementById('xinxyla3').style.display = 'block';
     }   
     
-    if (avalue == 2) {
+    if (avalue == 2 || avalue == 3) {
       document.getElementById('xinxyla2').style.display = 'none';
       document.getElementById('xinxyla1').style.display = 'block';
       document.getElementById('xinxyla3').style.display = 'none';
@@ -683,7 +698,7 @@ module.exports = {
           document.getElementById('xinxyla3').style.display = 'block';
     }   
     
-    if (avalue == 2) {
+    if (avalue == 2 || avalue == 3) {
       document.getElementById('xinxyla2').style.display = 'none';
       document.getElementById('xinxyla1').style.display = 'block';
       document.getElementById('xinxyla3').style.display = 'none';
@@ -693,6 +708,7 @@ module.exports = {
           <option value="0">Локальный/Веб-АДРЕС URL</option>
           <option value="1">Canvas</option>
           <option value="2">DBM изображения</option>
+          <option value="3">Отправить переменную</option>
         </select>
         <br><div id="xinxyla2">
           <span class="dbminputlabel">Локальный/Веб-АДРЕС URL</span>
@@ -741,12 +757,19 @@ module.exports = {
   <tab label="Конфиг" icon="cogs">
     <div style="padding: 8px;height: calc(100vh - 292px);overflow-y: scroll;overflow-x: hidden;width:100%">
     <div id="xincheck">
+    <div style="padding-bottom: 12px;padding-top: 12px">
+    <table style="width:100%;"><tr>
+    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+    <td style="padding:0px 0px 0px 10px;width:55px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+    </tr></table>
+    </div>
+
     <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-      <dbm-checkbox id="reply" label="Ответьте на взаимодействие, если это возможно" checked></dbm-checkbox>
+      <dbm-checkbox id="reply" label="Ответить на взаимодействие, если это возможно" checked></dbm-checkbox>
       <xinspace>
       <dbm-checkbox id="ephemeral" label="Приватное сообщение"></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="mentions" label="@ Уведомления о юзера / роли" checked></dbm-checkbox>
+      <dbm-checkbox id="mentions" label="Включить упоминание участника" checked></dbm-checkbox>
       <xinspace>
       <dbm-checkbox id="messageoff" label="Добавить/заменить текст" checked></dbm-checkbox>
       <xinspace>
@@ -754,7 +777,7 @@ module.exports = {
       <xinspace>
       <dbm-checkbox id="overwrite" label="Заменить изменения"></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="dontSend" label="Не отправляйте сообщение"></dbm-checkbox>
+      <dbm-checkbox id="dontSend" label="Не отправлять сообщение"></dbm-checkbox>
       
       </div><br></div>
       
@@ -774,7 +797,7 @@ module.exports = {
       <select id="storagewebhook" class="round" onchange="glob.onComparisonChanged2(this)">
       <option value="0" selecionado>Отлючить</option>
       <option value="1">Временная переменная</option>
-      <option value="2">Переменный сервер</option>
+      <option value="2">Переменная сервера</option>
       <option value="3">Глобальная переменная</option>
     </select>
     </div>
@@ -801,7 +824,7 @@ module.exports = {
       <span class="dbminputlabel">Если сообщение не отправилось</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
       <option value="0">Продолжать</option>
-      <option value="1" selecionado>Остановить последовательность действий</option>
+      <option value="1" selected>Остановить последовательность действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующие действия</option>
       <option value="4">Перейти к якову действия</option>
@@ -809,13 +832,6 @@ module.exports = {
     </div>
     <div id="iffalseContainer" style="display: none; float: right; width: 60%;"><span id="ifName" class="dbminputlabel">Для</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
       <br><br><br>
-
-      <div style="padding-bottom: 12px;padding-top: 12px">
-      <table style="width:100%;"><tr>
-      <td><span class="dbminputlabel">Действие описание</span><br><input type="text" class="round" id="description" placeholder="Оставить пустым, чтобы было обычное"></td>
-      <td style="padding:0px 0px 0px 10px;width:55px"><span class="dbminputlabel">Цвет</span><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
-      </tr></table>
-      </div>
 
       </div>
 
@@ -825,6 +841,8 @@ module.exports = {
 
 <style>
 xinspace{padding:5px 0px 0px 0px;display:block}
+.dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+.dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
 </style>`;
   },
 
@@ -907,11 +925,14 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         case "2":
           result += "DBM изображения: " + data.canvasnome;
           break;
+        case "3":
+          result += "Отправить переменную: " + data.canvasnome;
+          break;
       }
       result += "</div>";
       return result;
     }
-    
+
     glob.formatItem2 = function (data) {
       let result = '<div style="display: inline-block; width: 100%; padding-left: 8px;"><table><tr><td style="width:100%">';
       const comp = "0";
@@ -920,10 +941,35 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           result += data.emoji + ' ' + data.name;
           break;
       }
-      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>"+data.id+"</td></tr></table></div>";
+      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>" + data.id + "</td></tr></table></div>";
       return result;
     }
-  
+    
+    glob.formatItem3 = function (data) {
+      let result = '<div style="display: inline-block; width: 100%; padding-left: 8px;"><table><tr><td style="width:100%">';
+      const comp = "0";
+      switch (comp) {
+        case "0":
+          result += data.placeholder;
+          break;
+      }
+      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>" + data.id + "</td></tr></table></div>";
+      return result;
+    }
+
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+       xinelaslink.setAttribute('title', url);
+       xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
 
   },
   //---------------------------------------------------------------------
@@ -1000,7 +1046,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     const data = cache.actions[cache.index];
     var messageoff = data.messageoff;
-    if(messageoff == undefined){messageoff = true}
+    if (messageoff == undefined) { messageoff = true }
     const channel = parseInt(data.channel, 10);
     const message = this.evalMessage(data.message, cache);
     const storagewebhook = parseInt(data.storagewebhook)
@@ -1043,12 +1089,13 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     let content;
 
-    if(messageoff == true){
-    if (message.length > 0) {
-      content = this.evalMessage(message, cache);
-    } else {
-      content = this.evalMessage("", cache);
-    }}
+    if (messageoff == true) {
+      if (message.length > 0) {
+        content = this.evalMessage(message, cache);
+      } else {
+        content = this.evalMessage("", cache);
+      }
+    }
 
 
     if (content) {
@@ -1071,11 +1118,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         const embedData = embedDatas[i];
         const embed = new MessageEmbed();
         if (embedData.title) embed.setTitle(this.evalMessage(embedData.title, cache));
-        if (embedData.url) embed.setURL(this.evalMessage(embedData.url, cache));
+        if (this.evalMessage(embedData.url, cache)) embed.setURL(this.evalMessage(embedData.url, cache));
         if (embedData.colorrandom == true) {
           embed.setColor("RANDOM");
         }
-        if (embedData.color){
+        if (embedData.color) {
           if (embedData.colorrandom == true) {
             embed.setColor("RANDOM");
           } else {
@@ -1084,7 +1131,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         }
 
         if (embedData.timestamp == "true" || embedData.timestamp == true) {
-          if(embedData.timestampper == "" || embedData.timestampper == undefined) {
+          if (embedData.timestampper == "" || embedData.timestampper == undefined) {
             embed.setTimestamp()
           } else{
             embed.setTimestamp(parseFloat(this.evalMessage(embedData.timestampper, cache)))
@@ -1093,18 +1140,18 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
         var imgURL = this.evalMessage(embedData.imageUrl, cache);
 
-        if(imgURL) {
-          if(imgURL.toString().startsWith("http")) {
+        if (imgURL) {
+          if (imgURL.toString().startsWith("http")) {
             embed.setImage(imgURL);
           } else {
             embed.setImage("attachment://" + imgURL);
-          } 
+          }
         }
 
         var thumb = this.evalMessage(embedData.thumbUrl, cache);
 
-        if(thumb) {
-          if(thumb.toString().startsWith("http")) {
+        if (thumb) {
+          if (thumb.toString().startsWith("http")) {
             embed.setThumbnail(thumb);
           } else {
             embed.setThumbnail("attachment://" + thumb);
@@ -1122,15 +1169,19 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             val2 = this.evalMessage(f.val2, cache);
             result = true;
 
-            if(f.formula == "1" || f.formula == "2") {
-            const compare = parseInt(f.comparar, 10);
-            if (compare !== 6){
-              val1 = this.evalIfPossible(val1, cache)
-              val2 = this.evalIfPossible(val2, cache)
-            }
-            switch (compare) {
+            if (f.formula == "1" || f.formula == "2") {
+              const compare = parseInt(f.comparar, 10);
+              if (compare !== 6) {
+                val1 = this.evalIfPossible(val1, cache)
+                val2 = this.evalIfPossible(val2, cache)
+              }
+              switch (compare) {
                 case 0:
-                  result = val1.toString() !== "undefined";
+                  if (typeof val1 !== 'undefined') {
+                    result = true
+                  } else {
+                    result = false
+                  }
                   break;
                 case 1:
                   result = val1 == val2;
@@ -1177,7 +1228,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                   result = Boolean(val1.toString().match(new RegExp(val2)))
                   break;
                 case 16:
-                  const conditions = ["Ä","Å","Á","Â","À","Ã","Ā","Ă","Ą","ā","ă","ą","ä","á","â","à","ã","É","Ê","Ë","È","Ė","Ę","Ě","Ĕ","Ē","ė","ę","ě","ĕ","ē","é","ê","ë","è","Í","Î","Ï","Ì","İ","Į","Ī","ı","į","ī","í","î","ï","ì","Ö","Ó","Ô","Ò","Õ","Ő","Ō","ő","ō","ö","ó","ô","ò","õ","Ü","Ú","Û","Ų","Ű","Ů","Ū","ų","ű","ů","ū","ü","ú","û","ù","Ç","Ć","Č","ç","ć","č","Ñ","Ň","Ņ","Ń","ñ","ň","ņ","ń","Ÿ","Ý","ý","Ź","Ż","Ž","ź","ż","ž","Ł","Ľ","Ļ","Ĺ","ł","ľ","ĺ","Ķ","ķ","Ģ","Ğ","ģ","ğ","Ď","ď","Ś","Š","Ş","ś","š","ş","Ť","Ț","Ţ","ť","ț","ţ","Ŕ","Ř","ŕ","ř"]
+                  const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
                   result = conditions.some(el => val1.includes(el));
                   break;
                 case 17:
@@ -1210,38 +1261,40 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             }
           }
 
-          if(f.formula == "1") {
-            if(result == false) {
+          if (f.formula == "1") {
+            if (result == false) {
               result = true
-            } else {result = false}
+            } else { result = false }
           }
 
-          if(result == true){
-            embed.addField(this.evalMessage(f.name || '\u200B', cache), this.evalMessage(f.value || '\u200B', cache), f.inline === "true")};
+            if (result == true) {
+              embed.addField(this.evalMessage(f.name || '\u200B', cache), this.evalMessage(f.value || '\u200B', cache), f.inline === "true")
+            };
           }
         }
 
         var authorIcon = this.evalMessage(embedData.authorIcon, cache) || null;
+        var authorURL = this.evalMessage(embedData.authorUrl, cache) || null;
 
         if(!authorIcon?.toString().startsWith("http")) {
           authorIcon = "attachment://" + authorIcon;
         }
 
-        if(embedData.author) {
+        if (embedData.author) {
           embed.setAuthor({
             name: this.evalMessage(embedData.author, cache),
             iconURL: authorIcon,
-            url: embedData.authorUrl ? this.evalMessage(embedData.authorUrl, cache) : null,
+            url: authorURL,
           });
         }
-        
+
         var iconURL = this.evalMessage(embedData.footerIconUrl, cache) || null;
 
-        if(!iconURL?.toString().startsWith("http")) {
+        if (!iconURL?.toString().startsWith("http")) {
           iconURL = "attachment://" + iconURL;
         }
 
-        if(embedData.footerText) {
+        if (embedData.footerText) {
           embed.setFooter({
             text: this.evalMessage(embedData.footerText, cache),
             iconURL: iconURL,
@@ -1252,11 +1305,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       }
     }
 
-    if(data.mentions == false){
-    messageOptions.allowedMentions = {};
-    messageOptions.allowedMentions.repliedUser = []
-    messageOptions.allowedMentions.repliedUser = data.mentions
-  }
+    if (data.mentions == false) {
+      messageOptions.allowedMentions = {};
+      messageOptions.allowedMentions.repliedUser = [];
+      messageOptions.allowedMentions.repliedUser = data.mentions;
+    }
 
     let componentsArr = [];
     let awaitResponses = [];
@@ -1279,15 +1332,19 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         val2 = this.evalMessage(fbot.val2, cache);
         result = true;
 
-        if(fbot.formula == "1" || fbot.formula == "2") {
-        const compare = parseInt(fbot.comparar, 10);
-        if (compare !== 6){
-          val1 = this.evalIfPossible(val1, cache)
-          val2 = this.evalIfPossible(val2, cache)
-        }
-        switch (compare) {
+        if (fbot.formula == "1" || fbot.formula == "2" || fbot.formula == "3" || fbot.formula == "4") {
+          const compare = parseInt(fbot.comparar, 10);
+          if (compare !== 6) {
+            val1 = this.evalIfPossible(val1, cache)
+            val2 = this.evalIfPossible(val2, cache)
+          }
+          switch (compare) {
             case 0:
-              result = val1.toString() !== "undefined";
+              if (typeof val1 !== 'undefined') {
+                result = true
+              } else {
+                result = false
+              }
               break;
             case 1:
               result = val1 == val2;
@@ -1331,10 +1388,10 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               result = Boolean(val1 <= val2);
               break;
             case 14:
-              result = Boolean(val1.toString().match(new RegExp(val2)))
+              result = Boolean(val1.toString().match(new RegExp(val2)));
               break;
             case 16:
-              const conditions = ["Ä","Å","Á","Â","À","Ã","Ā","Ă","Ą","ā","ă","ą","ä","á","â","à","ã","É","Ê","Ë","È","Ė","Ę","Ě","Ĕ","Ē","ė","ę","ě","ĕ","ē","é","ê","ë","è","Í","Î","Ï","Ì","İ","Į","Ī","ı","į","ī","í","î","ï","ì","Ö","Ó","Ô","Ò","Õ","Ő","Ō","ő","ō","ö","ó","ô","ò","õ","Ü","Ú","Û","Ų","Ű","Ů","Ū","ų","ű","ů","ū","ü","ú","û","ù","Ç","Ć","Č","ç","ć","č","Ñ","Ň","Ņ","Ń","ñ","ň","ņ","ń","Ÿ","Ý","ý","Ź","Ż","Ž","ź","ż","ž","Ł","Ľ","Ļ","Ĺ","ł","ľ","ĺ","Ķ","ķ","Ģ","Ğ","ģ","ğ","Ď","ď","Ś","Š","Ş","ś","š","ş","Ť","Ț","Ţ","ť","ț","ţ","Ŕ","Ř","ŕ","ř"]
+              const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
               result = conditions.some(el => val1.includes(el));
               break;
             case 17:
@@ -1346,16 +1403,16 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               result = conditionsZ.some(elz => val1 == (elz));
               break;
             case 19:
-              result = val1 % 2 == 0
+              result = val1 % 2 == 0;
               break;
             case 20:
-              result = val1 % 2 == 1
+              result = val1 % 2 == 1;
               break;
             case 21:
               result = Boolean(!isNaN(parseFloat(val1.toString().replace(",", "."))));
               break;
             case 23:
-              const isImageUrl = require('is-image-url');
+              const isImageUrl = require("is-image-url");
               result = isImageUrl(val1);
               break;
             case 24:
@@ -1368,25 +1425,64 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       }
     
 
-      if(fbot.formula == "1") {
-        if(result == false) {
-          result = true
-        } else {result = false}
+      if (fbot.formula == "1") {
+        if (result == false) {
+          result = true;
+        } else {
+          result = false;
+        }
       }
 
 
-if(result == true){
+      if (result == true || fbot.formula == "3" || fbot.formula == "4" || fbot.formula == "5") {
 
-        if(!data.buttons[i].name) data.buttons[i].name = "\u200b";
+        if (!data.buttons[i].name) data.buttons[i].name = "\u200b";
+
+        data.buttons[i].disabled = false
+
+          if (fbot.formula == "3") {
+
+            if (result == false) {
+              result = true;
+            } else {
+              result = false;
+            }
+
+            if (result == true) {
+              data.buttons[i].disabled = true;
+            } else {
+              data.buttons[i].disabled = false;
+            }
+
+          }
+          if (fbot.formula == "4") {
+
+
+            if (result == true) {
+              data.buttons[i].disabled = true
+            } else {
+              data.buttons[i].disabled = false
+            }
+
+          }
+
+          if (fbot.formula == "5") {
+
+            data.buttons[i].disabled = true
+        }
+
         const button = data.buttons[i];
-        if(button.typeper == "" || button.typeper == undefined){
-          button.type = this.evalMessage(button.type, cache)
-        }else{
-          check = this.evalMessage(button.typeper, cache)
-          if(check == "PRIMARY" || check == "SECONDARY" || check == "SUCCESS" || check == "DANGER" || check == "LINK"){
-          button.type = this.evalMessage(button.typeper, cache)}
+        if (button.typeper == "" || button.typeper == undefined) {
+          button.type = this.evalMessage(button.type, cache);
+        } else {
+          check = this.evalMessage(button.typeper, cache);
+          if (check == "PRIMARY" || check == "SECONDARY" || check == "SUCCESS" || check == "DANGER" || check == "LINK") {
+            button.type = this.evalMessage(button.typeper, cache);
+          }
         }
         const buttonData = this.generateButton(button, cache);
+        buttonData.disabled = button.disabled;
+
         this.addButtonToActionRowArray(componentsArr, this.evalMessage(button.row, cache), buttonData, cache);
 
         if (button.mode !== "PERSISTENT") {
@@ -1409,27 +1505,38 @@ if(result == true){
 
     if (Array.isArray(data.selectMenus)) {
       for (let i = 0; i < data.selectMenus.length; i++) {
-           const select = data.selectMenus[i];
+        const select = data.selectMenus[i];
 
-      totales = data.selectMenus[i].options.length
+        totales = data.selectMenus[i].options.length;
+
+        if (select?.disabled) {
+          select.disabled = true;
+        } else {
+          select.disabled = false;
+        }
        
         
         for (let ix = 0; ix < totales; ix++) {
           val1 = this.evalMessage(data.selectMenus[i].options[ix].val1, cache);
           val2 = this.evalMessage(data.selectMenus[i].options[ix].val2, cache);
       
+          
           result = true;
 
-          if(data.selectMenus[i].options[ix].formula == "Falso" || data.selectMenus[i].options[ix].formula == "Verdadeiro") {
-          const compare = parseInt(data.selectMenus[i].options[ix].comparar, 10);
-          if (compare !== 6){
-            val1 = this.evalIfPossible(val1, cache)
-            val2 = this.evalIfPossible(val2, cache)
-          }
+          if (data.selectMenus[i].options[ix].formula == "Falso" || data.selectMenus[i].options[ix].formula == "Verdadeiro") {
+            const compare = parseInt(data.selectMenus[i].options[ix].comparar, 10);
+            if (compare !== 6) {
+              val1 = this.evalIfPossible(val1, cache)
+              val2 = this.evalIfPossible(val2, cache)
+            }
 
-          switch (compare) {
+            switch (compare) {
               case 0:
-                result = val1.toString() !== "undefined";
+                if (typeof val1 !== 'undefined') {
+                  result = true
+                } else {
+                  result = false
+                }
                 break;
               case 1:
                 result = val1 == val2;
@@ -1476,7 +1583,7 @@ if(result == true){
                 result = Boolean(val1.toString().match(new RegExp(val2)))
                 break;
               case 16:
-                const conditions = ["Ä","Å","Á","Â","À","Ã","Ā","Ă","Ą","ā","ă","ą","ä","á","â","à","ã","É","Ê","Ë","È","Ė","Ę","Ě","Ĕ","Ē","ė","ę","ě","ĕ","ē","é","ê","ë","è","Í","Î","Ï","Ì","İ","Į","Ī","ı","į","ī","í","î","ï","ì","Ö","Ó","Ô","Ò","Õ","Ő","Ō","ő","ō","ö","ó","ô","ò","õ","Ü","Ú","Û","Ų","Ű","Ů","Ū","ų","ű","ů","ū","ü","ú","û","ù","Ç","Ć","Č","ç","ć","č","Ñ","Ň","Ņ","Ń","ñ","ň","ņ","ń","Ÿ","Ý","ý","Ź","Ż","Ž","ź","ż","ž","Ł","Ľ","Ļ","Ĺ","ł","ľ","ĺ","Ķ","ķ","Ģ","Ğ","ģ","ğ","Ď","ď","Ś","Š","Ş","ś","š","ş","Ť","Ț","Ţ","ť","ț","ţ","Ŕ","Ř","ŕ","ř"]
+                const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
                 result = conditions.some(el => val1.includes(el));
                 break;
               case 17:
@@ -1509,22 +1616,23 @@ if(result == true){
           }
         }
         
-        if(data.selectMenus[i].options[ix].formula == "Falso") {
-          if(result == false) {
+        if (data.selectMenus[i].options[ix].formula == "Falso") {
+          if (result == false) {
             result = true
-          } else {result = false}
+          } else { result = false }
         }
 
-        if(result == false){
-        data.selectMenus[i].options.splice([ix], 1);
-        ix = parseFloat([ix]) - 1
-        totales = totales - 1
+        if (result == false) {
+          data.selectMenus[i].options.splice([ix], 1);
+          ix = parseFloat([ix]) - 1
+          totales = totales - 1
         }
 
 
       }
         
       const selectData = this.generateSelectMenu(select, cache);
+      selectData.disabled = select.disabled;
       this.addSelectToActionRowArray(componentsArr, this.evalMessage(select.row, cache), selectData, cache);
 
         if (select.mode !== "PERSISTENT") {
@@ -1637,6 +1745,22 @@ if(result == true){
             }
             messageOptions.files.push(msgAttachment);
           }
+        }
+        if (data.attachments[i].tipo == "3") {
+          const attachment = data.attachments[i];
+          const varnamer = this.evalMessage(attachment?.canvasnome, cache);
+          const varid = this.evalMessage(attachment?.canvasvar, cache);
+          const conteudodata = this.getVariable(varid, varnamer, cache)
+          const spoiler = !!attachment?.spoiler;
+          var name = this.evalMessage(attachment?.name, cache)
+          if(name == ""){name = "text.txt"}
+          const buffer = Buffer.from(conteudodata)
+          const msgAttachment = new MessageAttachment(buffer, name);
+          if (spoiler) {
+            msgAttachment.setSpoiler(true);
+          }
+          messageOptions.files.push(msgAttachment);
+
         }
       }
     }
@@ -1783,6 +1907,8 @@ if(result == true){
         const button = data.buttons[i];
         if (button.mode === "PERSISTENT") {
           this.registerButtonInteraction(button.id, button);
+        } else {
+          this.registerTempButtonInteraction(button.id, button);
         }
         this.prepareActions(button.actions);
       }
@@ -1792,6 +1918,8 @@ if(result == true){
         const select = data.selectMenus[i];
         if (select.mode === "PERSISTENT") {
           this.registerSelectMenuInteraction(select.id, select);
+        } else {
+          this.registerTempSelectMenuInteraction(select.id, select);
         }
         this.prepareActions(select.actions);
       }
