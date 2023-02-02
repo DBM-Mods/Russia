@@ -17,7 +17,7 @@ module.exports = {
       desccor = 'none'
     }
 
-    const actions = ["Parar completamente", "Pausar Audio", "Continuar Audio", "Reiniciar Audio", "Pular Audio", "Voltar para o Audio anterior"];
+    const actions = ["Остановить полностью", "Пауза аудио", "Продолжить аудио", "Перезагрузить аудио", "Пропускать", "Вернуться к предыдущему аудио"];
 
     return data.description
       ? `<font style="color:${desccor}">${data.description}</font>`
