@@ -44,7 +44,7 @@ module.exports = {
 <div>
 	<span class="dbminputlabel">Действие</span><br>
 	<select id="action" class="round">
-		<option value="0" selected>Parar completamente</option>
+		<option value="0" selected>Остановить полностью</option>
 		<option value="1">Пауза аудио</option>
 		<option value="2">Продолжить аудио</option>
     <option value="3">Перезагрузить аудио</option>
