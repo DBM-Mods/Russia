@@ -1025,7 +1025,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Launching URL: [${url}] in your default browser.`);
+          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -1814,7 +1814,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           const conteudodata = this.getVariable(varid, varnamer, cache)
           const spoiler = !!attachment?.spoiler;
           var name = this.evalMessage(attachment?.name, cache)
-          if(name == ""){name = "texto.txt"}
+          if(name == ""){name = "text.txt"}
           const buffer = Buffer.from(conteudodata)
           const msgAttachment = new MessageAttachment(buffer, name);
           if (spoiler) {
