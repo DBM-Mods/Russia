@@ -905,27 +905,27 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       } else {
         document.getElementById("divValueError").style.marginTop = "10px";
       }
-    }
 
-    if (event.value == "2") {
-      document.querySelector("[id='xinelasT']").innerText = "Номер действия";
-    }
-
-    if (event.value == "3") {
-      document.querySelector("[id='xinelasT']").innerText = "Пропустить действия";
-    }
-
-    if (event.value == "4") {
-      document.querySelector("[id='xinelasT']").innerText = "Имя якоря";
+      if (event.value == "2") {
+        document.querySelector("[id='xinelasT']").innerText = "Номер действия";
       }
 
-   glob.variableChangeError = function (event) {
-    if(event.value == "0") {
-      document.getElementById("varNameContainerError").style.display = "none";
-    } else {
-      document.getElementById("varNameContainerError").style.display = null;
+      if (event.value == "3") {
+        document.querySelector("[id='xinelasT']").innerText = "Пропустить действия";
+      }
+
+      if (event.value == "4") {
+        document.querySelector("[id='xinelasT']").innerText = "Имя якоря";
+      }
     }
-  }
+
+    glob.variableChangeError = function (event) {
+      if(event.value == "0") {
+        document.getElementById("varNameContainerError").style.display = "none";
+      } else {
+        document.getElementById("varNameContainerError").style.display = null;
+      }
+    }
 
     glob.onComparisonChanged2 = function (event) {
       if (event.value > "0") {
@@ -1004,7 +1004,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>" + data.id + "</td></tr></table></div>";
       return result;
     }
-    
+
     glob.formatItem3 = function (data) {
       let result = '<div style="display: inline-block; width: 100%; padding-left: 8px;"><table><tr><td style="width:100%">';
       const comp = "0";
@@ -1022,10 +1022,10 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       const xinelaslink = xinelaslinks[x];
       const url = xinelaslink.getAttribute('data-url');
       if (url) {
-       xinelaslink.setAttribute('title', url);
-       xinelaslink.addEventListener('click', (e) => {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Launching URL: [${url}] in your default browser.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -1193,7 +1193,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         if (embedData.timestamp == "true" || embedData.timestamp == true) {
           if (embedData.timestampper == "" || embedData.timestampper == undefined) {
             embed.setTimestamp()
-          } else{
+          } else {
             embed.setTimestamp(parseFloat(this.evalMessage(embedData.timestampper, cache)))
           }
         }
@@ -1318,14 +1318,14 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                 case 25:
                   const isUrl = require("is-url");
                   result = isUrl(val1);
+              }
             }
-          }
 
-          if (f.formula == "1") {
-            if (result == false) {
-              result = true
-            } else { result = false }
-          }
+            if (f.formula == "1") {
+              if (result == false) {
+                result = true
+              } else { result = false }
+            }
 
             if (result == true) {
               embed.addField(this.evalMessage(f.name || '\u200B', cache), this.evalMessage(f.value || '\u200B', cache), f.inline === "true")
@@ -1336,7 +1336,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         var authorIcon = this.evalMessage(embedData.authorIcon, cache) || null;
         var authorURL = this.evalMessage(embedData.authorUrl, cache) || null;
 
-        if(!authorIcon?.toString().startsWith("http")) {
+        if (!authorIcon?.toString().startsWith("http")) {
           authorIcon = "attachment://" + authorIcon;
         }
 
@@ -1384,7 +1384,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     if (Array.isArray(data.buttons)) {
       for (let i = 0; i < data.buttons.length; i++) {
-        
+
         const botoesconfig = data.buttons;
         const fbot = botoesconfig[i];
 
@@ -1481,24 +1481,25 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             case 25:
               const isUrl = require("is-url");
               result = isUrl(val1);
+          }
         }
-      }
-    
 
-      if (fbot.formula == "1") {
-        if (result == false) {
-          result = true;
-        } else {
-          result = false;
+
+        if (fbot.formula == "1") {
+          if (result == false) {
+            result = true;
+          } else {
+            result = false;
+          }
         }
-      }
 
 
-      if (result == true || fbot.formula == "3" || fbot.formula == "4" || fbot.formula == "5") {
+        if (result == true || fbot.formula == "3" || fbot.formula == "4" || fbot.formula == "5") {
 
-        if (!data.buttons[i].name) data.buttons[i].name = "\u200b";
+          if (!data.buttons[i].name) data.buttons[i].name = "\u200b";
 
-        data.buttons[i].disabled = false
+
+          data.buttons[i].disabled = false
 
           if (fbot.formula == "3") {
 
@@ -1529,38 +1530,39 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           if (fbot.formula == "5") {
 
             data.buttons[i].disabled = true
-        }
 
-        const button = data.buttons[i];
-        if (button.typeper == "" || button.typeper == undefined) {
-          button.type = this.evalMessage(button.type, cache);
-        } else {
-          check = this.evalMessage(button.typeper, cache);
-          if (check == "PRIMARY" || check == "SECONDARY" || check == "SUCCESS" || check == "DANGER" || check == "LINK") {
-            button.type = this.evalMessage(button.typeper, cache);
           }
-        }
-        const buttonData = this.generateButton(button, cache);
-        buttonData.disabled = button.disabled;
 
-        this.addButtonToActionRowArray(componentsArr, this.evalMessage(button.row, cache), buttonData, cache);
+          const button = data.buttons[i];
+          if (button.typeper == "" || button.typeper == undefined) {
+            button.type = this.evalMessage(button.type, cache);
+          } else {
+            check = this.evalMessage(button.typeper, cache);
+            if (check == "PRIMARY" || check == "SECONDARY" || check == "SUCCESS" || check == "DANGER" || check == "LINK") {
+              button.type = this.evalMessage(button.typeper, cache);
+            }
+          }
+          const buttonData = this.generateButton(button, cache);
+          buttonData.disabled = button.disabled;
 
-        if (button.mode !== "PERSISTENT") {
-          awaitResponses.push({
-            type: "BUTTON",
-            time: button.time ? parseInt(this.evalMessage(button.time, cache)) || defaultTime : defaultTime,
-            id: this.evalMessage(button.id, cache),
-            user: button.mode.endsWith("PERSONAL") ? cache.getUser()?.id : null,
-            multi: button.mode.startsWith("MULTI"),
-            data: button,
-          });
+          this.addButtonToActionRowArray(componentsArr, this.evalMessage(button.row, cache), buttonData, cache);
+
+          if (button.mode !== "PERSISTENT") {
+            awaitResponses.push({
+              type: "BUTTON",
+              time: button.time ? parseInt(this.evalMessage(button.time, cache)) || defaultTime : defaultTime,
+              id: this.evalMessage(button.id, cache),
+              user: button.mode.endsWith("PERSONAL") ? cache.getUser()?.id : null,
+              multi: button.mode.startsWith("MULTI"),
+              data: button,
+            });
+          }
+
         }
 
       }
 
-    }
 
-      
     }
 
     if (Array.isArray(data.selectMenus)) {
@@ -1574,13 +1576,12 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         } else {
           select.disabled = false;
         }
-       
-        
+
         for (let ix = 0; ix < totales; ix++) {
           val1 = this.evalMessage(data.selectMenus[i].options[ix].val1, cache);
           val2 = this.evalMessage(data.selectMenus[i].options[ix].val2, cache);
-      
-          
+
+
           result = true;
 
           if (data.selectMenus[i].options[ix].formula == "Falso" || data.selectMenus[i].options[ix].formula == "Verdadeiro") {
@@ -1673,27 +1674,27 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               case 25:
                 const isUrl = require("is-url");
                 result = isUrl(val1);
+            }
           }
-        }
-        
-        if (data.selectMenus[i].options[ix].formula == "Falso") {
+
+          if (data.selectMenus[i].options[ix].formula == "Falso") {
+            if (result == false) {
+              result = true
+            } else { result = false }
+          }
+
           if (result == false) {
-            result = true
-          } else { result = false }
+            data.selectMenus[i].options.splice([ix], 1);
+            ix = parseFloat([ix]) - 1
+            totales = totales - 1
+          }
+
         }
 
-        if (result == false) {
-          data.selectMenus[i].options.splice([ix], 1);
-          ix = parseFloat([ix]) - 1
-          totales = totales - 1
-        }
+        const selectData = this.generateSelectMenu(select, cache);
+        selectData.disabled = select.disabled;
 
-
-      }
-        
-      const selectData = this.generateSelectMenu(select, cache);
-      selectData.disabled = select.disabled;
-      this.addSelectToActionRowArray(componentsArr, this.evalMessage(select.row, cache), selectData, cache);
+        this.addSelectToActionRowArray(componentsArr, this.evalMessage(select.row, cache), selectData, cache);
 
         if (select.mode !== "PERSISTENT") {
           awaitResponses.push({
@@ -1813,7 +1814,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           const conteudodata = this.getVariable(varid, varnamer, cache)
           const spoiler = !!attachment?.spoiler;
           var name = this.evalMessage(attachment?.name, cache)
-          if(name == ""){name = "text.txt"}
+          if(name == ""){name = "texto.txt"}
           const buffer = Buffer.from(conteudodata)
           const msgAttachment = new MessageAttachment(buffer, name);
           if (spoiler) {
@@ -1945,6 +1946,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     else {
       this.callNextAction(cache);
     }
+
     function erro(err) {
       if(data.errcmd) _this.displayError(data, cache, err);
 
@@ -1952,10 +1954,9 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
       if(data.iffalse == "5") return _this.executeSubActions(data.actionsError, cache);
       if(data.iffalse == "99") return _this.executeSubActionsThenNextAction(data.actionsError, cache);
-
+      
       return _this.executeResults(false, data, cache);
     }
-
 
   },
 
