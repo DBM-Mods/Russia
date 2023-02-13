@@ -82,18 +82,13 @@ module.exports = {
   html(isEvent, data) {
     return `
         <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-        <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+        <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
         <tab-system>
 
             <tab label="Кнопка и меню" icon="align left">
 
               <div style="overflow: auto; height: calc(100vh - 210px); padding: 5px;">
-                <div class="warning-msg">
-                  <span class="warning">!</span>
-                  <span>Это действие требует модифицырованный bot.js и Мод Send Message с версией 3.1 или выше . <b style="cursor: pointer;" class="xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Нажмите здесь</b> что бы скачать.</span>
-                </div>
-
                 <span class="dbminputlabel">Тип вызова</span>
                 <select id="callType" class="round">
                   <option value="true" selected>Дождитесь завершения</option>
@@ -266,20 +261,6 @@ module.exports = {
             z-index: 999999;
             cursor: pointer
           }
-
-          .warning-msg {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 3px 3px 3px 3px;
-            color: #9F6000;
-            background-color: #FEEFB3;
-          }
-
-          .warning {
-            font-size: 20px;
-            font-weight: bold;
-            color: #ffcc00;
-          }
         </style>
     `;
   },
@@ -383,14 +364,22 @@ module.exports = {
 
   action(cache) {
     const data = cache.actions[cache.index];
+    const Mods = this.getdbmmods();
 
-    const { $button, $tempButton, $select, $tempSelect } = this.getDBM().Bot;
+    const DBM = this.getDBM();
+
+    const { $button, $select } = DBM.Bot;
     const _this = this;
+
+    const events = DBM.Files.data.events;
+    const commands = DBM.Files.data.commands.concat(events);
+
+    const $tempButton = Mods.jsonPath(commands, '$..buttons[?(@.mode != "PERSISTENT")]');
+    const $tempSelect = Mods.jsonPath(commands, '$..selectMenus[?(@.mode != "PERSISTENT")]');
 
     const callType = Boolean(data.callType);
     const id = this.evalMessage(data.id, cache);
     const interaction = cache.interaction;
-
 
     function erro(err) {
       if(data.errcmd) _this.displayError(data, cache, err);
@@ -405,12 +394,11 @@ module.exports = {
 
     if(!interaction) return erro("Кэш взаимодействия не найден!");
 
-
     const waitForCompletion = callType == true;
     let callback = null;
 
     if(data.type == "0") {
-      const button = $button[id] || $tempButton[id];
+      const button = $button[id] || $tempButton.find((el) => el.id == id);
 
       if(!button) return erro("Кнопка не найдена!");
 
@@ -424,7 +412,7 @@ module.exports = {
         this.callNextAction(cache);
       }
     } else {
-      const menu = $select[id] || $tempSelect[id];
+      const menu = $select[id] || $tempSelect.find((el) => el.id == id);
 
       if(!menu) return erro("Меню не найдено!");
 
@@ -468,7 +456,6 @@ module.exports = {
         this.callNextAction(cache);
       }
     }
-
   },
 
   //---------------------------------------------------------------------
