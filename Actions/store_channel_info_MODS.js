@@ -265,10 +265,10 @@ module.exports = {
         result = targetChannel.type;
         break;
       case 19:
-        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='member').map(p => `**Пользователь**: <@${p.id}>\n • Разрешено: ${p.allow.toArray().length>=1?p.allow.toArray():'Ничего'}\n • Отключено: ${p.deny.toArray().length>=1?p.deny.toArray():'Ничего'}`).join('\n\n');
+        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='member').map(p => `**Пользователь**: <@${p.id}>\n • Разрешено: ${p.allow.toArray().length>=1?p.allow.toArray():'Ничего'}\n • Отключено: ${p.deny.toArray().length>=1?p.deny.toArray():'Ничего'}`).join('\n\n').replace(/_/g, ' ').toLowerCase();
         break;
        case 20:
-        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='role').map(p => `**Роль**: <@&${p.id}>\n • Разрешено: ${p.allow.toArray().length>=1?p.allow.toArray():'Ничего'}\n • Запрещено: ${p.deny.toArray().length>=1?p.deny.toArray():'Ничего'}`).join('\n\n');
+        result = await targetChannel.permissionOverwrites.cache.filter(p => p.type=='role').map(p => `**Роль**: <@&${p.id}>\n • Разрешено: ${p.allow.toArray().length>=1?p.allow.toArray():'Ничего'}\n • Запрещено: ${p.deny.toArray().length>=1?p.deny.toArray():'Ничего'}`).join('\n\n').replace(/_/g, ' ').toLowerCase();
         break;
       case 21:
         result = await targetChannel.permissionOverwrites.cache;
