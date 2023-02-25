@@ -17,9 +17,12 @@ module.exports = {
       desccor = 'none'
     }
 
+    const list1 = presets.lists;
+    const list2 = presets.lists;
+
     return data.description
-      ? `<font style="color:${desccor}">${data.description}</font>`
-      : `<font style="color:${desccor}">Добавить ${data.branches.length == 1 ? data.branches.length + " пункт" : data.branches.length + " вариант"}</font>`
+  ? `<font style="color:${desccor}">${data.description}</font>`
+  : (data.acao == 0 || data.acao == 1) ? `<font style="color:${desccor}">Добавить ${data.branches.length == 1 ? data.branches.length + " вариант" : data.branches.length + " варианты"}</font>` : `Использование списка имен "${list1[parseInt(data.listanome, 10)]}" и варианты "${list2[parseInt(data.listavalor, 10)]}"`;
   },
 
   variableStorage(data, varType) {
@@ -28,29 +31,30 @@ module.exports = {
   },
 
 
-  fields: ["message", "messageVarName", "type", "searchValue", "acao", "descriptioncolor", "description", "descriptionx", "iffalse", "iffalseVal", "errs", "errv", "errcmd", "actionserr", "branches"],
+  fields: ["message", "messageVarName", "type", "searchValue", "acao", "newname", "listanome", "listanomevar","listavalor", "listavalorvar", "ondesc", "listadesc", "listadescvar", "onemoji", "listaemoji", "listaemojivar", "pagina", "porpag", "descriptioncolor", "description", "descriptionx", "iffalse", "iffalseVal", "errs", "errv", "errcmd", "actionserr", "branches"],
 
 
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.3</div>
     <tab-system>
 
-    <tab label="Вариант" icon="wizard">
+    <tab label="Варианты" icon="wizard">
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
+    <div id="xinxylaacao1">
     <dialog-list id="branches" fields='["label", "description", "value", "emoji", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Вариант" dialogWidth="600" dialogHeight="400" listLabel="Варианты" listStyle="height: calc(100vh - 280px);" itemName="Item" itemHeight="28px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 28px;">
     <div style="padding: 16px;background:rgba(0,0,0,0.3)">
-    <span class="dbminputlabel">Показывать</span><br>
+    <span class="dbminputlabel">Exibir</span><br>
     <select id="formula" class="round">
     <option value="0" selected>Всегда отображать / игнорировать сравнения ниже</option>
-    <option value="1">Отобразить вариант, если получено значение False</option>
-    <option value="2">Отобразить вариант, если получено значение True</option>
+    <option value="1">Отображать, если получено значение False</option>
+    <option value="2">Отображать, если получено значение True</option>
   </select>
   <br>
      <table style="width:100%"><tr><td>
-       <span class="dbminputlabel">Значение A</span><br>
+       <span class="dbminputlabel">Значение А</span><br>
        <input id="val1" class="round" type="text">
        </td>
        <td>
@@ -59,11 +63,11 @@ module.exports = {
        <option value="0">Значение A - существует</option>
        <option value="1" selected>Равно</option>
        <option value="2">Точно так же</option>
-       <option value="3">Меньше, чем</option>
+       <option value="3">Меньше чем</option>
        <option value="13">Меньше или равно</option>
-       <option value="4">Больше, чем</option>
+       <option value="4">Больше тогда</option>
        <option value="12">Больше или равно</option>
-       <option value="5">Включать</option>
+       <option value="5">Включают</option>
        <option value="6">Соответствует регулярному выражению</option>
        <option value="14">Соответствует полному регулярному выражению</option>
        <option value="7">Длина больше, чем</option>
@@ -73,12 +77,12 @@ module.exports = {
        <option value="11">Заканчивается</option>
        <option value="16">Значение А имеет акценты?</option>
        <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-       <option value="18">Это то же самое, что слова  ["a" , "b" , "c"]</option>
-       <option value="19">Является ли значение A четным числом?</option>
-       <option value="20">Является ли значение A нечетным числом?</option>
-       <option value="21">Является ли значение A числом?</option>
+       <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+       <option value="19">Значение A - это чётное число?</option>
+       <option value="20">Значение A - это нечетное число?</option>
+       <option value="21">Значение A является числом?</option>
        <option value="24">Значение A - это текст?</option>
-       <option value="23">Значение A - это URL адрес изображения?</option>
+       <option value="23">Значение A - это URL -адрес изображения?</option>
        <option value="25">Значение A - это URL?</option>
      </select>
       </td>
@@ -98,7 +102,7 @@ module.exports = {
         <br>
 
         <span class="dbminputlabel">Значение ~ не может быть повторено</span>
-        <input id="value" placeholder="Передается во временную переменную..." class="round" type="text">
+        <input id="value" placeholder="Передано во временную переменную..." class="round" type="text">
       </div>
       <div style="float: right; width: calc(50% - 12px);">
         <span class="dbminputlabel">Описание</span>
@@ -115,6 +119,77 @@ module.exports = {
     </div>
 </dialog-list>
 </div>
+
+<div id="xinxylaacao2">
+
+      <table><tr><td class="col">
+     <span class="dbminputlabel">Список ~ Имя</span><br>
+      <select id="listanome" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer10')">
+        ${data.lists[isEvent ? 1 : 0]}
+      </select>
+    </td>
+    <td class="col">
+    <div id="varNameContainer10">
+    <span class="dbminputlabel">Имя переменной</span><br>
+      <input id="listanomevar" class="round" type="text" list="variableList"></div>
+    </td></tr></table>
+
+    <xinspace2>
+
+      <table><tr><td class="col">
+      <span class="dbminputlabel">Список ~ Значение</span><br>
+       <select id="listavalor" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer20')">
+         ${data.lists[isEvent ? 1 : 0]}
+       </select>
+     </td>
+     <td class="col">
+     <div id="varNameContainer20">
+     <span class="dbminputlabel">Имя переменной</span><br>
+       <input id="listavalorvar" class="round" type="text" list="variableList"></div>
+     </td></tr></table>
+
+     <xinspace2>
+
+     <table><tr><td class="col">
+     <span class="dbminputlabel">Список ~ Описание</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="ondesc" label="Актив"></dbm-checkbox></div><br>
+      <select id="listadesc" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer30')">
+        ${data.lists[isEvent ? 1 : 0]}
+      </select>
+    </td>
+    <td class="col">
+    <div id="varNameContainer30">
+    <span class="dbminputlabel">Имя переменной</span><br>
+      <input id="listadescvar" class="round" type="text" list="variableList"></div>
+    </td></tr></table>
+
+    <xinspace2>
+
+    <table><tr><td class="col">
+    <span class="dbminputlabel">Список ~ Эмодзи</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="onemoji" label="Актив"></dbm-checkbox></div><br>
+     <select id="listaemoji" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer40')">
+       ${data.lists[isEvent ? 1 : 0]}
+     </select>
+   </td>
+   <td class="col">
+   <div id="varNameContainer40">
+   <span class="dbminputlabel">Имя переменной</span><br>
+     <input id="listaemojivar" class="round" type="text" list="variableList"></div>
+   </td></tr></table>
+
+   <xinspace2>
+
+   <table><tr><td class="col">
+   <span class="dbminputlabel">Страница</span><br>
+   <input id="pagina" class="round" type="text" value="1">
+   </td>
+   <td class="col">
+   <span class="dbminputlabel">Варианты на странице</span><br>
+   <input id="porpag" class="round" type="text" value="25">
+   </td></tr></table>
+
+</div>
+
+</div>
     </tab>
     <tab label="Меню" icon="align left">
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
@@ -125,17 +200,17 @@ module.exports = {
 <br><br><br><xinspace>
 
 <div style="float: left; width: calc(50% - 12px);">
-  <span class="dbminputlabel">Меню для редактирования</span><br>
+  <span class="dbminputlabel">Компоненты для редактирования</span><br>
   <select id="type" class="round" onchange="glob.onButtonSelectTypeChange(this)">
-    <option value="allSelects">Все селект меню</option>
-    <option value="sourceSelect" selected>Этот же селект меню</option>
-    <option value="findSelect">Селект меню на выбор</option>
+    <option value="allSelects">Все меню выбора</option>
+    <option value="sourceSelect" selected>Источник меню выбора</option>
+    <option value="findSelect">Выбранный меню выбора</option>
   </select>
 </div>
 
 <div style="float: right; width: calc(50% - 12px);">
   <div id="nameContainer">
-    <span class="dbminputlabel">Метка меню/идентификатор (ID)</span><br>
+    <span class="dbminputlabel">Меню выбора перменная/ид</span><br>
     <input id="searchValue" class="round" type="text">
   </div>
 </div>
@@ -143,10 +218,17 @@ module.exports = {
 <br><br><br><xinspace>
 
 <span class="dbminputlabel">Действие</span><br>
-<select id="acao" class="round">
+<select id="acao" class="round" onchange="glob.onComparisonChanged3(this)">
   <option value="0" selected>Добавить параметры в меню</option>
   <option value="1">Использовать только параметры в меню</option>
+  <option value="2">Добавить параметры в меню через списки</option>
+  <option value="3">Использовать только параметры в меню через списки</option>
 </select>
+
+<br>
+
+<span class="dbminputlabel">Выберите источник меню</span><br>
+<input id="newname" class="round" placeholder="Оставьте пустым, чтобы не менять" type="text">
 
 <br>
 
@@ -192,8 +274,8 @@ module.exports = {
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>
 <option value="4">Перейти к якорю действий</option>
-<option value="5">Выполнять действия и останавливаться</option>
-<option value="6">Выполнять действия и продолжать</option>
+<option value="5">Выполнять действия ниже и останавиться</option>
+<option value="6">Выполнять действия ниже и продолжать</option>
 </select>
 <br>
 </div>
@@ -211,11 +293,13 @@ module.exports = {
 </tab-system>
 <style>
     xinspace{padding:5px 0px 0px 0px;display:block}
+    xinspace2{padding:14px 0px 0px 0px;display:block}
     table{width:100%}
 .dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
 .dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
 .col1{width:35%;padding:0px 10px 0px 0px}
 .col2{width:65%}
+.col{padding:0px 5px;width:50%}
 </style>
 `;
   },
@@ -223,6 +307,11 @@ module.exports = {
 
   init() {
     const { glob, document } = this;
+
+    glob.listChange(document.getElementById("listanome"), "varNameContainer10");
+    glob.listChange(document.getElementById("listavalor"), "varNameContainer20");
+    glob.listChange(document.getElementById("listadesc"), "varNameContainer30");
+    glob.listChange(document.getElementById("listaemoji"), "varNameContainer40");
 
     const xinelaslinks = document.getElementsByClassName('xinelaslink');
     for (let x = 0; x < xinelaslinks.length; x++) {
@@ -272,17 +361,33 @@ module.exports = {
         document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
       }
       if (event.value == "4") {
-        document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
+        document.querySelector("[id='xinelas']").innerText = (`Якоря название`);
       }
     }
 
     glob.onComparisonChanged2(document.getElementById("iffalse"));
+
+    glob.onComparisonChanged3 = function (event) {
+      if (event.value == "0" || event.value == "1") {
+        document.getElementById("xinxylaacao1").style.display = null;
+        document.getElementById("xinxylaacao2").style.display = "none";
+      } else {
+        document.getElementById("xinxylaacao1").style.display = "none";
+        document.getElementById("xinxylaacao2").style.display = null;
+      }
+    }
+
+    glob.onComparisonChanged3(document.getElementById("acao"));
 
   },
 
   async action(cache) {
     const data = cache.actions[cache.index];
     const message = await this.getMessageFromData(data.message, data.messageVarName, cache);
+    var listanome = await this.getListFromData(data.listanome, data.listanomevar, cache);
+    var listavalor = await this.getListFromData(data.listavalor, data.listavalorvar, cache);
+    var listadesc = await this.getListFromData(data.listadesc, data.listadescvar, cache);
+    var listaemoji = await this.getListFromData(data.listaemoji, data.listaemojivar, cache);
 
     const type = data.type;
 
@@ -297,14 +402,18 @@ module.exports = {
 
     var onSelectMenuFound = (select) => {
       if (select) {
+
+        if(this.evalMessage(data.newname, cache) !== ""){select.placeholder = this.evalMessage(data.newname, cache)}
+
         if (!select.options) select.options = [];
         if (select) {
 
           const branches = data.branches
           if (!select.options) select.options = [];
 
-          if (data.acao == "1") select.options = [];
+          if (data.acao == "1" || data.acao == "3") select.options = [];
 
+        if (data.acao == "0" || data.acao == "1"){
           for (var i = 0; i < branches.length; i++) {
             const optionChange = branches[i];
 
@@ -426,6 +535,43 @@ module.exports = {
             select.options.push({ ...newOptionData })};
 
           }
+        }
+
+        if (data.acao == "2" || data.acao == "3"){
+
+      
+          var pagina = parseInt(this.evalMessage(data.pagina, cache))
+          var porpag = parseInt(this.evalMessage(data.porpag, cache))
+          if(porpag > 25 || porpag == NaN || porpag == "NaN" || porpag == ""){porpag = 25}
+          if(porpag < 1){porpag = 1}
+          if(pagina < 1 || pagina == NaN || pagina == "NaN" || pagina == ""){pagina = 1}
+          
+          var paginatotal = Math.ceil(listavalor.length / porpag)
+
+          if(pagina > paginatotal){pagina = paginatotal}
+          sessao = (pagina * porpag) - porpag
+
+          for (var i = 0; i < listavalor.length; i++) {
+            
+            if(i < porpag && listavalor.length > sessao){
+            let newOptionData = {
+              label: listanome[sessao],
+              value: listavalor[sessao],
+              default: false,
+            };
+            if (data.ondesc == true) {
+              newOptionData.description = listadesc[sessao]
+            }
+            if (data.onemoji == true) {
+              newOptionData.emoji = listaemoji[sessao]
+            }
+
+            var sessao = sessao + 1
+            select.options.push({ ...newOptionData })};
+          }
+
+
+        }
 
         }
       }
@@ -496,7 +642,7 @@ module.exports = {
           .catch((err) => {
             
             if (data.errcmd === true) {
-              console.log('Ошибка: ' + cache.toString() + ' - Действие ' + (cache.index + 1) + '# ' + data.name)
+              console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name)
               console.log(err)
             }
 
