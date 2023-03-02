@@ -6,6 +6,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   name: "Send Message",
+  displayName: "Send Message MOD",
 
   //---------------------------------------------------------------------
   // Action Section
@@ -14,7 +15,6 @@ module.exports = {
   //---------------------------------------------------------------------
 
   section: "Messaging",
-  displayName: "Send Message MOD",
 
   //---------------------------------------------------------------------
   // Action Subtitle
@@ -163,7 +163,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.3</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.4</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
@@ -1165,14 +1165,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     let content;
 
-    if (messageoff == true) {
-      if (message.length > 0) {
-        content = this.evalMessage(message, cache);
-      } else {
-        content = this.evalMessage("", cache);
-      }
-    }
-
+    if (messageoff == true) content = message.length > 0 ? message : "";
 
     if (content) {
       if (messageOptions.content && !overwrite) {
