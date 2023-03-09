@@ -389,7 +389,7 @@ module.exports = {
               </div>
             </tab>
 
-            <tab label="Конфиг" icon="cogs">
+            <tab label="Конф" icon="cogs">
               <div style="padding: 16px; background: rgba(0, 0, 0, 0.3);">
                 <span class="dbminputlabel">Отображение эмбед</span>
                 <select id="formula" class="round">
@@ -401,9 +401,9 @@ module.exports = {
                 <br>
 
                 <table style="width: 100%;">
-                <tr>
-                  <td>
-                    <span class="dbminputlabel">Значение A</span>
+                  <tr>
+                    <td>
+<span class="dbminputlabel">Значение A</span>
                     <input id="val1" class="round" type="text">
                      </td>
                      <td>
@@ -461,12 +461,14 @@ module.exports = {
                      <td>
                       <span class="dbminputlabel">Значение B</span><br>
                       <input id="val2" class="round" type="text">
-                     </td>
-                     </tr>
-                     </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </tab>
 
 
-          </tab-system>
+                </tab-system>
 
         </div>
       </dialog-list>
