@@ -42,7 +42,7 @@ module.exports = {
       text = `Ничего (может вызвать ошибку)`;
     }
     if (data.dontSend) {
-      text =  `Хранить Дату: ${text}`;
+      text = `Хранить Дату: ${text}`;
     } else {
       text = `${presets.getSendReplyTargetText(data.channel, data.varName)}: ${text}`;
     }
@@ -76,7 +76,7 @@ module.exports = {
     const type = parseInt(data.storage, 10);
     const typeError = parseInt(data.storageError, 10);
 
-    if(type == varType) {
+    if (type == varType) {
       vars.push(data.varName2);
       vars.push(data.dontSend ? "Параметры сообщения" : "Cообщение");
     }
@@ -86,7 +86,7 @@ module.exports = {
       vars.push("Текст ~ Ошибка");
     }
 
-    if(vars.length > 0) return vars;
+    if (vars.length > 0) return vars;
   },
 
   //---------------------------------------------------------------------
@@ -163,7 +163,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.4</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.5</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
@@ -190,7 +190,7 @@ module.exports = {
   <tab label="Ембеды" icon="book image">
     <div style="padding: 8px;">
 
-    <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl"]' dialogTitle="Embed Info" dialogResizable dialogWidth="540" dialogHeight="460" listLabel="Embeds" listStyle="height: calc(100vh - 350px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
+  <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl", "formula", "val1", "comparar", "val2"]' dialogTitle="Embed Info" dialogResizable dialogWidth="540" dialogHeight="460" listLabel="Embeds" listStyle="height: calc(100vh - 350px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="data.title + ' - ' + data.description" itemStyle="text-align: left; line-height: 30px;">
         <div style="padding: 16px 16px 0px 16px;">
 
           <tab-system>
@@ -267,44 +267,70 @@ module.exports = {
 
                 <br>
 
-                  <table style="width:100%"><tr><td>
-                    <span class="dbminputlabel">Значение А</span><br>
+                <table style="width: 100%;">
+                <tr>
+                  <td>
+                    <span class="dbminputlabel">Значение A</span>
                     <input id="val1" class="round" type="text">
-                    </td>
-                    <td>
-                    <span class="dbminputlabel">Сравнения</span><br>
-                    <select id="comparar" class="round">
-                    <option value="0">Значение A - существует</option>
-                    <option value="1" selected>Равно</option>
-                    <option value="2">Точно так же</option>
-                    <option value="3">Меньше чем</option>
-                    <option value="13">Меньше или равно</option>
-                    <option value="4">Больше тогда</option>
-                    <option value="12">Больше или равно</option>
-                    <option value="5">Включают</option>
-                    <option value="6">Соответствует регулярному выражению</option>
-                    <option value="14">Соответствует полному регулярному выражению</option>
-                    <option value="7">Длина длиннее, чем</option>
-                    <option value="8">Длина ниже, чем</option>
-                    <option value="9">Длина равена</option>
-                    <option value="10">Начинается с</option>
-                    <option value="11">Заканчивается</option>
-                    <option value="16">Значение А имеет акценты?</option>
-                    <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-                    <option value="18">Равны словам  ["a" , "b" , "c"]</option>
-                    <option value="19">Значение A - это чётное число?</option>
-                    <option value="20">Значение A - это нечетное число?</option>
-                    <option value="21">Значение A является числом?</option>
-                    <option value="24">Значение A - это текст?</option>
-                    <option value="23">Значение A - это URL -адрес изображения?</option>
-                    <option value="25">Значение A - это URL?</option>
-                  </select>
+                     </td>
+                     <td>
+                     <span class="dbminputlabel">Сравнения</span><br>
+                     <select id="comparar" class="round">
+                       <optgroup label="Номер или текст">
+                         <option value="0">Существует</option>
+                         <option value="1" selected>Равно</option>
+                         <option value="2">Точно так же</option>
+                       </optgroup>
+                       <optgroup label="Число">
+                         <option value="3">Меньше чем</option>
+                         <option value="13">Меньше или равно</option>
+                         <option value="4">Больше тогда</option>
+                         <option value="12">Больше или равно</option>
+                         <option value="15">Между</option>
+                         <option value="19">Это четное число?</option>
+                         <option value="20">Это нечетное число?</option>
+                         <option value="21">Это число?</option>
+                       </optgroup>
+                       <optgroup label="Текст">
+                         <option value="6">Соответствует регулярному выражению</option>
+                         <option value="14">Соответствует полному регулярному выражению</option>
+                         <option value="7">Длина больше, чем</option>
+                         <option value="8">Длина меньше, чем</option>
+                         <option value="9">Длина равена</option>
+                         <option value="10">Начинается с</option>
+                         <option value="11">Заканчивается</option>
+                         <option value="16">Есть ли у него акценты?</option>
+                         <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+                         <option value="24">Это текст?</option>
+                         <option value="23">Это URL адрес изображения?</option>
+                         <option value="25">Это URL?</option>
+                         <option value="26">Электронная почта существует?</option>
+                       </optgroup>
+                       <optgroup label="Текст ~ включает">
+                         <option value="5">Включает в себя точно</option>
+                         <option value="29">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
+                         <option value="30">Включает ~ Игнорировать акценты</option>
+                         <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
+                         <option value="17">Включает точно ["a" , "b" , "c"]</option>
+                         <option value="27">Включает URL?</option>
+                         <option value="28">Включите приглашение от Discord?</option>
+                         <option value="32">Включает именно это слово</option>
+                         <option value="33">Включает слово ~ игнорировать нижний/верхний регистр</option>
+                         <option value="34">Включает слово ~ игнорировать ударения</option>
+                         <option value="35">Включает слово ~ игнорировать акцентуации & строчные и заглавные</option>
+                         <option value="36">Включает слова ~ используйте девственницы ~ игнорировать акцентуации & в Нижнем и верхнем регистре</option>
+                       </optgroup>
+                       <optgroup label="Другие">
+                         <option value="22">Это список?</option>
+                       </optgroup>
+                     </select>
                    </td>
-                    <td>
-                    <span class="dbminputlabel">Значение B</span><br>
-                    <input id="val2" class="round" type="text">
-                    </td>
-                    </tr></table>
+                     <td>
+                      <span class="dbminputlabel">Значение B</span><br>
+                      <input id="val2" class="round" type="text">
+                     </td>
+                     </tr>
+                     </table>
 
 
                     </div>
@@ -353,15 +379,92 @@ module.exports = {
 
             <tab label="Footer" icon="map outline">
               <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
-                <span class="dbminputlabel">URL-адрес значка нижнего текста / Имя файла</span><br>
+                <span class="dbminputlabel">URL-адрес значка нижнего текста / Имя файла</span>
                 <input id="footerIconUrl" class="round" type="text" placeholder="Оставьте это пустым для ничего ....">
 
                 <br>
 
-                <span class="dbminputlabel">Нижний текст</span><br>
+                <span class="dbminputlabel">Нижний текст</span>
                 <textarea id="footerText" class="dbm_monospace" rows="10" placeholder="Оставьте это пустым для ничего ...." style="height: calc(100vh - 234px); white-space: nowrap; resize: none;"></textarea>
               </div>
             </tab>
+
+            <tab label="Конфиг" icon="cogs">
+              <div style="padding: 16px; background: rgba(0, 0, 0, 0.3);">
+                <span class="dbminputlabel">Отображение эмбед</span>
+                <select id="formula" class="round">
+                  <option value="0" selected>Всегда отображать эмбед / игнорировать сравнения ниже</option>
+                  <option value="1">Эмбед отображать только если получено значение False</option>
+                  <option value="2">Эмбед отображать только если получено значение True</option>
+                </select>
+
+                <br>
+
+                <table style="width: 100%;">
+                <tr>
+                  <td>
+                    <span class="dbminputlabel">Значение A</span>
+                    <input id="val1" class="round" type="text">
+                     </td>
+                     <td>
+                     <span class="dbminputlabel">Сравнения</span><br>
+                     <select id="comparar" class="round">
+                       <optgroup label="Номер или текст">
+                         <option value="0">Существует</option>
+                         <option value="1" selected>Равно</option>
+                         <option value="2">Точно так же</option>
+                       </optgroup>
+                       <optgroup label="Число">
+                         <option value="3">Меньше чем</option>
+                         <option value="13">Меньше или равно</option>
+                         <option value="4">Больше тогда</option>
+                         <option value="12">Больше или равно</option>
+                         <option value="15">Между</option>
+                         <option value="19">Это четное число?</option>
+                         <option value="20">Это нечетное число?</option>
+                         <option value="21">Это число?</option>
+                       </optgroup>
+                       <optgroup label="Текст">
+                         <option value="6">Соответствует регулярному выражению</option>
+                         <option value="14">Соответствует полному регулярному выражению</option>
+                         <option value="7">Длина больше, чем</option>
+                         <option value="8">Длина меньше, чем</option>
+                         <option value="9">Длина равена</option>
+                         <option value="10">Начинается с</option>
+                         <option value="11">Заканчивается</option>
+                         <option value="16">Есть ли у него акценты?</option>
+                         <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+                         <option value="24">Это текст?</option>
+                         <option value="23">Это URL адрес изображения?</option>
+                         <option value="25">Это URL?</option>
+                         <option value="26">Электронная почта существует?</option>
+                       </optgroup>
+                       <optgroup label="Текст ~ включает">
+                         <option value="5">Включает в себя точно</option>
+                         <option value="29">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
+                         <option value="30">Включает ~ Игнорировать акценты</option>
+                         <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
+                         <option value="17">Включает точно ["a" , "b" , "c"]</option>
+                         <option value="27">Включает URL?</option>
+                         <option value="28">Включите приглашение от Discord?</option>
+                         <option value="32">Включает именно это слово</option>
+                         <option value="33">Включает слово ~ игнорировать нижний/верхний регистр</option>
+                         <option value="34">Включает слово ~ игнорировать ударения</option>
+                         <option value="35">Включает слово ~ игнорировать акцентуации & строчные и заглавные</option>
+                         <option value="36">Включает слова ~ используйте девственницы ~ игнорировать акцентуации & в Нижнем и верхнем регистре</option>
+                       </optgroup>
+                       <optgroup label="Другие">
+                         <option value="22">Это список?</option>
+                       </optgroup>
+                     </select>
+                   </td>
+                     <td>
+                      <span class="dbminputlabel">Значение B</span><br>
+                      <input id="val2" class="round" type="text">
+                     </td>
+                     </tr>
+                     </table>
+
 
           </tab-system>
 
@@ -402,44 +505,70 @@ module.exports = {
 
       <br>
 
-      <table style="width:100%"><tr><td>
-      <span class="dbminputlabel">Значение А</span><br>
-      <input id="val1" class="round" type="text">
-      </td>
-      <td>
-      <span class="dbminputlabel">Сравнения</span><br>
-      <select id="comparar" class="round">
-      <option value="0">Значение A - существует</option>
-      <option value="1" selected>Равно</option>
-      <option value="2">Точно так же</option>
-      <option value="3">Меньше чем</option>
-      <option value="13">Меньше или равно</option>
-      <option value="4">Больше тогда</option>
-      <option value="12">Больше или равно</option>
-      <option value="5">Включают</option>
-      <option value="6">Соответствует регулярному выражению</option>
-      <option value="14">Соответствует полному регулярному выражению</option>
-      <option value="7">Длина длиннее, чем</option>
-      <option value="8">Длина ниже, чем</option>
-      <option value="9">Длина равена</option>
-      <option value="10">Начинается с</option>
-      <option value="11">Заканчивается</option>
-      <option value="16">Значение А имеет акценты?</option>
-      <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-      <option value="18">Равны словам  ["a" , "b" , "c"]</option>
-      <option value="19">Значение A - это чётное число?</option>
-      <option value="20">Значение A - это нечетное число?</option>
-      <option value="21">Значение A является числом?</option>
-      <option value="24">Значение A - это текст?</option>
-      <option value="23">Значение A - это URL -адрес изображения?</option>
-      <option value="25">Значение A - это URL?</option>
-    </select>
+      <table style="width: 100%;">
+      <tr>
+        <td>
+          <span class="dbminputlabel">Значение A</span>
+          <input id="val1" class="round" type="text">
+           </td>
+           <td>
+           <span class="dbminputlabel">Сравнения</span><br>
+           <select id="comparar" class="round">
+             <optgroup label="Номер или текст">
+               <option value="0">Существует</option>
+               <option value="1" selected>Равно</option>
+               <option value="2">Точно так же</option>
+             </optgroup>
+             <optgroup label="Число">
+               <option value="3">Меньше чем</option>
+               <option value="13">Меньше или равно</option>
+               <option value="4">Больше тогда</option>
+               <option value="12">Больше или равно</option>
+               <option value="15">Между</option>
+               <option value="19">Это четное число?</option>
+               <option value="20">Это нечетное число?</option>
+               <option value="21">Это число?</option>
+             </optgroup>
+             <optgroup label="Текст">
+               <option value="6">Соответствует регулярному выражению</option>
+               <option value="14">Соответствует полному регулярному выражению</option>
+               <option value="7">Длина больше, чем</option>
+               <option value="8">Длина меньше, чем</option>
+               <option value="9">Длина равена</option>
+               <option value="10">Начинается с</option>
+               <option value="11">Заканчивается</option>
+               <option value="16">Есть ли у него акценты?</option>
+               <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+               <option value="24">Это текст?</option>
+               <option value="23">Это URL адрес изображения?</option>
+               <option value="25">Это URL?</option>
+               <option value="26">Электронная почта существует?</option>
+             </optgroup>
+             <optgroup label="Текст ~ включает">
+               <option value="5">Включает в себя точно</option>
+               <option value="29">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
+               <option value="30">Включает ~ Игнорировать акценты</option>
+               <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
+               <option value="17">Включает точно ["a" , "b" , "c"]</option>
+               <option value="27">Включает URL?</option>
+               <option value="28">Включите приглашение от Discord?</option>
+               <option value="32">Включает именно это слово</option>
+               <option value="33">Включает слово ~ игнорировать нижний/верхний регистр</option>
+               <option value="34">Включает слово ~ игнорировать ударения</option>
+               <option value="35">Включает слово ~ игнорировать акцентуации & строчные и заглавные</option>
+               <option value="36">Включает слова ~ используйте девственницы ~ игнорировать акцентуации & в Нижнем и верхнем регистре</option>
+             </optgroup>
+             <optgroup label="Другие">
+               <option value="22">Это список?</option>
+             </optgroup>
+           </select>
          </td>
-          <td>
-          <span class="dbminputlabel">Значение B</span><br>
-          <input id="val2" class="round" type="text">
-          </td>
-          </tr></table>
+           <td>
+            <span class="dbminputlabel">Значение B</span><br>
+            <input id="val2" class="round" type="text">
+           </td>
+           </tr>
+           </table>
 
 
           </div>
@@ -584,44 +713,70 @@ module.exports = {
                  <option value="Verdadeiro">Отобразить вариант, если получено значение True</option>
                </select>
                <br>
-                  <table style="width:100%"><tr><td>
-                    <span class="dbminputlabel">Значение A</span><br>
-                    <input id="val1" class="round" type="text">
+               <table style="width: 100%;">
+               <tr>
+                 <td>
+                   <span class="dbminputlabel">Значение A</span>
+                   <input id="val1" class="round" type="text">
                     </td>
                     <td>
                     <span class="dbminputlabel">Сравнения</span><br>
                     <select id="comparar" class="round">
-                    <option value="0">Значение A - существует</option>
-                    <option value="1" selected>Равно</option>
-                    <option value="2">Точно так же</option>
-                    <option value="3">Меньше чем</option>
-                    <option value="13">Меньше или равно</option>
-                    <option value="4">Больше тогда</option>
-                    <option value="12">Больше или равно</option>
-                    <option value="5">Включают</option>
-                    <option value="6">Соответствует регулярному выражению</option>
-                    <option value="14">Соответствует полному регулярному выражению</option>
-                    <option value="7">Длина длиннее, чем</option>
-                    <option value="8">Длина ниже, чем</option>
-                    <option value="9">Длина равена</option>
-                    <option value="10">Начинается с</option>
-                    <option value="11">Заканчивается</option>
-                    <option value="16">Значение А имеет акценты?</option>
-                    <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-                    <option value="18">Равны словам  ["a" , "b" , "c"]</option>
-                    <option value="19">Значение A - это чётное число?</option>
-                    <option value="20">Значение A - это нечетное число?</option>
-                    <option value="21">Значение A является числом?</option>
-                    <option value="24">Значение A - это текст?</option>
-                    <option value="23">Значение A - это URL -адрес изображения?</option>
-                    <option value="25">Значение A - это URL?</option>
-                  </select>
-                   </td>
+                      <optgroup label="Номер или текст">
+                        <option value="0">Существует</option>
+                        <option value="1" selected>Равно</option>
+                        <option value="2">Точно так же</option>
+                      </optgroup>
+                      <optgroup label="Число">
+                        <option value="3">Меньше чем</option>
+                        <option value="13">Меньше или равно</option>
+                        <option value="4">Больше тогда</option>
+                        <option value="12">Больше или равно</option>
+                        <option value="15">Между</option>
+                        <option value="19">Это четное число?</option>
+                        <option value="20">Это нечетное число?</option>
+                        <option value="21">Это число?</option>
+                      </optgroup>
+                      <optgroup label="Текст">
+                        <option value="6">Соответствует регулярному выражению</option>
+                        <option value="14">Соответствует полному регулярному выражению</option>
+                        <option value="7">Длина больше, чем</option>
+                        <option value="8">Длина меньше, чем</option>
+                        <option value="9">Длина равена</option>
+                        <option value="10">Начинается с</option>
+                        <option value="11">Заканчивается</option>
+                        <option value="16">Есть ли у него акценты?</option>
+                        <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+                        <option value="24">Это текст?</option>
+                        <option value="23">Это URL адрес изображения?</option>
+                        <option value="25">Это URL?</option>
+                        <option value="26">Электронная почта существует?</option>
+                      </optgroup>
+                      <optgroup label="Текст ~ включает">
+                        <option value="5">Включает в себя точно</option>
+                        <option value="29">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
+                        <option value="30">Включает ~ Игнорировать акценты</option>
+                        <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
+                        <option value="17">Включает точно ["a" , "b" , "c"]</option>
+                        <option value="27">Включает URL?</option>
+                        <option value="28">Включите приглашение от Discord?</option>
+                        <option value="32">Включает именно это слово</option>
+                        <option value="33">Включает слово ~ игнорировать нижний/верхний регистр</option>
+                        <option value="34">Включает слово ~ игнорировать ударения</option>
+                        <option value="35">Включает слово ~ игнорировать акцентуации & строчные и заглавные</option>
+                        <option value="36">Включает слова ~ используйте девственницы ~ игнорировать акцентуации & в Нижнем и верхнем регистре</option>
+                      </optgroup>
+                      <optgroup label="Другие">
+                        <option value="22">Это список?</option>
+                      </optgroup>
+                    </select>
+                  </td>
                     <td>
-                    <span class="dbminputlabel">Значение B</span><br>
-                    <input id="val2" class="round" type="text">
+                     <span class="dbminputlabel">Значение B</span><br>
+                     <input id="val2" class="round" type="text">
                     </td>
-                    </tr></table>
+                    </tr>
+                    </table>
 
         </div>
         <div style="padding: 16px">
@@ -905,10 +1060,10 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
 
     glob.onComparisonChanged = function (event) {
-      if(event.value == "0" || event.value == "1" || event.value == "7") {
+      if (event.value == "0" || event.value == "1" || event.value == "7") {
         document.getElementById("iffalseContainer").style.display = "none";
         document.getElementById("actionsError").style.display = "none";
-      } else if(event.value == "5" || event.value == "99") {
+      } else if (event.value == "5" || event.value == "99") {
         document.getElementById("iffalseContainer").style.display = "none";
         document.getElementById("actionsError").style.display = null;
       } else {
@@ -916,7 +1071,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         document.getElementById("actionsError").style.display = "none";
       }
 
-      if(event.value > "4") {
+      if (event.value > "4") {
         document.getElementById("divValueError").style.marginTop = "-50px";
       } else {
         document.getElementById("divValueError").style.marginTop = "10px";
@@ -936,7 +1091,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
     glob.variableChangeError = function (event) {
-      if(event.value == "0") {
+      if (event.value == "0") {
         document.getElementById("varNameContainerError").style.display = "none";
       } else {
         document.getElementById("varNameContainerError").style.display = null;
@@ -1122,7 +1277,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     const _this = this;
     const data = cache.actions[cache.index];
     var messageoff = data.messageoff;
-    if (messageoff == undefined) { messageoff = true }
+    if (messageoff == undefined) messageoff = true;
     const channel = parseInt(data.channel, 10);
     const message = this.evalMessage(data.message, cache);
     const storagewebhook = parseInt(data.storagewebhook)
@@ -1164,7 +1319,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
     let content;
-
     if (messageoff == true) content = message.length > 0 ? message : "";
 
     if (content) {
@@ -1185,6 +1339,149 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       const embedDatas = data.embeds;
       for (let i = 0; i < embedDatas.length; i++) {
         const embedData = embedDatas[i];
+
+        if (embedData.formula == "1" || embedData.formula == "2") {
+          const comparar = parseInt(embedData.comparar, 10);
+          val1 = this.evalMessage(embedData.val1, cache);
+          val2 = this.evalMessage(embedData.val2, cache);
+
+          switch (comparar) {
+            case 0:
+              result = val1 !== undefined;
+              break;
+            case 1:
+              result = val1 == val2;
+              break;
+            case 2:
+              result = val1 === val2;
+              break;
+            case 3:
+              result = val1 < val2;
+              break;
+            case 4:
+              result = val1 > val2;
+              break;
+            case 5:
+              if (typeof val1?.toString().includes === "function") {
+                result = val1.toString().includes(val2);
+              }
+              break;
+            case 6:
+              result = Boolean(val1.toString().match(new RegExp('^' + val2 + '$', 'i')));
+              break;
+            case 7:
+              result = Boolean(val1.toString().length > val2);
+              break;
+            case 8:
+              result = Boolean(val1.toString().length < val2);
+              break;
+            case 9:
+              result = Boolean(val1.toString().length == val2);
+              break;
+            case 10:
+              result = val1.toString().startsWith(val2);
+              break;
+            case 11:
+              result = val1.toString().endsWith(val2);
+              break;
+            case 12:
+              result = Boolean(val1 >= val2);
+              break;
+            case 13:
+              result = Boolean(val1 <= val2);
+              break;
+            case 14:
+              result = Boolean(val1.toString().match(new RegExp(val2)));
+              break;
+            case 16:
+              const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
+              result = conditions.some(el => val1.includes(el));
+              break;
+            case 17:
+              const conditionsX = val2
+              result = conditionsX.some(els => val1.includes(els));
+              break;
+            case 18:
+              const conditionsZ = val2
+              result = conditionsZ.some(elz => val1 == (elz));
+              break;
+            case 19:
+              result = val1 % 2 == 0
+              break;
+            case 20:
+              result = val1 % 2 == 1
+              break;
+            case 21:
+              result = Boolean(!isNaN(parseFloat(val1.toString().replace(",", "."))));
+              break;
+            case 22:
+              result = Boolean(Array.isArray(val1));
+              break;
+            case 23:
+              const isImageUrl = require("is-image-url");
+              result = isImageUrl(val1);
+              break;
+            case 24:
+              result = typeof val1 === "string";
+              break;
+            case 25:
+              const isUrl = require("is-url");
+              result = isUrl(val1);
+              break;
+            case 26:
+              const mail = require("email-existence");
+              mail.check(val1, (error, response) => {
+                result = response;
+              });
+              break;
+            case 27:
+              let pattern = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+              result = val1.match(pattern);
+              break;
+            case 28:
+              invite = new RegExp(/(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]/g);
+              result = invite.test(val1);
+              break;
+            case 29:
+              result = val1.toLowerCase().includes(val2.toLowerCase());
+              break;
+            case 30:
+              tratarval1 = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              tratar = val2.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              result = tratarval1.includes(tratar);
+              break;
+            case 31:
+              tratarval1 = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              tratar = val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              result = tratarval1.toLowerCase().includes(tratar);
+              break;
+            case 32:
+              var words = val1.split(" ");
+              result = words.includes(val2);
+              break;
+            case 33:
+              var words = val1.toLowerCase().split(" ");
+              result = words.includes(val2.toLowerCase());
+              break;
+            case 34:
+              var words = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+              result = words.includes(val2.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+              break;
+            case 35:
+              var words = val1.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+              result = words.includes(val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+              break;
+            case 36:
+              var separador = val1.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+              var valor2 = val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
+              result = separador.some(els => valor2.includes(els));
+              break;
+          }
+
+          if (embedData.formula == "1" && Boolean(result) != false) continue;
+          if (embedData.formula == "2" && Boolean(result) != true) continue;
+        }
+
         const embed = new MessageEmbed();
         if (embedData.title) embed.setTitle(this.evalMessage(embedData.title, cache));
         if (this.evalMessage(embedData.url, cache)) embed.setURL(this.evalMessage(embedData.url, cache));
@@ -1227,7 +1524,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           }
         }
 
-        if (embedData.description) embed.setDescription(this.evalMessage(embedData.description || '\u200B', cache));
+        if (embedData.description) embed.setDescription(this.evalMessage(embedData.description || "\u200B", cache));
 
         if (embedData.fields?.length > 0) {
           const fields = embedData.fields;
@@ -1246,11 +1543,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               }
               switch (compare) {
                 case 0:
-                  if (typeof val1 !== 'undefined') {
-                    result = true
-                  } else {
-                    result = false
-                  }
+                  result = val1 !== undefined;
                   break;
                 case 1:
                   result = val1 == val2;
@@ -1259,10 +1552,10 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                   result = val1 === val2;
                   break;
                 case 3:
-                  result = parseFloat(val1) < parseFloat(val2);
+                  result = val1 < val2;
                   break;
                 case 4:
-                  result = parseFloat(val1) > parseFloat(val2);
+                  result = val1 > val2;
                   break;
                 case 5:
                   if (typeof val1?.toString().includes === "function") {
@@ -1294,7 +1587,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                   result = Boolean(val1 <= val2);
                   break;
                 case 14:
-                  result = Boolean(val1.toString().match(new RegExp(val2)))
+                  result = Boolean(val1.toString().match(new RegExp(val2)));
                   break;
                 case 16:
                   const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
@@ -1317,8 +1610,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                 case 21:
                   result = Boolean(!isNaN(parseFloat(val1.toString().replace(",", "."))));
                   break;
+                case 22:
+                  result = Boolean(Array.isArray(val1));
+                  break;
                 case 23:
-                  const isImageUrl = require('is-image-url');
+                  const isImageUrl = require("is-image-url");
                   result = isImageUrl(val1);
                   break;
                 case 24:
@@ -1327,6 +1623,55 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                 case 25:
                   const isUrl = require("is-url");
                   result = isUrl(val1);
+                  break;
+                case 26:
+                  const mail = require("email-existence");
+                  mail.check(val1, (error, response) => {
+                    result = response;
+                  });
+                  break;
+                case 27:
+                  let pattern = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+                  result = val1.match(pattern);
+                  break;
+                case 28:
+                  invite = new RegExp(/(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]/g);
+                  result = invite.test(val1);
+                  break;
+                case 29:
+                  result = val1.toLowerCase().includes(val2.toLowerCase());
+                  break;
+                case 30:
+                  tratarval1 = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                  tratar = val2.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                  result = tratarval1.includes(tratar);
+                  break;
+                case 31:
+                  tratarval1 = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                  tratar = val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                  result = tratarval1.toLowerCase().includes(tratar);
+                  break;
+                case 32:
+                  var words = val1.split(" ");
+                  result = words.includes(val2);
+                  break;
+                case 33:
+                  var words = val1.toLowerCase().split(" ");
+                  result = words.includes(val2.toLowerCase());
+                  break;
+                case 34:
+                  var words = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+                  result = words.includes(val2.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+                  break;
+                case 35:
+                  var words = val1.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+                  result = words.includes(val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+                  break;
+                case 36:
+                  var separador = val1.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+                  var valor2 = val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
+                  result = separador.some(els => valor2.includes(els));
+                  break;
               }
             }
 
@@ -1409,11 +1754,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           }
           switch (compare) {
             case 0:
-              if (typeof val1 !== 'undefined') {
-                result = true
-              } else {
-                result = false
-              }
+              result = val1 !== undefined;
               break;
             case 1:
               result = val1 == val2;
@@ -1422,10 +1763,10 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               result = val1 === val2;
               break;
             case 3:
-              result = parseFloat(val1) < parseFloat(val2);
+              result = val1 < val2;
               break;
             case 4:
-              result = parseFloat(val1) > parseFloat(val2);
+              result = val1 > val2;
               break;
             case 5:
               if (typeof val1?.toString().includes === "function") {
@@ -1472,13 +1813,16 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               result = conditionsZ.some(elz => val1 == (elz));
               break;
             case 19:
-              result = val1 % 2 == 0;
+              result = val1 % 2 == 0
               break;
             case 20:
-              result = val1 % 2 == 1;
+              result = val1 % 2 == 1
               break;
             case 21:
               result = Boolean(!isNaN(parseFloat(val1.toString().replace(",", "."))));
+              break;
+            case 22:
+              result = Boolean(Array.isArray(val1));
               break;
             case 23:
               const isImageUrl = require("is-image-url");
@@ -1490,6 +1834,55 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             case 25:
               const isUrl = require("is-url");
               result = isUrl(val1);
+              break;
+            case 26:
+              const mail = require("email-existence");
+              mail.check(val1, (error, response) => {
+                result = response;
+              });
+              break;
+            case 27:
+              let pattern = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+              result = val1.match(pattern);
+              break;
+            case 28:
+              invite = new RegExp(/(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]/g);
+              result = invite.test(val1);
+              break;
+            case 29:
+              result = val1.toLowerCase().includes(val2.toLowerCase());
+              break;
+            case 30:
+              tratarval1 = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              tratar = val2.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              result = tratarval1.includes(tratar);
+              break;
+            case 31:
+              tratarval1 = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              tratar = val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+              result = tratarval1.toLowerCase().includes(tratar);
+              break;
+            case 32:
+              var words = val1.split(" ");
+              result = words.includes(val2);
+              break;
+            case 33:
+              var words = val1.toLowerCase().split(" ");
+              result = words.includes(val2.toLowerCase());
+              break;
+            case 34:
+              var words = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+              result = words.includes(val2.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+              break;
+            case 35:
+              var words = val1.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+              result = words.includes(val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+              break;
+            case 36:
+              var separador = val1.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+              var valor2 = val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
+              result = separador.some(els => valor2.includes(els));
+              break;
           }
         }
 
@@ -1508,7 +1901,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           if (!data.buttons[i].name) data.buttons[i].name = "\u200b";
 
 
-          data.buttons[i].disabled = false
+          data.buttons[i].disabled = false;
 
           if (fbot.formula == "3") {
 
@@ -1529,16 +1922,16 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
 
             if (result == true) {
-              data.buttons[i].disabled = true
+              data.buttons[i].disabled = true;
             } else {
-              data.buttons[i].disabled = false
+              data.buttons[i].disabled = false;
             }
 
           }
 
           if (fbot.formula == "5") {
 
-            data.buttons[i].disabled = true
+            data.buttons[i].disabled = true;
 
           }
 
@@ -1602,11 +1995,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
             switch (compare) {
               case 0:
-                if (typeof val1 !== 'undefined') {
-                  result = true
-                } else {
-                  result = false
-                }
+                result = val1 !== undefined;
                 break;
               case 1:
                 result = val1 == val2;
@@ -1615,10 +2004,10 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                 result = val1 === val2;
                 break;
               case 3:
-                result = parseFloat(val1) < parseFloat(val2);
+                result = val1 < val2;
                 break;
               case 4:
-                result = parseFloat(val1) > parseFloat(val2);
+                result = val1 > val2;
                 break;
               case 5:
                 if (typeof val1?.toString().includes === "function") {
@@ -1650,7 +2039,13 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                 result = Boolean(val1 <= val2);
                 break;
               case 14:
-                result = Boolean(val1.toString().match(new RegExp(val2)))
+                result = Boolean(val1.toString().match(new RegExp(val2)));
+                break;
+              case 15:
+                var numberj = val1.toString();
+                if (numberj >= val2 && val1 <= val3) {
+                  result = numberj;
+                }
                 break;
               case 16:
                 const conditions = ["Ä", "Å", "Á", "Â", "À", "Ã", "Ā", "Ă", "Ą", "ā", "ă", "ą", "ä", "á", "â", "à", "ã", "É", "Ê", "Ë", "È", "Ė", "Ę", "Ě", "Ĕ", "Ē", "ė", "ę", "ě", "ĕ", "ē", "é", "ê", "ë", "è", "Í", "Î", "Ï", "Ì", "İ", "Į", "Ī", "ı", "į", "ī", "í", "î", "ï", "ì", "Ö", "Ó", "Ô", "Ò", "Õ", "Ő", "Ō", "ő", "ō", "ö", "ó", "ô", "ò", "õ", "Ü", "Ú", "Û", "Ų", "Ű", "Ů", "Ū", "ų", "ű", "ů", "ū", "ü", "ú", "û", "ù", "Ç", "Ć", "Č", "ç", "ć", "č", "Ñ", "Ň", "Ņ", "Ń", "ñ", "ň", "ņ", "ń", "Ÿ", "Ý", "ý", "Ź", "Ż", "Ž", "ź", "ż", "ž", "Ł", "Ľ", "Ļ", "Ĺ", "ł", "ľ", "ĺ", "Ķ", "ķ", "Ģ", "Ğ", "ģ", "ğ", "Ď", "ď", "Ś", "Š", "Ş", "ś", "š", "ş", "Ť", "Ț", "Ţ", "ť", "ț", "ţ", "Ŕ", "Ř", "ŕ", "ř"]
@@ -1673,8 +2068,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               case 21:
                 result = Boolean(!isNaN(parseFloat(val1.toString().replace(",", "."))));
                 break;
+              case 22:
+                result = Boolean(Array.isArray(val1));
+                break;
               case 23:
-                const isImageUrl = require('is-image-url');
+                const isImageUrl = require("is-image-url");
                 result = isImageUrl(val1);
                 break;
               case 24:
@@ -1683,6 +2081,55 @@ xinspace{padding:5px 0px 0px 0px;display:block}
               case 25:
                 const isUrl = require("is-url");
                 result = isUrl(val1);
+                break;
+              case 26:
+                const mail = require("email-existence");
+                mail.check(val1, (error, response) => {
+                  result = response;
+                });
+                break;
+              case 27:
+                let pattern = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+                result = val1.match(pattern);
+                break;
+              case 28:
+                invite = new RegExp(/(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]/g);
+                result = invite.test(val1);
+                break;
+              case 29:
+                result = val1.toLowerCase().includes(val2.toLowerCase());
+                break;
+              case 30:
+                tratarval1 = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                tratar = val2.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                result = tratarval1.includes(tratar);
+                break;
+              case 31:
+                tratarval1 = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                tratar = val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                result = tratarval1.toLowerCase().includes(tratar);
+                break;
+              case 32:
+                var words = val1.split(" ");
+                result = words.includes(val2);
+                break;
+              case 33:
+                var words = val1.toLowerCase().split(" ");
+                result = words.includes(val2.toLowerCase());
+                break;
+              case 34:
+                var words = val1.normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+                result = words.includes(val2.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+                break;
+              case 35:
+                var words = val1.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+                result = words.includes(val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+                break;
+              case 36:
+                var separador = val1.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(" ");
+                var valor2 = val2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",");
+                result = separador.some(els => valor2.includes(els));
+                break;
             }
           }
 
@@ -1823,7 +2270,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           const conteudodata = this.getVariable(varid, varnamer, cache)
           const spoiler = !!attachment?.spoiler;
           var name = this.evalMessage(attachment?.name, cache)
-          if(name == ""){name = "text.txt"}
+          if (name == "") { name = "texto.txt" }
           const buffer = Buffer.from(conteudodata)
           const msgAttachment = new MessageAttachment(buffer, name);
           if (spoiler) {
@@ -1895,7 +2342,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       } else if (cache?.interaction?.update) {
         promise = cache.interaction.update(messageOptions);
       } else {
-        this.displayError(data, cache, "Отправить сообщение -> Сообщение /Параметры для редактирования -> Обновление взаимодействия / Не удалось найти взаимодействие для редактирования");
+        this.displayError(data, cache, "Send Message -> Message/Options to Edit -> Interaction Update / Could not find interaction to edit");
       }
 
       if (promise) {
@@ -1955,13 +2402,13 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
     function erro(err) {
-      if(data.errcmd) _this.displayError(data, cache, err);
+      if (data.errcmd) _this.displayError(data, cache, err);
 
       _this.storeValue(err, parseInt(data.storageError), _this.evalMessage(data.varNameError, cache), cache);
 
-      if(data.iffalse == "5") return _this.executeSubActions(data.actionsError, cache);
-      if(data.iffalse == "99") return _this.executeSubActionsThenNextAction(data.actionsError, cache);
-      
+      if (data.iffalse == "5") return _this.executeSubActions(data.actionsError, cache);
+      if (data.iffalse == "99") return _this.executeSubActionsThenNextAction(data.actionsError, cache);
+
       return _this.executeResults(false, data, cache);
     }
 
