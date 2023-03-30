@@ -1694,7 +1694,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             }
 
             if (result == true) {
-              embed.addField(this.evalMessage(f.name || '\u200B', cache), this.evalMessage(f.value || '\u200B', cache), f.inline === "true")
+              embed.addFields({ name: this.evalMessage(f.name || '\u200B', cache), value: this.evalMessage(f.value || '\u200B', cache), inline: f.inline === "true"})
             };
           }
         }
