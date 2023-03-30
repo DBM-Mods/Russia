@@ -163,7 +163,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.5</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.7</div>
 
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
     <br><br><br>
@@ -182,7 +182,8 @@ module.exports = {
   <tab label="Текст" icon="align left">
   <div style="width: 100%; padding:8px;height: calc(100vh - 290px);overflow:auto">
     
-      <textarea id="message" class="dbm_monospace" rows="9" placeholder="Введите сообщение здесь ..." style="height: calc(100vh - 309px); white-space: nowrap;"></textarea>
+  <textarea id="message" class="dbm_monospace" rows="6" placeholder="Введите сообщение здесь..." style="height: calc(100vh - 349px); white-space: nowrap;"></textarea>
+  <br><div id="contador" style="text-align:right;position:relative;width:100%">0 символов</div>
     </div>
   </tab>
 
@@ -1059,6 +1060,15 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
   init: function () {
     const { glob, document } = this;
+
+    const textarea = document.getElementById('message');
+    const contador = document.getElementById('contador');
+    const comprimentoTexto = textarea.value.length;
+    contador.textContent = `${comprimentoTexto} букв`;
+    textarea.addEventListener('input', () => {
+      const comprimentoTexto = textarea.value.length;
+      contador.textContent = `${comprimentoTexto} букв`;
+    });
 
 
     glob.onComparisonChanged = function (event) {
@@ -2217,23 +2227,21 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           const varnamer = this.evalMessage(attachment?.canvasnome, cache);
           const varid = this.evalMessage(attachment?.canvasvar, cache);
           const imagedata = this.getVariable(varid, varnamer, cache)
-          if (!imagedata) {
-            this.callNextAction(cache)
-            return
+          if (imagedata) {
+            const image = new Canvas.Image()
+            image.src = imagedata
+            const canvas = Canvas.createCanvas(image.width, image.height)
+            const ctx = canvas.getContext('2d')
+            ctx.drawImage(image, 0, 0, image.width, image.height)
+            const buffer = canvas.toBuffer('image/png', { compressionLevel: data.attachments[i].compress })
+            const spoiler = !!attachment?.spoiler;
+            const name = attachment?.name || (spoiler ? Util.basename("image.png") : undefined);
+            const msgAttachment = new MessageAttachment(buffer, name);
+            if (spoiler) {
+              msgAttachment.setSpoiler(true);
+            }
+            messageOptions.files.push(msgAttachment);
           }
-          const image = new Canvas.Image()
-          image.src = imagedata
-          const canvas = Canvas.createCanvas(image.width, image.height)
-          const ctx = canvas.getContext('2d')
-          ctx.drawImage(image, 0, 0, image.width, image.height)
-          const buffer = canvas.toBuffer('image/png', { compressionLevel: data.attachments[i].compress })
-          const spoiler = !!attachment?.spoiler;
-          const name = attachment?.name || (spoiler ? Util.basename("image.png") : undefined);
-          const msgAttachment = new MessageAttachment(buffer, name);
-          if (spoiler) {
-            msgAttachment.setSpoiler(true);
-          }
-          messageOptions.files.push(msgAttachment);
 
         }
         if (data.attachments[i].tipo == "2") {
