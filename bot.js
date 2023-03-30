@@ -9,7 +9,7 @@ DBM.version = "2.1.6";
 
 const DiscordJS = (DBM.DiscordJS = require("discord.js"));
 
-const requiredDjsVersion = "13.7.0";
+const requiredDjsVersion = "13.14.0";
 if (DiscordJS.version < requiredDjsVersion) {
   console.log(
     `This version of Discord Bot Maker requires discord.js ${requiredDjsVersion}+.\nPlease use "Project > Module Manager" and "Project > Reinstall Node Modules" to update to discord.js ${requiredDjsVersion}.\n`,
@@ -1210,7 +1210,7 @@ Actions.eval = function (content, cache, logError = true) {
   const server = cache.server;
   const client = DBM.Bot.bot;
   const bot = DBM.Bot.bot;
-  const me = server?.me ?? null;
+  const me = server?.members?.me ?? null;
   let user = "",
     member = "",
     channel = "",
