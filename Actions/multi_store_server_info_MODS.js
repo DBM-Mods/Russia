@@ -698,7 +698,7 @@ module.exports = {
                     result = await targetServer.fetchOwner();
                     break;
                 case 12:
-                    result = targetServer.me;
+                    result = targetServer.members.me;
                     break;
                 case 13:
                     result = [...targetServer.channels.cache.values()];
