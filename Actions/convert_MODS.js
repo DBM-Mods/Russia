@@ -4,7 +4,7 @@ module.exports = {
     section: "Other Stuff",   
     short_description: "Преобразует информацию в текст, номер или формат",
     meta: {
-        version: '2.1.6',
+        version: '2.1.7',
         preciseCheck: true,
         author: '[XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
         authorUrl: 'https://github.com/DBM-Mods/Russia',
