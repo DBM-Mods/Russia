@@ -205,12 +205,12 @@ module.exports = {
         downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
     },
 
-    fields: ["idioma", "city", "degreeType", "info", "iffalse", "iffalseVal", "descriptioncolor", "description", "descriptionx", "branches"],
+    fields: ["idioma", "city", "degreeType", "info", "iffalse", "iffalseVal", "descriptioncolor", "description", "descriptionx", "timeout", "errcmd", "errs", "errv", "actionserr", "branches"],
 
     html(isEvent, data) {
         return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
     <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
@@ -241,9 +241,18 @@ module.exports = {
 
   <span class="dbminputlabel">Язык</span><br>
   <select id="idioma" class="round">
-    <option value="0" selected>Русский</option>
-    <option value="1">Английский</option>
+  <option value="0">Português</option>
+  <option value="1">English</option>
+  <option value="2" selected>Русский</option>
+  <option value="3">Français</option>
   </select>
+
+  <br> 
+  <span class="dbminputlabel">Тайм-аут в миллисекундах</span><br>
+  <input id="temenout" value="10000" class="round" type="text">
+<br>
+Таймаут - это предельное время ответа API, чем оно короче, тем выше риск возврата. "ESOCKETTIMEDOUT"
+
 
   <br>
 </div>
@@ -347,20 +356,45 @@ module.exports = {
 
 <br>
 
-  <div style="float: left; width: 40%">
-<span class="dbminputlabel">Если не найдено</span><br>
-<select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-<option value="0" selecionado>Продолжать</option>
-<option value="1">Остановить последовательность действий</option>
-<option value="2">Перейти к действию</option>
-<option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к якову действия</option>
-</select>
+<span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
+<dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
 </div>
-<div id="iffalseContainer" style="display: none; float: right; width: 55%;"><span id="xinelas" class="dbminputlabel">Para</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
 
-<br><br>
-  <br>
+<br>
+      <div>
+      <div style="float: left; width: 38%" id="xinext">
+      <span class="dbminputlabel">При возникновении ошибки</span><br>
+      <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
+      <option value="0" selected>Продолжить действия</option>
+      <option value="1">Остановить последовательность действий</option>
+      <option value="2">Перейти к действию</option>
+      <option value="3">Пропустить следующие действия</option>
+      <option value="4">Перейти к якорю действия</option>
+      <option value="5">Выполнение действий и остановить</option>
+      <option value="6">Выполнить действия и продолжить</option>
+      </select>
+      <br>
+      </div>
+      <div id="iffalseContainer" style="display: none; float: right; width: 60%;"><div id="xincontrol"><span id="xinelas" class="dbminputlabel">Для</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
+      </div><br></div>
+      <div id="containerxin" style="width:100%">
+      <br><br>
+      <action-list-input id="actionserr" height="calc(100vh - 450px)"></action-list-input>
+      </div>
+      
+      <div style="padding-top:8px">
+      <table>
+        <tr>
+        <td class="col1"><span class="dbminputlabel">Сохранить ошибку в</span><br>
+        <select id="errs" value="0" class="round" onchange="glob.variableChange(this, 'varerrsv')">
+          ${data.variables[0]}
+        </select></td>
+        <td class="col2"><div id="varerrsv"><span class="dbminputlabel">Имя переменной</span><br>
+        <input id="errv" class="round" type="text"></div></td>
+        </tr>
+        </table>
+      </div>
+
 </div>
   </tab>
   </tab-system>
@@ -373,7 +407,8 @@ table{width:100%}
 .td1{width:50%;padding:0px 5px 0px 0px}
 .td2{width:25%;padding:0px 3px 0px 3px}
 .td3{width:25%;padding:0px 0px 0px 5px}
-
+.col1{width:35%;padding:0px 10px 0px 0px}
+.col2{width:65%}
 .dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
 .dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
 
@@ -392,7 +427,7 @@ table{width:100%}
                 xinelaslink.setAttribute('title', url);
                 xinelaslink.addEventListener('click', (e) => {
                     e.stopImmediatePropagation();
-                    console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+                    console.log(`URL-адрес запуска: [${url}] в браузере по умолчанию.`);
                     require('child_process').execSync(`start ${url}`);
                 });
             }
@@ -404,23 +439,34 @@ table{width:100%}
             } else {
               document.getElementById("iffalseContainer").style.display = "none";
             }
+            if (event.value == "5" || event.value == "6") {
+              document.getElementById("containerxin").style.display = null;
+              document.getElementById("xincontrol").style.display = "none";
+              document.getElementById("xinext").style.width = "100%";
+            } else {
+              document.getElementById("containerxin").style.display = "none";
+              document.getElementById("xincontrol").style.display = null;
+              document.getElementById("xinext").style.width = "38%";
+            }
             if (event.value == "2") {
-            document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
+              document.querySelector("[id='xinelas']").innerText = (`Número da ação`);
+            }
+            if (event.value == "3") {
+              document.querySelector("[id='xinelas']").innerText = (`Pular ações`);
+            }
+            if (event.value == "4") {
+              document.querySelector("[id='xinelas']").innerText = (`Nome da âncora`);
+            }
           }
-          if (event.value == "3") {
-            document.querySelector("[id='xinelas']").innerText = (`Пропустить действий`);
-          }
-          if (event.value == "4") {
-            document.querySelector("[id='xinelas']").innerText = (`Якоря название`);
-          }
-        }
-      
+
           glob.onComparisonChanged2(document.getElementById("iffalse"));
+          glob.variableChange(document.getElementById('errs'), 'varerrsv');
 
         glob.formatItem = function (data, presets) {
             let result = '<div style="display: inline-block; width: 200px; padding-left: 8px;">';
             const info = parseInt(data.info);
-            const storage = ['Ваш Xitadu', 'Временная переменная', 'Переменный сервер', 'Переменный глобал'];
+            const storage = ['Ваш кситаду', 'Временная переменная', 'Переменный сервер', 'Глобальная переменная'];
+
 
             switch (info) {
                 case 0:
@@ -592,6 +638,7 @@ table{width:100%}
         const city = this.evalMessage(data.city, cache)
         const degreeType2 = this.evalMessage(data.degreeType, cache)
         const idioma = parseInt(data.idioma)
+        const timeout = parseInt(this.evalMessage(data.timeout, cache)) || 10000
 
         const branches = data.branches;
 
@@ -599,9 +646,44 @@ table{width:100%}
 
         const weather = require('weather-js')
 
-        weather.find({ search: `${city}`, degreeType: `${degreeType2}` }, (err, response) => {
-            if (err || !response || response.length < 1) {
-                this.executeResults(false, data, cache)
+        const options = {
+            search: city,
+            degreeType: degreeType2,
+            timeout: timeout,
+          };
+
+        weather.find(options, (err, response) => {
+            if (err || !response || response.length == 0) {
+
+                let error = err
+                if(response == [] || err == null || err == "null"){
+                    
+                    if (idioma == 0) {error = "A Cidade não foi encontrada"}
+                    if (idioma == 1) {error = "City not found"}
+                    if (idioma == 2) {error = "Город не найден"}
+                    if (idioma == 3) {error = "Ville introuvable"}
+                }
+                
+                if (data.errcmd === true) {
+                    console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name)
+                    console.log(error)
+                  }
+    
+                  this.storeValue(error, parseFloat(data.errs), this.evalMessage(data.errv, cache), cache)
+    
+                  if (data.iffalse == "5" || data.iffalse == "6") {
+    
+                    if (data.iffalse == "5") {
+                      this.executeSubActions(data.actionserr, cache)
+                    } else {
+                      this.executeSubActionsThenNextAction(data.actionserr, cache)
+                    }
+    
+                  } else {
+                    this.executeResults(false, data, cache);
+                  }
+
+
             } else {
 
                 for (var i = 0; i < branches.length; i++) {
@@ -804,7 +886,31 @@ table{width:100%}
                         if (info == 3 || info == 11 || info == 15 || info == 18 || info == 20 || info == 24 || info == 30 || info == 36 || info == 42) {
 
                             list = ["Light Rain and Snow", "Rain and Snow", "Mostly Sunny", "Rain Showers", "Mostly Clear", "Partly Cloudy", "Light Rain", "Rain", "Mostly Cloudy", "Smoke", "Partly Sunny", "Cloudy", "Haze", "South", "North", "West", "East", "Norteeast", "Southwest", "Southwest", "Northeast", "Southeast", "Northwest", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Sunny", "Clear", "Fair", "Heavy T-Storms", "T-Storms", "Suleast", "Sulwest", "Light Snow", "Snow Showers", "Snow", "Nortewest"]
+                            list2 = ["Chuva e neve leves", "Chuva e neve", "Céu principalmente ensolarado", "Pancadas de chuva", "Céu parcialmente claro", "Céu parcialmente nublado", "Chuva leve", "Chuva", "Céu predominantemente nublado", "Céu com muita fumaça", "Céu parcialmente ensolarado", "Nublado", "Neblina", "Sul", "Norte", "Oeste", "Leste", "Nordeste", "Sudoeste", "Sudoeste", "Nordeste", "Sudeste", "Noroeste", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo", "Céu ensolarado", "Céu claro", "Céu claro", "Trovoadas pesadas", "Trovoadas", "Sudeste", "Sudoeste", "Pouca Neve", "Chuvas de neve", "Neve", "Noroeste"]
+                            for (var id = 0; id <= list.length; id++) {
+                                result = result.replace(list[id], list2[id]);
+                            }
+
+                        }
+                    }
+
+                    if (idioma == 2) {
+                        if (info == 3 || info == 11 || info == 15 || info == 18 || info == 20 || info == 24 || info == 30 || info == 36 || info == 42) {
+
+                            list = ["Light Rain and Snow", "Rain and Snow", "Mostly Sunny", "Rain Showers", "Mostly Clear", "Partly Cloudy", "Light Rain", "Rain", "Mostly Cloudy", "Smoke", "Partly Sunny", "Cloudy", "Haze", "South", "North", "West", "East", "Norteeast", "Southwest", "Southwest", "Northeast", "Southeast", "Northwest", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Sunny", "Clear", "Fair", "Heavy T-Storms", "T-Storms", "Suleast", "Sulwest", "Light Snow", "Snow Showers", "Snow", "Nortewest"]
                             list2 = ["Дождь и светлый снег", "Дождь и снег", "В основном солнечное небо", "Дождь", "Частично ясное небо", "Частично облачное небо", "Легкий дождь", "Дождь", "Преимущественно облачное небо", "Небо с большим дымом", "Частично солнечно", "Облачный", "Туман", "Юг", "Север", "Запад", "Восток", "К северо-востоку", "Юго-запад", "Юго-запад", "К северо-востоку", "Юго -восток", "Северо-Запад", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Доминго", "Солнечное небо", "Чистое небо", "Чистое небо", "Сильные грозы", "Гром", "Юго -восток", "Юго-запад", "Снег", "Снежные осадки", "Снег", "Северо-Запад"]
+                            for (var id = 0; id <= list.length; id++) {
+                                result = result.replace(list[id], list2[id]);
+                            }
+
+                        }
+                    }
+
+                    if (idioma == 3) {
+                        if (info == 3 || info == 11 || info == 15 || info == 18 || info == 20 || info == 24 || info == 30 || info == 36 || info == 42) {
+
+                            list = ["Light Rain and Snow", "Rain and Snow", "Mostly Sunny", "Rain Showers", "Mostly Clear", "Partly Cloudy", "Light Rain", "Rain", "Mostly Cloudy", "Smoke", "Partly Sunny", "Cloudy", "Haze", "South", "North", "West", "East", "Norteeast", "Southwest", "Southwest", "Northeast", "Southeast", "Northwest", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Sunny", "Clear", "Fair", "Heavy T-Storms", "T-Storms", "Suleast", "Sulwest", "Light Snow", "Snow Showers", "Snow", "Nortewest"]
+                            list2 = ["Pluie et neige légères", "Pluie et neige", "Principalement ensoleillé", "Averses de pluie", "Partiellement dégagé", "Partiellement nuageux", "Pluie légère", "Pluie", "Principalement nuageux", "Fumée", "Partiellement ensoleillé", "Nuageux", "Brume", "Sud", "Nord", "Ouest", "Est", "Nord-Est", "Sud-Ouest", "Sud-Ouest", "Nord-Est", "Sud-Est", "Nord-Ouest", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Ensoleillé", "Clair", "Beau", "Orages violents", "Orages", "Sud-Est", "Sud-Ouest", "Légère neige", "Chutes de neige", "Neige", "Nord-Ouest"]
                             for (var id = 0; id <= list.length; id++) {
                                 result = result.replace(list[id], list2[id]);
                             }
