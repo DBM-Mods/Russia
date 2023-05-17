@@ -10,63 +10,172 @@ module.exports = {
   },
 
   subtitle(data) {
+    if(data.descriptionx == true){
+      desccor = data.descriptioncolor
+      } else {
+        desccor = 'none'
+      }
+
     let source;
+    if (parseInt(data.sourcetype, 10) === 4) {
+      source = 'То же событие';
+    }
     if (parseInt(data.sourcetype, 10) === 3) {
-      source = 'Та же команда/событие';
+      source = 'Та же команда';
     }
     if (parseInt(data.sourcetype, 10) === 2) {
       source = 'Имя команды: ' + data.source3.toString();
     }
     if (parseInt(data.sourcetype, 10) === 1) {
-      source = 'Идентификатор (ID) команды: ' +data.source2.toString();
+      source = 'Идентификатор команды: ' +data.source2.toString();
     } 
     if (parseInt(data.sourcetype, 10) === 0 || data.sourcetype == undefined) {
       source = 'Список > команда: ' +data.source.toString();
     }
-    return `${source}`;
+    return data.description
+        ? `<font style="color:${desccor}">${data.description}</font>`
+        : `<font style="color:${desccor}">${source}</font>`
   },
 
-  fields: ['sourcetype', 'source', 'source2', 'source3', 'type'],
+  fields: ['sourcetype', 'source', 'source2', 'source3', 'type', "description", "descriptionx", "descriptioncolor"],
 
   html() {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.4</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
-<div style="float: left; width: 100%; padding-top: 20px;">
-<span class="dbminputlabel">Тип выбора</span><br>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.5</div>
+
+    <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
+
+    <div id="flutuador" style="padding:0px 0px 15px 0px">
+    <table style="width:100%;"><tr>
+      <td>
+        <span class="dbminputlabel">Описание действия</span>
+        <br>
+        <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+      </td>
+      <td style="padding:0px 0px 0px 10px;width:70px">
+        <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
+          <dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox>
+        </div>
+        <br>
+        <input type="color" value="#ffffff" class="round" id="descriptioncolor">
+      </td>
+    </table>
+  </div>
+
+    <style>
+      .dbmmodsbr1 {
+        position: absolute;
+        bottom: 0px;
+        border: 0px solid rgba(50,50,50,0.7);
+        background: rgba(0,0,0,0.7);
+        color: #999;
+        padding: 5px;
+        left: 0px;
+        z-index: 999999;
+        cursor: pointer
+      }
+
+      .dbmmodsbr2 {
+        position: absolute;
+        bottom: 0px;
+        border: 0px solid rgba(50,50,50,0.7);
+        background: rgba(0,0,0,0.7);
+        color: #999;
+        padding: 5px;
+        right: 0px;
+        z-index: 999999;
+        cursor: pointer
+      }
+    </style>
+
+
+<span class="dbminputlabel">Тип источника</span><br>
   <select id="sourcetype" class="round" onchange="glob.onChange1(this)">
-    <option value="0" selected>Выбрать из списка</option>
-    <option value="1">Введите команду/идентификатор (ID) события</option>
-    <option value="2">Введите имя команды/событие</option>
-    <option value="3">Та же команда/событие</option>
+    <option value="0" selected>Выберите из списка</option>
+    <option value="1">Вставьте идентификатор команды/события</option>
+    <option value="2">Вставьте название команды/события</option>
+    <option value="3">Та же команда</option>
+    <option value="4">То же событие</option>
   </select>
-</div>
+
 <div id="info1"; style="float: left; width: 100%; padding-top: 20px; display: none;">
 <span class="dbminputlabel">Команда/событие</span><br>
-  <select id="source" class="round">
+  <select id="source" class="round2">
     <optgroup id="commands" label="Команды"></optgroup>
     <optgroup id="events" label="События"></optgroup>
   </select>
+  <input type="text" id="filtrodoxinxyla" class="round" placeholder="Параметры фильтра...">
 </div>
 <div id="info2" style="float: left; width: 100%; padding-top: 20px;">
-<span class="dbminputlabel">Идентификатор (ID) команды/события</span><br>
+<span class="dbminputlabel">Идентификатор команды/события</span><br>
   <input id="source2" class="round" type="text" placeholder="">
 </div>
 <div id="info3" style="float: left; width: 100%; padding-top: 20px;">
-<span class="dbminputlabel">Имя команды / события</span><br>
+<span class="dbminputlabel">Название команды/события</span><br>
   <input id="source3" class="round" type="text" placeholder="">
 </div>
 <div style="float: left; width: 100%; padding-top: 20px;">
 <span class="dbminputlabel">Тип вызова</span><br>
   <select id="type" class="round">
   <option value="true" selected>Дождаться завершения</option>
-  <option value="false">Одновременно выполнить</option>
+  <option value="false">Выполнять одновременно</option>
   </select>
-</div>`;
+</div>
+
+</div>
+<style>
+.round2{width:100%;height:30px;outline:0}
+.round2 option{padding:3px 8px;text-align:left}
+.round2 optgroup{text-align:center;padding:4px 0px;}
+
+.abrir {
+  height: 30px;
+  animation: abrir .5s forwards;
+}
+
+@keyframes abrir {
+  from {
+    height: 30px;
+  }
+  to {
+    height: 160px;
+  }
+}
+
+.fechar {
+  height: 160px;
+  animation: fechar .5s forwards;
+}
+
+@keyframes fechar {
+  from {
+    height: 160px;
+  }
+  to {
+    height: 30px;
+  }
+}
+
+</style>`;
   },
 
   init() {
     const { glob, document } = this;
+
+    const xinelaslinks = document.getElementsByClassName("xinelaslink");
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в вашем браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
 
     const { $cmds } = glob;
     const coms = document.getElementById('commands');
@@ -119,6 +228,53 @@ module.exports = {
     };
 
     glob.onChange1(document.getElementById('sourcetype'));
+
+    document.getElementById("source").addEventListener("click", function () {
+      document.getElementById("source").classList.add("abrir");
+      document.getElementById("source").classList.remove("fechar");
+      this.size = this.options.length;
+    });
+
+    document.getElementById("source").addEventListener("blur", function () {
+      this.size = 1;
+      document.getElementById("source").classList.remove("abrir");
+      document.getElementById("source").classList.add("fechar");
+      document.getElementById("source").style.height = "30px";
+    });
+    
+    document.getElementById("filtrodoxinxyla").addEventListener("keyup", function () {
+      var select = document.getElementById("source");
+      var optgroups = select.getElementsByTagName("optgroup");
+      var filter = this.value.toLowerCase();
+      var options = document.getElementById("source").options;
+      for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+        if (option.text.toLowerCase().indexOf(filter) === -1) {
+          option.style.display = "none";
+        } else {
+          option.style.display = "";
+        }
+      }
+
+      for (var i = 0; i < optgroups.length; i++) {
+        var optgroup = optgroups[i];
+        var options = optgroup.getElementsByTagName("option");
+        var visibleOptions = 0;
+        for (var j = 0; j < options.length; j++) {
+          if (options[j].style.display !== "none") {
+            visibleOptions++;
+          }
+        }
+        if (visibleOptions === 0) {
+          optgroup.style.display = "none";
+        } else {
+          optgroup.style.display = "";
+        }
+      }
+
+      document.getElementById("source").dispatchEvent(new Event("click"));
+    });
+
   },
 
   action(cache) {
@@ -136,14 +292,14 @@ module.exports = {
 
     if (data.sourcetype == "1") {
       id = source2
-      if (!id) return console.log('Введите идентификатор (ID) команды/событие!')
+      if (!id) return console.log('Введите идентификатор команды/события!')
     }
 
     let name;
 
     if (data.sourcetype == "2") {
       name = source3
-      if (!name) return console.log('Введите имя команды / события!')
+      if (!name) return console.log('Введите имя команды/события!')
     }
 
     if (data.sourcetype == "3") {
@@ -153,7 +309,7 @@ module.exports = {
     if(interaction){
       command = jp.query(
         this.getDBM().Files.data.commands,
-        `$..[?(@.name=="${interaction.commandName}")]`,
+        `$..[?(@.name=="${cache.meta.name}")]`,
       );
       } else {
         command = jp.query(
@@ -168,14 +324,23 @@ module.exports = {
         idsave = jp.query(command, '$.._id')
         id = idsave.toString()
       }
-    
+
+      if (data.sourcetype == "4") {
+        const jp2 = this.getMods().require('jsonpath');
+        command2 = jp2.query(
+          this.getDBM().Files.data.events,
+          `$..[?(@.name=="${cache.meta.name}")]`,
+        );
+        idsave2 = jp2.query(command2, '$.._id')
+        id = idsave2.toString()
+      }
 
     let actions;
 
     const allData = Files.data.commands.concat(Files.data.events);
     for (let i = 0; i < allData.length; i++) {
 
-      if (data.sourcetype == "0" || data.sourcetype == "1" || data.sourcetype == "3" || data.sourcetype == undefined) {
+      if (data.sourcetype == "0" || data.sourcetype == "1" || data.sourcetype == "3" || data.sourcetype == "4" || data.sourcetype == undefined) {
         if (allData[i] && allData[i]._id === id) {
           actions = allData[i].actions;
           break;
