@@ -112,6 +112,10 @@ module.exports = {
   <option value='9'>Дата создания файлов</option>
   <option value='10'>Общая продолжительность музыки за секунды</option>
 </select><br>
+
+<center><dbm-checkbox id="error" label="Вывести ошибку на консоль" checked></dbm-checkbox></center>
+
+<br>
 <table>
 <tr>
 <td class="sep1"><span class="dbminputlabel">Хранить в</span><br>
