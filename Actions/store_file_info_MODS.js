@@ -84,7 +84,7 @@ module.exports = {
   html(_isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.3</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.5</div>
 
     <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
@@ -147,7 +147,7 @@ table{width:100%}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -164,47 +164,87 @@ table{width:100%}
     const filePath = this.evalMessage(data.filePath, cache);
     var sincronizar = 0
 
-    if (!filePath) return this.displayError('Вставьте путь файла!');
+    if (!filePath) return this.displayError('Вставьте путь к файлу!');
 
     let result;
     switch (info) {
       case 0:
+        try{
         result = fs.statSync(filePath).size;
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 1:
+        try{
         result = path.extname(/[^/]*$/.exec(filePath)[0]);
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 2:
+        try{
         result = fs.readFileSync(filePath).toString().length;
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 3:
+        try{
         result = Math.round(fs.statSync(filePath).mtimeMs / 1000);
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 4:
+        try{
         result = fs.statSync(filePath).mtime;
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 5:
+        try{
         result = fs.existsSync(filePath);
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 6:
+        try{
         result = fs.readFileSync(filePath).toString();
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 7:
+        try{
         result = path.basename(filePath);
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 8:
+        try{
         result = Math.round(fs.statSync(filePath).birthtimeMs / 1000);
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 9:
+        try{
         result = fs.statSync(filePath).birthtime;
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
         break;
       case 10:
-        const fs = require('fs');
+        try{
         const child_process = require('child_process');
 
         sincronizar = 1
 
-        async function getDuration(filePath) {
+        function getDuration(filePath) {
           return new Promise((resolve, reject) => {
             child_process.execFile('ffprobe.exe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'default=noprint_wrappers=1:nokey=1', filePath], (err, stdout, stderr) => {
               if (err) {
@@ -216,12 +256,15 @@ table{width:100%}
             });
           });
         }
+      } catch (e) {
+        if(data.error == true){console.log(e)}
+      }
 
         try {
           result = await getDuration(filePath);
           this.storeValue(result, storage, varName, cache);
         } catch (err) {
-          console.error(err);
+          if(data.error == true){ console.error(err)}
         }
 
         break;
