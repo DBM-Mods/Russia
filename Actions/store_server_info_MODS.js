@@ -406,12 +406,14 @@ module.exports = {
       </table>
     </div>
 
-<server-input dropdownLabel="Servidor" selectId="server" variableContainerId="varNameContainer" variableInputId="varName"></server-input>
+<server-input dropdownLabel="Сервер" selectId="server" variableContainerId="varNameContainer" variableInputId="varName"></server-input>
 
 <br><br><br>
 
 <div>
 	<div style="padding-top: 8px; width: 100%;">
+  <span class="dbminputlabel">Информация</span><br>
+  <select id="info" class="round2">
   <optgroup label="Общая информация о сервере">
   <option value="0">Сервер (объект)</options>
   <option value="1">Идентификатор сервера</options>
@@ -542,7 +544,7 @@ module.exports = {
 
 <br>
 
-<store-in-variable dropdownLabel="Armazenar em" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
 <style>
 .round2{width:100%;height:30px;outline:0}
 .round2 option{padding:3px 8px;text-align:left}
