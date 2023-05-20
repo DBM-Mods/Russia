@@ -4,52 +4,62 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]',
+    author: '[XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
 
   subtitle(data, presets) {
     const info = [
-      "Объект пользователя",
-      "ID пользователя",
-      "Имя пользователя [Username]",
-      "Серверное имя пользователя [DisplayName]",
-      "Цвет пользователя",
-      "Название сервера пользователя",
-      "Последнее сообщение пользователя (Удалено)",
-      "Высшая роль пользователя на сервере",
-      "Позиция пользователя на сервере",
-      "Позиция цвета пользователя",
-      "Пользователь является владельцем сервера?",
-      "У пользователя отключен микрофон?",
-      "У пользователя отключен звук?",
-      "Можно ли пользователя забанить?",
-      "Игровой статус пользователя",
-      "Активность пользователя (Пример: Онлайн)",
-      "URL-ссылка аватарки пользователя",
-      "Список ролей пользователя",
-      "Количество возможностей пользователя",
-      "Объект голосового канала, где находится пользователь",
-      "Дискриминатор пользователя (Цифры после символа тега (#))",
-      "Тэг пользователя",
-      "Время создания аккаунта пользователя",
-      "Время создания аккаунта пользователя (TimeStamp)",
-      "Время входа на сервер пользователя",
-      "Время входа на сервер пользователя (TimeStamp)",
-      "ID последнего сообщения (Удалено)",
-      "Список прав пользователя",
-      "Список значков пользователя (Пример: HypeSquad)",
-      "Статус клиента пользователя [Web или Мобильный]",
-      "Кастомный статус пользователя",
-      "URL-ссылка серверной аватарки пользователя",
-      "Срок действия Тайм-аута пользователя",
-      "Срок действия Тайм-аута пользователя (TimeStamp)",
-      "URL-ссылка баннера пользователя",
-      "ID сервера пользователя",
-      "Дата окончания премиум-подписки (TimeStamp)",
+      "Объект участника",
+      "ID участника",
+      "Имя пользователя участника", "Отображаемое имя участника",
+      "Отображаемое имя участника", "Отображаемое имя участника",
+      "Цвет участника", "Цвет участника",
+      "Имя сервера пользователя",
+      "Последнее сообщение пользователя (удалено)",
+      "Самая высокая позиция участника", "Самая высокая позиция участника", "Самая высокая позиция участника", "Самая высокая позиция участника",
+      "Повышенная позиция участника", "Повышенная позиция участника",
+      "Цветовое положение участника", "Цветовое положение участника",
+      "Владеет ли участник?",
+      "Является ли участник немым?",
+      "Является ли участник глухим?", 
+      "Является ли участник глухим?",
+      "Может ли участник быть изгнанным?",
+      "Игровой статус участника",
+      "Статус пользователя",
+      "URL аватара пользователя",
+      "Список рангов пользователя",
+      "Количество сообщений пользователя",
+      "Голосовой канал пользователя",
+      "Дискриминатор участника",
+      "Метка участника",
+      "Учетная запись участника, созданная в",
+      "Временная метка аккаунта, созданного пользователем",
+      "Member logged in on", "Участник вошел в систему",
+      "Временная метка входа участника на сервер",
+      "ID последнего сообщения (удалено)",
+      "Список разрешений участника",
+      "Список значков участника",
+      "Клиентский статус участника",
+      "Пользовательский статус участника",
+      "URL-адрес аватара сервера участника",
+      "Member expired on",
+      "Временная метка участника истекла на",
+      "URL баннера участника",
+      "ID сервера участника",
+      "Временная метка импульса участника",
     ];
-    return `${presets.getMemberText(data.member, data.varName)} - ${info[parseInt(data.info, 10)]}`;
+
+    if (data.descriptionx) {
+      desccor = data.descriptioncolor;
+    } else {
+      desccor = "none";
+    }
+
+    return data.description
+      ? `<font style="color:${desccor}">${data.description}</font>`
+      : `<font style="color:${desccor}">${presets.getMemberText(data.member, data.varName)} - ${info[parseInt(data.info, 10)]}</font>`
   },
 
 
@@ -58,105 +68,179 @@ module.exports = {
     if (type !== varType) return;
     const info = parseInt(data.info, 10);
     let dataType = "Unknown Type";
+
     switch (info) {
       case 0:
-        dataType = "Server Member";
+        dataType = "участник сервера";
         break;
       case 1:
-        dataType = "Member ID";
+        dataType = "ID"
         break;
       case 2:
+        dataType = "Text";
+        break
       case 3:
         dataType = "Text";
-        break;
+        break
       case 4:
-        dataType = "Color";
-        break;
-      case 5:
-        dataType = "Server";
-        break;
-      case 7:
-      case 8:
-      case 9:
-        dataType = "Role";
-        break;
-      case 10:
-      case 11:
-      case 12:
-      case 13:
-        dataType = "Boolean";
-        break;
-      case 14:
-      case 15:
         dataType = "Text";
         break;
+      case 5:
+        dataType = "Text";
+        break;
+      case 6:
+        dataType = "Text";
+        break;
+      case 7:
+        dataType = "Position";
+        break;
+      case 8:
+        dataType = "Position";
+        break;
+      case 9:
+        dataType = "Position";
+        break;
+      case 10:
+        dataType = "True/False";
+        break;
+      case 11:
+        dataType = "True/False";
+        break;
+      case 12:
+        dataType = "True/False";
+        break;
+      case 13:
+        dataType = "True/False";
+        break;
+      case 14:
+        dataType = "Text";
+        break;
+      case 15:
+        dataType = "Text";
+        break
       case 16:
-      case 31:
-        dataType = "Image URL";
+        dataType = "URL"
         break;
       case 17:
-        dataType = "List of Roles";
-        break;
+        dataType = "List"
+        break
       case 18:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 19:
-        dataType = "Voice Channel";
+        dataType = "Channel";
         break;
       case 20:
-        dataType = "Member Discriminator";
+        dataType = "Число";
         break;
       case 21:
-        dataType = "Member Tag";
+        dataType = "Text";
         break;
       case 22:
-        dataType = "Date";
-        break;
+        dataType = "Data";
+        break
       case 23:
         dataType = "Timestamp";
-        break;
+        break
       case 24:
-        dataType = "Date";
+        dataType = "Data";
         break;
       case 25:
         dataType = "Timestamp";
+        break
+      case 26:
+        dataType = "ID";
         break;
       case 27:
-      case 28:
-      case 29:
         dataType = "List";
+        break;
+      case 28:
+        dataType = "List";
+        break;
+      case 29:
+        dataType = "Text";
         break;
       case 30:
         dataType = "Text";
         break;
       case 31:
-        dataType = "Date";
+        dataType = "URL";
         break;
       case 32:
+        dataType = "Data";
+        break
+      case 33:
         dataType = "Timestamp";
         break;
-      case 33:
-          dataType = "Timestamp";
-          break;
-          case 34:
-            dataType = "Image URL";
-            break;
-            case 35:
-              dataType = "Server ID";
-              break;
-              case 36:
-                dataType = "Timestamp";
-                break;
+      case 34:
+        dataType = "URL";
+        break;
+      case 35:
+        dataType = "ID";
+        break;
+      case 36:
+        dataType = "Timestamp";
+        break;
     }
+
     return [data.varName2, dataType];
   },
 
-  fields: ["member", "varName", "info", "storage", "varName2"],
+  fields: ["member", "varName", "info", "storage", "varName2", "description", "descriptionx", "descriptioncolor"],
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 1.0</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zipм">Обновление</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.3</div>
+
+    <style>
+    .xin {
+      padding: 5px;
+      border: 1px solid #777;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .dbmmodsbr1 {
+      position: absolute;
+      bottom: 0px;
+      border: 0px solid rgba(50,50,50,0.7);
+      background: rgba(0,0,0,0.7);
+      color: #999;
+      padding: 5px;
+      left: 0px;
+      z-index: 999999;
+      cursor: pointer;
+    }
+
+    .dbmmodsbr2 {
+      position: absolute;
+      bottom: 0px;
+      border: 0px solid rgba(50,50,50,0.7);
+      background: rgba(0,0,0,0.7);
+      color: #999;
+      padding: 5px;
+      right: 0px;
+      z-index: 999999;
+      cursor: pointer;
+    }
+  </style>
+
+  <div id="flutuador" style="padding:0px 0px 15px 0px">
+    <table style="width:100%;"><tr>
+        <td>
+        <span class="dbminputlabel">Описание действия</span>
+        <br>
+        <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+        </td>
+        <td style="padding:0px 0px 0px 10px;width:70px">
+        <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
+            <dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox>
+        </div>
+        <br>
+        <input type="color" value="#ffffff" class="round" id="descriptioncolor">
+        </td>
+    </table>
+  </div>
 
 <member-input dropdownLabel="Пользователь" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
 
@@ -164,58 +248,157 @@ module.exports = {
 
 <div style="padding-top: 8px;">
 	<span class="dbminputlabel">Информация</span><br>
-	<select id="info" class="round">
-  <option value="0" selecionado>Объект пользователя</option>
-  <option value="1">ID пользователя</option>
-  <option value="2">Имя пользователя [Username]</option>
-  <option value="3">Серверное имя пользователя [DisplayName]</option>
-  <option value="21">Тэг пользователя</option>
-  <option value="20">Дискриминатор пользователя (Цифры после символа тега (#))</option>
-  <option value="4">Цвет пользователя</option>
-  <option value="15">Активность пользователя (Пример: Онлайн)</option>
-  <option value="16">URL-ссылка аватарки пользователя</option>
-  <option value="34">URL-ссылка баннера пользователя</option>
-  <option value="31">URL-ссылка серверной аватарки пользователя</option>
-  <option value="5">Название сервера пользователя</option>
-  <option value="35">ID сервера пользователя</option>
-  <option value="6">Последнее сообщение пользователя (Удалено)</option>
-  <option value="26">ID последнего сообщения (Удалено)</option>
-  <option value="7">Высшая роль пользователя на сервере</option>
-  <option value="8">Позиция пользователя на сервере</option>
-  <option value="9">Позиция цвета пользователя</option>
-  <option value="17">Список ролей пользователя</option>
-  <option value="18">Количество возможностей пользователя</option>
-  <option value="10">Пользователь является владельцем сервера?</option>
-  <option value="11">У пользователя отключен микрофон?</option>
-  <option value="12">У пользователя отключен звук?</option>
-  <option value="13">Можно ли пользователя забанить?</option>
-  <option value="14">Игровой статус пользователя</option>
-  <option value="30">Кастомный статус пользователя</option>
-  <option value="19">Объект голосового канала, где находится пользователь</option>
-  <option value="22">Время создания аккаунта пользователя</option>
-  <option value="23">Время создания аккаунта пользователя (TimeStamp)</option>
-  <option value="24">Время входа на сервер пользователя</option>
-  <option value="25">Время входа на сервер пользователя (TimeStamp)</option>
-  <option value="27">Список прав пользователя</option>
-  <option value="28">Список значков пользователя (Пример: HypeSquad)</option>
-  <option value="29">Статус клиента пользователя [Web или Мобильный]</option>
-  <option value="32">Срок действия Тайм-аута пользователя</option>
-  <option value="33">Срок действия Тайм-аута пользователя (TimeStamp)</option>
-  <option value="36">Дата окончания премиум-подписки (TimeStamp)</option>
+	<select id="info" class="round2">
+  <option value="0" selected>Объект участника</option>
+  <option value="1">Идентификатор участника</option>
+  <option value="2">Имя пользователя участника</option>
+  <option value="3">Образное имя участника [Nickname]</option>
+  <option value="21">Тег участника</option>
+  <option value="20">Дискриминатор участника</option>
+  <option value="4">Цвет участника</option>
+  <option value="15">Статус участника</option>
+  <option value="16">URL аватара участника</option>
+  <option value="34">URL баннера участника</option>
+  <option value="31">URL аватара сервера пользователя</option>
+  <option value="5">Имя сервера участника</option>
+  <option value="35">Идентификатор сервера участника</option>
+  <option value="6">Последнее сообщение пользователя (удалено)</option>
+  <option value="26">Идентификатор последнего сообщения пользователя (удален)</option>
+  <option value="7">Высшее звание участника</option>
+  <option value="8">Высшее звание участника</option>
+  <option value="9">Цветовая позиция участника</option>
+  <option value="17">Список рангов участника</option>
+  <option value="18">Количество позиций участника</option>
+  <option value="10">Является ли пользователь владельцем?
+  <option value="11">Выключен ли звук у пользователя?
+  <option value="12">Глухой ли участник? </option>
+  <option value="13">Можно ли запретить пользователя? </option>
+  <option value="14">Наименование игрового статуса участника</option>
+  <option value="30">Название пользовательского статуса участника</option>
+  <option value="19">Голосовой канал пользователя</option>
+  <option value="22">Учетная запись участника создана на</option>
+  <option value="23">Временная метка учетной записи, созданной участником</option>
+  <option value="24">участник присоединился к серверу</option>
+  <option value="25">Временная метка пользователя, который присоединился к серверу</option>
+  <option value="27">Список разрешений участника</option>
+  <option value="28">Список бейджей участника</option>
+  <option value="29">Статус клиента участника [веб или мобильный]</option>
+  <option value="32">Время ожидания участника</option>
+  <option value="33">Временная метка участника истекла</option>
+  <option value="36">Временная метка импульса участника</option>
 	</select>
-</div>
+  <input type="text" id="filtrodoxinxyla" class="round" placeholder="Параметры фильтра...">
+  </div>
 
 <br>
 
-<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>`;
+<store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+
+<style>
+.round2{width:100%;height:30px;outline:0}
+.round2 option{padding:3px 8px;}
+.abrir {
+  height: 30px;
+  animation: abrir .5s forwards;
+}
+
+@keyframes abrir {
+  from {
+    height: 30px;
+  }
+  to {
+    height: 140px;
+  }
+}
+
+.fechar {
+  height: 140px;
+  animation: fechar .5s forwards;
+}
+
+@keyframes fechar {
+  from {
+    height: 140px;
+  }
+  to {
+    height: 30px;
+  }
+}
+
+select {
+  max-height: 140px;
+}
+</style>
+`;
   },
 
-  init() {},
+  init() {
+    const xinelaslinks = document.getElementsByClassName("xinelaslink");
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
+
+    document.getElementById("info").addEventListener("click", function () {
+      this.size = this.options.length;
+      document.getElementById("info").classList.add("abrir");
+      document.getElementById("info").classList.remove("fechar");
+      document.getElementById("info").style.display = "block";
+    });
+
+    document.getElementById("info").addEventListener("blur", function () {
+      this.size = 1;
+      document.getElementById("info").classList.remove("abrir");
+      document.getElementById("info").classList.add("fechar");
+      document.getElementById("info").style.height = "30px";
+    });
+    document.getElementById("filtrodoxinxyla").addEventListener("keyup", function () {
+      var filter = this.value.toLowerCase();
+      var options = document.getElementById("info").options;
+      for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+        if (option.text.toLowerCase().indexOf(filter) === -1) {
+          option.style.display = "none";
+        } else {
+          option.style.display = "";
+        }
+      }
+      document.getElementById("info").dispatchEvent(new Event('click'));
+    });
+
+
+
+
+  },
 
 
   async action(cache) {
     const data = cache.actions[cache.index];
-    const member = await this.getMemberFromData(data.member, data.varName, cache);
+    const memberfind = this.evalMessage(data.member, cache);
+    const find = this.evalMessage(data.varName, cache);
+    var member = await this.getMemberFromData(data.member, data.varName, cache);
+
+    if (memberfind == "100" || memberfind == "101") {
+
+      const server = cache.server;
+      if (!server?.members) {
+        this.callNextAction(cache);
+        return;
+      }
+      if (server.memberCount !== server.members.cache.size) server.members.fetch();
+      const members = server.members.cache;
+
+      if (memberfind == "100") { member = members.find((m) => m.user?.username === find); }
+      if (memberfind == "101") { member = members.get(find) }
+    }
 
     if (!member) {
       this.callNextAction(cache);
@@ -233,7 +416,7 @@ module.exports = {
         result = member.id;
         break;
       case 2:
-        result = member.user?.username;
+        result = member.user?.username ?? member.username;
         break;
       case 3:
         result = member.displayName;
@@ -274,17 +457,19 @@ module.exports = {
       case 15:
         if (member.presence?.status) {
           const status = member.presence.status;
-          switch(status) {
-            case "online": { result = "Online"; break; }
-            case "offline": { result = "Offline"; break; }
-            case "idle": { result = "Ausente"; break; }
-            case "dnd": { result = "Ocupado"; break; }
+          switch (status) {
+            case "online": { result = "В сети"; break; }
+            case "offline": { result = "Невидимый"; break; }
+            case "idle": { result = "Неактивен"; break; }
+            case "dnd": { result = "Не беспокоить"; break; }
           }
         }
         break;
       case 16:
         if (member.user) {
           result = member.user.displayAvatarURL({ dynamic: true, format: "png", size: 4096 });
+        } else {
+          result = member.displayAvatarURL({ dynamic: true, format: "png", size: 4096 });
         }
         break;
       case 17:
@@ -297,16 +482,16 @@ module.exports = {
         result = member.voice.channel;
         break;
       case 20:
-        result = member.user?.discriminator;
+        result = member.user?.discriminator ?? member.discriminator;
         break;
       case 21:
-        result = member.user?.tag;
+        result = member.user?.tag ?? member.tag;
         break;
       case 22:
-        result = member.user?.createdAt;
+        result = member.user?.createdAt ?? member.createdAt;
         break;
       case 23:
-        result = member.user?.createdTimestamp;
+        result = member.user?.createdTimestamp ?? member.createdTimestamp;
         break;
       case 24:
         result = member.joinedAt;
@@ -318,7 +503,11 @@ module.exports = {
         result = member.permissions.toArray();
         break;
       case 28:
-        result = member.user?.flags?.toArray() ?? (await member.user?.fetchFlags())?.toArray();
+        if (member.user) {
+          result = member.user?.flags?.toArray() ?? (await member.user?.fetchFlags())?.toArray();
+        } else {
+          result = member.flags.toArray();
+        }
         break;
       case 29:
         const status = member.presence?.clientStatus;
@@ -328,7 +517,9 @@ module.exports = {
         result = member.presence?.activities.find((s) => s.type === "CUSTOM")?.state;
         break;
       case 31:
-        result = member.displayAvatarURL({ dynamic: true, format: "png", size: 4096 });
+        if (member.user) {
+          result = member.displayAvatarURL({ dynamic: true, format: "png", size: 4096 });
+        }
         break;
       case 32:
         result = member.communicationDisabledUntil;
@@ -338,14 +529,14 @@ module.exports = {
         break;
       case 34:
         const user = await member.user.fetch();
-        result = member.user.bannerURL({ fomart: "png", size: 4096, dynamic: true });
+        result = member.user.bannerURL({ format: "png", size: 4096, dynamic: true });
         break;
-        case 35:
-          result = member.guild.id;
-          break;
-          case 36:
-            result = member.premiumSinceTimestamp;
-            break;
+      case 35:
+        result = member.guild.id;
+        break;
+      case 36:
+        result = member.premiumSinceTimestamp;
+        break;
       default:
         break;
     }
@@ -360,5 +551,5 @@ module.exports = {
   },
 
 
-  mod() {},
+  mod() { },
 };
