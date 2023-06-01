@@ -1,26 +1,17 @@
 module.exports = {
-  //---------------------------------------------------------------------
-  // Action Name
-  //
-  // This is the name of the action displayed in the editor.
-  //---------------------------------------------------------------------
 
   name: "Send Message",
   displayName: "Send Message MOD",
 
-  //---------------------------------------------------------------------
-  // Action Section
-  //
-  // This is the section the action will fall into.
-  //---------------------------------------------------------------------
-
   section: "Messaging",
 
-  //---------------------------------------------------------------------
-  // Action Subtitle
-  //
-  // This function generates the subtitle displayed next to the name.
-  //---------------------------------------------------------------------
+  meta: {
+    version: "2.1.7",
+    preciseCheck: true,
+    author: "[XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]",
+    authorUrl: 'https://github.com/DBM-Mods/Russia',
+    downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
+  },
 
   subtitle(data, presets) {
     let text = "";
@@ -64,12 +55,6 @@ module.exports = {
     : `<font style="color:${desccor}">${text}</font>`
   },
 
-  //---------------------------------------------------------------------
-  // Action Storage Function
-  //
-  // Stores the relevant variable info for the editor.
-  //---------------------------------------------------------------------
-
   variableStorage(data, varType) {
     let vars = [];
 
@@ -88,32 +73,6 @@ module.exports = {
 
     if (vars.length > 0) return vars;
   },
-
-  //---------------------------------------------------------------------
-  // Action Meta Data
-  //
-  // Helps check for updates and provides info if a custom mod.
-  // If this is a third-party mod, please set "author" and "authorUrl".
-  //
-  // It's highly recommended "preciseCheck" is set to false for third-party mods.
-  // This will make it so the patch version (0.0.X) is not checked.
-  //---------------------------------------------------------------------
-
-  meta: {
-    version: "2.1.7",
-    preciseCheck: true,
-    author: "[Modificado por XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]",
-    authorUrl: 'https://github.com/DBM-Mods/Russia',
-    downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
-  },
-
-  //---------------------------------------------------------------------
-  // Action Fields
-  //
-  // These are the fields for the action. These fields are customized
-  // by creating elements with corresponding IDs in the HTML. These
-  // are also the names of the fields stored in the action's JSON data.
-  //---------------------------------------------------------------------
 
   fields: [
     "channel",
@@ -146,24 +105,20 @@ module.exports = {
     "actionsError",
     "storageError",
     "varNameError",
-    "errcmd"
+    "errcmd",
+    "editweb",
+    "removeComps",
+    "removeEmbeds",
+    "removeAttachments",
+    "removeCompsE",
+    "removeEmbedsE",
+    "removeAttachmentsE"
   ],
-
-  //---------------------------------------------------------------------
-  // Command HTML
-  //
-  // This function returns a string containing the HTML used for
-  // editing actions.
-  //
-  // The "isEvent" parameter will be true if this action is being used
-  // for an event. Due to their nature, events lack certain information,
-  // so edit the HTML to reflect this.
-  //---------------------------------------------------------------------
 
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.8</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.9</div>
 
     <div style="height:52px;overflow: hidden;padding-top: 3px;">
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить на" selectId="channel" variableInputId="varName"></send-reply-target-input>
@@ -199,15 +154,92 @@ module.exports = {
   <tab label="Ембеды" icon="book image">
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
 
-  <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl", "formula", "val1", "comparar", "val2"]' dialogTitle="Embed Info" dialogResizable dialogWidth="740" dialogHeight="540" listLabel="Embeds" listStyle="height: calc(100vh - 310px);" itemName="Embed" itemCols="1" itemHeight="60px;" itemTextFunction="'<div style=margin-left:-10px;background:'+data.color+';float:left;width:10px;overflow:hidden;height:60px;><br></div><div style=float:left;width:59%;overflow:hidden;margin-left:5px;> Название: ' + data.title + ' <br> Описание: ' + data.description + '</div><div style=float:right;width:39%;overflow:hidden;>Автор: '+ data.author +' <br>Полей: ' + data.fields.length + '</div>'" itemStyle="text-align: left; line-height: 30px;">
+  <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl", "formula", "val1", "comparar", "val2"]' dialogTitle="Embed Info" dialogResizable dialogWidth="750" dialogHeight="550" listLabel="Embeds" listStyle="height: calc(100vh - 310px);" itemName="Embed" itemCols="1" itemHeight="60px;" itemTextFunction="'<div style=margin-left:-10px;background:'+data.color+';float:left;width:10px;overflow:hidden;height:60px;><br></div><div style=float:left;width:59%;overflow:hidden;margin-left:5px;> Название: ' + data.title + ' <br> Описание: ' + data.description + '</div><div style=float:right;width:39%;overflow:hidden;>Автор: '+ data.author +' <br>Поля: ' + data.fields.length + '</div>'" itemStyle="text-align: left; line-height: 30px;">
   <div style="padding: 8px 8px 0px 8px;">
 
-          <tab-system>
-
-            <tab label="Общий" icon="certificate">
-              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
+          <div style="padding: 8px;height: calc(100vh - 80px);overflow:auto">
+                        
+              <div style="padding: 6px; background: rgba(0, 0, 0, 0.3);">
+              <span class="dbminputlabel">Отображение эмбед</span>
+              <select id="formula" class="round">
+                <option value="0" selected>Всегда отображать эмбед / игнорировать сравнения ниже</option>
+                <option value="1">Эмбед отображать только если получено значение False</option>
+                <option value="2">Эмбед отображать только если получено значение True</option>
+              </select>
+      
+              <br>
+      
+              <table style="width: 100%;">
+                <tr>
+                  <td style="width:33%">
+                    <span class="dbminputlabel">Значение A</span>
+                    <input id="val1" class="round" type="text">
+                  </td>
+                  <td style="width:33%;padding:0px 6px 0px 6px">
+                    <span class="dbminputlabel">Сравнения</span><br>
+                    <select id="comparar" class="round">
+                    <optgroup label="Номер или текст">
+                      <option value="0">Существует</option>
+                      <option value="1" selected>Равно</option>
+                      <option value="2">Точно так же</option>
+                    </optgroup>
+                    <optgroup label="Число">
+                      <option value="3">Меньше чем</option>
+                      <option value="13">Меньше или равно</option>
+                      <option value="4">Больше тогда</option>
+                      <option value="12">Больше или равно</option>
+                      <option value="19">Это четное число?</option>
+                      <option value="20">Это нечетное число?</option>
+                      <option value="21">Это число?</option>
+                    </optgroup>
+                    <optgroup label="Текст">
+                      <option value="6">Соответствует регулярному выражению</option>
+                      <option value="14">Соответствует полному регулярному выражению</option>
+                      <option value="7">Длина больше, чем</option>
+                      <option value="8">Длина меньше, чем</option>
+                      <option value="9">Длина равена</option>
+                      <option value="10">Начинается с</option>
+                      <option value="11">Заканчивается</option>
+                      <option value="16">Есть ли у него акценты?</option>
+                      <option value="18">Равны словам  ["a" , "b" , "c"]</option>
+                      <option value="24">Это текст?</option>
+                      <option value="23">Это URL адрес изображения?</option>
+                      <option value="25">Это URL?</option>
+                      <option value="26">Электронная почта существует?</option>
+                    </optgroup>
+                    <optgroup label="Текст ~ включает">
+                      <option value="5">Включает в себя точно</option>
+                      <option value="29">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
+                      <option value="30">Включает ~ Игнорировать акценты</option>
+                      <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
+                      <option value="17">Включает точно ["a" , "b" , "c"]</option>
+                      <option value="27">Включает URL?</option>
+                      <option value="28">Включите приглашение от Discord?</option>
+                      <option value="32">Включает именно это слово</option>
+                      <option value="33">Включает слово ~ игнорировать нижний/верхний регистр</option>
+                      <option value="34">Включает слово ~ игнорировать ударения</option>
+                      <option value="35">Включает слово ~ игнорировать акцентуации & строчные и заглавные</option>
+                      <option value="36">Включает слова ~ используйте девственницы ~ игнорировать акцентуации & в Нижнем и верхнем регистре</option>
+                    </optgroup>
+                    <optgroup label="Другие">
+                      <option value="22">Это список?</option>
+                      </optgroup>
+                    </select>
+                  </td>
+                  <td style="width:33%">
+                    <span class="dbminputlabel">Значение B</span><br>
+                    <input id="val2" class="round" type="text">
+                  </td>
+                </tr>
+              </table>
+      
+        
+            </div>
+            <br>
               <table style="width:100%"><tr><td style="width:33%;vertical-align: top;">
-              <span class="dbminputlabel">Значок автора URL / Имя вложения</span><br>
+
+
+              <span class="dbminputlabel">Автор (Ава) URL / Имя вложения</span><br>
               <input id="authorIcon" class="round" type="text" placeholder="Оставьте пустым для нечего">
               <br>
               
@@ -236,61 +268,19 @@ module.exports = {
 
                 <br>
 
-                <span class="dbminputlabel">URL мини изображение / имя Файла</span><br>
+                <span class="dbminputlabel">URL мини фото / имя Файла</span><br>
                 <input id="thumbUrl" class="round" type="text" placeholder="Оставьте это пустым ни для одного, image.png или http link">
 
             </td>
             </tr></table>
 
                                   
-                <span class="dbminputlabel">URL изображения / имя вложения</span><br>
-                <input id="imageUrl" class="round" type="text" placeholder="Оставьте пустым, если нет, image.png или ссылка http">
+            <span class="dbminputlabel">Описание</span><br>
+            <textarea id="description" class="dbm_monospace" rows="4" placeholder="Оставьте пустым для любого..."></textarea>
 
                 <br>
 
-                <table style="width:100%"><tr><td style="width:30%;vertical-align: top">
-                
-              <span class="dbminputlabel">Цвет</span><div style="float:right;margin-top:-6px"><dbm-checkbox id="colorrandom" style="font-size:12px" label="Случайный"></dbm-checkbox></div><br>
-              <table style="width:100%"><tr><td><input id="color" name="actionxinxyla" class="round" type="text" placeholder="Оставьте пустым для шаблона..."><td>
-              <td style="width:40px;text-align:center"><a id="btr1" style="cursor:pointer" onclick="(function(){
-                 document.getElementById('color').type = 'color'
-                document.getElementById('btr1').style.display = 'none';
-                document.getElementById('btr2').style.display = 'block';
-                })()"><button class="tiny compact ui icon button">Цвет</button></a><a id="btr2" style="cursor:pointer;display:none" onclick="(function(){
-                  document.getElementById('color').type = 'text';
-                  document.getElementById('btr1').style.display = 'block';
-                  document.getElementById('btr2').style.display = 'none';
-                  })()"><button class="tiny compact ui icon button">Текст</button></a><td></tr></table>
-                   </td>
-                   <td style="width:40%;vertical-align: top;padding:0px 6px 0px 6px">
-                <span class="dbminputlabel">URL значка нижнего текста / Имя вложения</span><br>
-                <input id="footerIconUrl" class="round" type="text" placeholder="Оставьте пустым для нечего">
-
-                    </td>
-                
-                    <td style="width:30%;vertical-align: top;">
-                    <span class="dbminputlabel">Использование временной метки</span><div style="float:right;margin-top:-6px"><dbm-checkbox id="timestamp"  style="font-size:12px" label="Вкл"></dbm-checkbox></div><br>
-                    <input id="timestampper" class="round" type="text" placeholder="Оставьте пустым для текущего">
-                    </td></tr></table>
-
-                    <br>
-
-                    <span class="dbminputlabel">Текст внизу</span>
-                    <textarea id="footerText" class="dbm_monospace" rows="5" placeholder="Оставьте пустым для нечего"></textarea>
-
-              </div>
-            </tab>
-
-            <tab label="Описание и поля" icon="file image">
-              <div style="padding: 8px;height: calc(100vh - 130px);overflow:auto">
-
-              <span class="dbminputlabel">Описание</span><br>
-                <textarea id="description" class="dbm_monospace" rows="5" placeholder="Оставьте пустым что бы не использовалось"></textarea>
-                
-
-                <br>
-
-                <dialog-list id="fields" fields='["name", "value", "inline", "val1", "val2", "comparar", "formula"]' dialogTitle="Field Info" dialogResizable dialogWidth="540" dialogHeight="500" listLabel="Fields" listStyle="height: calc(100vh - 340px);" itemName="Field" itemCols="1" itemHeight="25px;" itemTextFunction="'<table style=width:100%><tr><td style=width:50%>Имя: ' + data.name + '</td><td>' + 'Значение: '+ data.value + '</td></tr></table>'" itemStyle="text-align: left; line-height: 25px;">
+                <dialog-list id="fields" fields='["name", "value", "inline", "val1", "val2", "comparar", "formula"]' dialogTitle="Field Info" dialogResizable dialogWidth="540" dialogHeight="500" listLabel="Fields" listStyle="height: 120px;" itemName="Field" itemCols="1" itemHeight="25px;" itemTextFunction="'<table style=width:100%><tr><td style=width:50%>Имя: ' + data.name + '</td><td>' + 'Значение: '+ data.value + '</td></tr></table>'" itemStyle="text-align: left; line-height: 25px;">
                 <div style="height: calc(100vh - 60px);overflow:auto">
 
                 <div style="padding: 16px;background:rgba(0,0,0,0.3)">
@@ -387,90 +377,44 @@ module.exports = {
                 <textarea id="value" class="dbm_monospace" rows="7" placeholder="Вставьте здесь текст Поля..." style="height: calc(100vh - 320px); white-space: nowrap;"></textarea>
               </div></div>
               </dialog-list>
+                    
+              <br>
+              <span class="dbminputlabel">URL фото / имя вложения</span><br>
+              <input id="imageUrl" class="round" type="text" placeholder="Оставьте пустым, если нет, изображение.png или ссылка http">
+              <br>
+                              <table style="width:100%"><tr><td style="width:30%;vertical-align: top">
                               
-                              
-                              </div>
-            </tab>
+              <span class="dbminputlabel">Цвет</span><div style="float:right;margin-top:-6px"><dbm-checkbox id="colorrandom" style="font-size:12px" label="Случайный"></dbm-checkbox></div><br>
+              <table style="width:100%"><tr><td><input id="color" name="actionxinxyla" class="round" type="text" placeholder="Оставьте пустым для шаблона..."><td>
+              <td style="width:40px;text-align:center"><a id="btr1" style="cursor:pointer" onclick="(function(){
+                 document.getElementById('color').type = 'color'
+                document.getElementById('btr1').style.display = 'none';
+                document.getElementById('btr2').style.display = 'block';
+                })()"><button class="tiny compact ui icon button">Выбор</button></a><a id="btr2" style="cursor:pointer;display:none" onclick="(function(){
+                  document.getElementById('color').type = 'text';
+                  document.getElementById('btr1').style.display = 'block';
+                  document.getElementById('btr2').style.display = 'none';
+                  })()"><button class="tiny compact ui icon button">Вручную</button></a><td></tr></table>
 
-            <tab label="Конф" icon="cogs">
-            <div style="padding: 6px; background: rgba(0, 0, 0, 0.3);">
-                <span class="dbminputlabel">Отображение эмбед</span>
-                <select id="formula" class="round">
-                  <option value="0" selected>Всегда отображать эмбед / игнорировать сравнения ниже</option>
-                  <option value="1">Эмбед отображать только если получено значение False</option>
-                  <option value="2">Эмбед отображать только если получено значение True</option>
-                </select>
+            </td>
+            <td style="width:40%;vertical-align: top;padding:0px 6px 0px 6px">
+         <span class="dbminputlabel">URL внизу текста / Имя вложения</span><br>
+         <input id="footerIconUrl" class="round" type="text" placeholder="Оставьте это поле пустым что бы не использовалось!">
+         </td>
+         
+         <td style="width:30%;vertical-align: top;">
+         <span class="dbminputlabel">Отображение времени</span><div style="float:right;margin-top:-6px"><dbm-checkbox id="timestamp"  style="font-size:12px" label="Вкл"></dbm-checkbox></div><br>
+         <input id="timestampper" class="round" type="text" placeholder="Оставьте пустым для текущего">
+         </td></tr></table>
 
                 <br>
 
-                <table style="width: 100%;">
-                  <tr>
-                  <td style="width:33%">
-                   <span class="dbminputlabel">Значение A</span>
-                    <input id="val1" class="round" type="text">
-                     </td>
-                    <td style="width:33%;padding:0px 6px 0px 6px">
-                     <span class="dbminputlabel">Сравнения</span><br>
-                     <select id="comparar" class="round">
-                       <optgroup label="Номер или текст">
-                         <option value="0">Существует</option>
-                         <option value="1" selected>Равно</option>
-                         <option value="2">Точно так же</option>
-                       </optgroup>
-                       <optgroup label="Число">
-                         <option value="3">Меньше чем</option>
-                         <option value="13">Меньше или равно</option>
-                         <option value="4">Больше тогда</option>
-                         <option value="12">Больше или равно</option>
-                         <option value="19">Это четное число?</option>
-                         <option value="20">Это нечетное число?</option>
-                         <option value="21">Это число?</option>
-                       </optgroup>
-                       <optgroup label="Текст">
-                         <option value="6">Соответствует регулярному выражению</option>
-                         <option value="14">Соответствует полному регулярному выражению</option>
-                         <option value="7">Длина больше, чем</option>
-                         <option value="8">Длина меньше, чем</option>
-                         <option value="9">Длина равена</option>
-                         <option value="10">Начинается с</option>
-                         <option value="11">Заканчивается</option>
-                         <option value="16">Есть ли у него акценты?</option>
-                         <option value="18">Равны словам  ["a" , "b" , "c"]</option>
-                         <option value="24">Это текст?</option>
-                         <option value="23">Это URL адрес изображения?</option>
-                         <option value="25">Это URL?</option>
-                         <option value="26">Электронная почта существует?</option>
-                       </optgroup>
-                       <optgroup label="Текст ~ включает">
-                         <option value="5">Включает в себя точно</option>
-                         <option value="29">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
-                         <option value="30">Включает ~ Игнорировать акценты</option>
-                         <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
-                         <option value="17">Включает точно ["a" , "b" , "c"]</option>
-                         <option value="27">Включает URL?</option>
-                         <option value="28">Включите приглашение от Discord?</option>
-                         <option value="32">Включает именно это слово</option>
-                         <option value="33">Включает слово ~ игнорировать нижний/верхний регистр</option>
-                         <option value="34">Включает слово ~ игнорировать ударения</option>
-                         <option value="35">Включает слово ~ игнорировать акцентуации & строчные и заглавные</option>
-                         <option value="36">Включает слова ~ используйте девственницы ~ игнорировать акцентуации & в Нижнем и верхнем регистре</option>
-                       </optgroup>
-                       <optgroup label="Другие">
-                         <option value="22">Это список?</option>
-                       </optgroup>
-                     </select>
-                   </td>
-                    <td style="width:33%">
-                      <span class="dbminputlabel">Значение B</span><br>
-                      <input id="val2" class="round" type="text">
-                    </td>
-                  </tr>
-                </table>
+                <span class="dbminputlabel">Текст внизу</span>
+                <textarea id="footerText" class="dbm_monospace" rows="3" placeholder="Оставьте это поле пустым что бы не использовалось!"></textarea>
+
               </div>
-            </tab>
 
 
-                </tab-system>
 
         </div>
       </dialog-list>
@@ -482,24 +426,23 @@ module.exports = {
   <div style="padding: 16px;text-align:center"id="xin4n">Webhook не поддерживает кнопки</div>
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto" id="xin4">
 
-    <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Кнопки" listStyle="height: calc(100vh - 310px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
-        <div style="padding: 16px;">
+  <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Botões" listStyle="height: calc(100vh - 310px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
+  <div style="padding: 16px;">
 
         <tab-system>
 
-        <tab label="Действия" icon="list">
+        <tab label="База" icon="list">
 
         <action-list-input mode="BUTTON" id="actions" height="calc(100vh - 180px)"></action-list-input>
         </tab>
 
-        <tab label="Кнопка / конфигурация" icon="cogs">
+        <tab label="Кнопка / Конфигурация" icon="cogs">
         <div style="height: calc(100vh - 138px);overflow-y: scroll;overflow-x: hidden;width:100%">
-
         <div style="padding: 8px;background:rgba(0,0,0,0.3)">
-        <span class="dbminputlabel">Отображение кнопки</span><br>
+        <span class="dbminputlabel">Кнопочный дисплей</span><br>
         <select id="formula" class="round">
        
-        <option value="0" selected>Всегда отображать кнопку / игнорировать сравнения ниже</option>
+        <option value="0" selected>Всегда отображать кнопку / Игнорировать сравнения ниже внизу</option>
         <option value="1">Кнопку отображать только если получено значение False</option>
         <option value="2">Кнопку отображать только если получено значение True</option>
         <option value="3">Отключить кнопку, если получено значение False</option>
@@ -953,6 +896,18 @@ module.exports = {
       <dbm-checkbox id="dontSend" label="Не отправлять сообщение"></dbm-checkbox>
       <xinspace>
       <dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
+      <xinspace>
+      <dbm-checkbox id="removeComps" label="Убрать или не отправлять кнопки/меню"></dbm-checkbox>
+      <xinspace>
+      <dbm-checkbox id="removeEmbeds" label="Удалять или не отправлять embed"></dbm-checkbox>
+      <xinspace>
+      <dbm-checkbox id="removeAttachments" label="Удалять или не отправлять вложения"></dbm-checkbox>
+      <xinspace>
+      <dbm-checkbox id="removeCompsE" label="Удаление кнопок/меню только при редактировании сообщения"></dbm-checkbox>
+      <xinspace>
+      <dbm-checkbox id="removeEmbedsE" label="Удаление embed только при редактировании сообщения"></dbm-checkbox>
+      <xinspace>
+      <dbm-checkbox id="removeAttachmentsE" label="Удаление вложений только при редактировании сообщения"></dbm-checkbox>
       
       </div><br></div>
       
@@ -975,6 +930,7 @@ module.exports = {
       <span class="dbminputlabel">Отправить как webhook</span><br>
       <select id="storagewebhook" class="round" onchange="glob.onComparisonChanged2(this)">
       <option value="0" selecionado>Отлючить</option>
+      <option value="4">URL Webhook</option>
       <option value="1">Временная переменная</option>
       <option value="2">Переменная сервера</option>
       <option value="3">Глобальная переменная</option>
@@ -983,16 +939,19 @@ module.exports = {
     <div id="webhookdiv" style="display: none; float: right; width: 60%; padding-top: 5px"><span id="ifName" class="dbminputlabel">Nome da Variavel</span><br><input list="variableList" id="varwebhook" class="round" name="actionxinxyla" type="text"></div>
     <div id="webhookdiv2" style="display: none;padding-top: 12px;">
     <br><br><br>
+    <span class="dbminputlabel">Редактирование webhook / идентификатора сообщения</span><br>
+    <input id="editweb" class="round" type="text" style="width:100%" placeholder="Оставьте пустым, чтобы только отправить">
+    <span style="margin-bottom:-50px;"></span>
+    <br>
     <span class="dbminputlabel">Имя Webhook</span><br>
     <input id="webhookname" class="round" type="text" style="width:100%" placeholder="Дополнительно">
     <br>
     <span class="dbminputlabel">URL-адрес изображения Webhook</span><br>
     <input id="webhookavatar" class="round" type="text" style="width:100%" placeholder="Дополнительно">
-    <div style="margin-bottom:-50px"></div>
     </div>   
 
 
-      <br><br><br>
+      <br><div id="corrigir"><br><br></div>
       <hr class="subtlebar" style="margin-top: 4px; margin-bottom: 4px">
       <div>
 
@@ -1039,14 +998,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 </style>`;
   },
 
-  //---------------------------------------------------------------------
-  // Action Editor Init Code
-  //
-  // When the HTML is first applied to the action editor, this code
-  // is also run. This helps add modifications or setup reactionary
-  // functions for the DOM elements.
-  //---------------------------------------------------------------------
-
   init: function () {
     const { glob, document } = this;
 
@@ -1058,7 +1009,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       const comprimentoTexto = textarea.value.length;
       contador.textContent = `${comprimentoTexto} букв`;
     });
-
 
     glob.onComparisonChanged = function (event) {
       if (event.value == "0" || event.value == "1" || event.value == "7") {
@@ -1125,6 +1075,18 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         myInput6.value = 0
         const myInput7 = document.querySelector("#channel")
         myInput7.value = 0
+        document.getElementById("corrigir").style.display = "none";
+
+        if (event.value == "4") {
+          const myvarwebhook = document.querySelector("#varwebhook")
+          myvarwebhook.setAttribute('list', 'none')
+          document.querySelector("[id='ifName']").innerText = "URL";
+        } else {
+          const myvarwebhook = document.querySelector("#varwebhook")
+          myvarwebhook.setAttribute('list', 'variableList')
+          document.querySelector("[id='ifName']").innerText = "Имя переменной";
+        }
+
       } else {
         document.getElementById("webhookdiv").style.display = "none";
         document.getElementById("webhookdiv2").style.display = "none";
@@ -1136,6 +1098,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         document.getElementById("xin5").style.display = null;
         document.getElementById("xin4n").style.display = "none";
         document.getElementById("xin5n").style.display = "none";
+        document.getElementById("corrigir").style.display = "block";
       }
     }
 
@@ -1167,11 +1130,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     glob.formatItem2 = function (data) {
       let setcor = ""
-      if(data.type == "PRIMARY"){setcor = "rgb(88,101,242)"}
-      if(data.type == "SECONDARY" || data.type == "LINK"){setcor = "rgb(78,80,88)"}
-      if(data.type == "SUCCESS"){setcor = "rgb(36,128,70)"}
-      if(data.type == "DANGER"){setcor = "rgb(218,55,60)"}
-      let result = '<div style="display: inline-block; width: 100%;"><div style="width:10px;background:'+setcor+';float:left;margin-left:-10px"><br></div><table style="margin-left:10px"><tr><td style="width:100%">';
+      if (data.type == "PRIMARY") { setcor = "rgb(88,101,242)" }
+      if (data.type == "SECONDARY" || data.type == "LINK") { setcor = "rgb(78,80,88)" }
+      if (data.type == "SUCCESS") { setcor = "rgb(36,128,70)" }
+      if (data.type == "DANGER") { setcor = "rgb(218,55,60)" }
+      let result = '<div style="display: inline-block; width: 100%;"><div style="width:10px;background:' + setcor + ';float:left;margin-left:-10px"><br></div><table style="margin-left:10px"><tr><td style="width:100%">';
       const comp = "0";
       switch (comp) {
         case "0":
@@ -1209,20 +1172,9 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
   },
-  //---------------------------------------------------------------------
-  // Action Editor On Save
-  //
-  // When the data for the action is saved, this function is called.
-  // It provides the ability to modify the final data associated with
-  // the action by retrieving it as an argument and returning a modified
-  // version through the return value. This can be used to verify the
-  // data and fill required entries the user did not.
-  //
-  // Its inclusion within action mods is optional.
-  //---------------------------------------------------------------------
 
   onSave(data, helpers) {
-    // generate unique ids if not provided by user since they are important
+
     if (Array.isArray(data?.buttons)) {
       for (let i = 0; i < data.buttons.length; i++) {
         if (!data.buttons[i].id) {
@@ -1239,17 +1191,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
     return data;
   },
-
-  //---------------------------------------------------------------------
-  // Action Editor On Paste
-  //
-  // When the data for the action is pasted, this function is called.
-  // It provides the ability to modify the final data associated with
-  // the action by retrieving it as an argument and returning a modified
-  // version through the return value.
-  //
-  // Its inclusion within action mods is optional.
-  //---------------------------------------------------------------------
 
   onPaste(data, helpers) {
     if (Array.isArray(data?.buttons)) {
@@ -1271,14 +1212,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     return data;
   },
 
-  //---------------------------------------------------------------------
-  // Action Bot Function
-  //
-  // This is the function for the action within the Bot's Action class.
-  // Keep in mind event calls won't have access to the "msg" parameter,
-  // so be sure to provide checks for variable existence.
-  //---------------------------------------------------------------------
-
   async action(cache) {
     const _this = this;
     const data = cache.actions[cache.index];
@@ -1291,8 +1224,15 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     const webhookavatar = this.evalMessage(data.webhookavatar, cache)
     if (storagewebhook > 0) {
       varwebhook = this.evalMessage(data.varwebhook, cache)
-      Mods = this.getMods()
-      webhook = Mods.getWebhook(storagewebhook, varwebhook, cache)
+
+      if (storagewebhook == 4) {
+        const { DiscordJS } = this.getDBM();
+        webhook = new DiscordJS.WebhookClient({ url: varwebhook });
+      } else {
+        Mods = this.getMods()
+        webhook = Mods.getWebhook(storagewebhook, varwebhook, cache)
+      }
+
     }
     if (data.channel === undefined || message === undefined) {
       return;
@@ -1688,7 +1628,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             }
 
             if (result == true) {
-              embed.addFields({ name: this.evalMessage(f.name || '\u200B', cache), value: this.evalMessage(f.value || '\u200B', cache), inline: f.inline === "true"})
+              embed.addFields({ name: this.evalMessage(f.name || '\u200B', cache), value: this.evalMessage(f.value || '\u200B', cache), inline: f.inline === "true" })
             };
           }
         }
@@ -1735,7 +1675,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     let awaitResponses = [];
 
     if (!overwrite && messageOptions.components?.length > 0) {
-      componentsArr = messageOptions.components.map(function (comps) {
+      componentsArr = messageOptions.components.map((comps) => {
         return comps.components;
       });
     }
@@ -1892,7 +1832,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           }
         }
 
-
         if (fbot.formula == "1") {
           if (result == false) {
             result = true;
@@ -1989,14 +1928,15 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           val1 = this.evalMessage(data.selectMenus[i].options[ix].val1, cache);
           val2 = this.evalMessage(data.selectMenus[i].options[ix].val2, cache);
 
+          select.options[ix].emoji = this.evalMessage(select.options[ix].emoji, cache);
 
           result = true;
 
           if (data.selectMenus[i].options[ix].formula == "Falso" || data.selectMenus[i].options[ix].formula == "Verdadeiro") {
             const compare = parseInt(data.selectMenus[i].options[ix].comparar, 10);
             if (compare !== 6) {
-              val1 = this.evalIfPossible(val1, cache)
-              val2 = this.evalIfPossible(val2, cache)
+              val1 = this.evalIfPossible(val1, cache);
+              val2 = this.evalIfPossible(val2, cache);
             }
 
             switch (compare) {
@@ -2052,18 +1992,18 @@ xinspace{padding:5px 0px 0px 0px;display:block}
                 result = conditions.some(el => val1.includes(el));
                 break;
               case 17:
-                const conditionsX = val2
+                const conditionsX = val2;
                 result = conditionsX.some(els => val1.includes(els));
                 break;
               case 18:
-                const conditionsZ = val2
+                const conditionsZ = val2;
                 result = conditionsZ.some(elz => val1 == (elz));
                 break;
               case 19:
-                result = val1 % 2 == 0
+                result = val1 % 2 == 0;
                 break;
               case 20:
-                result = val1 % 2 == 1
+                result = val1 % 2 == 1;
                 break;
               case 21:
                 result = Boolean(!isNaN(parseFloat(val1.toString().replace(",", "."))));
@@ -2135,14 +2075,16 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
           if (data.selectMenus[i].options[ix].formula == "Falso") {
             if (result == false) {
-              result = true
-            } else { result = false }
+              result = true;
+            } else {
+              result = false;
+            }
           }
 
           if (result == false) {
             data.selectMenus[i].options.splice([ix], 1);
-            ix = parseFloat([ix]) - 1
-            totales = totales - 1
+            ix = parseFloat([ix]) - 1;
+            totales = totales - 1;
           }
 
         }
@@ -2188,18 +2130,16 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     if (storagewebhook > 0) {
       if (webhookname !== "") {
-        messageOptions.username = webhookname
+        messageOptions.username = webhookname;
       }
       if (webhookavatar !== "") {
-        messageOptions.avatarURL = await webhookavatar
+        messageOptions.avatarURL = await webhookavatar;
       }
     }
 
     if (data.tts) {
       messageOptions.tts = true;
     }
-
-
 
     if (data.attachments?.length > 0) {
       const { Util, MessageAttachment } = this.getDBM().DiscordJS;
@@ -2210,7 +2150,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
         if (data.attachments[i].tipo == "1") {
           const { DiscordJS } = this.getDBM();
-          const Canvas = require('canvas')
+          const Canvas = require("canvas")
           const attachment = data.attachments[i];
           const varnamer = this.evalMessage(attachment?.canvasnome, cache);
           const varid = this.evalMessage(attachment?.canvasvar, cache);
@@ -2219,7 +2159,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             const image = new Canvas.Image()
             image.src = imagedata
             const canvas = Canvas.createCanvas(image.width, image.height)
-            const ctx = canvas.getContext('2d')
+            const ctx = canvas.getContext("2d")
             ctx.drawImage(image, 0, 0, image.width, image.height)
             const buffer = canvas.toBuffer('image/png', { compressionLevel: data.attachments[i].compress })
             const spoiler = !!attachment?.spoiler;
@@ -2318,6 +2258,14 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     const sameChannel = channel === 0 || sameId;
     const canReply = !isMessageTarget && cache?.interaction?.replied === false && sameChannel;
 
+    if (data.removeComps == true) messageOptions.components = [];
+    if (data.removeEmbeds == true) messageOptions.embeds = [];
+    if (data.removeAttachments == true) messageOptions.files = [];
+
+    if (data.removeCompsE == true && isEdit !== 0) messageOptions.components = [];
+    if (data.removeEmbedsE == true && isEdit !== 0) messageOptions.embeds = [];
+    if (data.removeAttachmentsE == true && isEdit !== 0) messageOptions.files = [];
+
     if (data.dontSend) {
       const varName2 = this.evalMessage(data.varName2, cache);
       const storage = parseInt(data.storage, 10);
@@ -2340,7 +2288,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       } else if (cache?.interaction?.update) {
         promise = cache.interaction.update(messageOptions);
       } else {
-        this.displayError(data, cache, "Send Message -> Message/Options to Edit -> Interaction Update / Could not find interaction to edit");
+        this.displayError(data, cache, "Сообщение/конфигурация для редактирования -> Поддержание взаимодействия / Не удалось найти взаимодействие для редактирования");
       }
 
       if (promise) {
@@ -2375,17 +2323,33 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       } else {
         promise = cache.interaction.reply(messageOptions);
       }
-      promise.then(onComplete).catch((err) => this.displayError(data, cache, err));
+      promise.then(onComplete).catch((err) => erro(err));
     }
 
 
     else if (target?.send) {
 
       if (storagewebhook > 0) {
-        webhook
-          .send(messageOptions)
-          .then(onComplete)
-          .catch((err) => erro(err));
+
+        const editweb = this.evalMessage(data.editweb, cache);
+        if (editweb == "" || editweb == undefined || editweb == "undefined" || editweb == null || editweb == "null") {
+          webhook
+            .send(messageOptions)
+            .then(onComplete)
+            .catch((err) => erro(err));
+        } else {
+          webhook
+            .editMessage(editweb, messageOptions)
+            .then(onComplete)
+            .catch((xty) => {
+              webhook
+                .send(messageOptions)
+                .then(onComplete)
+                .catch((err) => erro(err))
+            });
+        }
+
+
       } else {
         target
           .send(messageOptions)
@@ -2396,7 +2360,15 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
     else {
-      this.callNextAction(cache);
+
+      if (data.iffalse > 0) {
+        if (data.iffalse == "5") return _this.executeSubActions(data.actionsError, cache);
+        if (data.iffalse == "99") return _this.executeSubActionsThenNextAction(data.actionsError, cache);
+
+        return _this.executeResults(false, data, cache);
+      } else {
+        this.callNextAction(cache);
+      }
     }
 
     function erro(err) {
@@ -2411,19 +2383,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
   },
-
-  //---------------------------------------------------------------------
-  // Action Bot Mod Init
-  //
-  // An optional function for action mods. Upon the bot's initialization,
-  // each command/event's actions are iterated through. This is to
-  // initialize responses to interactions created within actions
-  // (e.g. buttons and select menus for Send Message).
-  //
-  // If an action provides inputs for more actions within, be sure
-  // to call the `this.prepareActions` function to ensure all actions are
-  // recursively iterated through.
-  //---------------------------------------------------------------------
 
   modInit(data) {
     if (Array.isArray(data?.buttons)) {
@@ -2444,16 +2403,9 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         this.prepareActions(select.actions);
       }
     }
-  },
 
-  //---------------------------------------------------------------------
-  // Action Bot Mod
-  //
-  // Upon initialization of the bot, this code is run. Using the bot's
-  // DBM namespace, one can add/modify existing functions if necessary.
-  // In order to reduce conflicts between mods, be sure to alias
-  // functions you wish to overwrite.
-  //---------------------------------------------------------------------
+  this.prepareActions(data.actionsError);
+},
 
   mod() { },
 };
