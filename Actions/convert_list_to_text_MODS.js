@@ -1,5 +1,5 @@
 module.exports = {
-  name: "Convert list to text MOD",
+  name: "Convert List to Text MOD",
   section: "Lists and Loops",
   meta: {
     version: '2.1.7',
