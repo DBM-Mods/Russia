@@ -1004,11 +1004,12 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     const textarea = document.getElementById('message');
     const contador = document.getElementById('contador');
     const comprimentoTexto = textarea.value.length;
-    contador.textContent = `${comprimentoTexto} букв`;
+    contador.textContent = `${comprimentoTexto} caracteres`;
     textarea.addEventListener('input', () => {
       const comprimentoTexto = textarea.value.length;
-      contador.textContent = `${comprimentoTexto} букв`;
+      contador.textContent = `${comprimentoTexto} caracteres`;
     });
+
 
     glob.onComparisonChanged = function (event) {
       if (event.value == "0" || event.value == "1" || event.value == "7") {
@@ -1037,7 +1038,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       }
 
       if (event.value == "4") {
-        document.querySelector("[id='xinelasT']").innerText = "Имя якоря";
+        document.querySelector("[id='xinelasT']").innerText = "Название якоря";
       }
     }
 
@@ -1084,7 +1085,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         } else {
           const myvarwebhook = document.querySelector("#varwebhook")
           myvarwebhook.setAttribute('list', 'variableList')
-          document.querySelector("[id='ifName']").innerText = "Имя переменной";
+          document.querySelector("[id='ifName']").innerText = "Nome da Variavel";
         }
 
       } else {
@@ -1112,13 +1113,13 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       const comp = data.tipo;
       switch (comp) {
         case "0":
-          result += "Вложение: " + data.url;
+          result += "Файл: " + data.url;
           break;
         case "1":
           result += "Canvas: " + data.canvasnome;
           break;
         case "2":
-          result += "DBM изображения: " + data.canvasnome;
+          result += "DBM изображение: " + data.canvasnome;
           break;
         case "3":
           result += "Отправить переменную: " + data.canvasnome;
@@ -1146,7 +1147,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
     glob.formatItem3 = function (data) {
-      let result = '<div style="display: inline-block; width: 100%; padding-left: 8px"><div style="float:left;width: calc(100% - 200px);overflow: hidden;">Имя: ';
+      let result = '<div style="display: inline-block; width: 100%; padding-left: 8px"><div style="float:left;width: calc(100% - 200px);overflow: hidden;">Nome: ';
       const comp = "0";
       switch (comp) {
         case "0":
@@ -1165,7 +1166,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -1211,6 +1212,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
     return data;
   },
+
 
   async action(cache) {
     const _this = this;
@@ -2208,14 +2210,13 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           const conteudodata = this.getVariable(varid, varnamer, cache)
           const spoiler = !!attachment?.spoiler;
           var name = this.evalMessage(attachment?.name, cache)
-          if (name == "") { name = "texto.txt" }
+          if (name == "") { name = "text.txt" }
           const buffer = Buffer.from(conteudodata)
           const msgAttachment = new MessageAttachment(buffer, name);
           if (spoiler) {
             msgAttachment.setSpoiler(true);
           }
           messageOptions.files.push(msgAttachment);
-
         }
       }
     }
@@ -2288,7 +2289,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       } else if (cache?.interaction?.update) {
         promise = cache.interaction.update(messageOptions);
       } else {
-        this.displayError(data, cache, "Сообщение/конфигурация для редактирования -> Поддержание взаимодействия / Не удалось найти взаимодействие для редактирования");
+        this.displayError(data, cache, "Сообщение/Конфигурация для редактирования -> Обновление взаимодействия / Не удалось найти взаимодействие для редактирования");
       }
 
       if (promise) {
@@ -2404,8 +2405,8 @@ xinspace{padding:5px 0px 0px 0px;display:block}
       }
     }
 
-  this.prepareActions(data.actionsError);
-},
+    this.prepareActions(data.actionsError);
+  },
 
   mod() { },
 };
