@@ -1004,10 +1004,10 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     const textarea = document.getElementById('message');
     const contador = document.getElementById('contador');
     const comprimentoTexto = textarea.value.length;
-    contador.textContent = `${comprimentoTexto} caracteres`;
+    contador.textContent = `${comprimentoTexto} символов`;
     textarea.addEventListener('input', () => {
       const comprimentoTexto = textarea.value.length;
-      contador.textContent = `${comprimentoTexto} caracteres`;
+      contador.textContent = `${comprimentoTexto} символов`;
     });
 
 
@@ -1085,7 +1085,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         } else {
           const myvarwebhook = document.querySelector("#varwebhook")
           myvarwebhook.setAttribute('list', 'variableList')
-          document.querySelector("[id='ifName']").innerText = "Nome da Variavel";
+          document.querySelector("[id='ifName']").innerText = "Имя переменной";
         }
 
       } else {
