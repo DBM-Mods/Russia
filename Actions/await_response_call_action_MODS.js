@@ -48,7 +48,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
     <tab-system>
 
@@ -63,7 +63,7 @@ module.exports = {
 
       <div>
       <span class="dbminputlabel">Проверка</span><br>
-      <textarea id="filter" class="round" type="text" value="content.length > 0 && author.id === user.id" rows="3"></textarea>
+      <textarea id="filter" class="round" type="text" rows="3">content.length > 0 && author.id === user.id</textarea>
       </div>
 
       <br>
@@ -403,5 +403,11 @@ module.exports = {
 
     }
   },
+
+  modInit(data) {
+    this.prepareActions(data.actionstrue);
+    this.prepareActions(data.actionsfalse);
+  },
+
   mod() {},
 };
