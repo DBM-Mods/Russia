@@ -426,12 +426,12 @@ module.exports = {
   <div style="padding: 16px;text-align:center"id="xin4n">Webhook не поддерживает кнопки</div>
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto" id="xin4">
 
-  <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Botões" listStyle="height: calc(100vh - 310px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
+  <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Button Info" dialogWidth="600" dialogHeight="600" listLabel="Кнопки" listStyle="height: calc(100vh - 310px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
   <div style="padding: 16px;">
 
         <tab-system>
 
-        <tab label="База" icon="list">
+        <tab label="Действия" icon="list">
 
         <action-list-input mode="BUTTON" id="actions" height="calc(100vh - 180px)"></action-list-input>
         </tab>
@@ -936,7 +936,7 @@ module.exports = {
       <option value="3">Глобальная переменная</option>
     </select>
     </div>
-    <div id="webhookdiv" style="display: none; float: right; width: 60%; padding-top: 5px"><span id="ifName" class="dbminputlabel">Nome da Variavel</span><br><input list="variableList" id="varwebhook" class="round" name="actionxinxyla" type="text"></div>
+    <div id="webhookdiv" style="display: none; float: right; width: 60%; padding-top: 5px"><span id="ifName" class="dbminputlabel">Имя переменной</span><br><input list="variableList" id="varwebhook" class="round" name="actionxinxyla" type="text"></div>
     <div id="webhookdiv2" style="display: none;padding-top: 12px;">
     <br><br><br>
     <span class="dbminputlabel">Редактирование webhook / идентификатора сообщения</span><br>
@@ -1147,7 +1147,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
     glob.formatItem3 = function (data) {
-      let result = '<div style="display: inline-block; width: 100%; padding-left: 8px"><div style="float:left;width: calc(100% - 200px);overflow: hidden;">Nome: ';
+      let result = '<div style="display: inline-block; width: 100%; padding-left: 8px"><div style="float:left;width: calc(100% - 200px);overflow: hidden;">Название: ';
       const comp = "0";
       switch (comp) {
         case "0":
