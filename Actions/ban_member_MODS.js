@@ -9,135 +9,243 @@ module.exports = {
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
 
+
   subtitle(data, presets) {
-    return `${data.User}`;
+
+    if(data.descriptionx == true){
+      desccor = data.descriptioncolor
+      } else {
+        desccor = 'none'
+      }
+
+if(data.acao == 0){tipo = "Заблокировать"} else {tipo = "Разблокировать"}
+
+
+    return data.description
+    ? `<font style="color:${desccor}">${data.description}</font>`
+    : `<font style="color:${desccor}">${tipo}: ${data.User}</font>`
   },
 
-  fields: ["acao", "User", "reason", "days", "iffalse", "iffalseVal"],
+  fields: ["acao", "User", "reason", "days", "iffalse", "iffalseVal", "actionsfalse", "descriptioncolor", "description", "descriptionx", "errcmd"],
 
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.1</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
+
+    <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
+
+    <div id="flutuador" style="padding:0px 0px 15px 0px">
+<table style="width:100%;"><tr>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+</tr></table>
+</div>
 
     <span class="dbminputlabel">Действие</span><br>
 		<select id="acao" class="round" onchange="glob.onChange1(this)">
-      <option value="0">Забанить пользователя</options>
-      <option value="1">Разбанить пользователя</options>
+      <option value="0">Выдать блокировку</options>
+      <option value="1">Снять блокировку</options>
 </select>
 
       <br>
 
-    <span class="dbminputlabel">ID пользователя</span><br>
+    <span class="dbminputlabel">Идентификатор (ID) пользователя</span><br>
     <input class="round" id="User" placeholder="">
 
 <br>
 
 <div>
 	<span class="dbminputlabel">Причина</span><br>
-	<textarea id="reason" rows="3" placeholder="Вставьте причину здесь ..." style="white-space: nowrap; resize: yes;"></textarea>
+	<textarea id="reason" rows="3" placeholder="Вставьте сюда причину..." style="white-space: nowrap; resize: yes;"></textarea>
 </div><br>
 
 <div id="xinelas1">
-  <span class="dbminputlabel">Количество дней удаления сообщений</span>
-  <input id="days" placeholder="Opcional" class="round" type="text">
+  <span class="dbminputlabel">Удалить сообщения за последние X секунд</span>
+  <input id="days" placeholder="Дополнительно" class="round" type="text">
   <br>
 </div>
 
-
-<div style="float: left; width: 40%">
-<span class="dbminputlabel">Если не забенен или не разабнен</span><br>
-<select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-<option value="0" selecionado>Продолжить действия</option>
-<option value="1">Остановить последовательность действий</option>
-<option value="2">Перейти к действию</option>
-<option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к действию якоря</option>
-</select>
+<span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(255,255,255,0.2)">
+<dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
 </div>
-<div id="iffalseContainer" style="display: none; float: right; width: 55%;"><span id="xinelas" class="dbminputlabel">Para</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
-<br><br><br>
+
+<br>
+
+
+<div>
+<div style="float: left; width: 38%" id="xinxylafalse">
+<span class="dbminputlabel">Произошла ошибка</span><br>
+  <select id="iffalse" class="round" onchange="glob.onChangeFalse(this)">
+  <option value="0" selected>Продолжить действия</option>
+  <option value="1">Остановить последовательность действий</option>
+  <option value="2">Перейти к действию</option>
+  <option value="3">Пропустить следующие действия</option>
+  <option value="4">Перейти к якорю действия</option>
+  <option value="5">Выполнение действий и остановится</option>
+  <option value="6">Выполнить действия и продолжить</option>
+  </select>
+  <br>
+  </div>
+  <div id="iffalseContainer" style="display: none; float: right; width: 60%;"><div id="xincontrolf"><span id="iffalseName" class="dbminputlabel">Para</span><br><input id="iffalseVal" class="round" name="iffalseVal" type="text"></div>
+  </div><br></div>
+  <div id="containerxinf" style="width:100%;height:calc(100vh - 410px)">
+  <br><br>
+  <action-list-input id="actionsfalse" height="calc(100vh - 450px)"></action-list-input>
+  </div>
+  
+  </div>
+  <style>
+    xinspace{padding:10px 0px 0px 0px;display:block}
+   .dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+   .dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
+</style>
 `;
   },
 
 
   init() {
     const { glob, document } = this;
-  
-    glob.onComparisonChanged2 = function (event) {
+
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
+
+    glob.onChangeFalse = function (event) {
       if (event.value > "1") {
         document.getElementById("iffalseContainer").style.display = null;
       } else {
         document.getElementById("iffalseContainer").style.display = "none";
       }
+      if (event.value == "5" || event.value == "6") {
+        document.getElementById("containerxinf").style.display = null;
+        document.getElementById("xincontrolf").style.display = "none";
+        document.getElementById("xinxylafalse").style.width = "100%";
+      } else {
+        document.getElementById("containerxinf").style.display = "none";
+        document.getElementById("xincontrolf").style.display = null;
+        document.getElementById("xinxylafalse").style.width = "38%";
+      }
       if (event.value == "2") {
-      document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
+        document.querySelector("[id='iffalseName']").innerText = (`Номер действия`);
+      }
+      if (event.value == "3") {
+        document.querySelector("[id='iffalseName']").innerText = (`Пропустить действия`);
+      }
+      if (event.value == "4") {
+        document.querySelector("[id='iffalseName']").innerText = (`Название якоря`);
+      }
     }
-    if (event.value == "3") {
-      document.querySelector("[id='xinelas']").innerText = (`Прыжок`);
-    }
-    if (event.value == "4") {
-      document.querySelector("[id='xinelas']").innerText = (`Якоря название`);
-    }
-  }
 
-    glob.onComparisonChanged2(document.getElementById("iffalse"));
-    
+    glob.onChangeFalse(document.getElementById('iffalse'));
+
     glob.onChange1 = function (event) {
       if (event.value == "0") {
         document.getElementById("xinelas1").style.display = null;
       } else {
         document.getElementById("xinelas1").style.display = "none";
       }
-  }
+    }
 
     glob.onChange1(document.getElementById('acao'))
 
-},
+  },
 
   async action(cache) {
     const data = cache.actions[cache.index];
     const targetServer = await this.getServerFromData(0, 0, cache);
 
     if (!targetServer) {
-      return this.callNextAction(cache);
+      if (data.iffalse == "5" || data.iffalse == "6") {
+
+        if (data.iffalse == "5") {
+          this.executeSubActions(data.actionsfalse, cache)
+        } else {
+          this.executeSubActionsThenNextAction(data.actionsfalse, cache)
+        }
+
+      } else {
+        this.executeResults(false, data, cache);
+      }
     }
 
-    const User = this.evalMessage(data.User, cache)      
+    const User = this.evalMessage(data.User, cache)
     const reason = this.evalMessage(data.reason, cache);
-    const days = parseInt(data.days, 10) || 0;
-    const acao = this.evalMessage(data.acao, cache)   
+    var deleteMessageSeconds = this.evalMessage(data.days, cache)
 
-    var erro = 0
+    if (deleteMessageSeconds == "") { deleteMessageSeconds = 0 }
 
-    if(acao == "0"){
+    var deleteMessageSeconds = parseInt(deleteMessageSeconds)
+    const acao = this.evalMessage(data.acao, cache)
+
+    if (acao == "0") {
       try {
-        await targetServer.members.ban(User, { days, reason })
-        .then(() => {
-          this.callNextAction(cache);
-        })
+        await targetServer.members.ban(User, { deleteMessageSeconds, reason })
+          .then(() => {
+            this.callNextAction(cache);
+          })
       } catch (err) {
-        this.displayError(data, cache, err)
-        this.executeResults(false, data, cache)
-      }     
+        if (data.errcmd === true) { this.displayError(data, cache, err) }
+
+        if (data.iffalse == "5" || data.iffalse == "6") {
+
+          if (data.iffalse == "5") {
+            this.executeSubActions(data.actionsfalse, cache)
+          } else {
+            this.executeSubActionsThenNextAction(data.actionsfalse, cache)
+          }
+
+        } else {
+          this.executeResults(false, data, cache);
+        }
+
+
+      }
     }
 
-    if(acao == "1"){
+    if (acao == "1") {
       try {
         await targetServer.bans.remove(User, reason)
-        .then(() => {
-          this.callNextAction(cache);
-        })
+          .then(() => {
+            this.callNextAction(cache);
+          })
       } catch (err) {
-        this.displayError(data, cache, err)
-        this.executeResults(false, data, cache)
-      }     
+        if (data.errcmd === true) { this.displayError(data, cache, err) }
+
+
+        if (data.iffalse == "5" || data.iffalse == "6") {
+
+          if (data.iffalse == "5") {
+            this.executeSubActions(data.actionsfalse, cache)
+          } else {
+            this.executeSubActionsThenNextAction(data.actionsfalse, cache)
+          }
+
+        } else {
+          this.executeResults(false, data, cache);
+        }
+
+      }
     }
-   
-    
+
+
+  },
+
+  modInit(data) {
+    this.prepareActions(data.actionsfalse);
   },
 
 
-  mod() {},
+  mod() { },
 };
