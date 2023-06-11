@@ -10,7 +10,7 @@ module.exports = {
   },
 
   subtitle (data) {
-    const storeTypes = ['', 'Временная переменная', 'Переменная сервера', 'Глобальная переменная']
+    const storeTypes = ['', 'Временная переменная', 'Серванная переменная', 'Глобальная переменная']
     return `${storeTypes[parseInt(data.storage)]} (${data.varName})`
   },
 
@@ -18,13 +18,13 @@ module.exports = {
 
   html (isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.3</div>
+    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.4</div>
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 
     <table style="width:100%;">
 		<tr>
 			<td>
-				<span class="dbminputlabel">Изображение холста</span><br>
+				<span class="dbminputlabel">Изображение Canvas</span><br>
 				<select id="storage" class="round" style="width: 100%" onchange="glob.refreshVariableList(this)">
 					${data.variables[1]}
 				</select>
@@ -43,14 +43,14 @@ module.exports = {
 
     <span class="dbminputlabel">Тип края</span><br>
     <select id="circleinfo" class="round" onchange="glob.onComparisonChanged(this)">
-      <option value="0" selected>Радиус скругления углов</option>
-      <option value="1">Циркуляр</option>
-      <option value="2">Пятиугольный</option>
-      <option value="3">Шестиугольный</option>
+      <option value="0" selected>Радиус закругленного угла</option>
+      <option value="1">Круглый</option>
+      <option value="2">Пятиугольник</option>
+      <option value="3">Шестигранник</option>
       <option value="4">Количество сторон</option>
     </select>
     <div style="width: 100%;display:none;padding-top:12px" id="containerxin">
-    <span class="dbminputlabel">Радиус скругления углов</span><br>
+    <span class="dbminputlabel">Радиус закругленного угла</span><br>
       <input id="radius" class="round" type="text" value="0">
     </div>
   
@@ -69,9 +69,9 @@ module.exports = {
 			
     <span class="dbminputlabel">Тип цвета</span>
 			<select id="tipocor" class="round" onchange="glob.onChange0(this)">
-				<option value="2">Никакой</option>
+				<option value="2">Нет</option>
 				<option value="0" selected>Цвет (HEX или RGBA)</option>
-				<option value="1">Градиентный цвет</option>
+				<option value="1">Цвет градиента</option>
 		</select>
 
 	
@@ -87,17 +87,17 @@ module.exports = {
 		</div>
 
       <div style="width: 100%;padding-top:12px" id="containerxin4">
-    <span class="dbminputlabel">Цвет границы</span><br>
-      <table style="width:100%"><tr><td style="width:100%"><input id="cor" value="FFFFFF" name="actionxinxyla" class="round" type="text" placeholder="Введите цвет HEX или RGBA"><td>
+    <span class="dbminputlabel">Цвет края</span><br>
+      <table style="width:100%"><tr><td style="width:100%"><input id="cor" value="FFFFFF" name="actionxinxyla" class="round" type="text" placeholder="Вставить цвет HEX или RGBA"><td>
       <td style="width:40px;text-align:center;padding:4px"><a id="btr1" style="cursor:pointer" onclick="(function(){
         document.getElementById('cor').type = 'color'
         document.getElementById('btr1').style.display = 'none';
         document.getElementById('btr2').style.display = 'block';
-        })()"><button class="tiny compact ui icon button">Цвет</button></a><a id="btr2" style="cursor:pointer;display:none" onclick="(function(){
+        })()"><button class="tiny compact ui icon button">Выбрать</button></a><a id="btr2" style="cursor:pointer;display:none" onclick="(function(){
           document.getElementById('cor').type = 'text';
           document.getElementById('btr1').style.display = 'block';
           document.getElementById('btr2').style.display = 'none';
-          })()"><button class="tiny compact ui icon button">Текст</button></a><td></tr></table>
+          })()"><button class="tiny compact ui icon button">Вручную</button></a><td></tr></table>
 
           
           </div>
@@ -105,32 +105,32 @@ module.exports = {
 	</div>
 	</tab>
 
-<tab label="Тень" icon="cloud">
+<tab label="Оттенок" icon="cloud">
 		<div style="padding:8px">
 	<table style="width:100%"><tr>
 	<td style="width:100px">
-	<span class="dbminputlabel">Размазать тень</span><br>
-	<input id="blur" class="round" type="text" value="0" placeholder="По желанию">
+	<span class="dbminputlabel">Размытие Внутренняя тень</span><br>
+	<input id="blur" class="round" type="text" value="0" placeholder="Дополнительно">
 	</td>
-	<td style="width:100px"><span class="dbminputlabel">+ Перетащите тень X</span><br>
-	<input id="shadowh" class="round" type="text" value="0" placeholder="По желанию"></td>
-	<td style="width:100px"><span class="dbminputlabel">+ Перетащите тень Y</span><br>
-	<input id="shadowv" class="round" type="text" value="0" placeholder="По желанию"></td>
+	<td style="width:100px"><span class="dbminputlabel">+ Теневое размешение X</span><br>
+	<input id="shadowh" class="round" type="text" value="0" placeholder="Дополнительно"></td>
+	<td style="width:100px"><span class="dbminputlabel">+ Теневое размешение Y</span><br>
+	<input id="shadowv" class="round" type="text" value="0" placeholder="Дополнительно"></td>
 	</tr></table>
 
 		
 		<div id="corshadow" style="padding-top:15px">
-		<span class="dbminputlabel">Цвет тени (HEX / RGBA)</span><br>
-			<table style="width:100%"><tr><th><input value="#FFFFFF" id="shadowcor" name="actionxinxyla" class="round" type="text" placeholder="Введите код HEX или RGBA..."><th>
+		<span class="dbminputlabel">Цвет оттенка (HEX / RGBA)</span><br>
+			<table style="width:100%"><tr><th><input value="#FFFFFF" id="shadowcor" name="actionxinxyla" class="round" type="text" placeholder="Вставить цвет HEX или RGBA"><th>
 			<th style="width:40px;text-align:center;padding:4px"><a id="2btr1" style="cursor:pointer" onclick="(function(){
 			document.getElementById('shadowcor').type = 'color'
 			document.getElementById('2btr1').style.display = 'none';
 			document.getElementById('2btr2').style.display = 'block';
-			})()"><button class="tiny compact ui icon button">Цвет</button></a><a id="2btr2" style="cursor:pointer;display:none" onclick="(function(){
+			})()"><button class="tiny compact ui icon button">Выбрать</button></a><a id="2btr2" style="cursor:pointer;display:none" onclick="(function(){
 				document.getElementById('shadowcor').type = 'text';
 				document.getElementById('2btr1').style.display = 'block';
 				document.getElementById('2btr2').style.display = 'none';
-				})()"><button class="tiny compact ui icon button">Текст</button></a><th></tr></table>
+				})()"><button class="tiny compact ui icon button">Вручную</button></a><th></tr></table>
 
 		
 		</div>
@@ -268,7 +268,7 @@ module.exports = {
 
     function circle () {
       ctx.beginPath()
-      ctx.arc(imagew / 2, imageh / 2, (imagew-borda + imageh-borda) / 4, 0, Math.PI * 2)
+      ctx.arc(imagew / 2, imageh / 2, (imagew + imageh) / 4, 0, Math.PI * 2)
       ctx.closePath()
       ctx.clip()
     }
