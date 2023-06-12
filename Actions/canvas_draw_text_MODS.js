@@ -200,7 +200,7 @@ module.exports = {
 			</div>
 			</div>
 		</tab>
-		<tab label="Определения" icon="cogs">
+		<tab label="Конфиг" icon="cogs">
 			<div style="padding:12px 6px">
 			<table style="width:100%"><tr>
 			<td style="width:48%">
