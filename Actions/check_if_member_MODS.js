@@ -4,67 +4,144 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]',
+    author: '[xinxyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
 
-    subtitle(data, presets) {
-      const info = [
-        "Это Бот?",
-        "Можно ли забанить?",
-        "Можно ли кикнуть?",
-        "",
-        "В голосовом канале?",
-        "Управляется пользователем?",
-        "Владелец бота?",
-        "Заглушен?",
-        "Отключен звук?",
-        "Автор команды?",
-        "Текущий владелец сервера?",
-        "В канале АФК?",
-        "Бустер сервера?",
-      ];
-      return `${info[parseInt(data.info, 10)]} > ${presets.getConditionsText(data)}`;
-    },
+  subtitle(data, presets) {
 
-  fields: ['member', 'varName', 'info', 'varName2', "comparison", "branch"],
+    if (data.descriptionx == true) {
+      desccor = data.descriptioncolor
+    } else {
+      desccor = 'none'
+    }
+
+    const info = [
+      "Это бот?",
+      "Вас могут заблокировать?",
+      "Вас можно выгнать?",
+      "",
+      "Вы находитесь в голосовом канале?",
+      "Может ли он управляться пользователем?",
+      "Являетесь ли вы владельцем бота?",
+      "Вы в муте?",
+      "Вы без звука?",
+      "Вы являетесь автором команды?",
+      "Являетесь ли вы нынешним владельцем сервера?",
+      "Ты на канале AFK?",
+      "Вы пробустили сервер?",
+      "Являетесь ли вы пользователем?",
+      "Вы находитесь на текущем сервере?",
+      "Были ли вы забанены на текущем сервере?",
+      "Есть ли у вас приглашения на текущем сервере?",
+      "Ты в теме/постишь?",
+      "Вы наказаны на сервере?",
+      "Вы когда-нибудь были заземлены на сервере?",
+    ];
+
+    return data.description
+      ? `<font style="color:${desccor}">${data.description}</font>`
+      : `<font style="color:${desccor}">${info[parseInt(data.info, 10)]} > ${presets.getConditionsText(data)}</font>`
+  },
+
+  fields: ['member', 'varName', 'info', 'varName2', "comparison", "branch", "thread", "threadVarName", "descriptioncolor", "description", "descriptionx"],
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.3</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.8</div>
+
+    <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
+
+    <div id="flutuador" style="padding:0px 0px 15px 0px">
+<table style="width:100%;"><tr>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+</tr></table>
+</div>
+
 <div>
 <member-input dropdownLabel="Пользователь" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
-</div><br><br><br><br>
+</div><br><br><br>
 <div>
-  <div style="float: left; width: 100%;">
-  <span class="dbminputlabel">Проверить, является ли пользователь</span><br>
-    <select id="info" class="round">
-      <option value="0" selected>Это Бот?</option>
-      <option value="1">Можно ли забанить??</option>
-      <option value="2">Можно ли кикнуть?</option>
-      <option value="4">В голосовом канале?</option>
-      <option value="5">Управляется пользователем?</option>
-      <option value="6">Владелец бота?</option>
-      <option value="7">Заглушен?</option>
-      <option value="8">Отключен звук?</option>
-      ${!isEvent && '<option value="9">Автор команды?</option>'}
-      ${!isEvent && '<option value="10">Текущий владелец сервера?</option>'}
-      <option value="11">В канале АФК?</option>
-      <option value="12">Бустер сервера?</option>
+  <div style="float: left; width: 100%;padding-top:8px">
+  <span class="dbminputlabel">Проверьте, что участник</span><br>
+    <select id="info" class="round" onchange="glob.change(this)">
+      <option value="0" selected>Это бот?</option>
+      <option value="13">Являетесь ли вы пользователем?</option>
+      <option value="1">Могут заблокировать?</option>
+      <option value="2">Могут выгнать?</option>
+      <option value="4">Находитесь в голосовом канале?</option>
+      <option value="5">Может ли он управляться пользователем?</option>
+      <option value="6">Являетесь ли вы владельцем бота?</option>
+      <option value="7">В муте?</option>
+      <option value="8">Без звука?</option>
+      ${!isEvent && '<option value="9">Являетесь автором команды?</option>'}
+      <option value="10">Являетесь ли вы нынешним владельцем сервера?</option>
+      <option value="11">В канале AFK?</option>
+      <option value="12">Поднял (забустил) сервер?</option>
+      <option value="14">Находится ли на текущем сервере?</option>
+      <option value="15">Был ли заблокирован на текущем сервере?</option>
+      <option value="16">Есть ли приглашения на текущем сервере?</option>
+      <option value="17">Ты в теме/постишь?</option>
+      <option value="18">В муте на сервере?</option>
+      <option value="19">Были ли вы когда-нибудь муте на сервере?</option>
     </select>
   </div>
-</div><br><br><br><br>
-<hr class="subtlebar"><br>
-<conditional-input id="branch" style="padding-top: 8px;"></conditional-input>`;
+</div><br><br><br>
+
+<div id="thrxin" style="overflow:hidden">
+<br>
+<thread-channel-input dropdownLabel="Канал" selectId="thread" variableContainerId="varNameContainer2" variableInputId="threadVarName"></thread-channel-input>
+<br><br>
+</div>
+<xinspace>
+
+<hr class="subtlebar">
+<conditional-input id="branch" style="padding-top: 8px;"></conditional-input>
+
+</div>
+<style>
+xinspace{padding:10px 0px 0px 0px;display:block}
+.dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+.dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
+
+</style>
+`;
   },
 
   preInit(data, formatters) {
     return formatters.compatibility_2_0_0_iftruefalse_to_branch(data);
   },
 
-  init() {},
+  init() {
+    const { glob, document } = this;
+
+    glob.change = function (event) {
+      if (event.value == "17") {
+        document.getElementById("thrxin").style.display = null;
+      } else {
+        document.getElementById("thrxin").style.display = "none";
+      }
+    }
+
+    glob.change(document.getElementById("info"));
+
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
+  },
 
   async action(cache) {
     const data = cache.actions[cache.index];
@@ -75,9 +152,9 @@ module.exports = {
     const targetServer = await this.getServerFromData(0, data.varName, cache);
     const info = parseInt(data.info, 10);
     const { Files } = this.getDBM();
-    
+
     if (!member) {
-      console.error('Вам нужно предоставить пользователя некоторого типа для «Проверить, если пользователь"');
+      console.error('Вам необходимо предоставить участнику какого-либо типа для действия "Проверить наличие участника".');
       return this.executeResults(false, data, cache);
     }
 
@@ -128,8 +205,57 @@ module.exports = {
       case 12:
         result = Boolean(member.premiumSinceTimestamp);
         break;
+      case 13:
+        if (member.user?.bot || member.bot) {
+          result = false;
+        } else {
+          result = true;
+        }
+        break;
+      case 14:
+        const server = cache.server;
+
+        if (!server?.members) {
+          result = false;
+        } else {
+          if (server.memberCount !== server.members.cache.size) {
+            server.members.fetch();
+          }
+
+          const members = server.members.cache;
+
+          result = Boolean(members.get(member.id));
+        }
+        break;
+      case 15:
+        const bans = await targetServer.bans.fetch();
+        banidos = [...bans.values()];
+        banidos = banidos.map(v => v.user)
+        banido = banidos.findIndex((item) => item.id == member.id)
+        if (banido == -1) { result = false } else { result = true }
+        break;
+      case 16:
+        const invites = await targetServer.invites.fetch();
+        convites = [...invites.values()];
+        convites = convites.map(v => v.inviter)
+        convite = convites.findIndex((item) => item.id == member.id)
+        if (convite == -1) { result = false } else { result = true }
+        break;
+      case 17:
+        const targetChannel = await this.getChannelFromData(data.thread, data.threadVarName, cache);
+        const members = await targetChannel.members.fetch();
+        const ids = Array.from(members.keys());
+        id = ids.findIndex((item) => item == member.id)
+        if (id == -1) { result = false } else { result = true }
+        break;
+      case 18:
+        result = member.communicationDisabledUntilTimestamp > Date.now()
+         break;
+      case 19:
+        result = member.communicationDisabledUntilTimestamp > 0
+        break;
       default:
-        console.log('Проверьте свое действие «Подтвердить участника»! Здесь что-то не так...');
+        console.log('Проверьте действие "Проверить, является ли пользователь участником"! Что-то не так...');
         break;
     }
     this.executeResults(result, data?.branch ?? data, cache);
@@ -143,5 +269,5 @@ module.exports = {
   },
 
 
-  mod() {},
+  mod() { },
 };
