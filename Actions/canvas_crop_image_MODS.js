@@ -4,84 +4,118 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]',
+    author: '[xinxyla - 172782058396057602]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
 
-  subtitle (data) {
-    const storeTypes = ['', 'Временная переменная', 'Серверная переменная', 'Глобальная переменная']
-    return `${storeTypes[parseInt(data.storage)]} (${data.varName})`
+  subtitle(data) {
+
+    if (data.descriptionx == true) {
+      desccor = data.descriptioncolor
+    } else {
+      desccor = 'none'
+    }
+
+    const storeTypes = ['', 'Временная переменная', 'Сервернная переменная', 'Глобальная переменная']
+
+    return data.description
+      ? `<font style="color:${desccor}">${data.description}</font>`
+      : `<font style="color:${desccor}">${storeTypes[parseInt(data.storage)]} (${data.varName})</font>`
   },
 
-  fields: ['storage', 'varName', 'align', 'align2', 'width', 'height', 'positionx', 'positiony'],
+  fields: ['storage', 'varName', 'align', 'align2', 'width', 'height', 'positionx', 'positiony', 'descriptioncolor', 'description', 'descriptionx'],
 
   html (isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.1</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
+
+    <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
+
+    <div id="flutuador" style="padding:0px 0px 15px 0px">
+<table style="width:100%;"><tr>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+</tr></table>
+</div>
+
 <div>
   <div style="float: left; width: 45%;">
-  <span class="dbminputlabel">Изображение холста</span><br>
+  <span class="dbminputlabel">Изображение Canvas</span><br>
     <select id="storage" class="round" onchange="glob.refreshVariableList(this)">
       ${data.variables[1]}
     </select><br>
   </div>
+
   <div id="varNameContainer" style="float: right; width: 50%;">
   <span class="dbminputlabel">Имя переменной</span><br>
     <input id="varName" class="round" type="text" list="variableList"><br>
   </div>
 </div><br><br><br>
+
 <div>
-  <div style="float: left; width: 50%;padding:5px">
-  <span class="dbminputlabel">Ширина кадрирования (px или %)</span><br>
+  <div style="float: left; width: 50%;padding:0px 5px 0px 0px">
+  <span class="dbminputlabel">Ширина обрезки (px или %)</span><br>
     <input id="width" class="round" type="text" value="100%"><br>
   </div>
-  <div style="float: right; width: 50%;padding:5px">
-  <span class="dbminputlabel">Высота среза (px или %)</span><br>
+  <div style="float: right; width: 50%;padding:0px 0px 0px 5px">
+  <span class="dbminputlabel">Высота обрезки (px или %)</span><br>
     <input id="height" class="round" type="text" value="100%"><br>
   </div>
 </div><br><br><br>
+
   <div style="float: left; width: 100%;">
   <span class="dbminputlabel">Выравнивание</span><br>
     <select id="align" class="round" onchange="glob.onChange0(this)">
-    <option value="0" selected>Верхний левый</option>
+    <option value="0" selected>Верхняя левая часть</option>
     <option value="1">Верхний центр</option>
-    <option value="2">В правом верхнем углу</option>
+    <option value="2">Правый верхний угол</option>
     <option value="3">Средний левый</option>
-    <option value="4">Центральный центр</option>
-    <option value="5">Средний правый</option>
+    <option value="4">Центр</option>
+    <option value="5">Среднее право</option>
     <option value="6">Нижний левый</option>
     <option value="7">Нижний центр</option>
-    <option value="8">Нижний правый</option>
-    <option value="9">Конкретное положение</option>
+    <option value="8">Нижняя правая часть</option>
+    <option value="9">Конкретная позиция</option>
     </select><br>
   </div>
+
   <div id="specific" style="display: none; float: left; width: 100%;">
-  <span class="dbminputlabel">Пользовательское выравнивание</span><br>
+  <span class="dbminputlabel">Индивидуальное выравнивание</span><br>
     <select id="align2" class="round">
-    <option value="0" selected>Верхний левый</option>
+    <option value="0" selected>Верхняя левая часть</option>
     <option value="1">Верхний центр</option>
-    <option value="2">В правом верхнем углу</option>
+    <option value="2">Правый верхний угол</option>
     <option value="3">Средний левый</option>
-    <option value="4">Центральный центр</option>
-    <option value="5">Средний правый</option>
+    <option value="4">Центр</option>
+    <option value="5">Среднее право</option>
     <option value="6">Нижний левый</option>
     <option value="7">Нижний центр</option>
-    <option value="8">Нижний правый</option>
+    <option value="8">Нижняя правая часть</option>
     </select><br>
   </div>
-</div><br><br>
+
+  
 <div id="position" style="display: none">
   <div style="float: left; width: 50%;padding:5px">
-  <span class="dbminputlabel">X позиция</span><br>
+  <span class="dbminputlabel">Позиция X</span><br>
     <input id="positionx" class="round" type="text" value="0"><br>
   </div>
   <div style="float: right; width: 50%;padding:5px">
-  <span class="dbminputlabel">Y позиция</span><br>
+  <span class="dbminputlabel">Позиция Y</span><br>
     <input id="positiony" class="round" type="text" value="0"><br>
   </div>
-</div>`
+</div>
+
+</div>
+
+<style>
+
+.dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+.dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
+
+</style>`
   },
 
   init () {
@@ -102,6 +136,21 @@ module.exports = {
 
     glob.refreshVariableList(document.getElementById('storage'))
     glob.onChange0(document.getElementById('align'))
+
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
+
   },
 
   action (cache) {
