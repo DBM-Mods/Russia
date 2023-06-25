@@ -4,25 +4,44 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]',
+    author: '[xinxyla - 172782058396057602]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
 
-  subtitle (data) {
-    const storeTypes = ['', 'Временная переменная', 'Переменная сервера', 'Глобальная переменная']
-    return `${storeTypes[parseInt(data.storage2)]} (${data.varName2}) -> ${storeTypes[parseInt(data.storage)]} (${data.varName})`
+  subtitle(data, presets) {
+    const storage = presets.variables;
+
+    if (data.descriptionx == true) {
+      desccor = data.descriptioncolor
+    } else {
+      desccor = 'none'
+    }
+
+    return data.description
+      ? `<font style="color:${desccor}">${data.description}</font>`
+      : `<font style="color:${desccor}">Juntar: ${storage[parseInt(data.storage, 10)]} (${data.varName}) Com: ${storage[parseInt(data.storage2, 10)]} (${data.varName2})</font>`
   },
 
-  fields: ['storage', 'varName', 'storage2', 'varName2', 'x', 'y', 'effect'],
+  fields: ['storage', 'varName', 'storage2', 'varName2', 'x', 'y', 'effect', 'descriptioncolor', 'description', 'descriptionx',],
 
-  html (isEvent, data) {
+  html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.1</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Portugues/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Portugues">Версия 0.2</div>
+
+    <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
+
+    <div id="flutuador" style="padding:0px 0px 15px 0px">
+<table style="width:100%;"><tr>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+</tr></table>
+</div>
+
 <div>
   <div style="float: left; width: 45%;">
-  <span class="dbminputlabel">Изображение холста</span><br>
+  <span class="dbminputlabel">Изображение Canvas</span><br>
     <select id="storage" class="round" onchange="glob.refreshVariableList(this)">
       ${data.variables[1]}
     </select>
@@ -45,33 +64,149 @@ module.exports = {
   </div>
 </div><br><br><br>
 <div style="padding-top: 8px">
-  <div style="float: left; width: 50%;padding:5px">
-  <span class="dbminputlabel">X позиция</span><br>
+  <div style="float: left; width: 50%;padding:0px 5px 0px 0px">
+  <span class="dbminputlabel">Позиция X</span><br>
     <input id="x" class="round" type="text" value="0"><br>
   </div>
-  <div style="float: right; width: 50%;padding:5px">
-  <span class="dbminputlabel">Y позиция</span><br>
+  <div style="float: right; width: 50%;padding:0px 0px 0px 5px">
+  <span class="dbminputlabel">Позиция Y</span><br>
     <input id="y" class="round" type="text" value="0"><br>
   </div>
 </div><br><br><br>
 <div style="padding-top: 8px;">
-  <div style="float: left; width: 100%;">
-  <span class="dbminputlabel">Эффект</span><br>
-    <select id="effect" class="round">
-      <option value="0" selected>Наложение</option>
-      <option value="1">Маскировать</option>
+  <div style="width: 100%;">
+  <span class="dbminputlabel">Тип объеденения</span><br>
+    <select id="effect" class="round" onchange="glob.onComparisonChanged(this)">>
+      <option value="0" selected>Наложение изображения</option>
+      <option value="1">Оставить прозрачным и наложить</option>
+      <option value="2">Наложение с прозрачностью</option>
+      <option value="3">Вырезание с прозрачностью</option>
+      <option value="4">Перекрывает позиции</option>
+      <option value="5">Перекрывает позиции</option>
+      <option value="6">Вырезание позициия</option>
+      <option value="7">Частичное перекрытие в позиции</option>
+      <option value="8">Более четкий</option>
+      <option value="9">Копировать</option>
+      <option value="10">Перекрытие исключительно</option>
+      <option value="11">Умножить</option>
+      <option value="12">Экран</option>
+      <option value="13">Перекрытие с перекрытием</option>
+      <option value="14">Затемнить</option>
+      <option value="15">Осветлить</option>
+      <option value="16">Осветлить цвет</option>
+      <option value="17">Затемнить цвет</option>
+      <option value="18">Интенсивное перекрытие</option>
+      <option value="19">Мягкое наложение</option>
     </select>
   </div>
-</div>`
+</div>
+
+<br>
+
+<span class="dbminputlabel">Информация об объеденении</span>
+<div id="informacao" style="color:#ccc;border:1px solid rgba(200,200,200,0.3);background:rgba(50,50,50,0.5);padding:5px"></div>
+
+</div>
+
+<style>
+table{width:100%}
+.col1{width:38%;padding:0px 10px 0px 0px}
+.col2{width:60%}
+.dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+.dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
+.xinelaslink{margin-top:-4px}
+.xinelaslink:hover{opacity:0.8 !important}
+</style>
+`
   },
 
-  init () {
+  init() {
     const { glob, document } = this
 
+    glob.onComparisonChanged = function (event) {
+      if (event.value == "0") {
+        document.querySelector("[id='informacao']").innerText = (`Это значение по умолчанию, и оно просто рисует новый графический элемент поверх существующего содержимого в контексте.`);
+      }
+      if (event.value == "1") {
+        document.querySelector("[id='informacao']").innerText = (`Область существующего содержимого, которая перекрывается новым графическим элементом, становится прозрачной, а остальная часть сохраняется.`);
+      }
+      if (event.value == "2") {
+        document.querySelector("[id='informacao']").innerText = (`Сохраняется только та область нового графического элемента, которая перекрывает существующий контент, а остальная часть делается прозрачной.`);
+      }
+      if (event.value == "3") {
+        document.querySelector("[id='informacao']").innerText = (`Область нового графического элемента, которая перекрывает существующий контент, делается прозрачной, а остальная часть сохраняется.`);
+      }
+      if (event.value == "4") {
+        document.querySelector("[id='informacao']").innerText = (`Новый графический элемент рисуется поверх существующего содержимого, но только там, где есть перекрытие. Остальное существующее содержимое сохраняется.`);
+      }
+      if (event.value == "5") {
+        document.querySelector("[id='informacao']").innerText = (`Новый графический элемент рисуется под существующим содержимым в контексте.`);
+      }
+      if (event.value == "6") {
+        document.querySelector("[id='informacao']").innerText = (`Сохраняется только та область существующего содержимого, которая перекрывается новым графическим элементом, а остальная часть делается прозрачной.`);
+      }
+      if (event.value == "7") {
+        document.querySelector("[id='informacao']").innerText = (`Новый графический элемент рисуется под существующим содержимым, но только там, где есть перекрытие. Остальное существующее содержимое сохраняется.`);
+      }
+      if (event.value == "8") {
+        document.querySelector("[id='informacao']").innerText = (`Цветовые значения нового графического элемента и существующего содержимого складываются вместе, в результате чего в местах наложения цветов получается более светлый вид.`);
+      }
+      if (event.value == "9") {
+        document.querySelector("[id='informacao']").innerText = (`Новый графический элемент полностью заменяет существующий контент в контексте.`);
+      }
+      if (event.value == "10") {
+        document.querySelector("[id='informacao']").innerText = (`Области, где новый графический элемент и существующее содержимое накладываются друг на друга, становятся прозрачными, а остальные области сохраняются.`);
+      }
+      if (event.value == "11") {
+        document.querySelector("[id='informacao']").innerText = (`Значения цветов нового графического элемента и существующего содержимого перемножаются, что приводит к более темному виду в местах наложения цветов.`);
+      }
+      if (event.value == "12") {
+        document.querySelector("[id='informacao']").innerText = (`Цветовые значения нового графического элемента и существующего содержимого инвертируются, умножаются и снова инвертируются, что приводит к более четкому виду наложения.`);
+      }
+      if (event.value == "13") {
+        document.querySelector("[id='informacao']").innerText = (`Цветовые значения нового графического элемента и существующего содержимого умножаются или умножаются на их инверсии, в зависимости от исходных цветовых значений, что приводит к контрастному наложению.`);
+      }
+      if (event.value == "14") {
+        document.querySelector("[id='informacao']").innerText = (`Значения цвета нового графического элемента и существующего содержимого сравниваются пиксель за пикселем, и самое темное значение сохраняется.`);
+      }
+      if (event.value == "15") {
+        document.querySelector("[id='informacao']").innerText = (`Значения цвета нового графического элемента и существующего содержимого сравниваются пиксель за пикселем, и самое светлое значение сохраняется.`);
+      }
+      if (event.value == "16") {
+        document.querySelector("[id='informacao']").innerText = (`Цветовые значения нового графического элемента и существующего содержимого инвертируются, разделяются и снова инвертируются, что приводит к более четкому виду наложения.`);
+      }
+      if (event.value == "17") {
+        document.querySelector("[id='informacao']").innerText = (`Цветовые значения нового графического элемента и существующего содержимого инвертируются, разделяются и снова инвертируются, в результате чего получается более темный вид наложения.`);
+      }
+      if (event.value == "18") {
+        document.querySelector("[id='informacao']").innerText = (`Цветовые значения нового графического элемента и существующего содержимого умножаются или умножаются на их инверсии, в зависимости от исходных цветовых значений, в результате чего создается высококонтрастный вид наложения.`);
+      }
+      if (event.value == "19") {
+        document.querySelector("[id='informacao']").innerText = (`Цветовые значения нового графического элемента и существующего содержимого сглаживаются и смешиваются, в результате чего получается плавное наложение.`);
+      }
+    }
+
+    glob.onComparisonChanged(document.getElementById("effect"));
+
     glob.refreshVariableList(document.getElementById('storage'))
+
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
+
   },
 
-  action (cache) {
+  action(cache) {
     const Canvas = require('canvas')
     const data = cache.actions[cache.index]
     const storage = parseInt(data.storage)
@@ -98,15 +233,32 @@ module.exports = {
     const canvas = Canvas.createCanvas(image.width, image.height)
     const ctx = canvas.getContext('2d')
     ctx.drawImage(image, 0, 0, image.width, image.height)
-    switch (effect) {
-      case 1:
-        ctx.globalCompositeOperation = 'destination-out'
-    }
+
+    if (effect == "1") { ctx.globalCompositeOperation = 'destination-out' }
+    if (effect == "2") { ctx.globalCompositeOperation = 'source-in' }
+    if (effect == "3") { ctx.globalCompositeOperation = 'source-out' }
+    if (effect == "4") { ctx.globalCompositeOperation = 'source-atop' }
+    if (effect == "5") { ctx.globalCompositeOperation = 'destination-over' }
+    if (effect == "6") { ctx.globalCompositeOperation = 'destination-in' }
+    if (effect == "7") { ctx.globalCompositeOperation = 'destination-atop' }
+    if (effect == "8") { ctx.globalCompositeOperation = 'lighter' }
+    if (effect == "9") { ctx.globalCompositeOperation = 'copy' }
+    if (effect == "10") { ctx.globalCompositeOperation = 'xor' }
+    if (effect == "11") { ctx.globalCompositeOperation = 'multiply' }
+    if (effect == "12") { ctx.globalCompositeOperation = 'screen' }
+    if (effect == "13") { ctx.globalCompositeOperation = 'overlay' }
+    if (effect == "14") { ctx.globalCompositeOperation = 'darken' }
+    if (effect == "15") { ctx.globalCompositeOperation = 'lighten' }
+    if (effect == "16") { ctx.globalCompositeOperation = 'color-dodge' }
+    if (effect == "17") { ctx.globalCompositeOperation = 'color-burn' }
+    if (effect == "18") { ctx.globalCompositeOperation = 'hard-light' }
+    if (effect == "19") { ctx.globalCompositeOperation = 'soft-light' }
+    
     ctx.drawImage(image2, x, y, image2.width, image2.height)
     const result = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
     this.storeValue(result, storage, varName, cache)
     this.callNextAction(cache)
   },
 
-  mod () {}
+  mod() { }
 }
