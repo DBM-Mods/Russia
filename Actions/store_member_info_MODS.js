@@ -49,6 +49,11 @@ module.exports = {
       "URL баннера участника",
       "ID сервера участника",
       "Временная метка импульса участника",
+      "Общее количество приглашений участников на текущем сервере",
+      "Список приглашений участников на текущем сервере",
+      "Список использования приглашений участников на текущем сервере", 
+      "Список использования приглашений участников на текущем сервере",
+      "Общее количество использований приглашений участников на текущем сервере",
     ];
 
     if (data.descriptionx) {
@@ -71,115 +76,127 @@ module.exports = {
 
     switch (info) {
       case 0:
-        dataType = "участник сервера";
+        dataType = "Пользователь сервера";
         break;
-      case 1:
-        dataType = "ID"
-        break;
-      case 2:
-        dataType = "Text";
-        break
-      case 3:
-        dataType = "Text";
-        break
-      case 4:
-        dataType = "Text";
-        break;
-      case 5:
-        dataType = "Text";
-        break;
-      case 6:
-        dataType = "Text";
-        break;
-      case 7:
-        dataType = "Position";
-        break;
-      case 8:
-        dataType = "Position";
-        break;
-      case 9:
-        dataType = "Position";
-        break;
-      case 10:
-        dataType = "True/False";
-        break;
-      case 11:
-        dataType = "True/False";
-        break;
-      case 12:
-        dataType = "True/False";
-        break;
-      case 13:
-        dataType = "True/False";
-        break;
-      case 14:
-        dataType = "Text";
-        break;
-      case 15:
-        dataType = "Text";
-        break
-      case 16:
-        dataType = "URL"
-        break;
-      case 17:
-        dataType = "List"
-        break
-      case 18:
-        dataType = "Число";
-        break;
-      case 19:
-        dataType = "Channel";
-        break;
-      case 20:
-        dataType = "Число";
-        break;
-      case 21:
-        dataType = "Text";
-        break;
-      case 22:
-        dataType = "Data";
-        break
-      case 23:
-        dataType = "Timestamp";
-        break
-      case 24:
-        dataType = "Data";
-        break;
-      case 25:
-        dataType = "Timestamp";
-        break
-      case 26:
+    case 1:
         dataType = "ID";
         break;
-      case 27:
-        dataType = "List";
-        break;
-      case 28:
-        dataType = "List";
-        break;
-      case 29:
-        dataType = "Text";
-        break;
-      case 30:
-        dataType = "Text";
-        break;
-      case 31:
-        dataType = "URL";
-        break;
-      case 32:
-        dataType = "Data";
+    case 2:
+        dataType = "Текст";
         break
-      case 33:
-        dataType = "Timestamp";
+    case 3:
+        dataType = "Текст";
+        break
+    case 4:
+        dataType = "Текст";
         break;
-      case 34:
+    case 5:
+        dataType = "Текст";
+        break;
+    case 6:
+        dataType = "Текст";
+        break;
+    case 7:
+        dataType = "Позиция";
+        break;
+    case 8:
+        dataType = "Позиция";
+        break;
+    case 9:
+        dataType = "Позиция";
+        break;
+    case 10:
+        dataType = "Да/Нет";
+        break;
+    case 11:
+        dataType = "Да/Нет";
+        break;
+    case 12:
+        dataType = "Да/Нет";
+        break;
+    case 13:
+        dataType = "Да/Нет";
+        break;
+    case 14:
+        dataType = "Текст";
+        break;
+    case 15:
+        dataType = "Текст";
+        break;
+    case 16:
         dataType = "URL";
         break;
-      case 35:
+    case 17:
+        dataType = "Список";
+        break;
+    case 18:
+        dataType = "Число";
+        break;
+    case 19:
+        dataType = "Канал";
+        break;
+    case 20:
+        dataType = "Число";
+        break;
+    case 21:
+        dataType = "Текст";
+        break;
+    case 22:
+        dataType = "Дата";
+        break;
+    case 23:
+        dataType = "Временная метка";
+        break;
+    case 24:
+        dataType = "Дата";
+        break;
+    case 25:
+        dataType = "Временная метка";
+        break;
+    case 26:
         dataType = "ID";
         break;
-      case 36:
-        dataType = "Timestamp";
+    case 27:
+        dataType = "Список";
+        break;
+    case 28:
+        dataType = "Список";
+        break;
+    case 29:
+        dataType = "Текст";
+        break;
+    case 30:
+        dataType = "Текст";
+        break;
+    case 31:
+        dataType = "URL";
+        break;
+    case 32:
+        dataType = "Дата";
+        break;
+    case 33:
+        dataType = "Временная метка";
+        break;
+    case 34:
+        dataType = "URL";
+        break;
+    case 35:
+        dataType = "ID";
+        break;
+    case 36:
+        dataType = "Временная метка";
+        break;
+    case 37:
+        dataType = "Число";
+        break;
+    case 38:
+        dataType = "Список";
+        break;
+    case 39:
+        dataType = "Список";
+        break;
+    case 40:
+        dataType = "Число";
         break;
     }
 
@@ -191,39 +208,9 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zipм">Обновление</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.3</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.4</div>
 
-    <style>
-    .xin {
-      padding: 5px;
-      border: 1px solid #777;
-      background: rgba(255,255,255,0.1);
-    }
-
-    .dbmmodsbr1 {
-      position: absolute;
-      bottom: 0px;
-      border: 0px solid rgba(50,50,50,0.7);
-      background: rgba(0,0,0,0.7);
-      color: #999;
-      padding: 5px;
-      left: 0px;
-      z-index: 999999;
-      cursor: pointer;
-    }
-
-    .dbmmodsbr2 {
-      position: absolute;
-      bottom: 0px;
-      border: 0px solid rgba(50,50,50,0.7);
-      background: rgba(0,0,0,0.7);
-      color: #999;
-      padding: 5px;
-      right: 0px;
-      z-index: 999999;
-      cursor: pointer;
-    }
-  </style>
+    <div style="width: 100%; padding:5px 0px;height: calc(100vh - 160px);overflow:auto">
 
   <div id="flutuador" style="padding:0px 0px 15px 0px">
     <table style="width:100%;"><tr>
@@ -242,9 +229,10 @@ module.exports = {
     </table>
   </div>
 
+  <div style="overflow: hidden">
 <member-input dropdownLabel="Пользователь" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
+</div>
 
-<br><br><br>
 
 <div style="padding-top: 8px;">
 	<span class="dbminputlabel">Информация</span><br>
@@ -284,8 +272,12 @@ module.exports = {
   <option value="28">Список бейджей участника</option>
   <option value="29">Статус клиента участника [веб или мобильный]</option>
   <option value="32">Время ожидания участника</option>
-  <option value="33">Временная метка участника истекла</option>
+  <option value="33">Временная метка наказанного участника</option>
   <option value="36">Временная метка импульса участника</option>
+  <option value="37">Общее количество приглашений участника на текущем сервере</option>
+  <option value="38">Список приглашений участника на текущем сервере</option>
+  <option value="39">Список использований приглашений участника на текущем сервере</option>
+  <option value="40">Общее количество использований приглашений участника на текущем сервере</option>
 	</select>
   <input type="text" id="filtrodoxinxyla" class="round" placeholder="Параметры фильтра...">
   </div>
@@ -294,39 +286,74 @@ module.exports = {
 
 <store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
 
+</div>
+
 <style>
 .round2{width:100%;height:30px;outline:0}
-.round2 option{padding:3px 8px;}
+.round2 option{padding:3px 8px;text-align:left}
+.round2 optgroup{text-align:center;padding:4px 0px;}
+
+
 .abrir {
+  min-height: 30px;
   height: 30px;
   animation: abrir .5s forwards;
 }
 
 @keyframes abrir {
   from {
+    min-height: 30px;
     height: 30px;
   }
   to {
-    height: 140px;
+    min-height: 100px;
+    height: calc(100vh - 420px);
   }
 }
 
 .fechar {
-  height: 140px;
+  min-height: 100px;
+  height: calc(100vh - 420px);
   animation: fechar .5s forwards;
 }
 
 @keyframes fechar {
   from {
-    height: 140px;
+    min-height: 100px;
+    height: calc(100vh - 420px);
   }
   to {
+    min-height: 30px;
     height: 30px;
   }
 }
+.xin {
+  padding: 5px;
+  border: 1px solid #777;
+  background: rgba(255,255,255,0.1);
+}
+.dbmmodsbr1 {
+  position: absolute;
+  bottom: 0px;
+  border: 0px solid rgba(50,50,50,0.7);
+  background: rgba(0,0,0,0.7);
+  color: #999;
+  padding: 5px;
+  left: 0px;
+  z-index: 999999;
+  cursor: pointer;
+}
 
-select {
-  max-height: 140px;
+.dbmmodsbr2 {
+  position: absolute;
+  bottom: 0px;
+  border: 0px solid rgba(50,50,50,0.7);
+  background: rgba(0,0,0,0.7);
+  color: #999;
+  padding: 5px;
+  right: 0px;
+  z-index: 999999;
+  cursor: pointer;
 }
 </style>
 `;
@@ -399,6 +426,8 @@ select {
       if (memberfind == "100") { member = members.find((m) => m.user?.username === find); }
       if (memberfind == "101") { member = members.get(find) }
     }
+
+    const targetServer = await this.getServerFromData(0, data.varName, cache);
 
     if (!member) {
       this.callNextAction(cache);
@@ -536,6 +565,36 @@ select {
         break;
       case 36:
         result = member.premiumSinceTimestamp;
+        break;
+      case 37:
+        invites = await targetServer.invites.fetch();
+        convites = [...invites.values()];
+        convites = convites.map(v => v.inviter)
+        convite = convites.filter((item) => item.id == member.id)
+        result = convite.length
+        break;
+      case 38:
+        invites = await targetServer.invites.fetch();
+        convites = [...invites.values()];
+        convites = convites.map(v => v)
+        convite = convites.filter((item) => item.inviter.id == member.id)
+        result = convite
+        break;
+      case 39:
+        invites = await targetServer.invites.fetch();
+        convites = [...invites.values()];
+        convites = convites.map(v => v)
+        convite = convites.filter((item) => item.inviter.id == member.id)
+        convite = convite.map(v => v.uses)
+        result = convite
+        break;
+      case 40:
+        invites = await targetServer.invites.fetch();
+        convites = [...invites.values()];
+        convites = convites.map(v => v)
+        convite = convites.filter((item) => item.inviter.id == member.id)
+        convite = convite.map(v => v.uses)
+        result = convite.reduce((acumulador, numero) => acumulador + numero, 0);
         break;
       default:
         break;
