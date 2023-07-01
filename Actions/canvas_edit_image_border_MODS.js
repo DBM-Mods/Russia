@@ -4,22 +4,35 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]',
+    author: '[xinxyla - 172782058396057602]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
 
-  subtitle (data) {
-    const storeTypes = ['', 'Временная переменная', 'Серванная переменная', 'Глобальная переменная']
-    return `${storeTypes[parseInt(data.storage)]} (${data.varName})`
+  subtitle(data) {
+
+    if (data.descriptionx == true) {
+      desccor = data.descriptioncolor
+    } else {
+      desccor = 'none'
+    }
+
+    const storeTypes = ['', 'Временная переменная', 'Сервернная переменная', 'Глобальная переменная']
+    const corte = ['Радиус скругления угла', 'Круг', 'Пятиугольник', 'Шестиугольник', 'Количество точек', 'Звезда', 'Свободная форма / EVAL', 'Сердце', 'Трапеция'];
+
+    return data.description
+      ? `<font style="color:${desccor}">${data.description}</font>`
+      : `<font style="color:${desccor}">Вырезать: ${corte[parseInt(data.circleinfo)]} ~ ${storeTypes[parseInt(data.storage)]} (${data.varName})</font>`
   },
 
-  fields: ['storage', 'varName', 'circleinfo', 'radius' , 'cor' , 'lados' , 'borda', 'shadowcor','blur','shadowh','shadowv','gradiente','tipocor'],
+  fields: ['storage', 'varName', 'circleinfo', 'radius', 'cor', 'lados', 'borda', 'shadowcor', 'girarb', 'livre', 'atk', 'blur', 'shadowh', 'shadowv', 'gradiente', 'tipocor', 'gradient2', 'apartir', 'descriptioncolor', 'description', 'descriptionx'],
 
-  html (isEvent, data) {
+  html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.4</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.5</div>
+
+	<div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
     <table style="width:100%;">
 		<tr>
@@ -31,23 +44,27 @@ module.exports = {
 			</td>
 			<td>
 				<span class="dbminputlabel">Имя переменной</span><br>
-				<input id="varName" class="round" type="text" list="variableList">
+				<input id="varName" class="round" type="text" list="variableList2">
 			</td>
 		</tr>
 	</table>
-<br>
+<xinspace>
 
 	<tab-system style="margin-top: 0">
-		<tab label="Край" icon="align left">
+		<tab label="Разрез" icon="cut">
 				<div style="padding:8px">
 
-    <span class="dbminputlabel">Тип края</span><br>
+    <span class="dbminputlabel">Тип разреза</span><br>
     <select id="circleinfo" class="round" onchange="glob.onComparisonChanged(this)">
       <option value="0" selected>Радиус закругленного угла</option>
-      <option value="1">Круглый</option>
+      <option value="1">Круг</option>
       <option value="2">Пятиугольник</option>
-      <option value="3">Шестигранник</option>
-      <option value="4">Количество сторон</option>
+      <option value="3">Шестиугольник</option>
+      <option value="4">Количество точек</option>
+      <option value="5">Звезда</option>
+      <option value="7">Сердце</option>
+      <option value="8">Трапеция</option>
+      <option value="6">Свободная форма / EVAL</option>
     </select>
     <div style="width: 100%;display:none;padding-top:12px" id="containerxin">
     <span class="dbminputlabel">Радиус закругленного угла</span><br>
@@ -55,24 +72,71 @@ module.exports = {
     </div>
   
     <div style="width: 100%;display:none;padding-top:12px" id="containerxin3">
-    <span class="dbminputlabel">Количество сторон</span><br>
+    <span class="dbminputlabel">Количество точек</span><br>
       <input id="lados" class="round" type="text" value="6">
     </div>
+
+    <div style="width: 100%;display:none;padding-top:12px" id="containerxin7">
+    <span class="dbminputlabel" name="renomexin">Атака</span><br>
+      <input id="atk" class="round" type="text" value="100">
+    </div>
+
+    <div style="width: 100%;display:none;padding-top:12px" id="containerxin5">
+    <span class="dbminputlabel">Поворот среза</span><br>
+    <input id="girarb" class="round" type="text" value="0">
+    </div>
+
+    <div style="width: 100%;display:none;padding-top:12px" id="containerxin6">
+    <span class="dbminputlabel">Свободная форма / EVAL</span><span style="float:right"><button class="tiny compact ui icon button" onclick="(function(){document.getElementById('xinxylainfo').style.display = 'block';})()">Информация</button></span><br>
+    <textarea id="livre" rows="5" style="height: calc(100vh - 370px);width: 100%; white-space: nowrap; resize:yes" ></textarea>
+    </div>
+
+
 </div>
   
+<div id="xinxylainfo" style="top:0px;left:10px;position:absolute;background-color:#333;color:#aaa;z-index:99999;width:calc(100% - 20px);height:calc(100% - 10px);display:none">
+<div style="width:100%;padding:10px"><span style="float:right"><button class="tiny compact ui icon button" onclick="(function(){document.getElementById('xinxylainfo').style.display = 'none';})()">Закрыть [X]</button></span>
+<b>Информация</b></div>
+<div style="padding:10px;background:#222;height:calc(100% - 30px);overflow:auto">
+<table><tr><th class="col">Переменная</th><th class="col">Информация</th></tr>
+<tr><td class="col">imagew</td><td class="col">Ширина изображения</td></tr>
+<tr><td class="col">imageh</td><td class="col">Высота изображения</td></tr>
+<tr><td class="col">ctx</td><td class="col">getContext('2d')</td></tr>
+</table>
+</div>
+</div>
 
 
 </tab>
 
-<tab label="Цвет" icon="flask">
+<tab label="Цвет и размер" icon="flask">
 		<div style="padding:8px">
 			
-    <span class="dbminputlabel">Тип цвета</span>
-			<select id="tipocor" class="round" onchange="glob.onChange0(this)">
-				<option value="2">Нет</option>
-				<option value="0" selected>Цвет (HEX или RGBA)</option>
-				<option value="1">Цвет градиента</option>
-		</select>
+    <div style="overflow: hidden;width:100%;padding:4px 0px 0px 0px">
+		<div style="float: left; width: 100%;" id="xinxyludob">
+  <span class="dbminputlabel">Тип цвета</span>
+    <select id="tipocor" class="round" onchange="glob.onChange0(this)">
+      <option value="0" selected>Цвет (HEX или RGBA)</option>
+      <option value="1">Цвет градиента / EVAL</option>
+      <option value="2">Цвет градиента / Выборочный</option>
+    </select>
+  </div>
+
+  <div style="float: left; width: 60%;padding-left:4px" id="xinxyludo">
+  <span class="dbminputlabel">Направление</span>
+    <select id="apartir" class="round">
+      <option value="0" selected>Вверх-вниз</option>
+      <option value="1">Слева сверху вниз</option>
+      <option value="2">Справа налево</option>
+      <option value="3">Справа сверху вниз</option>
+      <option value="4">Снизу вверх</option>
+      <option value="5">Слева снизу вверх</option>
+      <option value="6">Слева направо</option>
+      <option value="7">Справа снизу вверх</option>
+    </select>
+  </div>
+
+</div>
 
 	
     <div style="width: 100%;padding-top:12px" id="containerxin2">
@@ -81,23 +145,55 @@ module.exports = {
       <input id="borda" name="actionxinxyla" class="round" value="0" type="text" placeholder="2">
 
     </div>
+
+    <div id="Gradient2" style="display: none; float: left; width: 100%;">
+
+<br>
+<dialog-list id="gradient2" fields='["posicao", "cor"]' dialogTitle="Градиент" dialogResizable dialogWidth="400" dialogHeight="220" listLabel="Градиент" listStyle="height: calc(100vh - 380px);" itemName="Embed" itemCols="1" itemHeight="30px;" itemTextFunction="glob.formatItem(data)" itemStyle="text-align: left; line-height: 30px;">
+<div style="padding: 12px">
+
+<span class="dbminputlabel">Позиция</span><br>
+<input id="posicao" class="round" type="text" placeholder="От 0 до 100">
+<br>
+
+<span class="dbminputlabel">Цвет (HEX, RGBA или название цвета)</span><br>
+<table style="width:100%"><tr><td><input id="cor" name="actionxinxyla" class="round" type="text" placeholder="#000000 или rgba(0,0,0,0.5)"><td>
+<td style="width:40px;text-align:center;padding:4px"><a id="btr1b" style="cursor:pointer" onclick="(function(){
+  document.getElementById('cor').type = 'color'
+  document.getElementById('btr1b').style.display = 'none';
+  document.getElementById('btr2b').style.display = 'block';
+  })()"><button class="tiny compact ui icon button">Выбор</button></a><a id="btr2b" style="cursor:pointer;display:none" onclick="(function(){
+    document.getElementById('cor').type = 'text';
+    document.getElementById('btr1b').style.display = 'block';
+    document.getElementById('btr2b').style.display = 'none';
+    })()"><button class="tiny compact ui icon button">Вручную</button></a><td></tr></table><br>
+
+</div>
+</dialog-list>
+</div>
+
+
 		<div id="gradient" style="padding-top:12px">
 			<span class="dbminputlabel">Градиент</span>
 			<textarea id="gradiente" name="gradientes" rows="4" style="width: 100%; white-space: nowrap; resize:yes"></textarea>
 		</div>
 
       <div style="width: 100%;padding-top:12px" id="containerxin4">
-    <span class="dbminputlabel">Цвет края</span><br>
-      <table style="width:100%"><tr><td style="width:100%"><input id="cor" value="FFFFFF" name="actionxinxyla" class="round" type="text" placeholder="Вставить цвет HEX или RGBA"><td>
-      <td style="width:40px;text-align:center;padding:4px"><a id="btr1" style="cursor:pointer" onclick="(function(){
+    <span class="dbminputlabel">Цвет границы</span><br>
+      <table style="width:100%"><tr><th><input id="cor" value="FFFFFF" name="actionxinxyla" class="round" type="text" placeholder="Введите цвет в формате HEX или RGBA" onchange="(function(){
+        var input = document.getElementById('cor');
+        var valor = input.value;
+        document.getElementById('exib').style.background = valor;
+        })()"></th>
+      <th style="width:60px;text-align:center;padding:4px"><a id="btr1" style="cursor:pointer" onclick="(function(){
         document.getElementById('cor').type = 'color'
         document.getElementById('btr1').style.display = 'none';
         document.getElementById('btr2').style.display = 'block';
-        })()"><button class="tiny compact ui icon button">Выбрать</button></a><a id="btr2" style="cursor:pointer;display:none" onclick="(function(){
+        })()"><button style="float:left" class="tiny compact ui icon button">Выбор</button><div style="float:right"><div style="min-width:15px;margin-top:4px" id="exib">&#8203;</div></div></a><a id="btr2" style="cursor:pointer;display:none" onclick="(function(){
           document.getElementById('cor').type = 'text';
           document.getElementById('btr1').style.display = 'block';
           document.getElementById('btr2').style.display = 'none';
-          })()"><button class="tiny compact ui icon button">Вручную</button></a><td></tr></table>
+          })()"><button class="tiny compact ui icon button">Вручную</button></a></th></tr></table>
 
           
           </div>
@@ -105,92 +201,241 @@ module.exports = {
 	</div>
 	</tab>
 
-<tab label="Оттенок" icon="cloud">
+<tab label="Тень" icon="cloud">
 		<div style="padding:8px">
 	<table style="width:100%"><tr>
 	<td style="width:100px">
-	<span class="dbminputlabel">Размытие Внутренняя тень</span><br>
+	<span class="dbminputlabel">Размазать тени</span><br>
 	<input id="blur" class="round" type="text" value="0" placeholder="Дополнительно">
 	</td>
-	<td style="width:100px"><span class="dbminputlabel">+ Теневое размешение X</span><br>
+	<td style="width:100px"><span class="dbminputlabel">+ Теневое волочение X</span><br>
 	<input id="shadowh" class="round" type="text" value="0" placeholder="Дополнительно"></td>
-	<td style="width:100px"><span class="dbminputlabel">+ Теневое размешение Y</span><br>
+	<td style="width:100px"><span class="dbminputlabel">+ Теневое волочение Y</span><br>
 	<input id="shadowv" class="round" type="text" value="0" placeholder="Дополнительно"></td>
 	</tr></table>
 
 		
 		<div id="corshadow" style="padding-top:15px">
 		<span class="dbminputlabel">Цвет оттенка (HEX / RGBA)</span><br>
-			<table style="width:100%"><tr><th><input value="#FFFFFF" id="shadowcor" name="actionxinxyla" class="round" type="text" placeholder="Вставить цвет HEX или RGBA"><th>
-			<th style="width:40px;text-align:center;padding:4px"><a id="2btr1" style="cursor:pointer" onclick="(function(){
+			<table style="width:100%"><tr><th><input value="#FFFFFF" id="shadowcor" name="actionxinxyla" class="round" type="text" placeholder="Введите код HEX или RGBA..." onchange="(function(){
+        var input = document.getElementById('shadowcor');
+        var valor = input.value;
+        document.getElementById('exib2').style.background = valor;
+        })()"></th>
+			<th style="width:60px;text-align:center;padding:4px"><a id="2btr1" style="cursor:pointer" onclick="(function(){
 			document.getElementById('shadowcor').type = 'color'
 			document.getElementById('2btr1').style.display = 'none';
 			document.getElementById('2btr2').style.display = 'block';
-			})()"><button class="tiny compact ui icon button">Выбрать</button></a><a id="2btr2" style="cursor:pointer;display:none" onclick="(function(){
+			})()"><button style="float:left" class="tiny compact ui icon button">Выбор</button><div style="float:right"><div style="min-width:15px;margin-top:4px" id="exib2">&#8203;</div></div></a><a id="2btr2" style="cursor:pointer;display:none" onclick="(function(){
 				document.getElementById('shadowcor').type = 'text';
 				document.getElementById('2btr1').style.display = 'block';
 				document.getElementById('2btr2').style.display = 'none';
-				})()"><button class="tiny compact ui icon button">Вручную</button></a><th></tr></table>
+				})()"><button class="tiny compact ui icon button">Вручную</button></a></th></tr></table>
 
 		
 		</div>
-		</div>	</div>
+		</div>
 	</tab>
+
+  <tab label="Конфиг" icon="cogs">
+  
+  <div style="padding:8px">
+<table style="width:100%;"><tr>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+</tr></table>
+</div>
+
+</tab>
     </tab-system>
     
-    <style>td{padding:2px}</style>`
+<style>
+    td{padding:2px}
+    xinspace{padding:5px 0px 0px 0px;display:block}
+    .dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+    .dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
+.col{padding:6px;text-align:left;border:1px solid #777}
+    .xin {background:#111;padding:2px 4px;}
+    </style>`
   },
 
-  init () {
+  init() {
     const { glob, document } = this
-  
-      glob.onComparisonChanged = function (event) {
-        if (event.value === "0") {
-          document.getElementById("containerxin").style.display = null;
-          document.getElementById("containerxin3").style.display = "none"; 
-        }
-        if (event.value === "1" || event.value === "2" || event.value === "3") {
-          document.getElementById("containerxin").style.display = "none"; 
-        }
-        if (event.value === "4") {
-          document.getElementById("containerxin3").style.display = null;
-          document.getElementById("containerxin").style.display = "none";
+
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
+
+    glob.onComparisonChanged = function (event) {
+      if (event.value === "0") {
+        document.getElementById("containerxin").style.display = null;
+        document.getElementById("containerxin3").style.display = "none";
+        document.getElementById("containerxin5").style.display = "none";
+        document.getElementById("containerxin6").style.display = "none";
+        document.getElementById("containerxin7").style.display = "none";
+      }
+      if (event.value === "1" || event.value === "2" || event.value === "3") {
+        document.getElementById("containerxin").style.display = "none";
+        document.getElementById("containerxin3").style.display = "none";
+        document.getElementById("containerxin5").style.display = "none";
+        document.getElementById("containerxin6").style.display = "none";
+        document.getElementById("containerxin7").style.display = "none";
+      }
+      if (event.value === "4") {
+        document.getElementById("containerxin3").style.display = null;
+        document.getElementById("containerxin").style.display = "none";
+        document.getElementById("containerxin5").style.display = null;
+        document.getElementById("containerxin6").style.display = "none";
+        document.getElementById("containerxin7").style.display = "none";
+      }
+      if (event.value === "5") {
+        document.getElementById("containerxin3").style.display = null;
+        document.getElementById("containerxin").style.display = "none";
+        document.getElementById("containerxin5").style.display = null;
+        document.getElementById("containerxin6").style.display = "none";
+        document.getElementById("containerxin7").style.display = null;
+        document.querySelector("[name='renomexin']").innerText = 'Атака';
+      }
+      if (event.value === "6") {
+        document.getElementById("containerxin").style.display = "none";
+        document.getElementById("containerxin3").style.display = "none";
+        document.getElementById("containerxin5").style.display = "none";
+        document.getElementById("containerxin6").style.display = null;
+        document.getElementById("containerxin7").style.display = "none";
+      }
+      if (event.value === "7") {
+        document.getElementById("containerxin3").style.display = "none";
+        document.getElementById("containerxin").style.display = "none";
+        document.getElementById("containerxin5").style.display = "none";
+        document.getElementById("containerxin6").style.display = "none";
+        document.getElementById("containerxin7").style.display = "none";
+      }
+      if (event.value === "8") {
+        document.getElementById("containerxin3").style.display = "none";
+        document.getElementById("containerxin").style.display = "none";
+        document.getElementById("containerxin5").style.display = "none";
+        document.getElementById("containerxin6").style.display = "none";
+        document.getElementById("containerxin7").style.display = null;
+        document.querySelector("[name='renomexin']").innerText = 'Закрытие трапеции ( % )';
+      }
+    }
+
+
+    var input = document.getElementById('cor');
+    var valor = input.value;
+    document.getElementById('exib').style.background = valor;
+
+    var input2 = document.getElementById('shadowcor');
+    var valor2 = input2.value;
+    document.getElementById('exib2').style.background = valor2;
+
+    glob.formatItem = function (data) {
+      function verificarCor(cor) {
+        var regexHex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+        var regexRgba = /^rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*(,\s*\d+(?:\.\d+)?)?\s*\)$/;
+        var nomesCores = [
+          "aliceblue", "antiquewhite", "aqua", "aquamarine", "azure", "beige", "bisque", "black", "blanchedalmond",
+          "blue", "blueviolet", "brown", "burlywood", "cadetblue", "chartreuse", "chocolate", "coral", "cornflowerblue",
+          "cornsilk", "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkkhaki",
+          "darkmagenta", "darkolivegreen", "darkorange", "darkorchid", "darkred", "darksalmon", "darkseagreen",
+          "darkslateblue", "darkslategray", "darkturquoise", "darkviolet", "deeppink", "deepskyblue", "dimgray",
+          "dodgerblue", "firebrick", "floralwhite", "forestgreen", "fuchsia", "gainsboro", "ghostwhite", "gold",
+          "goldenrod", "gray", "green", "greenyellow", "honeydew", "hotpink", "indianred", "indigo", "ivory",
+          "khaki", "lavender", "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral", "lightcyan",
+          "lightgoldenrodyellow", "lightgray", "lightgreen", "lightpink", "lightsalmon", "lightseagreen",
+          "lightskyblue", "lightslategray", "lightsteelblue", "lightyellow", "lime", "limegreen", "linen", "magenta",
+          "maroon", "mediumaquamarine", "mediumblue", "mediumorchid", "mediumpurple", "mediumseagreen",
+          "mediumslateblue", "mediumspringgreen", "mediumturquoise", "mediumvioletred", "midnightblue",
+          "mintcream", "mistyrose", "moccasin", "navajowhite", "navy", "oldlace", "olive", "olivedrab", "orange",
+          "orangered", "orchid", "palegoldenrod", "palegreen", "paleturquoise", "palevioletred", "papayawhip",
+          "peachpuff", "peru", "pink", "plum", "powderblue", "purple", "rebeccapurple", "red", "rosybrown",
+          "royalblue", "saddlebrown", "salmon", "sandybrown", "seagreen", "seashell", "sienna", "silver", "skyblue",
+          "slateblue", "slategray", "snow", "springgreen", "steelblue", "tan", "teal", "thistle", "tomato",
+          "turquoise", "violet", "wheat", "white", "whitesmoke", "yellow", "yellowgreen"
+        ];
+
+        if (regexHex.test(cor)) {
+          setcor = data.cor
+        } else if (regexRgba.test(cor)) {
+          setcor = data.cor
+        } else if (nomesCores.includes(cor.toLowerCase())) {
+          setcor = data.cor
+        } else if (CSS.supports("color", cor)) {
+          setcor = data.cor
+        } else {
+          setcor = ""
         }
       }
 
-      glob.onChange0 = function (event) {
-        switch (parseInt(event.value)) {
-          case 0:
-          gradient.style.display = 'none'
-          containerxin2.style.display = null
-          containerxin4.style.display = null
-          break
-          case 1:
-          gradient.style.display = null
-          containerxin2.style.display = null
-          containerxin4.style.display = 'none'
-          break
-          case 2:
-            gradient.style.display = 'none'
-            containerxin2.style.display = 'none'
-            containerxin4.style.display = 'none'
-            break
-        }
-        }
-        glob.onChange0(document.getElementById('tipocor'))
+      verificarCor(data.cor);
 
- 
-      glob.onComparisonChanged(document.getElementById("circleinfo"));
+      let result = ``;
+      result += `<div style="margin-left:-10px;background:${setcor};float:left;width:10px;overflow:hidden;height:30px;"><br></div>`
+      result += `<div style="float:left;width:50%;overflow:hidden;padding-left:10px;"> Позиция: ${data.posicao} </div>`
+      result += `<div style="float:right;width:50%;overflow:hidden;"> Цвет: ${data.cor} </div>`
+      return result;
+    }
+
+    const gradient2 = document.getElementById('Gradient2')
+    const gradient = document.getElementById('gradient')
+    const solid = document.getElementById('containerxin4')
+    const xinxyludo = document.getElementById('xinxyludo')
+    const xinxyludob = document.getElementById('xinxyludob')
+
+    glob.onChange0 = function (event) {
+      switch (parseInt(event.value)) {
+        case 0:
+          gradient2.style.display = 'none'
+          gradient.style.display = 'none'
+          solid.style.display = null
+          xinxyludo.style.display = 'none'
+          xinxyludob.style.width = "100%"
+          break
+        case 1:
+          gradient2.style.display = 'none'
+          gradient.style.display = null
+          solid.style.display = 'none'
+          xinxyludo.style.display = 'none'
+          xinxyludob.style.width = "100%"
+          break
+        case 2:
+          gradient2.style.display = null
+          gradient.style.display = 'none'
+          solid.style.display = 'none'
+          xinxyludo.style.display = null
+          xinxyludob.style.width = "40%"
+          break
+      }
+    }
+
+    glob.onChange0(document.getElementById('tipocor'))
+
+
+    glob.onComparisonChanged(document.getElementById("circleinfo"));
     glob.refreshVariableList(document.getElementById('storage'))
+
+    glob.refreshVariableListm(document.getElementById('storagem'))
   },
 
-  action (cache) {
+  action(cache) {
     const Canvas = require('canvas')
     const data = cache.actions[cache.index]
     const storage = parseInt(data.storage)
     const varName = this.evalMessage(data.varName, cache)
     const borda = this.evalMessage(data.borda, cache);
     const cor = this.evalMessage(data.cor, cache);
+    if (parseInt(this.evalMessage(data.girarb, cache)) > 0 || parseInt(this.evalMessage(data.girarb, cache)) < 0) { girarb = parseInt(this.evalMessage(data.girarb, cache)) } else { girarb = 0 }
+    rotationDegrees = girarb
     const imagedata = this.getVariable(storage, varName, cache)
     if (!imagedata) {
       this.callNextAction(cache)
@@ -199,17 +444,19 @@ module.exports = {
     const image = new Canvas.Image()
     image.src = imagedata
     var radius = this.evalMessage(data.radius, cache)
-    if(radius == undefined){radius = 0}
+    if (radius == undefined) { radius = 0 }
     const lados = parseInt(this.evalMessage(data.lados, cache))
+    atk = parseInt(this.evalMessage(data.atk, cache))
+    if (atk <= 0) { atk = 0 }
     const imagew = image.width
     const imageh = image.height
     var tipocor = this.evalMessage(data.tipocor, cache);
-    if (tipocor == undefined || tipocor == ""){tipocor = 0}
+    if (tipocor == undefined || tipocor == "") { tipocor = 0 }
     const canvas = Canvas.createCanvas(imagew, imageh)
     const ctx = canvas.getContext('2d')
     const circleinfo = parseInt(data.circleinfo, 10);
 
-     const shadowcor = this.evalMessage(data.shadowcor, cache);
+    const shadowcor = this.evalMessage(data.shadowcor, cache);
     let blur = parseInt(this.evalMessage(data.blur, cache));
     if (isNaN(blur)) {
       blur = 0;
@@ -222,57 +469,80 @@ module.exports = {
     if (isNaN(shadowv)) {
       shadowv = 0;
     }
-      ctx.shadowColor = shadowcor
-      ctx.shadowOffsetX = shadowh;
-      ctx.shadowOffsetY = shadowv;
-      ctx.shadowBlur = blur;
-      ctx.fillstyle = shadowcor
-      ctx.fill()
-    switch (circleinfo) {
-      case 0:
-        corner(radius)
-        break;
-      case 1:
-        circle()
-        break;
-      case 2:
-        pentagono()
-        break;
-      case 3:
-        hexagono()
-        break;
-      case 4:
-        nlados()
-        break;
-    }
-    ctx.drawImage(image, 0, 0)
-    if (borda > 0) {   
+    ctx.shadowColor = shadowcor
+    ctx.shadowOffsetX = shadowh;
+    ctx.shadowOffsetY = shadowv;
+    ctx.shadowBlur = blur;
+    ctx.fillstyle = shadowcor
+    ctx.fill()
 
-      if(tipocor == 2) {
-        ctx.strokeStyle = "rgba(0,0,0,0)"
-      } 
-      if(tipocor == 1) {
+    if (circleinfo == 0) { corner(radius) }
+    if (circleinfo == 1) { circle() }
+    if (circleinfo == 2) { pentagono() }
+    if (circleinfo == 3) { hexagono() }
+    if (circleinfo == 4) { nlados() }
+    if (circleinfo == 5) { estrela() }
+    if (circleinfo == 6) {
+      eval(String(this.evalMessage(data.livre, cache) + '\n ctx.clip()'))
+    }
+    if (circleinfo == 7) { coracao() }
+    if (circleinfo == 8) { trapezoide() }
+
+
+    ctx.drawImage(image, 0, 0)
+    if (borda > 0) {
+
+
+      if (tipocor == 2) {
+
+        const gradients = data.gradient2;
+
+        if (data.apartir == "0") { var gradientx = ctx.createLinearGradient(0, 0, 0, imageh) }
+        if (data.apartir == "1") { var gradientx = ctx.createLinearGradient(0, 0, imagew, imageh) }
+        if (data.apartir == "2") { var gradientx = ctx.createLinearGradient(0, 0, imagew, 0) }
+        if (data.apartir == "3") { var gradientx = ctx.createLinearGradient(imagew, 0, 0, imageh) }
+        if (data.apartir == "4") { var gradientx = ctx.createLinearGradient(0, imageh, 0, 0) }
+        if (data.apartir == "5") { var gradientx = ctx.createLinearGradient(imagew, imageh, 0, 0) }
+        if (data.apartir == "6") { var gradientx = ctx.createLinearGradient(imagew, 0, 0, 0) }
+        if (data.apartir == "7") { var gradientx = ctx.createLinearGradient(0, imageh, imagew, 0) }
+
+        for (let i = 0; i < gradients.length; i++) {
+          const gradient = gradients[i];
+          var posicao = this.evalMessage(gradient.posicao, cache);
+          var posicao = (posicao / 100)
+          const cor = this.evalMessage(gradient.cor, cache);
+          gradientx.addColorStop(posicao, cor)
+        }
+        ctx.strokeStyle = gradientx;
+
+      }
+      if (tipocor == 1) {
         eval(String(this.evalMessage(data.gradiente, cache)))
         ctx.strokeStyle = gradient;
-      } 
-      if(tipocor == 0 || tipocor == undefined) {
+      }
+      if (tipocor == 0 || tipocor == undefined) {
         ctx.strokeStyle = cor
       }
 
-    ctx.lineWidth = borda;
-    ctx.lineHeight = borda;
-    ctx.stroke();}
+      ctx.lineWidth = borda;
+      ctx.lineHeight = borda;
+      ctx.stroke();
+    }
+
+
+
+
     const result = canvas.toDataURL('image/png').replace('image/png', 'image/octet-stream')
     this.storeValue(result, storage, varName, cache)
     this.callNextAction(cache)
 
-    function circle () {
+    function circle() {
       ctx.beginPath()
       ctx.arc(imagew / 2, imageh / 2, (imagew + imageh) / 4, 0, Math.PI * 2)
       ctx.closePath()
       ctx.clip()
     }
-    function corner (r) {
+    function corner(r) {
       ctx.beginPath()
       ctx.moveTo(r, 0)
       ctx.lineTo(imagew - r, 0)
@@ -287,53 +557,118 @@ module.exports = {
       ctx.clip()
     }
 
-    function hexagono () {
+    function hexagono() {
       side = 0;
-      size = imagew/2,
-      x = imagew/2,
-      y = imageh/2;
+      size = imagew / 2,
+        x = imagew / 2,
+        y = imageh / 2;
       ctx.beginPath();
       ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin(0));
       for (side; side < 7; side++) {
-       ctx.lineTo(x + size * Math.cos(side * 2 * Math.PI / 6), y + size * Math.sin(side * 2 * Math.PI / 6));
-    }
+        ctx.lineTo(x + size * Math.cos(side * 2 * Math.PI / 6), y + size * Math.sin(side * 2 * Math.PI / 6));
+      }
       ctx.closePath()
       ctx.clip()
     }
 
 
-    function pentagono () {
+    function pentagono() {
       var numberOfSides = 5,
-      side = 0;
-      size = imagew/2,
-      x = imagew/2,
-      y = imageh/2;
+        side = 0;
+      size = imagew / 2,
+        x = imagew / 2,
+        y = imageh / 2;
 
       ctx.beginPath();
-      ctx.moveTo (x +  size * Math.cos(0), y +  size *  Math.sin());          
-      for (var i = 1; i <= numberOfSides;i += 1) {
-      ctx.lineTo (x + size * Math.cos(i * 2 * Math.PI / numberOfSides), y + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+      ctx.moveTo(x + size * Math.cos(0), y + size * Math.sin());
+      for (var i = 1; i <= numberOfSides; i += 1) {
+        ctx.lineTo(x + size * Math.cos(i * 2 * Math.PI / numberOfSides), y + size * Math.sin(i * 2 * Math.PI / numberOfSides));
       }
       ctx.closePath()
       ctx.clip()
     }
 
-    function nlados () {
-      var numberOfSides = lados,
-      side = 0;
-      size = imagew/2,
-      x = imagew/2,
-      y = imageh/2;
+    function nlados() {
+      var numberOfSides = lados;
+      var rotationAngle = (rotationDegrees * Math.PI) / 180; // x i n x y la
+      var side = 0;
+      size = imagew / 2,
+        x = imagew / 2,
+        y = imageh / 2;
 
       ctx.beginPath();
-      ctx.moveTo (x +  size * Math.cos(0), y +  size *  Math.sin(0));          
-      for (var i = 1; i <= numberOfSides;i += 1) {
-      ctx.lineTo (x + size * Math.cos(i * 2 * Math.PI / numberOfSides), y + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+      ctx.moveTo(x + size * Math.cos(0 + rotationAngle), y + size * Math.sin(0 + rotationAngle));
+      for (var i = 1; i <= numberOfSides; i += 1) {
+        ctx.lineTo(x + size * Math.cos(i * 2 * Math.PI / numberOfSides + rotationAngle), y + size * Math.sin(i * 2 * Math.PI / numberOfSides + rotationAngle));
       }
       ctx.closePath()
       ctx.clip()
     }
+
+
+    function estrela() {
+      const x = imagew / 2;
+      const y = imageh / 2;
+      const outerRadius = imagew / 2;
+      const innerRadius = outerRadius / (0.01 * atk + 1);
+      const numPoints = lados;
+      const angleIncrement = (2 * Math.PI) / numPoints;
+      const rotationAngle = (rotationDegrees * Math.PI) / 180; // x i n x y la
+
+      ctx.beginPath();
+      ctx.moveTo(x + outerRadius * Math.cos(-Math.PI / 2 + rotationAngle), y + outerRadius * Math.sin(-Math.PI / 2 + rotationAngle));
+
+      for (let i = 0; i < numPoints; i++) {
+        const outerX = x + outerRadius * Math.cos((i * angleIncrement) - (Math.PI / 2) + rotationAngle);
+        const outerY = y + outerRadius * Math.sin((i * angleIncrement) - (Math.PI / 2) + rotationAngle);
+        ctx.lineTo(outerX, outerY);
+
+        const innerX = x + innerRadius * Math.cos(((i + 0.5) * angleIncrement) - (Math.PI / 2) + rotationAngle);
+        const innerY = y + innerRadius * Math.sin(((i + 0.5) * angleIncrement) - (Math.PI / 2) + rotationAngle);
+        ctx.lineTo(innerX, innerY);
+      }
+
+
+      ctx.closePath();
+      ctx.clip();
+    }
+
+
+    function coracao() {
+      const x = imagew / 2; // Ajuste fino para a curva de bezier
+      const y = imageh / 1.72; // Ajuste fino para a curva de bezier
+      const radius = Math.min(imagew, imageh) / 2;
+      const scale = 1.66; // Ajuste fino para a curva de bezier
+
+      ctx.beginPath();
+      ctx.moveTo(x, y + radius / 2 * scale);
+      ctx.bezierCurveTo(x + radius * scale, y - radius / 2 * scale, x + radius / 2 * scale, y - radius * scale, x, y - radius / 2 * scale);
+      ctx.bezierCurveTo(x - radius / 2 * scale, y - radius * scale, x - radius * scale, y - radius / 2 * scale, x, y + radius / 2 * scale);
+      ctx.closePath();
+      ctx.clip()
+    }
+
+    function trapezoide() {
+      if (atk > 100) { atk = 100 }
+      var topWidth = imagew - ((imagew / 100) * atk);
+      var bottomWidth = imagew;
+      var height = imageh;
+      var x = imagew / 2
+      var y = imageh / 2;
+
+      ctx.beginPath();
+      ctx.moveTo(x - topWidth / 2, y - height / 2);
+      ctx.lineTo(x + topWidth / 2, y - height / 2);
+      ctx.lineTo(x + bottomWidth / 2, y + height / 2);
+      ctx.lineTo(x - bottomWidth / 2, y + height / 2);
+      ctx.closePath();
+      ctx.clip();
+    }
+
+    
+
+
   },
 
-  mod () {}
+  mod() { }
 }
