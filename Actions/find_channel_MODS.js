@@ -32,7 +32,7 @@ module.exports = {
 
     return data.description
       ? `<font style="color:${desccor}">${data.description}</font>`
-      : `<font style="color:${desccor}">Buscando canal por ${info[parseInt(data.info)]}</font>`
+      : `<font style="color:${desccor}">Поиск каналов для ${info[parseInt(data.info)]}</font>`
   },
 
   //---------------------------------------------------------------------
