@@ -22,7 +22,7 @@ module.exports = {
   //---------------------------------------------------------------------
 
   subtitle(data) {
-    const info = ["ID do Canal", "Nome do Canal", "Tópico do Canal", "Posição do Canal", "ID da Categoria do Canal", "Nome do Canal que Inclui", "Tópico do Canal que Inclui"];
+    const info = ["Идентификатор канала", "Название канала", "Тема канала", "Положение канала", "Идентификатор категории канала", "Название канала, который включает", "Тема канала, которая включает в себя"];
 
     if (data.descriptionx) {
       desccor = data.descriptioncolor;
@@ -32,7 +32,7 @@ module.exports = {
 
     return data.description
       ? `<font style="color:${desccor}">${data.description}</font>`
-      : `<font style="color:${desccor}">Поиск каналов для ${info[parseInt(data.info)]}</font>`
+      : `<font style="color:${desccor}">Поиск каналов по ${info[parseInt(data.info)]}</font>`
   },
 
   //---------------------------------------------------------------------
@@ -44,7 +44,7 @@ module.exports = {
   variableStorage(data, varType) {
     const type = parseInt(data.storage, 10);
     if (type !== varType) return;
-    return [data.varName, "Canal"];
+    return [data.varName, "Канал"];
   },
 
   //---------------------------------------------------------------------
