@@ -64,16 +64,6 @@ module.exports = {
         }
     },
 
-    //---------------------------------------------------------------------
-    // Action Meta Data
-    //
-    // Helps check for updates and provides info if a custom mod.
-    // If this is a third-party mod, please set "author" and "authorUrl".
-    //
-    // It's highly recommended "preciseCheck" is set to false for third-party mods.
-    // This will make it so the patch version (0.0.X) is not checked.
-    //---------------------------------------------------------------------
-
     meta: {
         version: '2.1.7',
         preciseCheck: true,
@@ -82,26 +72,7 @@ module.exports = {
         downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
     },
 
-    //---------------------------------------------------------------------
-    // Action Fields
-    //
-    // These are the fields for the action. These fields are customized
-    // by creating elements with corresponding IDs in the HTML. These
-    // are also the names of the fields stored in the action's JSON data.
-    //---------------------------------------------------------------------
-
     fields: ["varName", "description", "descriptionx", "descriptioncolor", "branches", "billd", "SECRET", "errcmd"],
-
-    //---------------------------------------------------------------------
-    // Command HTML
-    //
-    // This function returns a string containing the HTML used for
-    // editing actions.
-    //
-    // The "isEvent" parameter will be true if this action is being used
-    // for an event. Due to their nature, events lack certain information,
-    // so edit the HTML to reflect this.
-    //---------------------------------------------------------------------
 
     html(isEvent, data) {
         return `
@@ -190,14 +161,9 @@ module.exports = {
     </tab>
     </tab-system>
 
-    <style>
+<style>
 
 table{width:100%}
-.td1{width:50%;padding:0px 5px 0px 0px}
-.td2{width:25%;padding:0px 3px 0px 3px}
-.td3{width:25%;padding:0px 0px 0px 5px}
-.col1{width:35%;padding:0px 10px 0px 0px}
-.col2{width:65%}
 .dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
 .dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
 
@@ -205,14 +171,6 @@ table{width:100%}
 
   `;
     },
-
-    //---------------------------------------------------------------------
-    // Action Editor Init Code
-    //
-    // When the HTML is first applied to the action editor, this code
-    // is also run. This helps add modifications or setup reactionary
-    // functions for the DOM elements.
-    //---------------------------------------------------------------------
 
     init() {
         const { glob, document } = this;
