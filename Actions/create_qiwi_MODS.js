@@ -114,7 +114,7 @@ module.exports = {
    <input id="email" placeholder="Дополнительно" class="round" type="text">
  </td>
  <td style="padding-left: 10px;">
-   <span class="dbminputlabel">Конечнная ссылка</span>
+   <span class="dbminputlabel">Конечная ссылка</span>
    <input id="link" placeholder="Дополнительно" class="round" type="text">
  </td>
 </table>
