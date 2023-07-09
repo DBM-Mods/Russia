@@ -32,16 +32,16 @@ module.exports = {
                         tipo = "Текст";
                         break;
                     case 2:
-                        tipo = "Ссылка";
+                        tipo = "Текст";
                         break;
                     case 3:
                         tipo = "Ссылка";
                         break;
                     case 4:
-                        tipo = "Дата";
+                        tipo = "Ссылка";
                         break;
                     case 5:
-                        tipo = "Дата";
+                        tipo = "Ссылка";
                         break;
                 }
 
