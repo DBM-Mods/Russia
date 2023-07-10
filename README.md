@@ -24,7 +24,7 @@
 2 - Введите cmd<br>
 3 - Вставить...<br>
 ```md
-npm i chalk@4.1.2 chart.js@3.9.1 canvas@2.9.1 qrcode opentype.js imagedata-filters tesseract.js libsodium-wrappers @discordjs/voice ffmpeg-static request fs fs-extra jsonpath jsonpath-plus path moment moment-timezone weather-js https normalize-date email-existence is-image-url is-url valid-url get-mp3-duration sequelize google-it fast-sort scrape-yt crypto-js os-utils os loadavg-windows
+npm i chalk@4.1.2 chart.js@3.9.1 canvas@2.9.1 qrcode opentype.js imagedata-filters tesseract.js libsodium-wrappers @discordjs/voice ffmpeg-static request fs fs-extra jsonpath jsonpath-plus path moment moment-timezone weather-js https normalize-date email-existence is-image-url is-url valid-url get-mp3-duration sequelize google-it fast-sort scrape-yt crypto-js os-utils os loadavg-windows @qiwi/bill-payments-node-js-sdk simple-twitch-info
 ```
 <br>
 
