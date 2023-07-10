@@ -72,12 +72,12 @@ module.exports = {
         downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
     },
 
-    fields: ["varName", "branches", "description", "descriptionx", "descriptioncolor", "billd", "SECRET", "errcmd", "currency", "amoun", "commen", "email", "link"],
+    fields: ["tempo", "time", "opcao", "varName", "branches", "description", "descriptionx", "descriptioncolor", "billd", "SECRET", "errcmd", "currency", "amoun", "commen", "email", "link"],
 
     html(isEvent, data) {
         return `
   <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
-  <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
+  <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.3</div>
 
   <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
@@ -85,9 +85,6 @@ module.exports = {
   <tab label="Данные" icon="cloud download">
   <div style="padding:8px">
 
-  <span class="dbminputlabel">SECRET KEY</span><br>
-  <input id="SECRET" class="round" type="text">
-  <br>
   <span class="dbminputlabel">BillId</span><br>
   <input id="billd" placeholder="Оставьте пустым для авто генерации" class="round" type="text">
 
@@ -101,12 +98,36 @@ module.exports = {
     <option value="KZT">KZT</option>
   </td>
   <td style="padding-left: 18px;">
-    <span class="dbminputlabel">Количество</span>
+    <span class="dbminputlabel">Сумма</span>
     <input id="amoun" placeholder="1.00" class="round" type="text">
   </td>
  </table>
 
  <br>
+
+ <div style="float: left; width: 33%">
+ <span class="dbminputlabel">Время</span>
+ <select id="opcao" class="round" onchange="glob.change(this)">
+   <option value="0">Вручную</option>
+   <option value="1" selected>Стандартное (1 час)</option>
+ </select>
+</div>
+
+<div id="campo1" style="float: left; width: 34%;padding:0px 3px">
+ <span class="dbminputlabel">Вариант</span><br>
+ <select id="tempo" class="round">
+   <option value="0" selected>Секунды</option>
+   <option value="1">Минуты</option>
+   <option value="2">Часы</option>
+   <option value="3">Дни</option>
+ </select>
+</div>
+<div id="campo2" style="float: left; width: 33%">
+ <span class="dbminputlabel">Количество</span><br>
+ <input id="time" class="round" type="text">
+</div>
+
+ <br><br><br>
 
  <table style="width: 100%;">
  <td>
@@ -119,7 +140,7 @@ module.exports = {
  </td>
 </table>
 
-  <br>
+ <br>
 
  <span class="dbminputlabel">Коментарий</span><br>
  <input id="commen" placeholder="Дополнительно" class="round" type="text">
@@ -184,6 +205,11 @@ module.exports = {
 
 <br>
 
+<span class="dbminputlabel">SECRET KEY</span><br>
+<input id="SECRET" class="round" type="text">
+
+<br>
+
 <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
 <dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
 </div>
@@ -207,6 +233,18 @@ module.exports = {
 },
 init() {
     const { glob, document } = this;
+
+    glob.change = function(event) {
+      if(event.value === "0") {
+        document.getElementById("campo1").style.display = "block";
+        document.getElementById("campo2").style.display = "block";
+      } else {
+        document.getElementById("campo1").style.display = "none";
+        document.getElementById("campo2").style.display = "none";
+      }
+    }
+
+    glob.change(document.getElementById("opcao"));
   
     glob.formatItem = function (data) {
         let result = '<div style="display: inline-block; width: 200px; padding-left: 8px;">Хранить "';
@@ -271,17 +309,37 @@ init() {
         const currency = this.evalMessage(data.currency, cache);
         const email = this.evalMessage(data.email, cache);
         const link = this.evalMessage(data.link, cache);
-        const event = new Date(parseInt(Date.now() + 28800000));
         const qiwiApi = new QiwiBillPaymentsAPI(SECRET_KEY);
+        const tempo = parseInt(data.tempo, 10);
 
         const billId = billId1 ? billId1 : qiwiApi.generateId();
+
+        let time = this.evalMessage(data.time, cache);
+        if(data.opcao === "0") {
+          switch (tempo) {
+            case 0: 
+            time = time ? new Date(Date.now() + time * 1000 + 25200000) : null;
+            break;
+            case 1: 
+            time = time ? new Date(Date.now() + time * 60000 + 25200000) : null;
+            break;
+            case 2:
+              time = time ? new Date(Date.now() + time * 3600000 + 25200000) : null;
+            break;
+            case 3:
+              time = time ? new Date(Date.now() + time * 86400000 + 25200000) : null;
+            break;
+          }
+        } else {
+          time = new Date(parseInt(Date.now() + 28800000));
+        }
       
         const branches = data.branches;
       
         const fields = {
           amount: amount,
           currency: currency,
-          expirationDateTime: event.toISOString().replaceAll("Z", "+07:00"),
+          expirationDateTime: time.toISOString().replaceAll("Z", "+07:00"),
           successUrl: link,
         };
       
