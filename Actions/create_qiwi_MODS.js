@@ -101,7 +101,7 @@ module.exports = {
     <option value="KZT">KZT</option>
   </td>
   <td style="padding-left: 18px;">
-    <span class="dbminputlabel">Цена</span>
+    <span class="dbminputlabel">Количество</span>
     <input id="amoun" placeholder="1.00" class="round" type="text">
   </td>
  </table>
