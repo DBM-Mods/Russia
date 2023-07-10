@@ -77,7 +77,7 @@ module.exports = {
     html(isEvent, data) {
         return `
   <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
-  <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+  <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
   <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
@@ -89,7 +89,7 @@ module.exports = {
   <input id="SECRET" class="round" type="text">
   <br>
   <span class="dbminputlabel">BillId</span><br>
-  <input id="billd" class="round" type="text">
+  <input id="billd" placeholder="Оставьте пустым для авто генерации" class="round" type="text">
 
   <br>
 
@@ -265,7 +265,7 @@ init() {
         const data = cache.actions[cache.index];
         const QiwiBillPaymentsAPI = require('@qiwi/bill-payments-node-js-sdk');
         const SECRET_KEY = this.evalMessage(data.SECRET, cache);
-        const billId = this.evalMessage(data.billd, cache);
+        const billId1 = this.evalMessage(data.billd, cache);
         const amount = this.evalMessage(data.amoun, cache);
         const comment = this.evalMessage(data.commen, cache);
         const currency = this.evalMessage(data.currency, cache);
@@ -273,6 +273,8 @@ init() {
         const link = this.evalMessage(data.link, cache);
         const event = new Date(parseInt(Date.now() + 28800000));
         const qiwiApi = new QiwiBillPaymentsAPI(SECRET_KEY);
+
+        const billId = billId1 ? billId1 : qiwiApi.generateId();
       
         const branches = data.branches;
       
