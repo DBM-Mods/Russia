@@ -68,9 +68,10 @@ module.exports = {
 
   <tab-system>
   <tab label="Текст" icon="cloud download">
-  <div style="padding:8px">
+  <div style="width: 100%; padding:8px;height: calc(100vh - 210px);overflow:auto">
 
-  <textarea id="message" class="dbm_monospace" rows="6" placeholder="Вставьте текст здесь..." style="height: calc(100vh - 450px); white-space: nowrap;"></textarea>
+  <textarea id="message" class="dbm_monospace" rows="6" placeholder="Вставить текст здесь..." style="height: calc(100vh - 320px); white-space: nowrap;"></textarea>
+  <xinspace>
   <div id="contador" style="float:right;text-align:right;position:relative;width:22%">0 символов</div>
 
   <br>
@@ -93,9 +94,9 @@ module.exports = {
   </tab>
 
   <tab label="Вывод" icon="question circle">
-  <div style="padding:8px">
+  <div style="width: 100%; padding:8px;height: calc(100vh - 210px);overflow:auto">
   
-  <dialog-list id="branches" fields='["info", "storage", "varName"]' dialogResizable dialogTitle="Переводчик" dialogWidth="600" dialogHeight="200" listLabel="Список" listStyle="height: calc(100vh - 320px);" itemName="Item" itemHeight="28px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 28px;">
+  <dialog-list id="branches" fields='["info", "storage", "varName"]' dialogResizable dialogTitle="Переводчик" dialogWidth="600" dialogHeight="200" listLabel="Список" listStyle="height: calc(100vh - 280px);" itemName="Item" itemHeight="28px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 28px;">
         
     <div style="margin: 10px;">
 
