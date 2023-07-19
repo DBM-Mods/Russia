@@ -90,7 +90,7 @@ module.exports = {
                     document.getElementById('label3').textContent = 'Локализация файлов';
                 }
             })()">
-                <dbm-checkbox id="folder" label="Pasta" onchange="(function(){
+                <dbm-checkbox id="folder" label="Папка" onchange="(function(){
                     const check = document.getElementById('folder');
                     const value = folder.value;
 
