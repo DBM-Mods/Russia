@@ -41,20 +41,20 @@ module.exports = {
 </div>
 
   <div style="float: left; width: 100%;">
-  <span class="dbminputlabel">Описание</span><br>
-    <input type="text" class="round" id="description">
+  <span class="dbminputlabel">Описание действия</span><br>
+    <input type="text" class="round" id="description" placeholder="Не обязательное поле">
   </div>
 
   </div>
   </tab>
-  <tab label="Действия / конфиг" icon="list layout">
+  <tab label="Конфигурация" icon="list layout">
   <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
   <span class="dbminputlabel">Использование</span>
   <select id="config" class="round" onchange="glob.onComparisonChanged(this)">
     <option value="0" selected>Продолжить действия</option>
     <option value="1">Остановить действия</option>
-    <option value="2">Использовать следующие действия (из спика ниже!) и продолжить</option>
-    <option value="3">Использовать только следующие действия (из спика ниже!) и остановится</option>
+    <option value="2">Использовать действия из спика ниже и продолжить</option>
+    <option value="3">Использовать действия из спика ниже и остановиться</option>
   </select>
 <br>
 <div id="containerxin">
