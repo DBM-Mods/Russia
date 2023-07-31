@@ -6,25 +6,25 @@
 
 Установка модов
 ===========
-Возьмите все ZIP-файлы и замените их в папку Project
+Все файлы из ZIP-файла скопируйте и замените в папке проекта
 
 Требуется NODE JS
 ===========
-Версия между 17.4.0 и 17.9.1
+Версия от 17.4.0 и до 17.9.1
 | Версии | Сайт | Ссылки для скачивания |
 |----------------|:---------:|-------------:|
-| 17.4.0 | [Сайт](https://nodejs.org/dist/v17.4.0/) | [Сылка для скачивания](https://nodejs.org/dist/v17.4.0/node-v17.4.0-x64.msi) |
-| 17.9.1 | [Сайт](https://nodejs.org/dist/v17.9.1/) | [Сылка для скачивания](https://nodejs.org/dist/v17.9.1/node-v17.9.1-x64.msi) |
+| 17.4.0 | [Сайт](https://nodejs.org/dist/v17.4.0/) | [Ссылка для скачивания](https://nodejs.org/dist/v17.4.0/node-v17.4.0-x64.msi) |
+| 17.9.1 | [Сайт](https://nodejs.org/dist/v17.9.1/) | [Ссылка для скачивания](https://nodejs.org/dist/v17.9.1/node-v17.9.1-x64.msi) |
 
 > Если вы допустили ошибку при установке другой версии, установите правильную версию, а затем удалите папку "node_modules" из проекта вашего бота и установите все модули, необходимые модам
 
-Необходимые модули и их версии, чтобы все работало нормально:
+Необходимые модули и их версии:
 ===========
 1 - Нажмите на адресную строку вашего проекта<br>
 2 - Введите cmd<br>
 3 - Вставить...<br>
 ```md
-npm i chalk@4.1.2 chart.js@3.9.1 canvas@2.9.1 qrcode opentype.js imagedata-filters tesseract.js libsodium-wrappers @discordjs/voice ffmpeg-static request fs fs-extra jsonpath jsonpath-plus path moment moment-timezone weather-js https normalize-date email-existence is-image-url is-url valid-url get-mp3-duration sequelize google-it fast-sort scrape-yt crypto-js os-utils os loadavg-windows @qiwi/bill-payments-node-js-sdk simple-twitch-info bing-translate-api
+npm i chalk@4.1.2 chart.js@3.9.1 canvas@2.9.1 qrcode opentype.js imagedata-filters tesseract.js libsodium-wrappers @discordjs/voice ffmpeg-static request fs fs-extra jsonpath jsonpath-plus path moment moment-timezone weather-js https normalize-date email-existence is-image-url is-url valid-url get-mp3-duration sequelize google-it fast-sort scrape-yt crypto-js os-utils os loadavg-windows @qiwi/bill-payments-node-js-sdk simple-twitch-info bing-translate-api zip unzipper archiver
 ```
 <br>
 
