@@ -527,7 +527,7 @@ module.exports = {
             <br>
 
           <table style="width:100%"><tr><td id="bxin1">
-            <span class="dbminputlabel">Тип / Меню</span><div style="float:right;margin-top:-5px"><a style="cursor:pointer" onclick="(function(){
+            <span class="dbminputlabel">Тип кнопки</span><div style="float:right;margin-top:-5px"><a style="cursor:pointer" onclick="(function(){
               document.getElementById('bxin1').style.display = 'none';
               document.getElementById('bxin2').style.display = 'block';
              })()"><button class="tiny compact ui icon button">Текст</button></a></div><br>
@@ -546,7 +546,7 @@ module.exports = {
             <br>
 
             <span class="dbminputlabel">Ссылка URL</span>
-            <input id="url" placeholder="Оставьте это пустым для ничего ..." class="round" type="text">
+            <input id="url" placeholder="Только для типа кнопки: LINK" class="round" type="text">
 
             <br>
 
@@ -578,8 +578,8 @@ module.exports = {
 
             <br>
 
-            <span class="dbminputlabel">Ограничение по времени (миллисекунд)</span>
-            <input id="time" placeholder="60000" class="round" type="text">
+            <span class="dbminputlabel">Ограничение по времени (мс)</span>
+            <input id="time" placeholder="1мин = 60000мс" class="round" type="text">
 
             </div>
             </div>
@@ -610,7 +610,7 @@ module.exports = {
 
             <br>
 
-            <span class="dbminputlabel">Минимальный номер выбора</span>
+            <span class="dbminputlabel">Мин. вариантов выбора</span>
             <input id="min" class="round" type="text" value="1">
 
             <br>
@@ -631,22 +631,22 @@ module.exports = {
           </div>
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Уникальный идентификатор (ID)</span>
-            <input id="id" placeholder="Оставьте это пустым, чтобы автоматически генерировать ..." class="round" type="text">
+            <input id="id" placeholder="Оставьте это пустым для авто-генерации" class="round" type="text">
 
             <br>
 
             <span class="dbminputlabel">Линия действия (1 - 5)</span>
-            <input id="row" placeholder="Оставьте это поле пустым для шаблона..." class="round" type="text">
+            <input id="row" placeholder="Не обязательное поле" class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Макс. количество вариантов выборов</span>
+            <span class="dbminputlabel">Макс. вариантов выборов</span>
             <input id="max" class="round" type="text" value="1">
 
             <br>
 
-            <span class="dbminputlabel">Ограничение по времени (миллисекунд)</span>
-            <input id="time" placeholder="60000" class="round" type="text">
+            <span class="dbminputlabel">Ограничение по времени (мс)</span>
+            <input id="time" placeholder="1мин = 60000мс" class="round" type="text">
           </div>
           <div style="width: calc(34% - 8px); height: 300px; float: left; margin-left: 8px;">
 
@@ -825,13 +825,13 @@ module.exports = {
     }      
         
         })()">>
-          <option value="0">Локальный/Веб-АДРЕС URL</option>
+          <option value="0">Локальный/Веб-адрес URL</option>
           <option value="1">Canvas</option>
           <option value="2">DBM изображения</option>
           <option value="3">Отправить переменную</option>
         </select>
         <br><div id="xinxyla2">
-          <span class="dbminputlabel">Локальный/Веб-АДРЕС URL</span>
+          <span class="dbminputlabel">Локальный/Веб-адрес URL</span>
           <input id="url" class="round" type="text" value="resources/">
 
           <br></div>
@@ -861,12 +861,12 @@ module.exports = {
           <br></div></div>
 
           <span class="dbminputlabel">Файла имя</span>
-          <input id="name" class="round" type="text" placeholder="Оставьте это пустым для стандарта ...">
+          <input id="name" class="round" type="text" placeholder="Не обязательно поле">
 
           <br>
 
           <div style="text-align: center; padding-top: 4px;">
-            <dbm-checkbox id="spoiler" label="Сделать под сполером"></dbm-checkbox>
+            <dbm-checkbox id="spoiler" label="Отправить как спойлер"></dbm-checkbox>
           </div>
         </div>
       </dialog-list>
@@ -879,7 +879,7 @@ module.exports = {
     <div id="xincheck">
     <div style="padding-bottom: 12px;padding-top: 12px">
     <table style="width:100%;"><tr>
-    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательно поле"></td>
     <td style="padding:0px 0px 0px 10px;width:55px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
     </tr></table>
     </div>
@@ -911,7 +911,7 @@ module.exports = {
       
       </div><br></div>
       
-      <div style="width:96%;display:block">
+      <div style="width:100%;display:block">
       <div style="padding-bottom: 12px;" id="xin1">
         <retrieve-from-variable allowNone dropdownLabel="Редактировать сообщение" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
           <option value="intUpdate">Обновление взаимодействия</option>
@@ -944,10 +944,10 @@ module.exports = {
     <span style="margin-bottom:-50px;"></span>
     <br>
     <span class="dbminputlabel">Имя Webhook</span><br>
-    <input id="webhookname" class="round" type="text" style="width:100%" placeholder="Дополнительно">
+    <input id="webhookname" class="round" type="text" style="width:100%" placeholder="Разово меняет имя вебхука">
     <br>
     <span class="dbminputlabel">URL-адрес изображения Webhook</span><br>
-    <input id="webhookavatar" class="round" type="text" style="width:100%" placeholder="Дополнительно">
+    <input id="webhookavatar" class="round" type="text" style="width:100%" placeholder="Разово меняет аватар вебхука">
     </div>   
 
 
@@ -977,7 +977,7 @@ module.exports = {
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующие действия</option>
       <option value="4">Перейти к якорю действий</option>
-      <option value="5">Выполнить действия и останавливиться</option>
+      <option value="5">Выполнить действия и останавиться</option>
       <option value="99">Выполнить действия и продолжить</option>
     </select>
   </div>
