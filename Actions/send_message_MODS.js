@@ -268,7 +268,7 @@ module.exports = {
 
                 <br>
 
-                <span class="dbminputlabel">Мини-иконка URL (справа) / Имя Файла</span><br>
+                <span class="dbminputlabel">Мини-иконка URL / Имя Файла</span><br>
                 <input id="thumbUrl" class="round" type="text" placeholder="Не обязательное поле">
 
             </td>
