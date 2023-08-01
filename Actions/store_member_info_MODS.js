@@ -205,7 +205,7 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Версия</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.4</div>
 
     <div style="width: 100%; padding:5px 0px;height: calc(100vh - 160px);overflow:auto">
@@ -486,10 +486,10 @@ module.exports = {
         if (member.presence?.status) {
           const status = member.presence.status;
           switch (status) {
-            case "online": { result = "Online"; break; }
-            case "offline": { result = "Offline"; break; }
-            case "idle": { result = "Ausente"; break; }
-            case "dnd": { result = "Ocupado"; break; }
+            case "online": { result = "В сети"; break; }
+            case "offline": { result = "Не в сети"; break; }
+            case "idle": { result = "Не активен"; break; }
+            case "dnd": { result = "Не беспокоить"; break; }
           }
         }
         break;
