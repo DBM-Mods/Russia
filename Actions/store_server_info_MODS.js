@@ -5,117 +5,122 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
-    authorUrl: 'https://github.com/DBM-Mods/Russia',
-    downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
+    author: '[xinxyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
+    authorUrl: 'https://github.com/DBM-Mods/Portugues',
+    downloadURL: 'https://github.com/DBM-Mods/Portugues/archive/refs/heads/main.zip',
   },
 
   subtitle(data, presets) {
     const info = [
-      "Сервер (объект)",
-      "Идентификатор сервера",
-      "Имя сервера", "Имя сервера",
-      "Аббревиатура имени сервера", "Аббревиатура имени сервера",
-      "Предпочтительный язык сервера",
-      "URL-адрес значка сервера",
-      "Уровень верификации сервера",
-      "Канал сервера по умолчанию",
-      "Канал AFK сервера",
+      "Сервер (Объект)",
+      "ID сервера",
+      "Имя сервера",
+      "Акроним имени сервера",
+      "Предпочитаемый язык сервера",
+      "URL иконки сервера",
+      "Уровень проверки сервера",
+      "Стандартный канал сервера",
+      "AFK-канал сервера",
       "Системный канал сервера",
-      "Роль сервера по умолчанию",
-      "Владелец сервера (объект)",
-      "Серверный бот",
+      "Стандартная роль сервера",
+      "Владелец сервера (Объект)",
+      "Бот сервера",
       "Список каналов сервера",
-      "Список позиций сервера",
+      "Список ролей сервера",
       "Список участников сервера",
       "Список эмодзи сервера",
-      "Общее количество членов сервера",
-      "Сервер создан на",
-      "Таймаут сервера AFK",
+      "Общее количество участников сервера",
+      "Сервер создан",
+      "Время ожидания AFK на сервере",
       "Сервер доступен",
-      "Сервер большой",
+      "Большой сервер",
       "Сервер подключен",
-      "Всего каналов сервера",
-      "Всего эмодзи сервера",
-      "Сервер включен",
-      "Всего занятых участников сервера",
-      "Всего онлайн-участников сервера",
-      "Total offline members of the server",
-      "Всего незанятых членов сервера",
-      "Общее количество ботов сервера",
-      "Список идентификаторов каналов сервера",
-      "Список идентификаторов позиций сервера",
-      "Список идентификаторов участников сервера",
+      "Общее количество каналов сервера",
+      "Общее количество эмодзи сервера",
+      "Встраивание сервера включено",
+      "Общее количество занятых участников сервера",
+      "Общее количество онлайн-участников сервера",
+      "Общее количество оффлайн-участников сервера",
+      "Общее количество неактивных участников сервера",
+      "Общее количество ботов на сервере",
+      "Список ID каналов сервера",
+      "Список ID ролей сервера",
+      "Список ID участников сервера",
       "",
       "Общее количество людей на сервере",
       "",
-      "Всего позиций на сервере",
-      "Всего текстовых каналов сервера",
-      "Всего голосовых каналов сервера",
-      "Сервер проверен",
-      "Список запрещенных на сервере",
-      "Список приглашений сервера",
-      "Фильтр явного содержимого сервера",
-      "Счетчик импульсов сервера",
-      "Уровень форсирования сервера",
+      "Общее количество ролей на сервере",
+      "Общее количество текстовых каналов сервера",
+      "Общее количество голосовых каналов сервера",
+      "Сервер подтвержден",
+      "Список забаненных на сервере",
+      "Список приглашений на сервере",
+      "Фильтр контента сервера",
+      "Количество ускорений сервера",
+      "Уровень ускорения сервера",
       "URL баннера сервера",
-      "Список ресурсов сервера",
+      "Список возможностей сервера",
       "ID владельца сервера",
-      "URL-код сервера ванити",
+      "Пользовательский URL-адрес сервера",
       "ID канала виджета сервера",
-      "ID канала AFK сервера",
-      "Включить прогресс-бар сервера",
+      "ID AFK-канала сервера",
+      "Активирован прогресс-бар сервера",
       "Описание сервера",
-      "Партнерский сервер",
+      "Сервер в партнерстве",
       "Канал правил сервера",
-      "Идентификатор канала правил сервера",
+      "ID канала правил сервера",
       "Канал виджета сервера",
-      "Идентификатор системного канала сервера",
+      "ID системного канала сервера",
       "Уровень NSFW сервера",
-      "Уровень MFA/2FA сервера", "Уровень MFA/2FA сервера",
-      "Временная метка сервера",
-      "URL-адрес шаблона", "Код шаблона",
-      "Код шаблона", "Имя шаблона",
+      "Уровень MFA/2FA сервера",
+      "Отметка времени сервера",
+      "URL шаблона",
+      "Код шаблона",
       "Имя шаблона",
       "Описание шаблона",
-      "Время использования шаблона",
+      "Количество использований шаблона",
       "ID создателя шаблона",
-      "Временная метка создания шаблона", 
-      "Временная метка создания шаблона", 
-      "Временная метка обновления шаблона",
-      "Общее количество участников в голосовом канале",
-      "Список членов по ID, присутствующих в голосовых каналах",
-      "Список членов, присутствующих в голосовых каналах",
+      "Отметка времени создания шаблона",
+      "Отметка времени обновления шаблона",
+      "Общее количество участников в голосовых каналах",
+      "Список участников по ID, присутствующих в голосовых каналах",
+      "Список присутствующих участников в голосовых каналах",
       "Список текстовых каналов сервера",
       "Список ID текстовых каналов сервера",
       "Список голосовых каналов сервера",
-      "Список идентификаторов голосовых каналов сервера",
+      "Список ID голосовых каналов сервера",
       "Список категорий сервера",
-      "Список ID категорий сервера", "Список ID категорий сервера",
-      "Список ботов сервера",
-      "Список ID ботов сервера",
-      "Список членов сервера в порядке поступления",
-      "Список ID членов сервера в порядке поступления",
-      "Список серверных Webhooks",
+      "Список ID категорий сервера",
+      "Список ботов на сервере",
+      "Список ID ботов на сервере",
+      "Список участников сервера в порядке входа",
+      "Список ID участников сервера в порядке входа",
+      "Список вебхуков сервера",
       "Список имен категорий сервера",
       "Список имен каналов сервера",
       "Список имен текстовых каналов сервера",
       "Список имен голосовых каналов сервера",
       "Список имен эмодзи сервера",
-      "Список имен позиций сервера",
-      "Список имен членов сервера",
-      "Список имен членов сервера", "Список имен членов сервера",
-      "Список дискрипторов членов сервера",
-      "Список тегов членов сервера в порядке поступления",
-      "Список фигурок сервера",
-      "Список названий фигурок сервера",
-      "Список описаний фигурок сервера", "Список описаний фигурок сервера",
-      "Список идентификаторов фигурок сервера",
-      "Общее количество фигурок сервера",
-      "Список событий сервера",
-      "Список имен событий сервера",
-      "Всего событий сервера",
-      "Список идентификаторов событий сервера",
+      "Список имен ролей сервера",
+      "Список тегов участников сервера",
+      "Список имен участников сервера",
+      "Список дискриминаторов участников сервера",
+      "Список тегов участников сервера в порядке входа",
+      "Список стикеров сервера",
+      "Список имен стикеров сервера",
+      "Список описаний стикеров сервера",
+      "Список ID стикеров сервера",
+      "Общее количество стикеров на сервере",
+      "Список событий на сервере",
+      "Список имен событий на сервере",
+      "Общее количество событий на сервере",
+      "Список ID событий на сервере",
+      "Роль Server Booster",
+      "Список участников с ускорением в порядке ускорения",
+      "Список участников с Тайм-аутом (сейчас)",
+      "Общее количество участников с Тайм-аутом (сейчас)",
+      "Общее количество участников когда-либо получивших Тайм-аут",
+      "Список участников когда-либо получивших Тайм-аут",
     ];
 
     if (data.descriptionx) {
@@ -133,67 +138,67 @@ module.exports = {
     const type = parseInt(data.storage, 10);
     if (type !== varType) return;
     const info = parseInt(data.info, 10);
-    let dataType = "Unknown Type";
+    let dataType = "Неизвестный тип";
     switch (info) {
       case 0:
-        dataType = "Server";
+        dataType = "Сервер";
         break;
       case 1:
-        dataType = "ID сервера"
+        dataType = "ID сервера";
         break;
       case 2:
         dataType = "Текст";
-        break
+        break;
       case 3:
-        dataType = "Text";
-        break
+        dataType = "Текст";
+        break;
       case 4:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 5:
-        dataType = "Icon URL";
+        dataType = "URL значок сервера";
         break;
       case 6:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 7:
-        dataType = "Channel";
+        dataType = "Канал";
         break;
       case 8:
-        dataType = "Channel";
+        dataType = "Канал";
         break;
       case 9:
-        dataType = "Channel";
+        dataType = "Канал";
         break;
       case 10:
-        dataType = "Позиция";
+        dataType = "Роль";
         break;
       case 11:
-        dataType = "Член сервера";
+        dataType = "Участник сервера";
         break;
       case 12:
-        dataType = "Член сервера";
+        dataType = "Участник сервера";
         break;
       case 13:
         dataType = "Список";
         break;
       case 14:
-        dataType = "List";
-        break
+        dataType = "Список";
+        break;
       case 15:
-        dataType = "List";
-        break
+        dataType = "Список";
+        break;
       case 16:
-        dataType = "List";
+        dataType = "Список";
         break;
       case 17:
         dataType = "Число";
         break;
       case 18:
         dataType = "Дата";
-        break
+        break;
       case 19:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 20:
         dataType = "True/False";
@@ -202,13 +207,13 @@ module.exports = {
         dataType = "True/False";
         break;
       case 22:
-        dataType = "Data";
-        break
+        dataType = "Дата";
+        break;
       case 23:
-        dataType = "Number";
-        break
+        dataType = "Число";
+        break;
       case 24:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 25:
         dataType = "True/False";
@@ -217,58 +222,58 @@ module.exports = {
         dataType = "Число";
         break;
       case 27:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 28:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 29:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 30:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 31:
         dataType = "Список";
         break;
       case 32:
-        dataType = "List";
+        dataType = "Список";
         break;
       case 33:
-        dataType = "List";
+        dataType = "Список";
         break;
       case 35:
         dataType = "Число";
         break;
       case 37:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 38:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 39:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 40:
         dataType = "True/False";
         break;
       case 41:
-        dataType = "List";
+        dataType = "Список";
         break;
       case 42:
-        dataType = "List";
+        dataType = "Список";
         break;
       case 43:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 44:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 45:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 46:
-        dataType = "URL баннера";
+        dataType = "URL Баннера сервера";
         break;
       case 47:
         dataType = "Список";
@@ -277,7 +282,7 @@ module.exports = {
         dataType = "ID";
         break;
       case 49:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 50:
         dataType = "ID";
@@ -289,28 +294,28 @@ module.exports = {
         dataType = "True/False";
         break;
       case 53:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 54:
         dataType = "True/False";
         break;
       case 55:
-        dataType = "Channel";
+        dataType = "Канал";
         break;
       case 56:
         dataType = "ID";
         break;
       case 57:
-        dataType = "Channel";
+        dataType = "Канал";
         break;
       case 58:
         dataType = "ID";
         break;
       case 59:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 60:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 61:
         dataType = "Timestamp";
@@ -319,16 +324,16 @@ module.exports = {
         dataType = "URL";
         break;
       case 63:
-        dataType = "Code";
+        dataType = "Код";
         break;
       case 64:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 65:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 66:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 67:
         dataType = "ID";
@@ -340,11 +345,31 @@ module.exports = {
         dataType = "Timestamp";
         break;
       case 70:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 71:
         dataType = "Список";
       case 92:
+        dataType = "Список";
+      case 102:
+        dataType = "Список";
+        break;
+      case 103:
+        dataType = "Объект";
+        break;
+      case 104:
+        dataType = "Список";
+        break;
+      case 105:
+        dataType = "Список";
+        break;
+      case 106:
+        dataType = "Число";
+        break;
+      case 107:
+        dataType = "Число";
+        break;
+      case 108:
         dataType = "Список";
         break;
     }
@@ -360,41 +385,17 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.8</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 2.0</div>
 
-    <style>
-      .dbmmodsbr1 {
-        position: absolute;
-        bottom: 0px;
-        border: 0px solid rgba(50,50,50,0.7);
-        background: rgba(0,0,0,0.7);
-        color: #999;
-        padding: 5px;
-        left: 0px;
-        z-index: 999999;
-        cursor: pointer
-      }
-
-      .dbmmodsbr2 {
-        position: absolute;
-        bottom: 0px;
-        border: 0px solid rgba(50,50,50,0.7);
-        background: rgba(0,0,0,0.7);
-        color: #999;
-        padding: 5px;
-        right: 0px;
-        z-index: 999999;
-        cursor: pointer
-      }
-    </style>
+    <div style="width: 100%; padding:5px 0px;height: calc(100vh - 160px);overflow:auto">
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
       <table style="width:100%;"><tr>
         <td>
           <span class="dbminputlabel">Описание действия</span>
           <br>
-          <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+          <input type="text" class="round" id="description" placeholder="Не обязательное поле">
         </td>
         <td style="padding:0px 0px 0px 10px;width:70px">
           <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -412,130 +413,136 @@ module.exports = {
 
 <div>
 	<div style="padding-top: 8px; width: 100%;">
-  <span class="dbminputlabel">Информация</span><br>
-  <select id="info" class="round2">
-  <optgroup label="Общая информация о сервере">
-  <option value="0">Сервер (объект)</options>
-  <option value="1">Идентификатор сервера</options>
-  <option value="2">Имя сервера</options>
-  <option value="3">Имя сервера</options>
-  <option value="53">Описание сервера</options>
-  <option value="5">URL иконки сервера</options>
-  <option value="7">Канал сервера по умолчанию</options>
-  <option value="58">Идентификатор системного канала сервера</options>
-  <option value="9">Системный канал сервера</options
-  <option value="21">Большой сервер</options>
-  <option value="43">Явный фильтр содержимого сервера</options>
-  <option value="10">Роль сервера по умолчанию</options>
-  <option value="12">Серверный бот</options
-  <option value="20">Сервер доступен</options>
-  </optgroup>
-  <optgroup label="Информация об AFK сервере">
-  <option value="8">Канал AFK сервера</options
-  <option value="51">Идентификатор канала АФК сервера</options>
-  <option value="19">Таймаут АФК сервера</options>
-  </optgroup>
-  <optgroup label="Информация об ускорении сервера">
-  <option value="44">Счетчик импульсов сервера</options>
-  <option value="45">Уровень усиления сервера</options>
-  </optgroup>
-  <optgroup label="Counts">
-  <option value="17">Общее количество участников сервера</options>
-  <option value="35">Общее количество людей на сервере</options>
-  <option value="30">Общее количество ботов на сервере</options
-  <option value="24">Общее количество эмодзи на сервере</options>
-  <option value="37">Общее количество постов на сервере</options
-  <option value="23">Общее количество каналов на сервере</options
-  <option value="38">Общие текстовые каналы сервера</options>
-  <option value="39">Общие голосовые каналы сервера</options>
-  <option value="70">Общее количество участников голосовых каналов</options>
-  <option value="98">Общее количество участников на сервере</option>
-  <option value="101">Общее количество событий на сервере</option>
-  </optgroup>
-  <optgroup label="Информация о сообществе сервера"">
-  <option value="54">Серверное партнерство</options>
-  <option value="55">Канал правил сервера</options>
-  <option value="56">Идентификатор канала правил сервера</options>
-  <option value="4">Предпочитаемый язык сервера</options>
-  <option value="40">Сервер проверен</options>
-  <option value="52">Включен индикатор прогресса на сервере премиум-класса</options>
-  <option value="46">URL баннера сервера</options>
-  <option value="47">Список ресурсов сервера</options>
-  <option value="49">Код URL сервера</options>
-  <option value="57">Канал виджетов сервера</options>
-  <option value="50">Идентификатор канала виджета сервера</options>
-  <option value="25">Встроить сервер включено</options>
-  </optgroup>
-  <optgroup label="Информация о дате сервера">
-  <option value="61">Временная метка сервера</options>
-  <option value="18">Сервер создан на</options>
-  <option value="22">Сервер подключен на</options>
-  </optgroup>
-  <optgroup label="Уровни сервера">
-  <option value="59">Уровень NSFW сервера</options>
-  <option value="6">Уровень проверки сервера</options>
-  <option value="60">Уровень MFA/2FA сервера</options>
-  </optgroup>
-  <optgroup label="Информация о списке серверов">
-  <option value="15">Список участников сервера</options>
-  <option value="90">Список тегов участников сервера</options>
-  <option value="91">Список имен участников сервера</options
-  <option value="92">Список дискриминаторов участников сервера</options>
-  <option value="33">Список идентификаторов участников сервера</options>
-  <option value="79">Список ботов сервера</options
-  <option value="80">Список идентификаторов ботов сервера</options>
-  <option value="77">Список категорий серверов</options
-  <option value="84">Список названий категорий серверов</options>
-  <option value="78">Список идентификаторов категорий серверов</options>
-  <option value="13">Список каналов сервера</options>
-  <option value="85">Список имен серверных каналов</options
-  <option value="31">Список идентификаторов серверных каналов</options>
-  <option value="73">Список текстовых каналов сервера</options>
-  <option value="86">Перечень имен текстовых каналов сервера</options>
-  <option value="74">Перечень идентификаторов текстовых каналов сервера</option>
-  <option value="75">Список голосовых каналов сервера</options>
-  <option value="87">Перечень имен голосовых каналов сервера</options>
-  <option value="76">Список идентификаторов голосовых каналов сервера</option>
-  <option value="16">Список эмодзи сервера</options>
-  <option value="88">Список имен эмодзи сервера</options>
-  <option value="14">Список позиций сервера</options>
-  <option value="89">Список названий ролей сервера</options
-  <option value="32">Список идентификаторов ролей сервера</option>
-  <option value="41">Список запрещенных лиц сервера</options
-  <option value="42">Список приглашенных на сервер</options
-  <option value="71">Список участников по ID, присутствующих на голосовых каналах</option>
-  <option value="72">Список участников, присутствующих на голосовых каналах</options>
-  <option value="81">Список участников сервера в порядке поступления</option>
-  <option value="93">Список тегов участников сервера в порядке поступления</option>
-  <option value="82">Список идентификаторов участников сервера в порядке возрастания</option>
-  <option value="83">Список серверных Webhooks</option>
-  <option value="94">Список фигурок сервера</option>
-  <option value="95">Список имен фигурок сервера</option>
-  <option value="96">Список описаний фигурок сервера</option>
-  <option value="97">Список идентификаторов наклеек сервера</option>
-  <option value="99">Список событий сервера</option>
-  <option value="100">Список названий событий сервера</option>
-  <option value="102">Список идентификаторов событий сервера</option>
-  </optgroup>
-  <optgroup label="Информация о владельце сервера">
-  <option value="48">Идентификатор владельца сервера</options>
-  <option value="11">Владелец сервера (объект)</options>
-  </optgroup>
-  <optgroup label="Счетчик состояния сервера">
-  <option value="27">Общее количество онлайн-участников сервера</options>
-  <option value="29">Общее количество неактивных участников сервера</options>
-  <option value="26">Общее количество занятых участников сервера</options
-  <option value="28">Общее количество автономных участников сервера</options>
-  </optgroup>
-  <optgroup label="Шаблон сервера">
-  <option value="62">URL шаблона</options>
-  <option value="63">Код шаблона</options>
-  <option value="64">Имя шаблона</options>
-  <option value="65">Описание шаблона</options>
-  <option value="66">Время использования шаблона</options>
-  <option value="67">Идентификатор создателя шаблона</options
-  <option value="68">Временная метка создания шаблона</options>
-  <option value="69">Временная метка обновления шаблона</options>
+		<span class="dbminputlabel">Информация</span><br>
+		<select id="info" class="round2">
+      <optgroup label="Общая информация о сервере">
+      <option value="0">Сервер (Объект)</option>
+      <option value="1">ID сервера</option>
+      <option value="2">Имя сервера</option>
+      <option value="3">Акроним имени сервера</option>
+      <option value="53">Описание сервера</option>
+      <option value="5">URL иконки сервера</option>
+      <option value="7">Стандартный канал сервера</option>
+      <option value="58">ID системного канала сервера</option>
+      <option value="9">Системный канал сервера</option>
+      <option value="21">Большой сервер</option>
+      <option value="43">Фильтр контента сервера</option>
+      <option value="10">Стандартная роль сервера</option>
+      <option value="12">Бот сервера</option>
+      <option value="20">Сервер доступен</option>
+      </optgroup>
+      <optgroup label="Информация об AFK на сервере">
+      <option value="8">AFK-канал сервера</option>
+      <option value="51">ID AFK-канала сервера</option>
+      <option value="19">Время AFK на сервере</option>
+      </optgroup>
+      <optgroup label="Информация о преимуществах сервера">
+      <option value="44">Количество ускорений сервера</option>
+      <option value="45">Уровень ускорения сервера</option>
+      <option value="103">Роль Server Booster</option>
+      <option value="104">Список участников с ускорением в порядке ускорения</option>
+      </optgroup>
+      <optgroup label="Счетчики">
+      <option value="17">Общее количество участников сервера</option>
+      <option value="35">Общее количество людей на сервере</option>
+      <option value="30">Общее количество ботов на сервере</option>
+      <option value="24">Общее количество эмодзи на сервере</option>
+      <option value="37">Общее количество ролей на сервере</option>
+      <option value="23">Общее количество каналов на сервере</option>
+      <option value="38">Общее количество текстовых каналов на сервере</option>
+      <option value="39">Общее количество голосовых каналов на сервере</option>
+      <option value="70">Общее количество участников в голосовых каналах</option>
+      <option value="98">Общее количество стикеров на сервере</option>
+      <option value="101">Общее количество событий на сервере</option>
+      <option value="106">Общее количество участников с Тайм-аутом (сейчас)</option>
+      <option value="107">Общее количество участников когда-либо получивших Тайм-аут</option>
+      </optgroup>
+      <optgroup label="Информация о сообществе на сервере">
+      <option value="54">Сервер в партнерстве</option>
+      <option value="55">Канал правил сервера</option>
+      <option value="56">ID канала правил сервера</option>
+      <option value="4">Предпочитаемый язык сервера</option>
+      <option value="40">Сервер подтвержден</option>
+      <option value="52">Активирован премиум-серверный прогресс-бар</option>
+      <option value="46">URL баннера сервера</option>
+      <option value="47">Список возможностей сервера</option>
+      <option value="49">Пользовательский URL-адрес сервера</option>
+      <option value="57">Канал виджета сервера</option>
+      <option value="50">ID канала виджета сервера</option>
+      <option value="25">Встраиваемый сервер активирован</option>
+      </optgroup>
+      <optgroup label="Информация о датах на сервере">
+      <option value="61">Отметка времени сервера</option>
+      <option value="18">Сервер создан</option>
+      <option value="22">Сервер подключен</option>
+      </optgroup>
+      <optgroup label="Уровни сервера">
+      <option value="59">Уровень NSFW сервера</option>
+      <option value="6">Уровень проверки сервера</option>
+      <option value="60">Уровень MFA/2FA сервера</option>
+      </optgroup>
+      <optgroup label="Информация о списках серверов">
+      <option value="15">Список участников сервера</option>
+      <option value="90">Список тегов участников сервера</option>
+      <option value="91">Список имен участников сервера</option>
+      <option value="92">Список дискриминаторов участников сервера</option>
+      <option value="33">Список ID участников сервера</option>
+      <option value="79">Список ботов на сервере</option>
+      <option value="80">Список ID ботов на сервере</option>
+      <option value="77">Список категорий сервера</option>
+      <option value="84">Список имен категорий сервера</option>
+      <option value="78">Список ID категорий сервера</option>
+      <option value="13">Список каналов на сервере</option>
+      <option value="85">Список имен каналов на сервере</option>
+      <option value="31">Список ID каналов сервера</option>
+      <option value="73">Список текстовых каналов на сервере</option>
+      <option value="86">Список имен текстовых каналов на сервере</option>
+      <option value="74">Список ID текстовых каналов на сервере</option>
+      <option value="75">Список голосовых каналов на сервере</option>
+      <option value="87">Список имен голосовых каналов на сервере</option>
+      <option value="76">Список ID голосовых каналов сервера</option>
+      <option value="16">Список эмодзи на сервере</option>
+      <option value="88">Список имен эмодзи на сервере</option>
+      <option value="14">Список ролей на сервере</option>
+      <option value="89">Список имен ролей на сервере</option>
+      <option value="32">Список ID ролей сервера</option>
+      <option value="41">Список забаненных на сервере</option>
+      <option value="42">Список приглашений на сервере</option>
+      <option value="71">Список участников по ID, присутствующих в голосовых каналах</option>
+      <option value="72">Список присутствующих участников в голосовых каналах</option>
+      <option value="81">Список участников сервера в порядке входа</option>
+      <option value="93">Список тегов участников сервера в порядке входа</option>
+      <option value="82">Список ID участников сервера в порядке входа</option>
+      <option value="83">Список вебхуков сервера</option>
+      <option value="94">Список стикеров на сервере</option>
+      <option value="95">Список имен стикеров на сервере</option>
+      <option value="96">Список описаний стикеров на сервере</option>
+      <option value="97">Список ID стикеров на сервере</option>
+      <option value="99">Список событий на сервере</option>
+      <option value="100">Список имен событий на сервере</option>
+      <option value="102">Список ID событий на сервере</option>
+      <option value="105">Список участников с Тайм-аутом (сейчас)</option>
+      <option value="108">Список участников когда-либо получивших Тайм-аут</option>
+      </optgroup>
+      <optgroup label="Информация о владельце сервера">
+      <option value="48">ID владельца сервера</option>
+      <option value="11">Владелец сервера (Объект)</option>
+      </optgroup>
+      <optgroup label="Счетчики статуса сервера">
+      <option value="27">Общее количество участников онлайн на сервере</option>
+      <option value="29">Общее количество участников неактивных на сервере</option>
+      <option value="26">Общее количество участников занятых на сервере</option>
+      <option value="28">Общее количество участников оффлайн на сервере</option>
+      </optgroup>
+      <optgroup label="Шаблон сервера">
+      <option value="62">URL шаблона</option>
+      <option value="63">Код шаблона</option>
+      <option value="64">Имя шаблона</option>
+      <option value="65">Описание шаблона</option>
+      <option value="66">Количество использований шаблона</option>
+      <option value="67">ID создателя шаблона</option>
+      <option value="68">Отметка времени создания шаблона</option>
+      <option value="69">Отметка времени обновления шаблона</option>
       </optgroup>
 		</select>
     <input type="text" id="filtrodoxinxyla" class="round" placeholder="Фильтр элементов...">
@@ -545,40 +552,71 @@ module.exports = {
 <br>
 
 <store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+
+</div>
+
 <style>
+.dbmmodsbr1 {
+  position: absolute;
+  bottom: 0px;
+  border: 0px solid rgba(50,50,50,0.7);
+  background: rgba(0,0,0,0.7);
+  color: #999;
+  padding: 5px;
+  left: 0px;
+  z-index: 999999;
+  cursor: pointer
+}
+
+.dbmmodsbr2 {
+  position: absolute;
+  bottom: 0px;
+  border: 0px solid rgba(50,50,50,0.7);
+  background: rgba(0,0,0,0.7);
+  color: #999;
+  padding: 5px;
+  right: 0px;
+  z-index: 999999;
+  cursor: pointer
+}
 .round2{width:100%;height:30px;outline:0}
 .round2 option{padding:3px 8px;text-align:left}
 .round2 optgroup{text-align:center;padding:4px 0px;}
 
 
 .abrir {
+  min-height: 30px;
   height: 30px;
   animation: abrir .5s forwards;
 }
 
 @keyframes abrir {
   from {
+    min-height: 30px;
     height: 30px;
   }
   to {
-    height: 130px;
+    min-height: 100px;
+    height: calc(100vh - 420px);
   }
 }
 
 .fechar {
-  height: 130px;
+  min-height: 100px;
+  height: calc(100vh - 420px);
   animation: fechar .5s forwards;
 }
 
 @keyframes fechar {
   from {
-    height: 130px;
+    min-height: 100px;
+    height: calc(100vh - 420px);
   }
   to {
+    min-height: 30px;
     height: 30px;
   }
 }
-
 </style>`;
   },
 
@@ -591,7 +629,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Launching URL: [${url}] in your default browser.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -1003,6 +1041,24 @@ module.exports = {
         break;
       case 102:
         result = targetServer.scheduledEvents.cache.map(scheduledEvents => scheduledEvents.id);
+        break;
+      case 103:
+        result = targetServer.roles.cache.find((item) => item.tags && item.tags.premiumSubscriberRole === true);
+        break;
+      case 104:
+        result = targetServer.members.cache.filter((m) => m.premiumSinceTimestamp).sort((a, b) => parseFloat(a.premiumSinceTimestamp) - parseFloat(b.premiumSinceTimestamp)).map(a => a)
+        break;
+      case 105:
+        result = targetServer.members.cache.filter((m) => m.communicationDisabledUntilTimestamp > Date.now()).sort((a, b) => parseFloat(a.communicationDisabledUntilTimestamp) - parseFloat(b.communicationDisabledUntilTimestamp)).map(a => a)
+        break;
+      case 106:
+        result = targetServer.members.cache.filter((m) => m.communicationDisabledUntilTimestamp > Date.now()).map(a => a).length
+        break;
+      case 107:
+        result = targetServer.members.cache.filter((m) => m.communicationDisabledUntilTimestamp > 0).map(a => a).length
+        break;
+      case 108:
+        result = targetServer.members.cache.filter((m) => m.communicationDisabledUntilTimestamp > 0).sort((a, b) => parseFloat(a.communicationDisabledUntilTimestamp) - parseFloat(b.communicationDisabledUntilTimestamp)).map(a => a)
         break;
     }
     if (result !== undefined) {
