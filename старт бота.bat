@@ -1,6 +1,0 @@
-@echo off
-echo Инициализация бота...
-:main
-node bot.js
-echo Перезапускаю бота...
-goto main
