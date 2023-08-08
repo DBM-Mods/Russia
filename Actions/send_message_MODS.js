@@ -913,7 +913,7 @@ module.exports = {
       
       <div style="width:100%;display:block">
       <div style="padding-bottom: 12px;" id="xin1">
-        <retrieve-from-variable allowNone dropdownLabel="Отредокатировать" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
+        <retrieve-from-variable allowNone dropdownLabel="Отредоктировать" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
           <option value="intUpdate">Обновление взаимодействия</option>
         </retrieve-from-variable>
       
@@ -968,7 +968,10 @@ module.exports = {
         <input id="varNameError" class="round" type="text">
       </div>
     </div>
+
   </div>
+  <br><br><br>
+
     <div id="divValueError2" style="float: left; width: 35%">
       <span class="dbminputlabel">Если возникает ошибка</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
