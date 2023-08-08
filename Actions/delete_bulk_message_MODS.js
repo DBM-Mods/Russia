@@ -60,7 +60,7 @@ module.exports = {
     <div style="width: 100%; padding:0px 6px;height: calc(100vh - 160px);overflow:auto">
 
 <tab-system>
-  <tab label="Config" icon="cogs">
+  <tab label="Конфиг" icon="cogs">
   <div style="width: 100%; padding:8px;height: calc(100vh - 210px);overflow:auto">
 
   <div style="overflow:hidden;padding-top:2px">
@@ -117,14 +117,14 @@ module.exports = {
   </div>
 
   
-    <div style="float: left; width: 35%; padding-top: 8px;">
-      <span class="dbminputlabel">Удалённые сообщения</span><br>
+    <div style="float: left; width: 50%; padding-top: 8px;">
+      <span class="dbminputlabel">Количество удалённых сообщений</span><br>
       <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer3')">
         ${data.variables[0]}
       </select>
     </div>
 
-    <div id="varNameContainer3" style="float: right; display: none; width: 60%; padding-top: 8px;">
+    <div id="varNameContainer3" style="float: right; display: none; width: 48%; padding-top: 8px;">
       <span class="dbminputlabel">Имя переменной</span><br>
       <input id="varName3" class="round" type="text">
     </div>
