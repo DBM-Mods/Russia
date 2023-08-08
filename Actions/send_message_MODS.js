@@ -913,7 +913,7 @@ module.exports = {
       
       <div style="width:100%;display:block">
       <div style="padding-bottom: 12px;" id="xin1">
-        <retrieve-from-variable allowNone dropdownLabel="Редактировать сообщение" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
+        <retrieve-from-variable allowNone dropdownLabel="Отредокатировать" selectId="editMessage" variableInputId="editMessageVarName" variableContainerId="editMessageVarNameContainer">
           <option value="intUpdate">Обновление взаимодействия</option>
         </retrieve-from-variable>
       
