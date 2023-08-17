@@ -90,7 +90,7 @@ module.exports = {
       html(isEvent, data) {
         return `
         <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zipм">Обновление</div>
-        <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+        <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
 
         <tab-system>
@@ -681,6 +681,7 @@ module.exports = {
             const branch = branches[i];
             const info = parseInt(branch.info);
       
+            try {
               let result;
       
               switch (info) {
@@ -713,34 +714,62 @@ module.exports = {
               const varName = this.evalMessage(branch.varName, cache);
               const storage = parseInt(branch.storage, 10);
               this.storeValue(result, storage, varName, cache);
-              this.callNextAction(cache)
-            } 
-
+              
+            } catch (error) {
+  
+              this.storeValue(error, parseInt(data.storageError), this.evalMessage(data.varNameError, cache), cache)
+    
+              if (data.errcmd === true) {
+                console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name);
+                console.log(error);
+              }
+        
+              if (data.iffalse == "5" || data.iffalse == "6") {
+        
+                if (data.iffalse == "5") {
+                  this.executeSubActions(data.actionsError, cache)
+                } else {
+                  this.executeSubActionsThenNextAction(data.actionsError, cache)
+                }
+        
+              } else {
+                this.executeResults(false, data, cache);
+              }
+    
+            }
+          }
+  
+          this.callNextAction(cache);
+    
         } catch (error) {
-          this.storeValue(error, parseFloat(data.errs), this.evalMessage(data.errv, cache), cache)
-                if (data.errcmd === true) {
-                    console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name)
-                    console.log(error)
-                  }
     
-                  if (data.iffalse == "5" || data.iffalse == "6") {
+          this.storeValue(error, parseInt(data.storageError), this.evalMessage(data.varNameError, cache), cache)
     
-                    if (data.iffalse == "5") {
-                      this.executeSubActions(data.actionserr, cache)
-                    } else {
-                      this.executeSubActionsThenNextAction(data.actionserr, cache)
-                    }
+          if (data.errcmd === true) {
+            console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name);
+            console.log(error);
+          }
     
-                  } else {
-                    this.executeResults(false, data, cache);
-                  }
+          if (data.iffalse == "5" || data.iffalse == "6") {
+    
+            if (data.iffalse == "5") {
+              this.executeSubActions(data.actionsError, cache)
+            } else {
+              this.executeSubActionsThenNextAction(data.actionsError, cache)
+            }
+    
+          } else {
+            this.executeResults(false, data, cache);
+          }
+    
+    
         }
       },
 
+      modInit(data) {
+        this.prepareActions(data.actionsError);
+      },
+
+
 mod() { },
-
-modInit(data) {
-  this.prepareActions(data.actionsError);
-},
-
 }; 

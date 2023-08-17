@@ -59,6 +59,13 @@ module.exports = {
             }
         }
 
+    const type = parseInt(data.storageError);
+
+        if (type == varType) {
+           vars.push(data.varNameError);
+           vars.push("Текст ~ Ошибка");
+        }
+
         if (vars.length > 0) {
             return vars;
         }
@@ -72,12 +79,12 @@ module.exports = {
         downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
     },
 
-    fields: ["tempo", "time", "opcao", "varName", "branches", "description", "descriptionx", "descriptioncolor", "billd", "SECRET", "errcmd", "currency", "amoun", "commen", "email", "link"],
+    fields: ["tempo", "time", "opcao", "varName", "branches", "description", "descriptionx", "descriptioncolor", "billd", "SECRET", "currency", "amoun", "commen", "email", "link", "errcmd", "iffalse", "iffalseVal", "storageError", "varNameError", "actionsError"],
 
     html(isEvent, data) {
         return `
   <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
-  <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.3</div>
+  <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.4</div>
 
   <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
@@ -215,6 +222,49 @@ module.exports = {
 </div>
 </table>
 
+<div id="divValueError">
+<div style="float: left; width: 35%;">
+ <span class="dbminputlabel">Хранить ошибку в</span>
+ <select id="storageError" class="round" onchange="glob.variableChangeError(this, 'varNameContainer')">
+   ${data.variables[0]}
+ </select>
+</div>
+
+<div id="varNameContainerError" style="float: right; display: none; width: 60%;">
+ <span class="dbminputlabel">Название переменной</span>
+ <input id="varNameError" class="round" type="text">
+</div>
+
+
+   </div>
+
+   <br><br><br>
+
+   <div style="overflow:hidden;padding:4px 0px 0px 0px">
+<div style="float: left; width: 38%" id="xinext">
+<span class="dbminputlabel">Если возникает ошибка</span><br>
+<select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
+<option value="0" selected>Продолжить действия</option>
+<option value="1">Остановить последовательность действий</option>
+<option value="2">Перейти к действию</option>
+<option value="3">Пропустить следующий действия</option>
+<option value="4">Перейти к якорю действия</option>
+<option value="5">Выполнить действия ниже и остановиться</option>
+<option value="6">Выполнить действия ниже и продолжить</option>
+</select>
+</div>
+
+<div id="iffalseContainer" style="display: none; float: right; width: 60%;">
+<div id="xincontrol"><span id="xinelas" class="dbminputlabel">Para</span><br>
+<input id="iffalseVal" class="round" name="actionxinxyla" type="text">
+</div>
+</div>
+
+<div id="containerxin" style="width:100%;overflow:hidden">
+<br>
+<action-list-input id="actionsError" min-height="100" height="calc(100vh - 350px)"></action-list-input>
+</div>
+
 </div>
 </div>
 </tab>
@@ -245,6 +295,44 @@ init() {
     }
 
     glob.change(document.getElementById("opcao"));
+
+    glob.onComparisonChanged = function (event) {
+      if (event.value > "1") {
+          document.getElementById("iffalseContainer").style.display = null;
+      } else {
+          document.getElementById("iffalseContainer").style.display = "none";
+      }
+      if (event.value == "5" || event.value == "6") {
+          document.getElementById("containerxin").style.display = null;
+          document.getElementById("xincontrol").style.display = "none";
+          document.getElementById("xinext").style.width = "100%";
+      } else {
+          document.getElementById("containerxin").style.display = "none";
+          document.getElementById("xincontrol").style.display = null;
+          document.getElementById("xinext").style.width = "38%";
+      }
+      if (event.value == "2") {
+          document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
+      }
+      if (event.value == "3") {
+          document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+      }
+      if (event.value == "4") {
+          document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
+      }
+  }
+
+  glob.onComparisonChanged(document.getElementById("iffalse"));
+
+  glob.variableChangeError = function (event) {
+      if (event.value == "0") {
+          document.getElementById("varNameContainerError").style.display = "none";
+      } else {
+          document.getElementById("varNameContainerError").style.display = null;
+      }
+  }
+
+  glob.variableChangeError(document.getElementById("storageError"));
   
     glob.formatItem = function (data) {
         let result = '<div style="display: inline-block; width: 200px; padding-left: 8px;">Хранить "';
@@ -398,23 +486,61 @@ init() {
               const varName = this.evalMessage(branch.varName, cache);
               const storage = parseInt(branch.storage, 10);
               this.storeValue(result, storage, varName, cache);
+              
             } catch (error) {
+  
+              this.storeValue(error, parseInt(data.storageError), this.evalMessage(data.varNameError, cache), cache)
+    
               if (data.errcmd === true) {
                 console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name);
                 console.log(error);
               }
+        
+              if (data.iffalse == "5" || data.iffalse == "6") {
+        
+                if (data.iffalse == "5") {
+                  this.executeSubActions(data.actionsError, cache)
+                } else {
+                  this.executeSubActionsThenNextAction(data.actionsError, cache)
+                }
+        
+              } else {
+                this.executeResults(false, data, cache);
+              }
+    
             }
           }
-      
+  
           this.callNextAction(cache);
+    
         } catch (error) {
+    
+          this.storeValue(error, parseInt(data.storageError), this.evalMessage(data.varNameError, cache), cache)
+    
           if (data.errcmd === true) {
             console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name);
             console.log(error);
           }
+    
+          if (data.iffalse == "5" || data.iffalse == "6") {
+    
+            if (data.iffalse == "5") {
+              this.executeSubActions(data.actionsError, cache)
+            } else {
+              this.executeSubActionsThenNextAction(data.actionsError, cache)
+            }
+    
+          } else {
+            this.executeResults(false, data, cache);
+          }
+    
+    
         }
       },
       
+      modInit(data) {
+        this.prepareActions(data.actionsError);
+      },
       
 
 mod() { },

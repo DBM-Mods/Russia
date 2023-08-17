@@ -615,7 +615,7 @@ module.exports = {
 
 
   <tab label="Меню" icon="list alternate">
-  <div style="padding: 16px;text-align:center"id="xin5n">WebHook не поддерживает меню</div>
+  <div style="padding: 16px;text-align:center"id="xin5n">Вебхук не поддерживает меню</div>
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto" id="xin5">
 
       <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Информация о Меню" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 310px);" itemName="Меню" itemCols="1" itemHeight="80px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
