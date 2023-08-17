@@ -714,6 +714,7 @@ module.exports = {
               const varName = this.evalMessage(branch.varName, cache);
               const storage = parseInt(branch.storage, 10);
               this.storeValue(result, storage, varName, cache);
+              
             } catch (error) {
   
               this.storeValue(error, parseInt(data.storageError), this.evalMessage(data.varNameError, cache), cache)
@@ -768,7 +769,7 @@ module.exports = {
       modInit(data) {
         this.prepareActions(data.actionsError);
       },
-      
+
 
 mod() { },
 }; 
