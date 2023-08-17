@@ -15,6 +15,11 @@ module.exports = {
 
   subtitle(data, presets) {
     let text = "";
+    
+    if (data.storagewebhook !== "0") {
+      text = `Отправка через Webhook: ${data.varwebhook}`;
+    } else {
+
     if (data.message) {
       text = `"${data.message.replace(/[\n\r]+/, " ↲ ")}"`;
     } else if (data.embeds?.length > 0) {
@@ -32,16 +37,17 @@ module.exports = {
     } else {
       text = `Ничего (может вызвать ошибку)`;
     }
+
     if (data.dontSend) {
       text = `Хранить Дату: ${text}`;
     } else {
       text = `${presets.getSendReplyTargetText(data.channel, data.varName)}: ${text}`;
     }
+    
+  }
+
     if (data.descriptioncolor == undefined) {
       data.descriptioncolor = "#ffffff";
-    }
-    if (data.storagewebhook > "0") {
-      return `Отправить через WebHook: ${data.varwebhook}`;
     }
     
     if(data.descriptionx == true){
@@ -118,7 +124,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 3.9</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 4.0</div>
 
     <div style="height:52px;overflow: hidden;padding-top: 3px;">
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить" selectId="channel" variableInputId="varName"></send-reply-target-input>
@@ -276,7 +282,7 @@ module.exports = {
 
                                   
             <span class="dbminputlabel">Описание</span><br>
-            <textarea id="description" class="dbm_monospace" rows="4" placeholder="Не обязательное поле"></textarea>
+            <textarea id="description" class="dbm_monospace" rows="7" placeholder="Не обязательное поле"></textarea>
 
                 <br>
 
@@ -1251,7 +1257,11 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     let isEdit = 0;
     if (data.editMessage === "intUpdate") {
+      if(cache.interaction?.replied && cache.interaction?.editReply){
       isEdit = 2;
+    } else if (cache?.interaction?.update) {
+      isEdit = 2;
+    }
     } else {
       const editMessage = parseInt(data.editMessage, 10);
       if (typeof editMessage === "number" && editMessage >= 0) {
@@ -1919,7 +1929,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
     if (Array.isArray(data.selectMenus)) {
       for (let i = 0; i < data.selectMenus.length; i++) {
-        const select = data.selectMenus[i];
+        select = data.selectMenus[i];
 
         totales = data.selectMenus[i].options.length;
 
@@ -1938,7 +1948,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           result = true;
 
           if (data.selectMenus[i].options[ix].formula == "Falso" || data.selectMenus[i].options[ix].formula == "Verdadeiro") {
-            const compare = parseInt(data.selectMenus[i].options[ix].comparar, 10);
+            compare = parseInt(data.selectMenus[i].options[ix].comparar, 10);
             if (compare !== 6) {
               val1 = this.evalIfPossible(val1, cache);
               val2 = this.evalIfPossible(val2, cache);
@@ -2094,7 +2104,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
 
         }
 
-        const selectData = this.generateSelectMenu(select, cache);
+        selectData = this.generateSelectMenu(select, cache);
         selectData.disabled = select.disabled;
 
         this.addSelectToActionRowArray(componentsArr, this.evalMessage(select.row, cache), selectData, cache);
@@ -2121,7 +2131,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
     if (componentsArr.length > 0) {
-      const newComponents = componentsArr
+      newComponents = componentsArr
         .filter((comps) => comps.length > 0)
         .map(function (comps) {
           return {
@@ -2168,7 +2178,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
             ctx.drawImage(image, 0, 0, image.width, image.height)
             const buffer = canvas.toBuffer('image/png', { compressionLevel: data.attachments[i].compress })
             const spoiler = !!attachment?.spoiler;
-            const name = attachment?.name || (spoiler ? Util.basename("image.png") : undefined);
+            const name = this.evalMessage(attachment?.name, cache) || (spoiler ? Util.basename("image.png") : undefined);
             const msgAttachment = new MessageAttachment(buffer, name);
             if (spoiler) {
               msgAttachment.setSpoiler(true);
@@ -2184,7 +2194,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           const varid = this.evalMessage(attachment?.canvasvar, cache);
           const imagedata = this.getVariable(varid, varnamer, cache)
           const spoiler = !!attachment?.spoiler;
-          const name = attachment?.name || (spoiler ? Util.basename("image.png") : undefined);
+          const name = this.evalMessage(attachment?.name, cache) || (spoiler ? Util.basename("image.png") : undefined);
           const buffer = await Images.createBuffer(imagedata)
           const msgAttachment = new MessageAttachment(buffer, name);
           if (spoiler) {
@@ -2198,7 +2208,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           const url = this.evalMessage(attachment?.url, cache);
           if (url) {
             const spoiler = !!attachment?.spoiler;
-            const name = attachment?.name || (spoiler ? Util.basename(url) : undefined);
+            const name = this.evalMessage(attachment?.name, cache) || (spoiler ? Util.basename(url) : undefined);
             const msgAttachment = new MessageAttachment(url, name);
             if (spoiler) {
               msgAttachment.setSpoiler(true);
@@ -2331,7 +2341,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
     }
 
 
-    else if (target?.send) {
+    else if (target?.send || storagewebhook > 0) {
 
       if (storagewebhook > 0) {
 
