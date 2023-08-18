@@ -11,9 +11,9 @@ module.exports = {
 
   subtitle(data, presets) {
     const info = [
-      "Объект Изображения",
-      "Ширина Изображения",
-      "Высота Изображения",
+      "Объект изображения",
+      "Ширина изображения",
+      "Высота изображения",
     ];
     return `${info[parseInt(data.info, 10)]}`;
   },
@@ -22,7 +22,7 @@ module.exports = {
   variableStorage: function(data, varType) {
     const type = parseInt(data.storage);
     const prse2 = parseInt(data.info);
-    const info2 = ['Object','Width','height'];
+    const info2 = ['Объект', 'Ширина', 'Высота'];
     if(type !== varType) return;
     return ([data.varName2, info2[prse2]]);
 },
@@ -36,7 +36,7 @@ module.exports = {
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 
     <table style="width:100%;"><tr>
-    <td><span class="dbminputlabel">Изображение холста</span><br>
+    <td><span class="dbminputlabel">Изображение Canvas</span><br>
     <select id="storage" class="round" style="width: 100%" onchange="glob.refreshVariableList(this)">
       ${data.variables[1]}
     </select></td>

@@ -16,7 +16,7 @@ module.exports = {
   variableStorage (data, varType) {
     const type = parseInt(data.storage2)
     if (type !== varType) return
-    return ([data.varName2, 'Image URL'])
+    return ([data.varName2, 'URL изображения'])
   },
 
   fields: ['storage', 'varName', 'Path', 'storage2', 'varName2'],
@@ -27,7 +27,7 @@ module.exports = {
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 <div>
   <div style="float: left; width: 40%;">
-  <span class="dbminputlabel">Изображение холста</span><br>
+  <span class="dbminputlabel">Изображение Canvas</span><br>
     <select id="storage" class="round" onchange="glob.refreshVariableList(this)">
       ${data.variables[1]}
     </select><br>
@@ -39,19 +39,19 @@ module.exports = {
 </div><br><br><br>
 <div>
   <div style="float: left; width: 100%;">
-  <span class="dbminputlabel">Путь (Сохранить в локальном)</span><br>
+  <span class="dbminputlabel">Путь (Сохранить в месте)</span><br>
     <input id="Path" class="round" type="text" placeholder="resources/output.png"><br>
   </div>
 </div><br><br>
 <div>
   <div style="float: left; width: 40%;">
-  <span class="dbminputlabel">Хранить в</span><br>
+  <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage2" onchange="glob.onComparisonChanged(this)" class="round">
       ${data.variables[0]}
     </select><br>
   </div>
   <div style="padding-left: 2%; float: left; width: 60%;" id="containerxin">
-  <span class="dbminputlabel">Имя Переменной</span><br>
+  <span class="dbminputlabel">Имя переменной</span><br>
     <input id="varName2" class="round" type="text"><br>
   </div>
 </div>`
