@@ -16,19 +16,22 @@ module.exports = {
 
   fields: ["member", "varName", "channel", "varName2",],
 
+
   html(isEvent, data) {
     return `
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.2</div>
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
-    <member-input dropdownLabel="Участник" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
+<member-input dropdownLabel="Пользователь" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
 
-    <br><br><br><br>
+<br><br><br><br>
 
-    <voice-channel-input dropdownLabel="Голосовой Канал" selectId="channel" variableContainerId="varNameContainer2" variableInputId="varName2" selectWidth="45%" variableInputWidth="50%"></voice-channel-input>
-    `;
+<voice-channel-input dropdownLabel="Голосовой канал" selectId="channel" variableContainerId="varNameContainer2" variableInputId="varName2" selectWidth="45%" variableInputWidth="50%"></voice-channel-input>
+
+`;
   },
 
   init() {},
+
 
   async action(cache) {
     const data = cache.actions[cache.index];
@@ -38,7 +41,7 @@ module.exports = {
       return;
     }
     const targetChannel = await this.getVoiceChannelFromData(data.channel, data.varName2, cache);
-    if (!targetChannel) {
+        if (!targetChannel) {
       this.callNextAction(cache);
       return;
     }
@@ -47,8 +50,10 @@ module.exports = {
       console.log('ОШИБКА')
       console.error(err)
     });
-    this.callNextAction(cache);
+    this.callNextAction(cache)
+
   },
+
 
   mod() {},
 };

@@ -39,13 +39,13 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="color"></td>
 </tr></table>
 </div>
 
 <span class="dbminputlabel">Текст</span>
-		  <textarea id="text"rows="6" placeholder="Вставьте текст здесь ..." style="width: 99%; font-family: monospace; white-space: nowrap;"></textarea>
+		  <textarea id="text"rows="6" placeholder="Введите текст тута..." style="width: 99%; font-family: monospace; white-space: nowrap;"></textarea>
 	
       <br>
 
@@ -53,7 +53,7 @@ module.exports = {
 		<span class="dbminputlabel">Тип</span><br>
 		<select id="tipo" class="round" onchange="glob.onChange1(this)">
 			<option value="0" selected>Текст</option>
-			<option value="1">Преобразовать текст в лист</option>
+			<option value="1">Конвертировать текст в список</option>
 		</select>
 	</td><td class="td2">
 	<div id="xinxylasep">
@@ -65,7 +65,7 @@ module.exports = {
 <br>
 
 		  <div style="float: left; width: 35%;">
-		  <span class="dbminputlabel">Хранить в</span><br>
+		  <span class="dbminputlabel">Сохранить в</span><br>
 			  <select id="storage" class="round">
 				  ${data.variables[1]}
 			  </select>
@@ -111,7 +111,7 @@ table{width:100%}
        xinelaslink.setAttribute('title', url);
        xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

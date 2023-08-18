@@ -10,7 +10,7 @@ module.exports = {
     },
 
     subtitle(data) {
-      return `Backup ${data.pastaBackup}`;
+      return `Резервное копирование ${data.pastaBackup}`;
     },
 
     fields: ['pastaBackup', 'backupNome', 'log', 'nextAction'],
@@ -21,21 +21,21 @@ module.exports = {
       <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
    <div style="float: left; width: 100%; padding-top: 10px; padding-bottom: 15px;">
    <span class="dbminputlabel">Папка для резервного копирования</span>
-    <input id="pastaBackup" class="round" type="text" placeholder="Ex: data">
+    <input id="pastaBackup" class="round" type="text" placeholder="Пример: data">
   </div>
   <div style="float: left; width: 100%; padding-top: 10px; padding-bottom: 15px;">
   <span class="dbminputlabel">Имя резервной копии</span>
-    <input id="backupNome" class="round" type="text" placeholder="Ex: backup">
+    <input id="backupNome" class="round" type="text" placeholder="Пример: backup">
   </div>
   <div style="float: left; width: 100%; padding-top: 10px; padding-bottom: 15px;">
-  <span class="dbminputlabel">Лог без консоли</span>
+  <span class="dbminputlabel">Лог в консоли</span>
   <select id="log" class="round">
       <option value="0" selected>Да</option>
       <option value="1">Нет</option>
   </select>
   </div>
   <div style="float: left; width: 100%; padding-top: 10px; padding-bottom: 15px;">
-  <span class="dbminputlabel">Вызов следующего действия</span>
+  <span class="dbminputlabel">Вызвать следующее действие</span>
   <select id="nextAction" class="round">
       <option value="0" selected>Да</option>
       <option value="1">Нет</option>
@@ -59,11 +59,11 @@ module.exports = {
         const log = parseInt(data.log, 10);
         const nextAction = parseInt(data.nextAction, 10);
 
-        zip.sync.zip(pastaBackup).compress().save(backupNome);
+        zip.sync.zip(pastaBackup).compress().save('./bkp/'+backupNome);
 
         switch (log) {
           case 0:
-              console.log("Бэкап успешно сделан!");
+              console.log("Резервное копирование успешно завершено!");
             break;
           case 1:
             break;

@@ -30,23 +30,23 @@ module.exports = {
 
 <div style="padding-top: 8px;">
   <span class="dbminputlabel">Причина</span>
-  <input id="reason" placeholder="Дополнительно" class="round" type="text">
+  <input id="reason" placeholder="Не обязательное поле" class="round" type="text">
 </div>
 
 <br>
 
 <div style="padding-top: 8px;">
 <div style="float: left; width: 40%">
-<span class="dbminputlabel">Если роль не снята</span><br>
+<span class="dbminputlabel">Если роль не была снята</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
 <option value="0" selecionado>Продолжить действия</option>
 <option value="1">Остановить последовательность действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к якорю действия</option>
+<option value="4">Перейти к якорю</option>
 </select>
 </div>
-<div id="iffalseContainer" style="display: none; float: right; width: 55%;"><span id="xinelas" class="dbminputlabel">Para</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
+<div id="iffalseContainer" style="display: none; float: right; width: 55%;"><span id="xinelas" class="dbminputlabel">Для</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
 <br><br><br>`;
   },
 
@@ -65,7 +65,7 @@ module.exports = {
       document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
     }
     if (event.value == "3") {
-      document.querySelector("[id='xinelas']").innerText = (`Пропустить кол-во действий`);
+      document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
     }
     if (event.value == "4") {
       document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);

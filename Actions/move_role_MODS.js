@@ -10,7 +10,7 @@ module.exports = {
   },
 
   subtitle(data, presets) {
-    return `${presets.getRoleText(data.storage, data.varName)} переместить в позицию "${data.posicao}"`;
+    return `${presets.getRoleText(data.storage, data.varName)} переместить на позицию "${data.posicao}"`;
   },
 
   fields: ["storage", "varName", "posicao", "iffalse", "iffalseVal"],
@@ -36,7 +36,7 @@ module.exports = {
     <option value="3">Пропустить следующие действия</option>
     <option value="4">Перейти к якорю</option>
     </select></td>
-    <td class="xin2"><div id="iffalseContainer" style="display: none; float: right; width: 100%;"><span id="xinelas" class="dbminputlabel">К</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
+    <td class="xin2"><div id="iffalseContainer" style="display: none; float: right; width: 100%;"><span id="xinelas" class="dbminputlabel">Для</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
     </td>
     </tr>
     </table>
@@ -52,6 +52,7 @@ module.exports = {
   init: function () {
     const { glob, document } = this;
 
+
     glob.onComparisonChanged = function (event) {
       if (event.value > "1") {
         document.getElementById("iffalseContainer").style.display = null;
@@ -59,18 +60,18 @@ module.exports = {
         document.getElementById("iffalseContainer").style.display = "none";
       }
       if (event.value == "2") {
-        document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
-      }
-      if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
-      }
-      if (event.value == "4") {
-        document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
-      }
+      document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
     }
+    if (event.value == "3") {
+      document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
+    }
+    if (event.value == "4") {
+      document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
+    }
+  }
 
     glob.onComparisonChanged(document.getElementById("iffalse"));
-  },
+},
 
 
   async action(cache) {
@@ -80,15 +81,14 @@ module.exports = {
     let end
 
     try {
-      await role.setPosition(posicao);
+    await role.setPosition(posicao)
     } catch(err) {
-      this.executeResults(false, data, cache);
-      end = 2;
-    }
+    this.executeResults(false, data, cache);
+    end = 2
+    } 
 
-    if(end !== 2) {
-      this.callNextAction(cache);
-    }
+    if(end !== 2){
+    this.callNextAction(cache)}
   },
 
 

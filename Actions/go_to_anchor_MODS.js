@@ -11,8 +11,8 @@ module.exports = {
   
   subtitle(data) {
     return data.description
-    ? `<font color="${data.color}">Якорь: ${data.anchorName} | ${data.description}</font>`
-    : `<font color="${data.color}">Якорь: ${data.anchorName}`},
+    ? `<font color="${data.color}">Перейти к якорю: ${data.anchorName} | ${data.description}</font>`
+    : `<font color="${data.color}">Перейти к якорю: ${data.anchorName}`},
 
   fields: ['description', 'anchorName', 'color'],
 
@@ -21,11 +21,11 @@ module.exports = {
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.2</div>
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 <div style="float: left; width: 74%;">
-<span class="dbminputlabel">Якорь</span><br>
+<span class="dbminputlabel">Перейти к якорю</span><br>
   <input type="text" class="round" id="anchorName"><br>
 </div>
 <div style="float: right; width: 24%;text-align:center">
-<span class="dbminputlabel">Описание Цвет</span><br>
+<span class="dbminputlabel">Цвет</span><br>
   <input type="color" id="color" class="round"><br>
 </div>
 <div style="float: left; width: 98%;">

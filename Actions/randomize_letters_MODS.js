@@ -10,12 +10,12 @@ module.exports = {
   },
 
   subtitle(data) {
-    return `Колицество ${data.wordLength} символов`;
+    return `Сгенерировать ${data.wordLength} символов`;
   },
 
   variableStorage(data, varType) {
     if (parseInt(data.storage, 10) !== varType) return;
-    return [data.varName, 'Texto'];
+    return [data.varName, 'Текст'];
   },
 
   fields: [
@@ -41,9 +41,9 @@ module.exports = {
 
     <table>
       <tr>
-        <td><dbm-checkbox id="maiusculas" label="Заглавные буквы"></dbm-checkbox></td>
+        <td><dbm-checkbox id="maiusculas" label="Прописные буквы"></dbm-checkbox></td>
         <td><dbm-checkbox id="minusculas" label="Строчные буквы "></dbm-checkbox></td>
-        <td><dbm-checkbox id="numeros" label="Числа"></dbm-checkbox></td>
+        <td><dbm-checkbox id="numeros" label="Цифры"></dbm-checkbox></td>
       </tr>
       <tr>
         <td><br><dbm-checkbox id="caracteresEspeciais" label="Специальные символы"></dbm-checkbox></td>
@@ -53,13 +53,13 @@ module.exports = {
     <br>
 
   <div style="float: left; width: 35%; padding-top: 8px;">
-    <span class="dbminputlabel">Хранить в</span><br>
+    <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer')">
       ${data.variables[1]}
     </select>
   </div>
   <div id="varNameContainer" style="float: right; display: none; width: 60%; padding-top: 8px;">
-    <span class="dbminputlabel">Переменая</span><br>
+    <span class="dbminputlabel">Имя переменной</span><br>
     <input id="varName" class="round" type="text">
   </div>
 
@@ -67,7 +67,7 @@ module.exports = {
 
   <div id="commentSection" style="padding-top: 8px;">
     <p>
-    <b>Opções:</b><br>
+    <b>Опции:</b><br>
     Строчные буквы: abcdefghijklmnopqrstuvwxyz<br>
     Заглавные буквы: ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
     Числа: 0123456789<br>
@@ -87,7 +87,7 @@ module.exports = {
     const wordLength = this.evalMessage(data.wordLength, cache);
 
     if(!wordLength) {
-      this.displayError(data, cache, "Especifique a quantidade de caracteres");
+      this.displayError(data, cache, "Укажите количество символов");
       return this.callNextAction(cache);
     }
 
@@ -110,7 +110,7 @@ module.exports = {
     }
 
     if(!caracs) {
-      this.displayError(data, cache, "Введите хотя бы один вариант символов!");
+      this.displayError(data, cache, "Укажите хотя бы одну опцию символов!");
       return this.callNextAction(cache);
     } else {
       caracs = caracs.split("");

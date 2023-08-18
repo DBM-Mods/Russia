@@ -24,17 +24,17 @@ html: function(isEvent, data) {
 	<div style="width: 100%; padding:10px 5px;height: calc(100vh - 180px);overflow:auto">
 
 	<span class="dbminputlabel">Заголовок</span>
-	<textarea id="comment" rows="3" placeholder="Вставьте текст здесь ..." style="width: 99%; font-family: monospace; white-space: nowrap;"></textarea>
+	<textarea id="comment" rows="3" placeholder="Введите текст" style="width: 99%; font-family: monospace; white-space: nowrap;"></textarea>
 
 <br>
 
 <span class="dbminputlabel">Информация</span>
-<textarea id="save" rows="6" placeholder="Вставьте текст здесь ..." style="width: 99%; font-family: monospace; white-space: nowrap;"></textarea>
+<textarea id="save" rows="6" placeholder="Введите текст" style="width: 99%; font-family: monospace; white-space: nowrap;"></textarea>
 
 
 		 <br>
 		<div style="width: 24%">
-		<span class="dbminputlabel">Цвет</span><br>
+		<span class="dbminputlabel">Цвет (вкл)</span><br>
 		<input type="color" class="round" id="color">
 		</div>
 		  

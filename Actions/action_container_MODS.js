@@ -36,7 +36,7 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
     <div style="width: 100%; padding:5px 5px;height: calc(100vh - 150px);overflow:auto">
@@ -44,7 +44,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
     <table style="width:100%;"><tr>
-    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
     <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
     </tr></table>
     </div>
@@ -53,7 +53,7 @@ module.exports = {
     <select id="acao" class="round">
     <option value="0" selected>Дождаться выполнения всех действий и продолжить</option>
     <option value="1">Дождаться выполнения всех действий и остановиться</option>
-    <option value="2">Продолжите действия и запустите контейнер вместе</option>
+    <option value="2">Продолжить действия и выполните контейнер вместе</option>
 </select>
 
 <br>
@@ -82,7 +82,7 @@ module.exports = {
           xinelaslink.setAttribute('title', url);
           xinelaslink.addEventListener('click', (e) => {
             e.stopImmediatePropagation();
-            console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+            console.log(`Запуск URL: [${url}] браузере по умолчанию.`);
             require('child_process').execSync(`start ${url}`);
           });
         }

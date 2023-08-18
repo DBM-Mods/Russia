@@ -28,8 +28,8 @@ module.exports = {
     <tr>
     <td class="xin1"><span class="dbminputlabel">Категория</span><br>
     <select id="info" class="round" onchange="glob.onComparisonChanged2(this)">
-      <option value="0" selected>ID Категории</option>
-      <option value="1">Имя Категории</option>
+      <option value="0" selected>ID категории</option>
+      <option value="1">Имя категории</option>
     </select></td>
     <td class="xin2"><div id="oculta"><span class="dbminputlabel">Значение</span><br>
     <input id="find" class="round" type="text"></div></td>
@@ -40,13 +40,13 @@ module.exports = {
     <br>
     <table>
     <tr>
-    <td class="xin1"><span class="dbminputlabel">Если не перемещено</span><br>
+    <td class="xin1"><span class="dbminputlabel">Если не удалось переместить</span><br>
     <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
     <option value="0" selected>Продолжить действия</option>
-    <option value="1">Прекратить последовательность действий</option>
+    <option value="1">Остановить последовательность действий</option>
     <option value="2">Перейти к действию</option>
     <option value="3">Пропустить следующие действия</option>
-    <option value="4">Перейти к якорю действия</option>
+    <option value="4">Перейти к якорю</option>
     </select></td>
     <td class="xin2"><div id="iffalseContainer" style="display: none; float: right; width: 100%;"><span id="xinelas" class="dbminputlabel">Для</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
     </td>
@@ -71,10 +71,10 @@ module.exports = {
         document.getElementById("iffalseContainer").style.display = "none";
       }
       if (event.value == "2") {
-        document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
+      document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
     }
     if (event.value == "3") {
-      document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
+      document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
     }
     if (event.value == "4") {
       document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
@@ -82,8 +82,6 @@ module.exports = {
   }
 
     glob.onComparisonChanged(document.getElementById("iffalse"));
-
-
   },
 
 
@@ -113,7 +111,5 @@ module.exports = {
     if(end !== 2){
     this.callNextAction(cache)}
   },
-
-
   mod() {},
 };

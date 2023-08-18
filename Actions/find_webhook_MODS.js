@@ -27,12 +27,12 @@ module.exports = {
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 
 <div>
-  <span class="dbminputlabel">URL Webhook</span><br>
+  <span class="dbminputlabel">URL вебхука</span><br>
     <input id="url" class="round" type="text">
  </div><br>
 <div style="padding-top: 8px;">
   <div style="float: left; width: 35%;">
-  <span class="dbminputlabel">Хранить в</span><br>
+  <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage" class="round">
       ${data.variables[1]}
     </select>
@@ -53,7 +53,7 @@ module.exports = {
     const result = new DiscordJS.WebhookClient({ url: url });
 
     if (!result) {
-      console.log('Find Webhook MOD: возникла проблема при создании объекта webhook.');
+      console.log('Find Webhook MOD: Произошла ошибка при создании объекта вебхука.');
       return this.callNextAction(cache);
     }
 
