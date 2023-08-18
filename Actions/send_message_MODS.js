@@ -950,7 +950,7 @@ module.exports = {
       <br><br><br>
 
       <div>
-      <div style="float: left; width: 35%; padding-top: 5px">
+      <div style="float: left; width: 38%; padding-top: 5px">
       <span class="dbminputlabel">Отправить как WebHook</span><br>
       <select id="storagewebhook" class="round" onchange="glob.onComparisonChanged2(this)">
       <option value="0" selecionado>Нет</option>
@@ -980,7 +980,7 @@ module.exports = {
       <div>
 
     <div id="divValueError" style="margin-top: 5px;">
-      <div style="float: left; width: 35%;">
+      <div style="float: left; width: 38%;">
         <span class="dbminputlabel">Сохранить ошибку в</span>
         <select id="storageError" class="round" onchange="glob.variableChangeError(this, 'varNameContainer')">
           ${data.variables[0]}
@@ -998,7 +998,7 @@ module.exports = {
       <br><br><br>
 
    
-    <div id="divValueError2" style="float: left; width: 35%">
+    <div id="divValueError2" style="float: left; width: 38%">
       <span class="dbminputlabel">Если возникает ошибка</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
         <option value="0">Продолжить действия</option>
