@@ -52,7 +52,6 @@ module.exports = {
   init: function () {
     const { glob, document } = this;
 
-
     glob.onComparisonChanged = function (event) {
       if (event.value > "1") {
         document.getElementById("iffalseContainer").style.display = null;
@@ -60,18 +59,18 @@ module.exports = {
         document.getElementById("iffalseContainer").style.display = "none";
       }
       if (event.value == "2") {
-      document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
+        document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
+      }
+      if (event.value == "3") {
+        document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
+      }
+      if (event.value == "4") {
+        document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
+      }
     }
-    if (event.value == "3") {
-      document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
-    }
-    if (event.value == "4") {
-      document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
-    }
-  }
 
     glob.onComparisonChanged(document.getElementById("iffalse"));
-},
+  },
 
 
   async action(cache) {
@@ -81,14 +80,15 @@ module.exports = {
     let end
 
     try {
-    await role.setPosition(posicao)
+      await role.setPosition(posicao);
     } catch(err) {
-    this.executeResults(false, data, cache);
-    end = 2
-    } 
+      this.executeResults(false, data, cache);
+      end = 2;
+    }
 
-    if(end !== 2){
-    this.callNextAction(cache)}
+    if(end !== 2) {
+      this.callNextAction(cache);
+    }
   },
 
 

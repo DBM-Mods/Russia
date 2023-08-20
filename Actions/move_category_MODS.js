@@ -71,7 +71,7 @@ module.exports = {
         document.getElementById("iffalseContainer").style.display = "none";
       }
       if (event.value == "2") {
-      document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
+        document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
     }
     if (event.value == "3") {
       document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
@@ -82,6 +82,8 @@ module.exports = {
   }
 
     glob.onComparisonChanged(document.getElementById("iffalse"));
+
+
   },
 
 
@@ -111,5 +113,7 @@ module.exports = {
     if(end !== 2){
     this.callNextAction(cache)}
   },
+
+
   mod() {},
 };
