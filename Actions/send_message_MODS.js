@@ -402,7 +402,7 @@ module.exports = {
 
                 <table style="width:100%"><tr><td style="width:30%;vertical-align: top">
                 
-              <span class="dbminputlabel">Цвет</span><div style="float:right;margin-top:-6px"><dbm-checkbox id="colorrandom" style="font-size:12px" label="Включить"></dbm-checkbox></div><br>
+              <span class="dbminputlabel">Цвет</span><div style="float:right;margin-top:-6px"><dbm-checkbox id="colorrandom" style="font-size:12px" label="Рандом"></dbm-checkbox></div><br>
               <table style="width:100%"><tr><td><input id="color" name="actionxinxyla" class="round" type="text" placeholder="Не обязательное поле"><td>
               <td style="width:40px;text-align:center"><a id="btr1" style="cursor:pointer" onclick="(function(){
                  document.getElementById('color').type = 'color'
@@ -467,7 +467,7 @@ module.exports = {
   <option value="1">Отобразить кнопку, если получено значение False</option>
   <option value="2">Отобразить кнопку, если получено значение True</option>
   <option value="3">Отключить кнопку, если получено значение False</option>
-  <option value="4">отключить кнопук, если получено значение True</option>
+  <option value="4">Отключить кнопку, если получено значение True</option>
   <option value="5">Отключить кнопку</option>
 </select>
 

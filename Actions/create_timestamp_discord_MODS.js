@@ -68,7 +68,7 @@ module.exports = {
       <td>
         <span class="dbminputlabel">Описание действия</span>
         <br>
-        <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+        <input type="text" class="round" id="description" placeholder="Не обязательное поле">
       </td>
       <td style="padding:0px 0px 0px 10px;width:70px">
         <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -114,7 +114,7 @@ module.exports = {
         <option value="1">Остановить последовательность действий</option>
         <option value="2">Перейти к действию</option>
         <option value="3">Пропустить следующие действия</option>
-        <option value="4">Перейти к якорю действий</option>
+        <option value="4">Перейти к якорю</option>
     </select>
   </div>
 
@@ -151,7 +151,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -173,7 +173,7 @@ module.exports = {
       }
 
       if (event.value == "4") {
-        document.querySelector("[id='xinelas']").innerText = (`Якоря название`);
+        document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
       }
     }
 
