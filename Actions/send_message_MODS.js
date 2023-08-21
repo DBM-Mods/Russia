@@ -317,7 +317,7 @@ module.exports = {
         <option value="1" selected>Равно</option>
         <option value="2">Абсолютно равно</option>
       </optgroup>
-        <optgroup label="Число">
+      <optgroup label="Число">
         <option value="3">Меньше, чем</option>
         <option value="13">Меньше или равно</option>
         <option value="4">Больше, чем</option>
@@ -325,7 +325,7 @@ module.exports = {
         <option value="19">Значение A - Чётное число?</option>
         <option value="20">Значение A - Нечётное число?</option>
         <option value="21">Значение A - Число?</option>
-    </optgroup>
+      </optgroup>
       <optgroup label="Текст">
         <option value="6">Соответствует регулярному выражению</option>
         <option value="14">Соответствует полному регулярному выражению</option>
@@ -797,7 +797,7 @@ module.exports = {
   <tab label="Файлы" icon="file image">
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
 
-      <dialog-list id="attachments" fields='["tipo", "url", "canvasvar", "canvasnome", "compress", "name", "spoiler"]' dialogTitle="Информация о Вложении" dialogWidth="500" dialogHeight="480" listLabel="Arquivos" listStyle="height: calc(100vh - 310px);" itemName="File" itemCols="1" itemHeight="30px;" itemTextFunction="glob.formatItem(data)" itemStyle="text-align: left; line-height: 30px;">
+      <dialog-list id="attachments" fields='["tipo", "url", "canvasvar", "canvasnome", "compress", "name", "spoiler"]' dialogTitle="Информация о Вложении" dialogWidth="500" dialogHeight="480" listLabel="Файлы" listStyle="height: calc(100vh - 310px);" itemName="File" itemCols="1" itemHeight="30px;" itemTextFunction="glob.formatItem(data)" itemStyle="text-align: left; line-height: 30px;">
         <div style="padding: 16px;" onmouseover="(function(){
 
           var aselect = document.getElementById('tipo');
