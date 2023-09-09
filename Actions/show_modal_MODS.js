@@ -99,22 +99,22 @@ module.exports = {
 
     <tab-system>
 
-      <tab label="Модалка" icon="align left">
+      <tab label="Модальное окно" icon="align left">
 
       <div style="margin: 5px;">
-      <span class="dbminputlabel">Модальный заголовок</span>
-      <input id="title" class="round" type="text" value="Meu Modal">
+      <span class="dbminputlabel">Заголовок модального окна</span>
+      <input id="title" class="round" type="text" value="Модальное окно">
   
       <br>
 
       <dialog-list id="textInputs" fields='["formato", "formula", "val1", "comparar", "val2", "id", "name", "placeholder", "value", "minLength", "maxLength", "row", "style", "required", "storage", "varName"]' dialogTitle="Меню" dialogWidth="600" dialogHeight="615" listLabel="Меню" listStyle="height: calc(100vh - 315px);" itemName="Input" itemCols="1" itemHeight="80px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 40px;">
         <div style="padding: 10px;">
 
-          <span class="dbminputlabel">Отображение</span>
+          <span class="dbminputlabel">Конфигурация отображения</span>
           <select id="formula" class="round">
-            <option value="0" selected>Всегда отображать меню / Игнорировать сравнения ниже</option>
-            <option value="1">Отображать меню только в том случае, если сравнения False</option>
-            <option value="2">Отображать меню только в том случае, если сравнения True</option>
+            <option value="0" selected>Всегда отображать меню</option>
+            <option value="1">Отобразить меню, если получено значение False</option>
+            <option value="2">Отобразить меню, если получено значение True</option>
           </select>
 
           <br>
@@ -126,53 +126,53 @@ module.exports = {
                 <input id="val1" class="round" type="text">
               </td>
               <td>
-                <span class="dbminputlabel">Сравнения</span>
+                <span class="dbminputlabel">Сравнение</span>
                 <select id="comparar" class="round">
-                <optgroup label="Номер или текст">
-                <option value="0">Существует</option>
+                <optgroup label="Число или Текст">
+                <option value="0">Значение A - Существует</option>
                 <option value="1" selected>Равно</option>
-                <option value="2">Точно так же</option>
+                <option value="2">Абсолютно равно</option>
               </optgroup>
               <optgroup label="Число">
-                <option value="3">Меньше чем</option>
+                <option value="3">Меньше, чем</option>
                 <option value="13">Меньше или равно</option>
-                <option value="4">Больше тогда</option>
+                <option value="4">Больше, чем</option>
                 <option value="12">Больше или равно</option>
-                <option value="19">Это четное число?</option>
-                <option value="20">Это нечетное число?</option>
-                <option value="21">Это число?</option>
+                <option value="19">Значение A - Чётное число?</option>
+                <option value="20">Значение A - Нечётное число?</option>
+                <option value="21">Значение A - Число?</option>
               </optgroup>
               <optgroup label="Текст">
                 <option value="6">Соответствует регулярному выражению</option>
                 <option value="14">Соответствует полному регулярному выражению</option>
                 <option value="7">Длина больше, чем</option>
                 <option value="8">Длина меньше, чем</option>
-                <option value="9">Длина равена</option>
+                <option value="9">Длина равна</option>
                 <option value="10">Начинается с</option>
-                <option value="11">Заканчивается</option>
-                <option value="16">Есть ли у него акценты?</option>
-                <option value="18">Равны словам  ["a" , "b" , "c"]</option>
-                <option value="24">Это текст?</option>
-                <option value="23">Это URL адрес изображения?</option>
-                <option value="25">Это URL?</option>
-                <option value="26">Электронная почта существует?</option>
+                <option value="11">Заканчивается на</option>
+                <option value="16">Значение A - Содержит акценты?</option>
+                <option value="18">Равно словам ["a", "b", "c"]</option>
+                <option value="24">Значение A - Текст?</option>
+                <option value="23">Значение A - URL изображения?</option>
+                <option value="25">Значение A - URL?</option>
+                <option value="26">Значение A - Электронная почта существует?</option>
               </optgroup>
-              <optgroup label="Текст ~ включает">
-                <option value="5">Включает в себя точно</option>
-                <option value="29">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
-                <option value="30">Включает ~ Игнорировать акценты</option>
-                <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
-                <option value="17">Включает точно ["a" , "b" , "c"]</option>
-                <option value="27">Включает URL?</option>
-                <option value="28">Включите приглашение от Discord?</option>
-                <option value="32">Включает именно это слово</option>
-                <option value="33">Включает слово ~ игнорировать нижний/верхний регистр</option>
-                <option value="34">Включает слово ~ игнорировать ударения</option>
-                <option value="35">Включает слово ~ игнорировать акцентуации & строчные и заглавные</option>
-                <option value="36">Включает слова ~ используйте девственницы ~ игнорировать акцентуации & в Нижнем и верхнем регистре</option>
+              <optgroup label="Текст ~ Содержит">
+                <option value="5">Точно содержит</option>
+                <option value="29">Содержит ~ Без учёта регистра</option>
+                <option value="30">Содержит ~ Без учёта акцентов</option>
+                <option value="31">Содержит ~ Без учёта акцентов и регистра</option>
+                <option value="17">Точно содержит ["a" , "b" , "c"]</option>
+                <option value="27">Содержит какой-либо URL?</option>
+                <option value="28">Содержит приглашение Discord?</option>
+                <option value="32">Точно содержит слово</option>
+                <option value="33">Содержит слово ~ Без учёта регистра</option>
+                <option value="34">Содержит слово ~ Без учёта акцентов</option>
+                <option value="35">Содержит слово ~ Без учёта акцента и регистра</option>
+                <option value="36">Содержит слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
               </optgroup>
-              <optgroup label="Другие">
-                <option value="22">Это список?</option>
+              <optgroup label="Другое">
+                <option value="22">Значение A - Список?</option>
               </optgroup>
                 </select>
               </td>
@@ -196,7 +196,7 @@ module.exports = {
           <br>
 
           <span class="dbminputlabel">Авто заполение</span>
-          <input id="value" placeholder="Оставьте пустым, чтобы не использовалось!" class="round" type="text">
+          <input id="value" placeholder="Не обязательное поле" class="round" type="text">
 
           <br>
 
@@ -215,14 +215,14 @@ module.exports = {
 
           <table style="width: 100%;">
             <td>
-              <span class="dbminputlabel">Линия действия (1 - 5)</span>
-              <input id="row" placeholder="Оставьте пустым для шаблона..." class="round" type="text">
+              <span class="dbminputlabel">Линия действия</span>
+              <input id="row" placeholder="От 1 до 5" class="round" type="text">
             </td>
             <td style="padding-left: 15px;">
               <span class="dbminputlabel">Стиль</span>
               <select id="style" class="round">
-                <option value="SHORT">Линия</option>
-                <option value="PARAGRAPH">Пункт</option>
+                <option value="SHORT">Короткий (в строку)</option>
+                <option value="PARAGRAPH">Параграф (в несколько строк)</option>
               </select>
             </td>
             <td style="padding-left: 15px;">
@@ -253,14 +253,14 @@ module.exports = {
       </div>
       </tab>
 
-      <tab label="Конфиг" icon="cogs">
+      <tab label="Конфигурация" icon="cogs">
       <div style="height: calc(100vh - 210px); overflow-y: auto;">
         <div id="flutuador" style="padding: 0px 0px 15px 0px; margin-top: 5px;">
             <table style="width:100%;"><tr>
                 <td>
                   <span class="dbminputlabel">Описание действия</span>
                   <br>
-                  <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+                  <input type="text" class="round" id="description" placeholder="Не обязательное поле">
                 </td>
                 <td style="padding:0px 0px 0px 10px; width:70px";>
                   <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -280,14 +280,14 @@ module.exports = {
         <br>
 
         <div style="float: left; width: 35%">
-          <span class="dbminputlabel">Произошла ошибка</span>
+          <span class="dbminputlabel">При ошибке</span>
           <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
             <option value="0">Продолжить действия</option>
             <option value="1" selecionado>Остановить последовательность действий</option>
             <option value="2">Перейти к действию</option>
             <option value="3">Пропустить следующие действия</option>
-            <option value="4">Перейти к якорю действия</option>
-            <option value="5">Выполнение действий и остановится</option>
+            <option value="4">Перейти к якорю</option>
+            <option value="5">Выполнить действия и остановится</option>
             <option value="99">Выполнить действия и продолжить</option>
           </select>
         </div>
@@ -379,7 +379,7 @@ module.exports = {
           break;
       }
 
-      return result += `</div><div style="float: right; width: 190px; text-align: left; padding: 0px 10px 0px 0px;">Стиль: ${data.style == "SHORT" ? "Линия" : "Пункт"}<br>${storage[parseInt(data.storage)]} (${data.varName})</div></div>`;
+      return result += `</div><div style="float: right; width: 190px; text-align: left; padding: 0px 10px 0px 0px;">Стиль: ${data.style == "SHORT" ? "Строка" : "Параграф"}<br>${storage[parseInt(data.storage)]} (${data.varName})</div></div>`;
     };
 
     glob.onComparisonChanged = function (event) {
@@ -409,7 +409,7 @@ module.exports = {
       }
 
       if (event.value == "4") {
-        document.querySelector("[id='xinelasT']").innerText = "Название якоря";
+        document.querySelector("[id='xinelasT']").innerText = "Имя якоря";
       }
     }
 
@@ -441,7 +441,7 @@ module.exports = {
     let componentsArr = [];
     const variables = [];
 
-    if (this.evalMessage(data.title, cache).length > 45) return erro("Заголовок модала должен содержать не более 45 символов.");
+    if (this.evalMessage(data.title, cache).length > 45) return erro("Заголовок модального окна не должен содержать более 45 символов.");
 
     let cont = 0;
 
@@ -604,14 +604,14 @@ module.exports = {
         if (formula == 2 && result != true) continue;
       }
 
-      if (cont > 4) return erro("Модал должен иметь максимум 5 меню.");
+      if (cont > 4) return erro("Модальное окно должно иметь максимум 5 меню.");
       cont++;
 
-      if (this.evalMessage(textInput.name, cache).length > 45) return erro("Имя меню должно содержать не более 45 символов.");
-      if (this.evalMessage(textInput.placeholder, cache).length > 100) return erro("Описание меню должен содержать не более 100 символов.");
+      if (this.evalMessage(textInput.name, cache).length > 45) return erro("Имя меню не должно содержать более 45 символов.");
+      if (this.evalMessage(textInput.placeholder, cache).length > 100) return erro("Описание меню не должно содержать не более 100 символов.");
       
       const value = this.evalMessage(textInput.value, cache);
-      if (value.length > 4000) return erro("Вводимое значение должно содержать не более 4000 символов.");
+      if (value.length > 4000) return erro("Вводимое значение не должно содержать более 4000 символов.");
 
       const id = "Modal-" + Math.floor(Math.random() * 1e12);
       const format = parseInt(textInput.formato);
@@ -679,10 +679,10 @@ module.exports = {
 
         cache.interaction.showModal(modalData);
       } else {
-        erro("Вы не можете показать модал в текущем взаимодействии, возможно, бот уже ответил на взаимодействие.");
+        erro("Невозможно показать модальное окно для текущего взаимодействия.");
       }
     } else {
-      erro("Текущее взаимодействие не может быть найдено.");
+      erro("Взаимодействие не найдено.");
     }
 
     function erro(err) {
