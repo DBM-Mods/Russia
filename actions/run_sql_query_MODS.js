@@ -374,7 +374,7 @@ module.exports = {
       </div>
       </tab>
 
-<tab label="Ajuda" icon="help">
+<tab label="Помощь" icon="help">
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
       <button class="tiny compact ui icon button"><span class="xinelaslink" data-url="https://www.w3schools.com/sql/">Учебник W3Schools по SQL</span></button>
@@ -406,7 +406,7 @@ module.exports = {
       <tlt><b>Рейтинг - При выводе преобразуйте в строку JSON</b></tlt>
       <tl>SELECT <span style="color:gold">id</span>, <span style="color:gold">money</span>, RANK() over(ORDER BY <span style="color:gold">money</span> DESC) AS rank FROM <span style="color:green">nome_da_tabela</span></tl><br>
 
-      <tlt><b>Comparadores</b></tlt>
+      <tlt><b>Компараторы</b></tlt>
       <tl><table>
       <tr><td class="cols">=</td><td class="cols">Равно</td></tr>
       <tr><td class="cols">!=</td><td class="cols">Не равно</td></tr>
@@ -508,13 +508,13 @@ module.exports = {
         document.getElementById("xinext").style.width = "38%";
       }
       if (event.value == "2") {
-        document.querySelector("[id='xinelas']").innerText = (`Número da ação`);
+        document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
       }
       if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Pular ações`);
+        document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
       }
       if (event.value == "4") {
-        document.querySelector("[id='xinelas']").innerText = (`Nome da âncora`);
+        document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
       }
     }
 
@@ -588,7 +588,7 @@ module.exports = {
           xinelaslink.setAttribute('title', url);
           xinelaslink.addEventListener('click', (e) => {
             e.stopImmediatePropagation();
-            console.log(`Launching URL: [${url}] in your default browser.`);
+            console.log(`Запуск URL: [${url}] в браузере.`);
             require('child_process').execSync(`start ${url}`);
           });
         }
@@ -614,7 +614,7 @@ module.exports = {
     glob.variableChange(document.getElementById('store_source_conn_storage'), 'varNameContainer3')
 
     glob.formatItem = function (data) {
-      let result = `<div style="width: calc(100% - 40px); overflow: hidden; float: left;">Armazenar: `;
+      let result = `<div style="width: calc(100% - 40px); overflow: hidden; float: left;">Хранить: `;
 
       switch (parseInt(data.formato)) {
         case 0:
