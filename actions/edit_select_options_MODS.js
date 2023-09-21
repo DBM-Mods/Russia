@@ -151,7 +151,7 @@ module.exports = {
      <xinspace2>
 
      <table><tr><td class="col">
-     <span class="dbminputlabel">Список ~ Описание</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="ondesc" label="Ativar"></dbm-checkbox></div><br>
+     <span class="dbminputlabel">Список ~ Описание</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="ondesc" label="Активировать"></dbm-checkbox></div><br>
       <select id="listadesc" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer30')">
         ${data.lists[isEvent ? 1 : 0]}
       </select>
@@ -165,7 +165,7 @@ module.exports = {
     <xinspace2>
 
     <table><tr><td class="col">
-    <span class="dbminputlabel">Список ~ Эмодзи</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="onemoji" label="Ativar"></dbm-checkbox></div><br>
+    <span class="dbminputlabel">Список ~ Эмодзи</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="onemoji" label="Активировать"></dbm-checkbox></div><br>
      <select id="listaemoji" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer40')">
        ${data.lists[isEvent ? 1 : 0]}
      </select>

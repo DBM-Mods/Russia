@@ -40,8 +40,8 @@ module.exports = {
         version: '2.1.7',
         preciseCheck: true,
         author: '[Tempest - 321400509326032897]',
-        authorUrl: 'https://github.com/DBM-Mods/Portugues',
-        downloadURL: 'https://github.com/DBM-Mods/Portugues/archive/refs/heads/main.zip',
+        authorUrl: 'https://github.com/DBM-Mods/Russia',
+        downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
     },
 
     //---------------------------------------------------------------------
@@ -67,25 +67,25 @@ module.exports = {
 
     html(isEvent, data) {
         return `
-     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Versão 0.1</div>
+     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.1</div>
      <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 
-      <retrieve-from-variable dropdownLabel="Thread" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></retrieve-from-variable>
+      <retrieve-from-variable dropdownLabel="Ветка" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></retrieve-from-variable>
       
       <br><br><br><br>
 
-      <member-input dropdownLabel="Membro" selectId="member" variableContainerId="varNameContainer2" variableInputId="varName2"></member-input>
+      <member-input dropdownLabel="Пользователь" selectId="member" variableContainerId="varNameContainer2" variableInputId="varName2"></member-input>
       
       <br><br><br><br>
     
       <div style="float: left; width: 35%">
-        <span class="dbminputlabel">Caso falhe</span><br>
+        <span class="dbminputlabel">При ошибке</span><br>
         <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-            <option value="0" selecionado>Continuar ações</option>
-            <option value="1">Parar sequência de ação</option>
-            <option value="2">Ir para a ação</option>
-            <option value="3">Pular as próximas ações</option>
-            <option value="4">Ir para a âncora de ação</option>
+            <option value="0" selecionado>Продолжить действия</option>
+            <option value="1">Остановить последовательность действий</option>
+            <option value="2">Перейти к действию</option>
+            <option value="3">Пропустить действия</option>
+            <option value="4">Перейти к якорю</option>
         </select>
       </div>
 
@@ -114,15 +114,15 @@ module.exports = {
             }
 
             if (event.value == "2") {
-                document.querySelector("[id='xinelas']").innerText = (`Número da ação`);
+                document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
             }
 
             if (event.value == "3") {
-                document.querySelector("[id='xinelas']").innerText = (`Pular ações`);
+                document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
             }
 
             if (event.value == "4") {
-                document.querySelector("[id='xinelas']").innerText = (`Nome da âncora`);
+                document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
             }
         }
       
