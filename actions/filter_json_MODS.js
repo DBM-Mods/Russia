@@ -13,69 +13,68 @@ module.exports = {
     const storage = presets.variables;
 
     if (data.descriptionx == true) {
-        desccor = data.descriptioncolor
+      desccor = data.descriptioncolor
     } else {
-        desccor = 'none'
+      desccor = 'none'
     }
 
     const opcao = [
       "Существует",
-      "Равный",
-      "Точно так же",
-      "Менее, чем",
-      "Меньше или равно",
-      "Больше, чем",
-      "Соответствует регексу",
-      "Длина больше, чем",
-      "Длина меньше",
+      "Равно",
+      "Точно равно",
+      "Меньше чем",
+      "Больше чем",
+      "Содержит",
+      "Соответствует Regex",
+      "Длина больше чем",
+      "Длина меньше чем",
       "Длина равна",
       "Начинается с",
       "Заканчивается на",
       "Больше или равно",
       "Меньше или равно",
-      "Совпадает с полным регексом",
-      `Entre ${data.value} e ${data.value2}`,
-      "Есть ли в нем ударения?",
-      `Оно включает в себя слова ["a", "b", "c"]`,
-      `Оно равно словам ["a", "b", "c"]`,
-      "Это четное число?",
-      "Это нечетное число?",
-      "Это число?",
-      "Это текст?",
-      "Is it a list?", 
-      "Is it a list?",
-      "Is it an image URL?",
-      "Is it a URL?",
-      "Is it a URL?",
-      "That includes ~ Ignore Small Caps/Case",
-      "Это включает ~ Игнорировать ударения", "Это включает ~ Игнорировать ударения",
-      "Включает ~ Игнорировать ударения и малый регистр и заглавную букву",
+      "Соответствует полному Regex",
+      `Между ${data.value} и ${data.value2}`,
+      "Содержит акценты?",
+      'Содержит слова ["a", "b", "c"]',
+      'Равно словам ["a", "b", "c"]',
+      "Четное число?",
+      "Нечетное число?",
+      "Число",
+      "Текст?",
+      "Список?",
+      "URL изображения?",
+      "URL?",
+      "Содержит ~ Регистр не имеет значения",
+      "Содержит ~ Игнорирует акценты",
+      "Содержит ~ Игнорирует акценты и регистр",
+      "Не содержит",
     ]
 
     return data.description
-        ? `<font style="color:${desccor}">${data.description}</font>`
-        : `<font style="color:${desccor}">${opcao[data.type]} ~ ${storage[parseInt(data.storage2, 10)]} (${data.varName2})</font>`
-},
+      ? `<font style="color:${desccor}">${data.description}</font>`
+      : `<font style="color:${desccor}">${opcao[data.type]} ~ ${storage[parseInt(data.storage2, 10)]} (${data.varName2})</font>`
+  },
 
 
 
   variableStorage(data, varType) {
     if (parseInt(data.storage2, 10) !== varType) return;
-    return ([data.varName2, "Lista"]);
+    return ([data.varName2, "Список"]);
   },
 
-  fields: ['storage', 'varName', 'type', 'value', 'value2', 'coluna', 'storage2', 'varName2','descriptioncolor','description','descriptionx'],
+  fields: ['storage', 'varName', 'type', 'value', 'value2', 'coluna', 'storage2', 'varName2', 'descriptioncolor', 'description', 'descriptionx'],
 
   html(_isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
     <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -85,7 +84,7 @@ module.exports = {
 </div>
 
 
-  <span class="dbminputlabel">Фильтр на основе столбцов (Используйте . для подстолбцов)</span><br>
+  <span class="dbminputlabel">Фильтровать по колонке (Используйте точку для подколонок)</span><br>
   <input type="text" class="round" id="coluna">
 
   <xinspace>
@@ -94,34 +93,35 @@ module.exports = {
     <span class="dbminputlabel">Фильтр</span><br>
     <select id="type" class="round" onchange="glob.change(this)">
       <option value="0">Существует</option>
-      <option value="1" selected>Равный</option>
-      <option value="2">Точно так же</option>
-      <option value="3">Менее, чем</option>
+      <option value="1" selected>Равно</option>
+      <option value="2">Точно равно</option>
+      <option value="3">Меньше чем</option>
       <option value="13">Меньше или равно</option>
-      <option value="4">Больше, чем</option>
+      <option value="4">Больше чем</option>
       <option value="12">Больше или равно</option>
-      <option value="5">Включает</option>
-      <option value="26">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
-      <option value="27">Включает ~ игнорировать акцентуации</option>
-      <option value="28">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
-      <option value="6">Соответствует регулярному выражению</option>
-      <option value="14">Соответствует полному регулярному выражению</option>
-      <option value="7">Длина больше, чем</option>
-      <option value="8">Длина меньше, чем</option>
+      <option value="5">Содержит</option>
+      <option value="29">Не содержит</option>
+      <option value="26">Содержит ~ Регистр не имеет значения</option>
+      <option value="27">Содержит ~ Игнорировать акценты</option>
+      <option value="28">Содержит ~ Игнорировать акценты и регистр</option>
+      <option value="6">Соответствует Regex</option>
+      <option value="14">Соответствует полному Regex</option>
+      <option value="7">Длина больше чем</option>
+      <option value="8">Длина меньше чем</option>
       <option value="9">Длина равна</option>
       <option value="10">Начинается с</option>
-      <option value="11">Заканчивается</option>
+      <option value="11">Заканчивается на</option>
       <option value="15">Между</option>
-      <option value="16">Есть ли в нём акценты?</option>
-      <option value="17">Включает в себя слова  ["a" , "b" , "c"]</option>
-      <option value="18">Это просто как слова  ["a" , "b" , "c"]</option>
-      <option value="19">Это четное число?</option>
-      <option value="20">Это нечетное число?</option>
-      <option value="21">Это число?</option>
-      <option value="24">Это текст?</option>
-      <option value="22">Это список?</option>
-      <option value="23">Это URL-адрес изображения?</option>
-      <option value="25">Это URL?</option>
+      <option value="16">Содержит акценты?</option>
+      <option value="17">Содержит слова ["a", "b", "c"]</option>
+      <option value="18">Равно словам ["a", "b", "c"]</option>
+      <option value="19">Четное число?</option>
+      <option value="20">Нечетное число?</option>
+      <option value="21">Число?</option>
+      <option value="24">Текст?</option>
+      <option value="22">Список?</option>
+      <option value="23">URL изображения?</option>
+      <option value="25">URL?</option>
     </select>
   </div>
 
@@ -190,10 +190,10 @@ xinspace{padding:16px 0px 0px 0px;display:block}
       const xinelaslink = xinelaslinks[x];
       const url = xinelaslink.getAttribute('data-url');
       if (url) {
-       xinelaslink.setAttribute('title', url);
-       xinelaslink.addEventListener('click', (e) => {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -212,7 +212,7 @@ xinspace{padding:16px 0px 0px 0px;display:block}
     function getNestedValue(obj, columns) {
       const columnArr = columns.split('.');
       let colunas = obj;
-      
+
       for (let i = 0; i < columnArr.length; i++) {
         if (colunas && colunas.hasOwnProperty(columnArr[i])) {
           colunas = colunas[columnArr[i]];
@@ -220,7 +220,7 @@ xinspace{padding:16px 0px 0px 0px;display:block}
           return undefined;
         }
       }
-      
+
       return colunas;
     }
 
@@ -323,6 +323,9 @@ xinspace{padding:16px 0px 0px 0px;display:block}
       case 28:
         tratar = value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
         result = variable.filter((item) => getNestedValue(item, colunasAninhadas).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(tratar));
+        break;
+      case 29:
+        result = variable.filter((item) => !getNestedValue(item, colunasAninhadas).toString().includes(value));
         break;
     }
 

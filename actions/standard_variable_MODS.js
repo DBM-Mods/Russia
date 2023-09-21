@@ -39,19 +39,19 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
 
     <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
 
-<store-in-variable dropdownLabel="Хранится в" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
+<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
 
 <br><br><br>
 
@@ -64,11 +64,11 @@ module.exports = {
   <br>
   <span class="dbminputlabel">Установить по умолчанию, если</span><br>
   <div style="background:rgba(255,255,255,0.1);padding:8px;overflow: hidden;">
-  <dbm-checkbox id="und" style="float:left;padding:2px 0px" label="undefined"></dbm-checkbox>
-  <dbm-checkbox style="float:left;padding:2px 0px" id="null" label="null/undefined" checked></dbm-checkbox>
-  <dbm-checkbox style="float:left;padding:2px 0px" id="NaN" label="NaN/null/undefined"></dbm-checkbox>
-  <dbm-checkbox style="float:left;padding:2px 0px" id="false" label="false"></dbm-checkbox>
-  <dbm-checkbox style="float:left;padding:2px 0px" id="nolista" label="Не список"></dbm-checkbox>
+  <dbm-checkbox id="und" style="float:left;padding:2px 0px" label="Для undefined"></dbm-checkbox>
+  <dbm-checkbox style="float:left;padding:2px 0px" id="null" label="Для null/undefined" checked></dbm-checkbox>
+  <dbm-checkbox style="float:left;padding:2px 0px" id="NaN" label="Для NaN/null/undefined"></dbm-checkbox>
+  <dbm-checkbox style="float:left;padding:2px 0px" id="false" label="Для false"></dbm-checkbox>
+  <dbm-checkbox style="float:left;padding:2px 0px" id="nolista" label="Если это не список"></dbm-checkbox>
 </div>
   </div>
 
@@ -94,7 +94,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -108,8 +108,6 @@ module.exports = {
     const type = parseInt(data.storage, 10);
     const varName = this.evalMessage(data.varName, cache);
     const storage = this.getVariable(type, varName, cache);
-
-    console.log(storage)
 
     let val = this.evalMessage(data.value, cache);
     try {
@@ -148,7 +146,6 @@ module.exports = {
     }
 
     if (data.nolista == true) {
-      console.log(Boolean(Array.isArray(storage)))
       if (Boolean(Array.isArray(storage)) == false){
         result = val;
         this.storeValue(result, type, varName, cache);

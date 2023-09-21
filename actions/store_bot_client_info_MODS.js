@@ -21,59 +21,59 @@ module.exports = {
 
     const info = [
       'Время активности в миллисекундах',
-      'Готов?',
+      'Готово в',
       'Пинг',
-      'Количество серверов',
+      'Значение сервера',
       'Количество пользователей',
-      'Округлый пинг',
+      'Закругленный пинг',
       'Время активности в секундах',
-      'Время активности за считанные минуты',
-      "Токен ботов",
-      'Значение голосовых подключений',
+      'Время активности в минутах',
+      'Токен бота',
+      'Значение голосовых соединений',
       'Общее количество каналов',
-      'Общее количество эмоджи',
-      'Этот вариант был удален',
-      'Время активности в дни',
-      'Время активности в дни (округленное)',
+      'Общее количество эмодзи',
+      'Эта опция была удалена',
+      'Время активности в днях',
+      'Время активности в днях (округлено)',
       'Использование памяти (ОЗУ)',
-      'Объекты серверов ботов',
-      'Имена серверов ботов',
-      'Идентификаторы гильдий ботов',
-      'Префикс текущего бота',
-      'Идентификатор клиента бота',
+      'Объекты серверов бота',
+      'Имена серверов бота',
+      'ID серверов бота',
+      'Текущий префикс бота',
+      'ID клиента бота',
       'Версия Discord JS',
-      'Время активности в часы',
-      'Обновление времени активности в дни',
-      'Обновление времени активности в часы',
-      'Обновление времени активности за считанные минуты',
+      'Время активности в часах',
+      'Обновление времени активности в днях',
+      'Обновление времени активности в часах',
+      'Обновление времени активности в минутах',
       'Обновление времени активности в секундах',
       'Использование памяти (ОЗУ) в МБ',
-      "Ботов (платформа процесса)",
-      'Использование процессора в МБ',
-      "Каталог ботов",
-      'Версия узла JS',
+      'ОС ботов (платформа процесса)',
+      'Использование ЦП в МБ',
+      'Директория ботов',
+      'Версия Node JS',
       'Общее количество команд',
       'Общее количество событий',
-      'Готов? [timestamp]',
+      'Готово в? [отметка времени]',
       'Количество ядер ЦП',
-      'Общая память (ГБ)',
-      'Общая память (MB)',
+      'Общий объем памяти (ГБ)',
+      'Общий объем памяти (МБ)',
       'Доступная память (ГБ)',
-      'Доступная память (MB)',
+      'Доступная память (МБ)',
       'Доступная память (%)',
-      'Используется память (ГБ)',
-      'Используется память (MB)',
-      'Использовалась память (%)',
-      'Идентификатор владельца бота',
-      'Команды дифференцируют верхний регистр от нижнего регистра?',
-      'Последнее идентификатор сообщения',
-      'Среднее использование процессора в % (1 минута, 5 минут, 15 минут)',
-      'Среднее использование процессора за последние 60 секунд',
+      'Использованная память (ГБ)',
+      'Использованная память (МБ)',
+      'Использованная память (%)',
+      'ID владельца бота',
+      'Различаются ли команды по регистру?',
+      'ID последнего сообщения',
+      'Среднее использование ЦП в % (1 минута, 5 минут, 15 минут)',
+      'Среднее использование ЦП в % за последние 60 секунд',
       'Время активности в секундах',
-      'Текущее использование процессора в %',
-      'Использование памяти (ОЗУ) округлена',
-      'Бесплатный процессор в %',
-      'Скорость процессора в ГГц',
+      'Текущее использование ЦП в %',
+      'Закругленное использование памяти (ОЗУ)',
+      'Свободное ЦП в %',
+      'Скорость ЦП в ГГц',
     ];
 
     return data.description
@@ -85,82 +85,82 @@ module.exports = {
     if (parseInt(data.storage, 10) !== varType) return;
     let dataType = 'Текст';
     switch (parseInt(data.info, 10)) {
-      case 0: // Uptime in Milliseconds
-      case 22: // Uptime in Hours
-      case 27: // Memory (RAM) Usage in MB
-      case 29: // CPU Usage in MB
-      case 32: // Amount of Commands
-      case 33: // Amount of Events
-      case 34: // Ready At ? [Timestamp]
-      case 35: // CPU Core Amount
-      case 36: // Total Memory (GB)
-      case 37: // Total Memory (MB)
-      case 38: // Available Memory (GB)
-      case 39: // Available Memory (MB)
-      case 40: // Available Memory (%)
-      case 41: // Used Memory (GB)
-      case 42: // Used Memory (MB)
-      case 43: // Used Memory (%)
-      case 48: // CPU Usage (%)
-      case 2: // Ping
-      case 3: // Guild Amount
-      case 4: // User Amount
-      case 5: // Rounded Ping
-      case 6: // Uptime in Seconds
-      case 7: // Uptime in Minutes
-      case 9: // Voice Connections Amount
-      case 10: // Total Amount of Channels
-      case 11: // Total Amount of Emojis
-      case 15: // Memory (Ram) Usage
+      case 0: // Время активности в миллисекундах
+      case 22: // Время активности в часах
+      case 27: // Использование памяти (ОЗУ) в МБ
+      case 29: // Использование ЦП в МБ
+      case 32: // Количество команд
+      case 33: // Количество событий
+      case 34: // Готово в? [отметка времени]
+      case 35: // Количество ядер ЦП
+      case 36: // Общий объем памяти (ГБ)
+      case 37: // Общий объем памяти (МБ)
+      case 38: // Доступная память (ГБ)
+      case 39: // Доступная память (МБ)
+      case 40: // Доступная память (%)
+      case 41: // Использованная память (ГБ)
+      case 42: // Использованная память (МБ)
+      case 43: // Использованная память (%)
+      case 48: // Использование ЦП (%)
+      case 2: // Пинг
+      case 3: // Количество серверов
+      case 4: // Количество пользователей
+      case 5: // Закругленный пинг
+      case 6: // Время активности в секундах
+      case 7: // Время активности в минутах
+      case 9: // Количество голосовых соединений
+      case 10: // Общее количество каналов
+      case 11: // Общее количество эмодзи
+      case 15: // Использование памяти (ОЗУ)
         dataType = 'Число';
         break;
-      case 1: // Ready At
-        dataType = 'Данные';
+      case 1: // Готово в
+        dataType = 'Дата';
         break;
-      case 8: // Bots' Token
+      case 8: // Токен бота
         dataType = 'Токен';
         break;
-      case 16: // Bot Guilds Objects
+      case 16: // Объекты серверов бота
         dataType = 'Объект';
         break;
-      case 17: // Bot Guilds Names
+      case 17: // Имена серверов бота
         dataType = 'Текст';
         break;
-      case 18: // Bot Guilds IDs
-        dataType = 'ИДЕНТИФИКАТОР';
+      case 18: // ID серверов бота
+        dataType = 'ID';
         break;
-      case 19: // Bot Current Prefix
+      case 19: // Текущий префикс бота
         dataType = 'Текст';
         break;
-      case 20: // Bot Client ID
-        dataType = 'ИДЕНТИФИКАТОР';
+      case 20: // ID клиента бота
+        dataType = 'ID';
         break;
-      case 13: // Uptime in Days
-      case 14: // Uptime in Days (Rounded)
-      case 23: // Refreshing Uptime in Days
-      case 24: // Refreshing Uptime in Hours
-      case 25: // Refreshing Uptime in Minutes
-      case 26: // Refreshing Uptime in Seconds
+      case 13: // Время активности в днях
+      case 14: // Время активности в днях (округлено)
+      case 23: // Обновление времени активности в днях
+      case 24: // Обновление времени активности в часах
+      case 25: // Обновление времени активности в минутах
+      case 26: // Обновление времени активности в секундах
         dataType = 'Число';
         break;
-      case 28: // Bots' OS (Process Platform)
+      case 28: // ОС ботов (платформа процесса)
         dataType = 'Текст';
         break;
-      case 30: // Bots' Directory
+      case 30: // Директория ботов
         dataType = 'Текст';
         break;
-      case 21: // Discord JS Version
-      case 31: // Node JS Version
+      case 21: // Версия Discord JS
+      case 31: // Версия Node JS
         dataType = 'Число';
         break;
-      case 44: // Bot Owner ID
-        dataType = 'ИДЕНТИФИКАТОР';
+      case 44: // ID владельца бота
+        dataType = 'ID';
         break;
       case 45:
-        dataType = 'Логический';
+        dataType = 'Логическое';
         break;
       case 46:
-        dataType = 'ИДЕНТИФИКАТОР';
+        dataType = 'ID';
         break;
       case 47:
         dataType = 'Список';
@@ -198,19 +198,19 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
 
 <span class="dbminputlabel">Информация</span><br>
-   <select id="info" class="round2">
-    <optgroup label="Время работы">
-    <option value="23">Обновление времени безотказной работы в днях</option>
-    <option value="24">Обновление времени безотказной работы в часах</option>
-    <option value="25">Обновление времени безотказной работы в минутах</option>
-    <option value="26">Обновление времени безотказной работы в секундах</option>
-    <option value="0">Время безотказной работы в миллисекундах</option>
+  <select id="info" class="round2">
+    <optgroup label="Аптаймы">
+    <option value="23">Обновление активности в днях</option>
+    <option value="24">Обновление активности в часах</option>
+    <option value="25">Обновление активности в минутах</option>
+    <option value="26">Обновление активности в секундах</option>
+    <option value="0">Время активности в миллисекундах</option>
   </optgroup>
   <optgroup label="Значения">
     <option value="3">Общее количество серверов</option>
@@ -221,52 +221,52 @@ module.exports = {
     <option value="33">Общее количество событий</option>
     <option value="9">Общее количество голосовых подключений</option>
   </optgroup>
-  <optgroup label="Сервера бота">
-    <option value="16">Объекты сервера ботов</option>
-    <option value="17">Имена серверов ботов</option>
-    <option value="18">Идентификаторы серверов ботов</option>
+  <optgroup label="Серверные объекты">
+    <option value="16">Объекты серверов бота</option>
+    <option value="17">Имена серверов бота</option>
+    <option value="18">ID серверов бота</option>
   <optgroup label="Информация о боте">
     <option value="19">Текущий префикс бота</option>
-    <option value="20">Идентификатор клиента бота</option>
-    <option value="44">Идентификатор владельца бота</option>
-    <option value="28">Bot OS (технологическая платформа)</option>
-    <option value="30">Каталог ботов</option>
-    <option value="8">Токен бота (осторожность)</option>
+    <option value="20">ID клиента бота</option>
+    <option value="44">ID владельца бота</option>
+    <option value="28">ОС бота (Платформа процесса)</option>
+    <option value="30">Каталог бота</option>
+    <option value="8">Токен бота (осторожно)</option>
     <option value="45">Чувствительны ли команды к регистру?</option>
-    <option value="46">Идентификатор последнего сообщения</option>
+    <option value="46">ID последнего сообщения</option>
   </optgroup>
   <optgroup label="Системные измерения">
-    <option value="49">Время работы системы в секундах</option>
-    <option value="29">Использование процессора (МБ)</option>
-    <option value="47">Среднее использование ЦП в % [1 минута, 5 минут, 15 минут].</option>
-    <option value="48">Среднее использование ЦП в % от последних 60 секунд</option>
-    <option value="50">Текущее использование процессора в % (Требуется модуль: os-utils)</option>
-    <option value="52">Свободный процессор в % (Требуется модуль: os-utils)</option>
-    <option value="53">Частота процессора в ГГц</option>
-    <option value="35">Количество ядер процессора</option>
-    <option value="36">Общая память (ГБ)</option>
-    <option value="37">Общая память (МБ)</option>
+    <option value="49">Время активности системы в секундах</option>
+    <option value="29">Использование ЦП (МБ)</option>
+    <option value="47">Среднее использование ЦП в % [1 минута, 5 минут, 15 минут]</option>
+    <option value="48">Среднее использование ЦП в % за последние 60 секунд</option>
+    <option value="50">Текущее использование ЦП в % (Требуется модуль: os-utils)</option>
+    <option value="52">Свободное ЦП в % (Требуется модуль: os-utils)</option>
+    <option value="53">Скорость ЦП в ГГц</option>
+    <option value="35">Количество ядер ЦП</option>
+    <option value="36">Общий объем памяти (ГБ)</option>
+    <option value="37">Общий объем памяти (МБ)</option>
     <option value="38">Доступная память (ГБ)</option>
     <option value="39">Доступная память (МБ)</option>
     <option value="40">Доступная память (%)</option>
-    <option value="41">Используемая память (ГБ)</option>
-    <option value="42">Используемая память (МБ)</option>
-    <option value="43">Используемая память (%)</option>
+    <option value="41">Использованная память (ГБ)</option>
+    <option value="42">Использованная память (МБ)</option>
+    <option value="43">Использованная память (%)</option>
   </optgroup>
-  <optgroup label="Оперативка бота">
+  <optgroup label="Измерения бота">
     <option value="27">Использование памяти (ОЗУ) в МБ</option>
-    <option value="51">Использование памяти (ОЗУ) в округленных МБ</option>
-    <option value="1">Бот запустился на</option>
-    <option value="34">Бот запущен в [unix timestamp].</option>
+    <option value="51">Использование памяти (ОЗУ) в МБ (округлено)</option>
+    <option value="1">Бот запущен в</option>
+    <option value="34">Бот запущен в [штамп времени UNIX]</option>
     <option value="2">Пинг</option>
-    <option value="5">Круглый пинг</option>
+    <option value="5">Закругленный пинг</option>
   </optgroup>
   <optgroup label="Версии">
   <option value="21">Версия Discord JS</option>
   <option value="31">Версия Node JS</option>
     </optgroup>
   </select>
-  <input type="text" id="filtrodoxinxyla" class="round" placeholder="Параметры фильтра...">
+  <input type="text" id="filtrodoxinxyla" class="round" placeholder="Фильтровать опции...">
 <br>
 
 <div>
@@ -292,10 +292,12 @@ module.exports = {
 .round2{width:100%;height:30px;outline:0}
 .round2 option{padding:3px 8px;text-align:left}
 .round2 optgroup{text-align:center;padding:4px 0px;}
+
 .abrir {
   height: 30px;
   animation: abrir .5s forwards;
 }
+
 @keyframes abrir {
   from {
     height: 30px;
@@ -304,10 +306,12 @@ module.exports = {
     height: 190px;
   }
 }
+
 .fechar {
   height: 190px;
   animation: fechar .5s forwards;
 }
+
 @keyframes fechar {
   from {
     height: 190px;
@@ -331,12 +335,12 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
     }
-  
+
     document.getElementById("info").addEventListener("click", function () {
       document.getElementById("info").classList.add("abrir");
       document.getElementById("info").classList.remove("fechar");
@@ -349,7 +353,7 @@ module.exports = {
       document.getElementById("info").classList.add("fechar");
       document.getElementById("info").style.height = "30px";
     });
-
+    
     document.getElementById("filtrodoxinxyla").addEventListener("keyup", function () {
       var select = document.getElementById("info");
       var optgroups = select.getElementsByTagName("optgroup");
@@ -382,6 +386,7 @@ module.exports = {
 
       document.getElementById("info").dispatchEvent(new Event("click"));
     });
+
   },
 
   async action(cache) {

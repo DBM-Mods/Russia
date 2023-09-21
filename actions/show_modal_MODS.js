@@ -128,52 +128,52 @@ module.exports = {
               <td>
                 <span class="dbminputlabel">Сравнение</span>
                 <select id="comparar" class="round">
-                <optgroup label="Число или Текст">
-                <option value="0">Значение A - Существует</option>
-                <option value="1" selected>Равно</option>
-                <option value="2">Абсолютно равно</option>
-              </optgroup>
-              <optgroup label="Число">
-                <option value="3">Меньше, чем</option>
-                <option value="13">Меньше или равно</option>
-                <option value="4">Больше, чем</option>
-                <option value="12">Больше или равно</option>
-                <option value="19">Значение A - Чётное число?</option>
-                <option value="20">Значение A - Нечётное число?</option>
-                <option value="21">Значение A - Число?</option>
-              </optgroup>
-              <optgroup label="Текст">
-                <option value="6">Соответствует регулярному выражению</option>
-                <option value="14">Соответствует полному регулярному выражению</option>
-                <option value="7">Длина больше, чем</option>
-                <option value="8">Длина меньше, чем</option>
-                <option value="9">Длина равна</option>
-                <option value="10">Начинается с</option>
-                <option value="11">Заканчивается на</option>
-                <option value="16">Значение A - Содержит акценты?</option>
-                <option value="18">Равно словам ["a", "b", "c"]</option>
-                <option value="24">Значение A - Текст?</option>
-                <option value="23">Значение A - URL изображения?</option>
-                <option value="25">Значение A - URL?</option>
-                <option value="26">Значение A - Электронная почта существует?</option>
-              </optgroup>
-              <optgroup label="Текст ~ Содержит">
-                <option value="5">Точно содержит</option>
-                <option value="29">Содержит ~ Без учёта регистра</option>
-                <option value="30">Содержит ~ Без учёта акцентов</option>
-                <option value="31">Содержит ~ Без учёта акцентов и регистра</option>
-                <option value="17">Точно содержит ["a" , "b" , "c"]</option>
-                <option value="27">Содержит какой-либо URL?</option>
-                <option value="28">Содержит приглашение Discord?</option>
-                <option value="32">Точно содержит слово</option>
-                <option value="33">Содержит слово ~ Без учёта регистра</option>
-                <option value="34">Содержит слово ~ Без учёта акцентов</option>
-                <option value="35">Содержит слово ~ Без учёта акцента и регистра</option>
-                <option value="36">Содержит слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
-              </optgroup>
-              <optgroup label="Другое">
-                <option value="22">Значение A - Список?</option>
-              </optgroup>
+                    <optgroup label="Число или Текст">
+                        <option value="0">Значение A - Существует</option>
+                        <option value="1" selected>Равно</option>
+                        <option value="2">Точно равно</option>
+                    </optgroup>
+                    <optgroup label="Число">
+                        <option value="3">Меньше чем</option>
+                        <option value="13">Меньше или равно</option>
+                        <option value="4">Больше чем</option>
+                        <option value="12">Больше или равно</option>
+                        <option value="19">Значение A - Четное число?</option>
+                        <option value="20">Значение A - Нечетное число?</option>
+                        <option value="21">Значение A - Число?</option>
+                    </optgroup>
+                    <optgroup label="Текст">
+                        <option value="6">Соответствует регулярному выражению</option>
+                        <option value="14">Соответствует полному регулярному выражению</option>
+                        <option value="7">Длина больше чем</option>
+                        <option value="8">Длина меньше чем</option>
+                        <option value="9">Длина равна</option>
+                        <option value="10">Начинается с</option>
+                        <option value="11">Заканчивается на</option>
+                        <option value="16">Значение A - Содержит акценты?</option>
+                        <option value="18">Равно словам ["a", "b", "c"]</option>
+                        <option value="24">Значение A - Текст?</option>
+                        <option value="23">Значение A - URL изображения?</option>
+                        <option value="25">Значение A - URL?</option>
+                        <option value="26">Значение A - Email существует?</option>
+                    </optgroup>
+                    <optgroup label="Текст ~ Включает">
+                        <option value="5">Точно включает</option>
+                        <option value="29">Включает ~ Без учета регистра</option>
+                        <option value="30">Включает ~ Без учета акцентов</option>
+                        <option value="31">Включает ~ Без учета акцентов и регистра</option>
+                        <option value="17">Точно включает слова ["a", "b", "c"]</option>
+                        <option value="27">Включает URL?</option>
+                        <option value="28">Включает приглашение Discord?</option>
+                        <option value="32">Точно включает слово</option>
+                        <option value="33">Включает слово ~ Без учета регистра</option>
+                        <option value="34">Включает слово ~ Без учета акцентов</option>
+                        <option value="35">Включает слово ~ Без учета акцентов и регистра</option>
+                        <option value="36">Включает слова ~ разделенные запятыми ~ Без учета акцентов и регистра</option>
+                    </optgroup>
+                    <optgroup label="Другое">
+                        <option value="22">Значение A - Список?</option>
+                    </optgroup>
                 </select>
               </td>
               <td>
@@ -275,7 +275,7 @@ module.exports = {
         <span class="dbminputlabel">Опции</span>
         <br>
         <div style="padding: 10px; background: rgba(0,0,0,0.2);">
-        <dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
+        <dbm-checkbox id="errcmd" label="Отображать ошибку в консоли" checked></dbm-checkbox>
         </div>
         <br>
 
@@ -285,7 +285,7 @@ module.exports = {
             <option value="0">Продолжить действия</option>
             <option value="1" selecionado>Остановить последовательность действий</option>
             <option value="2">Перейти к действию</option>
-            <option value="3">Пропустить следующие действия</option>
+            <option value="3">Пропустить действия</option>
             <option value="4">Перейти к якорю</option>
             <option value="5">Выполнить действия и остановится</option>
             <option value="99">Выполнить действия и продолжить</option>
@@ -293,7 +293,7 @@ module.exports = {
         </div>
   
         <div id="iffalseContainer" style="display: none; float: right; width: 55%;">
-          <span id="xinelasT" class="dbminputlabel">Для</span>
+          <span id="xinelasT" class="dbminputlabel">Para</span>
           <input id="iffalseVal" class="round" type="text">
         </div>
   
@@ -303,7 +303,7 @@ module.exports = {
 
         <div id="divValueError">
         <div style="float: left; width: 35%;">
-          <span class="dbminputlabel">Сохраните ошибку в</span>
+          <span class="dbminputlabel">Хранить ошибку в</span>
           <select id="storageError" class="round" onchange="glob.variableChangeError(this, 'varNameContainer')">
             ${data.variables[0]}
           </select>

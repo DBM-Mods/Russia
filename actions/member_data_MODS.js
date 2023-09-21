@@ -12,14 +12,14 @@ module.exports = {
   subtitle(data, presets) {
     const members = presets.members;
     const storage = presets.variables;
-    const changeType = [``, `Изменять(${data.dataName})`,`Добавлять(${data.dataName})`,`Добавить текст(${data.dataName})`,`Добавить числовое значение(${data.dataName})`,`Удалить столбец(${data.dataName})`,`Проверять(${data.dataName})`,'Удалить все столбцы'];
+    const changeType = [``, `Изменить(${data.dataName})`,`Добавить(${data.dataName})`,`Добавить текст(${data.dataName})`,`Добавить числовое значение(${data.dataName})`,`Удалить столбец(${data.dataName})`,`Проверить(${data.dataName})`,'Удалить все столбцы'];
     return `${presets.getMemberText(data.member, data.varName)} / ${changeType[parseInt(data.changeType, 10)]} / ${storage[parseInt(data.storage, 10)]} (${data.varName2})`;
   },
 
   variableStorage(data, varType) {
     const type = parseInt(data.storage, 10);
     if (type !== varType) return;
-    return [data.varName2, "Data" ];
+    return [data.varName2, "Дата" ];
   },
 
   fields: ["member", "varName", "dataName", "addType2", "changeType", "value" , "xvalue" , "xvalue2" , "comparison", "valueeval", "defaultVal", "defaultValeval", "addType3", "storage", "varName2", "branch"],
@@ -32,16 +32,16 @@ module.exports = {
     <tab-system style="margin-top: 20px;">
 
 
-  <tab label="Юзеры" icon="align left">
+  <tab label="Membro" icon="align left">
   <div id="xin">
   <div id="xinelas">
-  <member-input dropdownLabel="Выбор юзера" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
+  <member-input dropdownLabel="Пользователь" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
   <br><br><br>
   </div>
   </div>
   </tab>
 
-  <tab label="Настройки" icon="align left">
+  <tab label="Дата" icon="align left">
   <div id="xin">
   <table>
   <tr>
@@ -52,13 +52,14 @@ module.exports = {
   <td class="sep2">
   <span class="dbminputlabel">Тип управления</span><br>
   <select id="changeType" class="round"  onchange="glob.onChange3(this)">
-    <option value="0" selected>Ничего</option>
-    <option value="1">Изменять</option>
-    <option value="2">Добавлять</option>
+    <option value="0" selected>Нет</option>
+    <option value="1">Изменить</option>
+    <option value="2">Добавить</option>
     <option value="3">Добавить текст</option>
     <option value="4">Добавить числовое значение</option>
     <option value="5">Удалить столбец</option>
-    <option value="6">Проверять</option>
+    <option value="7">Удалить все столбцы</option>
+    <option value="6">Проверить</option>
   </select>
   
   </td>
@@ -71,32 +72,32 @@ module.exports = {
     <div style="float: left; width: 35%;">
       <span class="dbminputlabel">Тип сравнения</span><br>
       <select id="comparison" class="round" onchange="glob.onComparisonChanged(this)">
-       <option value="0">Существует</option>
-       <option value="1" selected>Равно</option>
-       <option value="2">Точно так же</option>
-       <option value="3">Меньше, чем</option>
-       <option value="13">Меньше или равно</option>
-       <option value="4">Тогда больше</option>
-       <option value="12">Больше или равно</option>
-       <option value="5">Включает</option>
-       <option value="6">Соответствия регулярным выражениям</option>
-       <option value="14">Полные совпадения с регулярными выражениями</option>
-       <option value="7">Длина больше, чем</option>
-       <option value="8">Длина меньше, чем</option>
-       <option value="9">Длина равна</option>
-       <option value="10">Начинается с</option>
-       <option value="11">Заканчивается</option>
-       <option value="15">Между</option>
-       <option value="16">У вас есть акценты?</option>
-       <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-       <option value="18">Это как слова  ["a" , "b" , "c"]</option>
-       <option value="19">Это четное число?</option>
-       <option value="20">Это нечетное число?</option>
-       <option value="21">Это число?</option>
-       <option value="24">Это текст?</option>
-       <option value="22">Это список?</option>
-       <option value="23">Это URL-адрес изображения?</option>
-       <option value="25">Это URL?</option>
+        <option value="0">Существует</option>
+        <option value="1" selected>Равно</option>
+        <option value="2">Точно равно</option>
+        <option value="3">Меньше чем</option>
+        <option value="13">Меньше или равно</option>
+        <option value="4">Больше чем</option>
+        <option value="12">Больше или равно</option>
+        <option value="5">Содержит</option>
+        <option value="6">Соответствует регулярному выражению</option>
+        <option value="14">Соответствует полному регулярному выражению</option>
+        <option value="7">Длина больше чем</option>
+        <option value="8">Длина меньше чем</option>
+        <option value="9">Длина равна</option>
+        <option value="10">Начинается с</option>
+        <option value="11">Заканчивается на</option>
+        <option value="15">Между</option>
+        <option value="16">Содержит специальные символы?</option>
+        <option value="17">Содержит слова ["a", "b", "c"]</option>
+        <option value="18">Равно словам ["a", "b", "c"]</option>
+        <option value="19">Число четное?</option>
+        <option value="20">Число нечетное?</option>
+        <option value="21">Это число?</option>
+        <option value="24">Это текст?</option>
+        <option value="22">Это список?</option>
+        <option value="23">Это URL изображения?</option>
+        <option value="25">Это URL?</option>
       </select>
     </div>
   
@@ -110,7 +111,7 @@ module.exports = {
   
     <td style="padding:0px 3px";>
     <div style="width: 100%;" id="containerxin">
-    <span class="dbminputlabel">e</span><br>
+    <span class="dbminputlabel">и</span><br>
     <input id="xvalue2" class="round" type="text">
     </td></tr></table>
   
@@ -121,7 +122,7 @@ module.exports = {
   
   <div id="exclusao">
   
-  <span class="dbminputlabel" name="xinelas">Значение</span> <div style="float:right;margin-top:-5px"><dbm-checkbox id="addType2" onchange="glob.onChange2(this)" label="Оценка" checked></dbm-checkbox></div><br>
+  <span class="dbminputlabel" name="xinelas">Значение</span> <div style="float:right;margin-top:-5px"><dbm-checkbox id="addType2" onchange="glob.onChange2(this)" label="EVAL" checked></dbm-checkbox></div><br>
   <div id="valor"><textarea id="value" rows="4" class="round" style="width:100%"></textarea></div>
   <div style="display:none" id="valoreval"><textarea id="valueeval" rows="4" name="is-eval" class="round" style="width:100%"></textarea></div>
   <br>
@@ -129,10 +130,10 @@ module.exports = {
   </div>
   </tab>
 
-  <tab label="Вывод" icon="align left">
+  <tab label="Хранение" icon="align left">
   <div id="xin">
   <div id="varNameContainer3">
-  <span class="dbminputlabel" name="xinelas2">Значение по умолчанию (если данные не существуют)</span> <div style="float:right;margin-top:-5px"><dbm-checkbox id="addType3" onchange="glob.onChange4(this)" label="Оценка" checked></dbm-checkbox></div><br>
+  <span class="dbminputlabel" name="xinelas2">Значение по умолчанию (если данные отсутствуют)</span> <div style="float:right;margin-top:-5px"><dbm-checkbox id="addType3" onchange="glob.onChange4(this)" label="EVAL" checked></dbm-checkbox></div><br>
   <div id="valoreval2"><input id="defaultValeval" name="is-eval" class="round" type="text" value="0"></div>
   <div id="valor2"><input id="defaultVal" class="round" type="text" value="0"></div>
   <br>
@@ -144,7 +145,7 @@ module.exports = {
   <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer2')">
     ${data.variables[0]}
   </select></td>
-  <td class="sep0"><div id="varNameContainer2"><span class="dbminputlabel">Название</span><br>
+  <td class="sep0"><div id="varNameContainer2"><span class="dbminputlabel">Имя переменной</span><br>
   <input id="varName2" class="round" type="text"></div></td>
   </tr>
   </table>
@@ -213,7 +214,7 @@ module.exports = {
       if (event.value == true) {
         document.getElementById("valoreval").style.display = null;
         document.getElementById("valor").style.display = "none";
-        document.querySelector("[name='xinelas']").innerText = (`Значение / Оценка`);
+        document.querySelector("[name='xinelas']").innerText = (`Значение / EVAL`);
       } 
       if (event.value == false) {
         document.getElementById("valoreval").style.display = "none";
@@ -229,12 +230,12 @@ module.exports = {
       if (event.value == true) {
         document.getElementById("valoreval2").style.display = null;
         document.getElementById("valor2").style.display = "none";
-        document.querySelector("[name='xinelas2']").innerText = (`Значение по умолчанию (если данные не существуют) / Оценка`);
+        document.querySelector("[name='xinelas2']").innerText = (`Значение по умолчанию (если данные отсутствуют) / EVAL`);
       } 
       if (event.value == false) {
         document.getElementById("valoreval2").style.display = "none";
         document.getElementById("valor2").style.display = null;
-        document.querySelector("[name='xinelas2']").innerText = (`Значение по умолчанию (если данные не существуют)`);
+        document.querySelector("[name='xinelas2']").innerText = (`Значение по умолчанию (если данные отсутствуют))`);
       }
     };
 

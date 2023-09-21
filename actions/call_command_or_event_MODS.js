@@ -41,7 +41,7 @@ module.exports = {
 
   html() {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.5</div>
 
     <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
@@ -51,7 +51,7 @@ module.exports = {
       <td>
         <span class="dbminputlabel">Описание действия</span>
         <br>
-        <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+        <input type="text" class="round" id="description" placeholder="Не обязательное действие">
       </td>
       <td style="padding:0px 0px 0px 10px;width:70px">
         <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">

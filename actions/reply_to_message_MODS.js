@@ -1,8 +1,8 @@
 module.exports = {
-  name: 'Reply To Message',
+  name: 'Reply To Message MOD',
   section: 'Messaging',
   meta: {
-    version: '2.1.6',
+    version: '2.1.7',
     preciseCheck: false,
     author: '[Дизайнер LIK (Данил) - 866884416151355392]<br>[lolmak - 259315943103004672]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
@@ -32,25 +32,25 @@ module.exports = {
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
 
-    <div style="padding:0px 0px 15px 0px">
-    <table style="width:100%;"><tr>
-    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
-    <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
-    </tr></table>
-    </div>
+    <div id="flutuador" style="padding:0px 0px 15px 0px">
+<table style="width:100%;"><tr>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+</tr></table>
+</div>
 
   <tab-system>
-   <tab label="Конфиг" icon="save outline">
-    <message-input dropdownLabel="Source Message" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></message-input>
+   <tab label="Конфигурация" icon="save outline">
+    <message-input dropdownLabel="Сообщение" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></message-input>
     <br><br><br>
-    <message-input dropdownLabel="Message option" selectId="storage2" variableContainerId="varNameContainer2" variableInputId="varName2"></message-input>
+    <message-input dropdownLabel="Ответить сообщением" selectId="storage2" variableContainerId="varNameContainer2" variableInputId="varName2"></message-input>
     <br><br><br>
 
-    <store-in-variable allowNone dropdownLabel="Store In" selectId="storage3" variableContainerId="varNameContainer3" variableInputId="varName3"></store-in-variable>
+    <store-in-variable allowNone dropdownLabel="Хранить в" selectId="storage3" variableContainerId="varNameContainer3" variableInputId="varName3"></store-in-variable>
 
   </tab>
 
-  <tab label="Доп настройки" icon="external alternate">
+  <tab label="Доп Конфигурация" icon="external alternate">
   <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
   <dbm-checkbox id="notification" label="Уведомление" checked></dbm-checkbox>
   </div><br></div>
@@ -58,11 +58,11 @@ module.exports = {
   <div style="float: left; width: 50%">
   <span class="dbminputlabel">Если не удалось ответить</span>
   <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-      <option value="0" selecionado>Продолжать действия</option>
-      <option value="1">Остановить последовательность действий</option>
-      <option value="2">Перейти к действию</option>
-      <option value="3">Пропустить следующие действия</option>
-      <option value="4">Перейти к якорю</option>
+  <option value="0" selected>Продолжить действия</option>
+  <option value="1">Остановить последовательность действий</option>
+  <option value="2">Перейти к действию</option>
+  <option value="3">Пропустить действия</option>
+  <option value="4">Перейти к якорю</option>
   </select>
 </div>
 
@@ -77,11 +77,11 @@ module.exports = {
   <tab label="Помощь" icon="help">
 
   <center>
-  <tlt><b>Source Meesage</b></tlt>
-  <tl><span style="color:Khaki">Это сообщение на которое бот будет давать свой ответ.</span></tl><br>
+  <tlt><b>Сообщение</b></tlt>
+  <tl><span style="color:Khaki">Это сообщение, на которое бот будет отвечать.</span></tl><br>
   <center>
-  <tlt><b>Message option</b></tlt>
-  <tl><span style="color:Khaki">Это сохранённое сообщение в действии Send Message с установленным параметром &quot;Dont't Send Message&quot;.</span></tl><br>
+  <tlt><b>Ответить сообщением</b></tlt>
+  <tl><span style="color:Khaki">Это сообщение, сохраненное в действии "Отправить сообщение" с опцией "Не отправлять сообщение" включенной</span></tl><br>
 
   </div>
   </tab>
@@ -97,19 +97,19 @@ module.exports = {
 
   init() {
 	  const { glob, document } = this;
-	  const xinelaslinks = document.getElementsByClassName('xinelaslink');
-	  for (let x = 0; x < xinelaslinks.length; x++) {
-		const xinelaslink = xinelaslinks[x];
-		const url = xinelaslink.getAttribute('data-url');
-		if (url) {
-		 xinelaslink.setAttribute('title', url);
-		 xinelaslink.addEventListener('click', (e) => {
-			e.stopImmediatePropagation();
-			console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
-			require('child_process').execSync(`start ${url}`);
-		  });
-		}
-	  }
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
 
     glob.onComparisonChanged = function (event) {
       if (event.value > "1") {
@@ -123,11 +123,11 @@ module.exports = {
       }
 
       if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Пропустить действий`);
+        document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
       }
 
       if (event.value == "4") {
-        document.querySelector("[id='xinelas']").innerText = (`Название якоря`);
+        document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
       }
     }
 
@@ -184,11 +184,11 @@ module.exports = {
 			}
 		})
 		.catch( err => {
-			console.error('Ошибка в действии Reply To Message:\n' + err);
+			console.error('Ошибка в действии Reply To Message MOD:\n' + err);
 			ifFlse(parseInt(this.evalMessage(data.iffalse, cache), 10));
 		});
 	} catch (err) {
-		console.error('Ошибка в действии Reply To Message:\n' + err);
+		console.error('Ошибка в действии Reply To Message MOD:\n' + err);
 		ifFlse(parseInt(this.evalMessage(data.iffalse, cache), 10));
 	}
   },

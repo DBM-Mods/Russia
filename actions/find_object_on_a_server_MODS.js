@@ -10,31 +10,31 @@ module.exports = {
   },
 
   subtitle(data) {
-    const info = ['Общий', 'Категория', 'Текстовый канал', 'Голосовой канал', 'Общественная тема', 'Частная тема'];
-    return `Поиск? ${info[parseInt(data.filtro, 10)]} (${data.find})`;
+    const info = ['Общие', 'Категория', 'Текстовый канал', 'Голосовой канал', 'Общедоступная тема', 'Личная тема'];
+    return `Найти ${info[parseInt(data.filtro, 10)]} (${data.find})`;
   },
 
   variableStorage(data, varType) {
     if (parseInt(data.storage, 10) !== varType) return;
-    return [data.varName, 'Objeto'];
+    return [data.varName, 'Объект'];
   },
 
   fields: ['filtro','info1','info2','info3','info4', 'find', 'storage', 'varName', "iffalse", "iffalseVal"],
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.1</div>
+    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.2</div>
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 
 
-    <span class="dbminputlabel">Поиск?</span><br>
+    <span class="dbminputlabel">Поиск</span><br>
     <select id="filtro" class="round" onchange="glob.onChange1(this)">
-            <option value="0" selected>Общий</option>
+            <option value="0" selected>Общие</option>
             <option value="1">Категория</option>
             <option value="2">Текстовый канал</option>
             <option value="3">Голосовой канал</option>
-            <option value="4">Общественная тема</option>
-            <option value="5">Частная тема</option>
+            <option value="4">Общедоступная тема</option>
+            <option value="5">Личная тема</option>
     </select>
 
 <br>
@@ -47,55 +47,55 @@ module.exports = {
 <div id="xinxyla1">
     <select id="info1" class="round">
     <option value="0" selected>ID</option>
-      <option value="1">Точное имя</option>
-      <option value="7">Включает в имя</option>
-      <option value="8">Длина имени больше, чем</option>
-      <option value="9">Длина имени меньше, чем</option>
-      <option value="10">Длина имени равна</option>
-      <option value="11">Имя начинается с</option>
-      <option value="12">Имя заканчивается</option>
+    <option value="1">Точное имя</option>
+    <option value="7">Содержит в имени</option>
+    <option value="8">Длина имени больше</option>
+    <option value="9">Длина имени меньше</option>
+    <option value="10">Длина имени равна</option>
+    <option value="11">Имя начинается с</option>
+    <option value="12">Имя заканчивается на</option>
     </select>
 </div>
 <div id="xinxyla2">
     <select id="info2" class="round">
     <option value="0" selected>ID</option>
     <option value="1">Точное имя</option>
-    <option value="7">Включает в имя</option>
-    <option value="8">Длина имени больше, чем</option>
-    <option value="9">Длина имени меньше, чем</option>
+    <option value="7">Содержит в имени</option>
+    <option value="8">Длина имени больше</option>
+    <option value="9">Длина имени меньше</option>
     <option value="10">Длина имени равна</option>
     <option value="11">Имя начинается с</option>
-    <option value="12">Имя заканчивается</option>
+    <option value="12">Имя заканчивается на</option>
     <option value="2">Тема</option>
-    <option value="3">Должность</option>
+    <option value="3">Позиция</option>
     </select>
 </div>
 <div id="xinxyla3">
     <select id="info3" class="round">
     <option value="0" selected>ID</option>
     <option value="1">Точное имя</option>
-    <option value="7">Включает в имя</option>
-    <option value="8">Длина имени больше, чем</option>
-    <option value="9">Длина имени меньше, чем</option>
+    <option value="7">Содержит в имени</option>
+    <option value="8">Длина имени больше</option>
+    <option value="9">Длина имени меньше</option>
     <option value="10">Длина имени равна</option>
     <option value="11">Имя начинается с</option>
-    <option value="12">Имя заканчивается</option>
-    <option value="3">Должность</option>
-    <option value="4">Конечность</option>
-    <option value="5">Битрейт (кбит / с)</option>
+    <option value="12">Имя заканчивается на</option>
+    <option value="3">Позиция</option>
+    <option value="4">Ограничение по участникам</option>
+    <option value="5">Битрейт (кб/с)</option>
     </select>
 </div>
 <div id="xinxyla4">
     <select id="info4" class="round">
     <option value="0" selected>ID</option>
     <option value="1">Точное имя</option>
-    <option value="7">Включает в имя</option>
-    <option value="8">Длина имени больше, чем</option>
-    <option value="9">Длина имени меньше, чем</option>
+    <option value="7">Содержит в имени</option>
+    <option value="8">Длина имени больше</option>
+    <option value="9">Длина имени меньше</option>
     <option value="10">Длина имени равна</option>
     <option value="11">Имя начинается с</option>
-    <option value="12">Имя заканчивается</option>
-    <option value="6">ID Создатель темы</option>
+    <option value="12">Имя заканчивается на</option>
+    <option value="6">ID создателя темы</option>
     </select>
 </div>
 
@@ -115,11 +115,11 @@ module.exports = {
 <table><tr><td class="col1">
 <span class="dbminputlabel">Если объект не найден</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-<option value="0" selecionado>Продолжать</option>
+<option value="0" selecionado>Продолжить действия</option>
 <option value="1">Остановить последовательность действий</option>
 <option value="2">Перейти к действию</option>
-<option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к якову действия</option>
+<option value="3">Пропустить действия</option>
+<option value="4">Перейти к якорю</option>
 </select>
 </td>
 <td class="col2">
@@ -134,7 +134,7 @@ module.exports = {
 <br>
 
 <table><tr><td class="col1">
-<span class="dbminputlabel">Сохрнаить в</span><br>
+<span class="dbminputlabel">Хранить в</span><br>
     <select id="storage" class="round">
         ${data.variables[1]}
     </select>
@@ -212,10 +212,10 @@ select.round:focus{outline-width:0;box-shadow:0 1px 0 #0059ff;}
       document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
     }
     if (event.value == "3") {
-      document.querySelector("[id='xinelas']").innerText = (`Прыжок`);
+      document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
     }
     if (event.value == "4") {
-      document.querySelector("[id='xinelas']").innerText = (`Якоря название`);
+      document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
     }
   }
 
@@ -241,7 +241,7 @@ select.round:focus{outline-width:0;box-shadow:0 1px 0 #0059ff;}
 
     if(filtro == 0){channels = server.channels.cache;info = info1}
     if(filtro == 1){channels = server.channels.cache.filter((e) => e.type === 'GUILD_CATEGORY');info = info1}
-    if(filtro == 2){channels = server.channels.cache.filter((e) => e.type === "GUILD_TEXT" || c.type === "GUILD_NEWS");info = info2}
+    if(filtro == 2){channels = server.channels.cache.filter((e) => e.type === "GUILD_TEXT" || e.type === "GUILD_NEWS");info = info2}
     if(filtro == 3){channels = server.channels.cache.filter((e) => e.type === "GUILD_VOICE");info = info3}
     if(filtro == 4){channels = server.channels.cache.filter((e) => e.type === 'GUILD_PUBLIC_THREAD');info = info4}
     if(filtro == 5){channels = server.channels.cache.filter((e) => e.type === 'GUILD_PRIVATE_THREAD');info = info4}

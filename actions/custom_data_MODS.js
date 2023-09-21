@@ -10,24 +10,32 @@ module.exports = {
   },
 
   subtitle(data, presets) {
+    if(data.descriptionx == true){
+      desccor = data.descriptioncolor
+      } else {
+        desccor = 'none'
+      }
+
     const storage = presets.variables;
-    const changeType = [``, `Изменять(${data.dataName})`,`Добавлять(${data.dataName})`,`Добавить текст(${data.dataName})`,`Добавить числовое значение(${data.dataName})`,`Удалить столбец(${data.dataName})`,`Проверять(${data.dataName})`,`Удалить все столбцы`,`Удалить  ID`];
-    return `Дата(${data.alvo}) / ${changeType[parseInt(data.changeType, 10)]} / ${storage[parseInt(data.storage, 10)]} (${data.varName2})`;
+    const changeType = [``, `Изменить(${data.dataName})`, `Добавить(${data.dataName})`, `Добавить текст(${data.dataName})`, `Добавить числовое значение(${data.dataName})`, `Удалить столбец(${data.dataName})`, `Проверить(${data.dataName})`, `Удалить все столбцы`, `Удалить ID`];
+    
+    return data.description
+    ? `<font style="color:${desccor}">${data.description}</font>`
+    : `<font style="color:${desccor}">Дата(${data.alvo}) / ${changeType[parseInt(data.changeType, 10)]} / ${storage[parseInt(data.storage, 10)]} (${data.varName2})</font>`
   },
 
   variableStorage(data, varType) {
     const type = parseInt(data.storage, 10);
     if (type !== varType) return;
-    return [data.varName2, "Data" ];
+    return [data.varName2, "Дата" ];
   },
 
-  fields: ["pasta", "identidade", "alvo", "dataName", "addType2", "changeType", "value" , "xvalue" , "xvalue2" , "comparison", "valueeval", "defaultVal", "defaultValeval", "addType3", "storage", "varName2", "branch"],
+  fields: ["pasta", "identidade", "alvo", "dataName", "addType2", "changeType", "value" , "xvalue" , "xvalue2" , "comparison", "valueeval", "defaultVal", "defaultValeval", "addType3", "storage", "varName2", "branch","descriptioncolor","description","descriptionx"],
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.1</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
-
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
     <tab-system style="margin-top: 20px;">
 
 
@@ -39,7 +47,7 @@ module.exports = {
   <tr>
   <td class="sep1" id="xinas"><div id="remcoluna">
   <span class="dbminputlabel">Папка</span><br>
-      <input id="pasta" value="data" placeholder="data/others" class="round" type="text"></div>
+      <input id="pasta" value="data" placeholder="data/CustomData" class="round" type="text"></div>
   </td>
   <td class="sep2">
   <span class="dbminputlabel">Имя файла даты</span><br>
@@ -64,15 +72,16 @@ module.exports = {
   <td class="sep2">
   <span class="dbminputlabel">Тип управления</span><br>
   <select id="changeType" class="round"  onchange="glob.onChange3(this)">
-    <option value="0" selected>Ничего</option>
-    <option value="1">Изменять</option>
-    <option value="2">Добавлять</option>
+    <option value="0" selected>Нет</option>
+    <option value="1">Изменить</option>
+    <option value="2">Добавить</option>
     <option value="3">Добавить текст</option>
     <option value="4">Добавить числовое значение</option>
     <option value="5">Удалить столбец</option>
     <option value="7">Удалить все столбцы</option>
     <option value="8">Удалить ID</option>
-    <option value="6">Проверять</option>
+    <option value="9">Удалить все</option>
+    <option value="6">Проверить</option>
   </select>
   
   </td>
@@ -83,34 +92,34 @@ module.exports = {
   <div id="exclusao2">
   
     <div style="float: left; width: 35%;">
-      <span class="dbminputlabel">Тип сравнения</span><br>
+      <span class="dbminputlabel">Сравнение</span><br>
       <select id="comparison" class="round" onchange="glob.onComparisonChanged(this)">
-       <option value="0">Существует</option>
-       <option value="1" selected>Равно</option>
-       <option value="2">Точно так же</option>
-       <option value="3">Меньше, чем</option>
-       <option value="13">Меньше или равно</option>
-       <option value="4">Тогда больше</option>
-       <option value="12">Больше или равно</option>
-       <option value="5">Включает</option>
-       <option value="6">Соответствия регулярным выражениям</option>
-       <option value="14">Полные совпадения с регулярными выражениями</option>
-       <option value="7">Длина больше, чем</option>
-       <option value="8">Длина меньше, чем</option>
-       <option value="9">Длина равна</option>
-       <option value="10">Начинается с</option>
-       <option value="11">Заканчивается</option>
-       <option value="15">Между</option>
-       <option value="16">У вас есть акценты?</option>
-       <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-       <option value="18">Это как слова  ["a" , "b" , "c"]</option>
-       <option value="19">Это четное число?</option>
-       <option value="20">Это нечетное число?</option>
-       <option value="21">Это число?</option>
-       <option value="24">Это текст?</option>
-       <option value="22">Это список?</option>
-       <option value="23">Это URL-адрес изображения?</option>
-       <option value="25">Это URL?</option>
+        <option value="0">Существует</option>
+        <option value="1" selected>Равно</option>
+        <option value="2">Точно равно</option>
+        <option value="3">Меньше чем</option>
+        <option value="13">Меньше или равно</option>
+        <option value="4">Больше чем</option>
+        <option value="12">Больше или равно</option>
+        <option value="5">Содержит</option>
+        <option value="6">Соответствует Regex</option>
+        <option value="14">Соответствует полному Regex</option>
+        <option value="7">Длина больше</option>
+        <option value="8">Длина меньше</option>
+        <option value="9">Длина равна</option>
+        <option value="10">Начинается с</option>
+        <option value="11">Заканчивается на</option>
+        <option value="15">Между</option>
+        <option value="16">Содержит акценты?</option>
+        <option value="17">Содержит слова  ["a", "b", "c"]</option>
+        <option value="18">Равно словам  ["a", "b", "c"]</option>
+        <option value="19">Четное число?</option>
+        <option value="20">Нечетное число?</option>
+        <option value="21">Это число?</option>
+        <option value="24">Это текст?</option>
+        <option value="22">Это список?</option>
+        <option value="23">Это URL изображения?</option>
+        <option value="25">Это URL?</option>
       </select>
     </div>
   
@@ -158,11 +167,23 @@ module.exports = {
   <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer2')">
     ${data.variables[0]}
   </select></td>
-  <td class="sep0"><div id="varNameContainer2"><span class="dbminputlabel">Название</span><br>
+  <td class="sep0"><div id="varNameContainer2"><span class="dbminputlabel">Имя переменной</span><br>
   <input id="varName2" class="round" type="text"></div></td>
   </tr>
   </table>
   <br>
+  </div>
+  </tab>
+
+  <tab label="Конфигурация" icon="settings">
+  <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
+
+  <div id="flutuador" style="padding:0px 0px 15px 0px">
+  <table style="width:100%;"><tr>
+  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+  <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+  </tr></table>
+  </div>
   </div>
   </tab>
   </tab-system>
@@ -174,6 +195,9 @@ module.exports = {
 .sep1{width:50%;padding:0px 8px 0px 0px}
 .sep2{width:50%;padding:0px 0px 0px 0px}
 #xin{padding:12px 8px 8px 8px}
+.dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+.dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
+
 </style>
 
 
@@ -248,7 +272,7 @@ module.exports = {
       if (event.value == true) {
         document.getElementById("valoreval2").style.display = null;
         document.getElementById("valor2").style.display = "none";
-        document.querySelector("[name='xinelas2']").innerText = (`Значение по умолчанию (если данные не существуют) / Оценка`);
+        document.querySelector("[name='xinelas2']").innerText = (`Значение по умолчанию (если данные не существуют) или`);
       } 
       if (event.value == false) {
         document.getElementById("valoreval2").style.display = "none";
@@ -270,6 +294,20 @@ module.exports = {
     };
 
     glob.variableChange(document.getElementById('storage'), 'varNameContainer2');
+
+    const xinelaslinks = document.getElementsByClassName('xinelaslink');
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+       xinelaslink.setAttribute('title', url);
+       xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
 
   },
 
@@ -351,6 +389,9 @@ module.exports = {
       if(identidade == ""){
 
         if (val !== undefined) {
+          if (isAdd == "9" || isAdd == "8") {
+            fs.writeFileSync(filePath, "{}")
+          }
           if (isAdd == "7") {
             obj = {}
             fs.writeFileSync(filePath, JSON.stringify(obj));
@@ -371,14 +412,28 @@ module.exports = {
   
             }
             if (isAdd == "3") {
-  
+
+              if(obj[dataName] == undefined){
+                obj[dataName] = val.toString()
+                fs.writeFileSync(filePath, JSON.stringify(obj))
+              } else {  
+
               obj[dataName] += val.toString()
-                fs.writeFileSync(filePath, JSON.stringify(obj));
+                fs.writeFileSync(filePath, JSON.stringify(obj))
+              }
   
             }
             if (isAdd == "2") {
+
+              if(obj[dataName] == undefined){
+                obj[dataName] = val
+                fs.writeFileSync(filePath, JSON.stringify(obj))
+              } else {
+
               obj[dataName] += val
               fs.writeFileSync(filePath, JSON.stringify(obj));
+              }
+
             }
             if (isAdd == "1")  {
               obj[dataName] = val
@@ -392,6 +447,9 @@ module.exports = {
       } else {
 
       if (val !== undefined) {
+        if (isAdd == "9") {
+          fs.writeFileSync(filePath, "{}")
+        }
         if (isAdd == "8") {
           delete obj[identidade]
           fs.writeFileSync(filePath, JSON.stringify(obj));
@@ -417,13 +475,26 @@ module.exports = {
           }
           if (isAdd == "3") {
 
+            if(obj[identidade][dataName] == undefined){
+              obj[identidade][dataName] = val.toString()
+              fs.writeFileSync(filePath, JSON.stringify(obj))
+            } else {  
+
             obj[identidade][dataName] += val.toString()
-              fs.writeFileSync(filePath, JSON.stringify(obj));
+              fs.writeFileSync(filePath, JSON.stringify(obj))
+            }
 
           }
           if (isAdd == "2") {
+
+            if(obj[identidade][dataName] == undefined){
+              obj[identidade][dataName] = val
+              fs.writeFileSync(filePath, JSON.stringify(obj))
+            } else {  
+
             obj[identidade][dataName] += val
             fs.writeFileSync(filePath, JSON.stringify(obj));
+            }
           }
           if (isAdd == "1")  {
             obj[identidade][dataName] = val
@@ -476,16 +547,15 @@ module.exports = {
       const storage = parseInt(data.storage, 10);
       const varName2 = this.evalMessage(data.varName2, cache);
       this.storeValue(result3, storage, varName2, cache);
-    }
-    
 
-  }
+      
+  
 
-
+  
 
       if (isAdd == "6"){
       result = false
-      const val1 = result3
+      val1 = result3
       const compare = parseInt(data.comparison, 10);
       let val2 = this.evalMessage(data.xvalue, cache);
       let val3 = this.evalMessage(data.xvalue2, cache);
@@ -583,6 +653,11 @@ module.exports = {
     
     
   } if (isAdd == "6"){this.executeResults(result, data?.branch ?? data, cache)}else{this.callNextAction(cache)}
+
+}
+    
+
+}
    
     },
 

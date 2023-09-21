@@ -7,114 +7,124 @@ module.exports = {
     author: '[XinXyla - 172782058396057602]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
-  },
+    },
 
   subtitle(data) {
-    const categories = ['Ты обманщик!', 'Временная переменная', 'Серверная переменная', 'Глобальная переменная'];
+    const categories = ['Что мы тут забыли?', 'Временная переменная', 'Переменная сервера', 'Глобальная переменная'];
     const info = [
-      "ID Категории",
-      "Название Категории",
-      "Категория сервера",
+      "ID категории",
+      "Название категории",
+      "Сервер категории",
       "Позиция категории",
-      "Является ли категория управляемой?",
-      "Можно ли удалить категорию?",
-      "Список всех каналов в этой категории",
-      "Всего каналов в этой категории",
-      "Список текстовых каналов в этой категории",
-      "Всего текстовых каналов в этой категории",
-      "Список голосовых каналов в этой категории",
-      "Всего голосовых каналов в этой категории",
-      "Список трибунных каналов в этой категории",
-      "Всего трибунных каналов в этой категории",
-      "Список тем канала в этой категории",
-      "Список по ID канала в этой категории",
-      "Список по ID текстовых каналов в этой категории",
-      "Список по ID голосовых каналов в этой категории",
-      "Список по ID трибунных каналов в этой категории",
-      "Список по названию канала в этой категории",
-      "Список по названию текстовых каналов в этой категории",
-      "Список по названию голосовых каналов в этой категории",
-      "Список по названию трибунных каналов в этой категории",
+      "Категория управляема?",
+      "Категория может быть удалена?",
+      "Список каналов",
+      "Всего каналов",
+      "Список текстовых каналов",
+      "Всего текстовых каналов",
+      "Список голосовых каналов",
+      "Всего голосовых каналов",
+      "Список сценических каналов (трибун)",
+      "Всего сценических каналов (трибун)",
+      "Список тем каналов",
+      "Список по ID каналов",
+      "Список по ID текстовых каналов",
+      "Список по ID голосовых каналов",
+      "Список по ID сценических каналов",
+      "Список по названию каналов",
+      "Список по названию текстовых каналов",
+      "Список по названию голосовых каналов",
+      "Список по названию сценических каналов",
+      "Список участников по ID в голосовых каналах",
+      "Список участников в голосовых каналах",
+      "Всего участников в голосовых каналах",
     ];
     return `${categories[parseInt(data.category, 10)]} - ${info[parseInt(data.info, 10)]}`;
   },
 
   variableStorage(data, varType) {
     if (parseInt(data.storage, 10) !== varType) return;
-    let dataType = 'Unknown Type';
+    let dataType = 'Desconhecido';
     switch (parseInt(data.info, 10)) {
-      case 0:
-  dataType = 'Category ID';
-        break;
-      case 1:
-  dataType = 'Text';
-        break;
-      case 2:
-  dataType = 'Server';
-        break;
-      case 3:
-      case 7:
-      case 9:
-      case 11:
-  dataType = 'Number';
-        break;
-      case 4:
-      case 5:
-  dataType = 'Boolean';
-        break;
-      case 6:
-  dataType = 'List';
-        break;
-        case 7:
-    dataType = 'Number';
-          break;
-          case 8:
-dataType = 'List';
-            break;
-            case 9:
-  dataType = 'Number';
-              break;
-              case 10:
-dataType = 'List';
-                break;
-                case 11:
-dataType = 'Number';
-                  break;
-                  case 12:
-dataType = 'List';
-                    break;
-                    case 13:
-dataType = 'Number';
-                      break;
-                      case 14:
-dataType = 'List';
+case 0:
+dataType = 'ID категории';
+break;
+case 1:
+dataType = 'Текст';
+break;
+case 2:
+dataType = 'Сервер';
+break;
+case 3:
+case 7:
+case 9:
+case 11:
+dataType = 'Число';
+break;
+case 4:
+case 5:
+dataType = 'Boolean';
+break;
+case 6:
+dataType = 'Список';
+break;
+case 7:
+dataType = 'Число';
+break;
+case 8:
+dataType = 'Список';
+break;
+case 9:
+dataType = 'Число';
+break;
+case 10:
+dataType = 'Список';
+break;
+case 11:
+dataType = 'Число';
+break;
+case 12:
+dataType = 'Список';
+break;
+case 13:
+dataType = 'Число';
+break;
+case 14:
+dataType = 'Список';
 break;
 case 15:
-dataType = 'List';
+dataType = 'Список';
 break;
 case 16:
-dataType = 'List';
+dataType = 'Список';
 break;
 case 17:
-dataType = 'List';
+dataType = 'Список';
 break;
 case 18:
-dataType = 'List';
+dataType = 'Список';
 break;
 case 19:
-dataType = 'List';
+dataType = 'Список';
 break;
 case 20:
-dataType = 'List';
+dataType = 'Список';
 break;
 case 21:
-dataType = 'List';
+dataType = 'Список';
 break;
 case 22:
-dataType = 'List';
+dataType = 'Список';
 break;
-
-        break;
+case 23:
+dataType = 'Список';
+break;
+case 24:
+dataType = 'Список';
+break;
+case 25:
+dataType = 'Число';
+break;
       default:
         break;
     }
@@ -125,11 +135,11 @@ break;
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.5</div>
+    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.6</div>
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 <div>
 <div style="float: left; width: 35%;">
-  <span class="dbminputlabel">Категория источника</span><br>
+  <span class="dbminputlabel">Категория</span><br>
     <select id="category" class="round" onchange="glob.refreshVariableList(this)">
       ${data.variables[1]}
     </select>
@@ -141,35 +151,38 @@ break;
 </div><br><br><br>
 <div>
   <div style="padding-top: 8px; width: 100%;">
-  <span class="dbminputlabel">Сведения об источнике</span><br>
+  <span class="dbminputlabel">Исходные данные</span><br>
     <select id="info" class="round">
-      <optgroup label="Основное">
-      <option value="0">ID Категории</option>
+      <optgroup label="Основные">
+      <option value="0">ID категории</option>
       <option value="1">Название категории</option>
-      <option value="2">Категория сервера</option>
+      <option value="2">Сервер категории</option>
       <option value="3">Позиция категории</option>
-      <option value="4">Является ли категория управляемой?</option>
-      <option value="5">Можно ли удалить категорию?</option>
+      <option value="4">Категория управляема?</option>
+      <option value="5">Категория может быть удалена?</option>
       </optgroup>
-      <optgroup label="Общий">
-      <option value="7">Всего каналов в этой категории</option>
-      <option value="9">Всего текстовых каналов в этой категории</option>
-      <option value="11">Всего голосовых каналов в этой категории</option>
-      <option value="13">Всего трибунных каналов в этой категории</option>
+      <optgroup label="Итого">
+      <option value="7">Всего каналов</option>
+      <option value="9">Всего текстовых каналов</option>
+      <option value="11">Всего голосовых каналов</option>
+      <option value="13">Всего сценических каналов (трибуны)</option>
+      <option value="25">Всего участников в голосовых каналах</option>
       <optgroup label="Списки">
-      <option value="6">Список всех каналов в этой категории</option>
-      <option value="8">Список текстовых каналов в этой категории</option>
-      <option value="10">Список голосовых каналов в этой категории</option>
-      <option value="12">Список трибунных каналов в этой категории</option>
-      <option value="14">Список тем канала в этой категории</option>
-      <option value="15">Список по ID канала в этой категории</option>
-      <option value="16">Список по ID текстовых каналов в этой категории</option>
-      <option value="17">Список по ID голосовых каналов в этой категории</option>
-      <option value="18">Список по ID трибунных каналов в этой категории</option>
-      <option value="19">Список по названию канала в этой категории</option>
-      <option value="20">Список по названию текстовых каналов в этой категории</option>
-      <option value="21">Список по названию голосовых каналов в этой категории</option>
-      <option value="22">Список по названию трибунных каналов в этой категории</option>
+      <option value="6">Список каналов</option>
+      <option value="8">Список текстовых каналов</option>
+      <option value="10">Список голосовых каналов</option>
+      <option value="12">Список сценических каналов</option>
+      <option value="14">Список тем каналов</option>
+      <option value="15">Список по ID каналов</option>
+      <option value="16">Список по ID текстовых каналов</option>
+      <option value="17">Список по ID голосовых каналов</option>
+      <option value="18">Список по ID сценических каналов</option>
+      <option value="19">Список по названию каналов</option>
+      <option value="20">Список по названию текстовых каналов</option>
+      <option value="21">Список по названию голосовых каналов</option>
+      <option value="22">Список по названию сценических каналов</option>
+      <option value="23">Список участников по ID в голосовых каналах</option>
+      <option value="24">Список участников в голосовых каналах</options>
     </select>
   </div>
 </div><br>
@@ -184,42 +197,7 @@ break;
   <span class="dbminputlabel">Имя переменной</span><br>
     <input id="varName2" class="round" type="text"><br>
   </div>
-</div>
-<style>
-  div.embed { /* <div class="embed"></div> */
-    position: relative;
-  }
-
-  embedleftline { /* <embedleftline></embedleftline> OR if you want to change the Color: <embedleftline style="background-color: #HEXCODE;"></embedleftline> */
-    background-color: #eee;
-    width: 4px;
-    border-radius: 3px 0 0 3px;
-    border: 0;
-    height: 100%;
-    margin-left: 4px;
-    position: absolute;
-  }
-
-  div.embedinfo { /* <div class="embedinfo"></div> */
-    background: rgba(46,48,54,.45) fixed;
-    border: 1px solid hsla(0,0%,80%,.3);
-    padding: 10px;
-    margin:0 4px 0 7px;
-    border-radius: 0 3px 3px 0;
-  }
-
-  span.embed-auth { /* <span class="embed-auth"></span> (Title thing) */
-    color: rgb(255, 255, 255);
-  }
-
-  span.embed-desc { /* <span class="embed-desc"></span> (Description thing) */
-    color: rgb(128, 128, 128);
-  }
-
-  span { /* Only making the text look, nice! */
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-</style>`;
+</div>`;
   },
 
   init() {
@@ -318,6 +296,24 @@ break;
                         case 22:
                           result = targetCategory.children.filter((c) => ['GUILD_STAGE_VOICE'].includes(c.type)).map(channels => channels.name);
                        break;
+                       case 23:
+                        str = targetCategory.children.filter((c) => ['GUILD_VOICE'].includes(c.type)).map(c => c.members.map(member => member.user.id + ',').join('')).join('');
+        result = str.substring(0, str.length - 1).split(new RegExp(","));
+        break;
+        case 24:
+          let channels = targetCategory.children.filter((c) => ['GUILD_VOICE'].includes(c.type))
+          let members = new Array();
+  
+          for (const [channelID, channel] of channels) {
+            for (const [memberID, member] of channel.members) {
+              members.push(member);
+            }
+          }
+          result = members;
+          break;
+           case 25:
+            result = targetCategory.children.filter((c) => ['GUILD_VOICE'].includes(c.type)).map(c => c.members.size).reduce((s, a) => s + a, 0);
+
       default:
         break;
     }

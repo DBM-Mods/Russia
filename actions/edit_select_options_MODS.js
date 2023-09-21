@@ -4,7 +4,7 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]',
+    author: '[xinxyla - 172782058396057602]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
@@ -22,12 +22,12 @@ module.exports = {
 
     return data.description
   ? `<font style="color:${desccor}">${data.description}</font>`
-  : (data.acao == 0 || data.acao == 1) ? `<font style="color:${desccor}">Добавить ${data.branches.length == 1 ? data.branches.length + " вариант" : data.branches.length + " варианты"}</font>` : `Использование списка имен "${list1[parseInt(data.listanome, 10)]}" и варианты "${list2[parseInt(data.listavalor, 10)]}"`;
+  : (data.acao == 0 || data.acao == 1) ? `<font style="color:${desccor}">Добавить ${data.branches.length == 1 ? data.branches.length + " элемент" : data.branches.length + " вариантов"}</font>` : `Использование списка с именем "${list1[parseInt(data.listanome, 10)]}" и значением "${list2[parseInt(data.listavalor, 10)]}"`;
   },
 
   variableStorage(data, varType) {
     if (parseInt(data.errs, 10) !== varType) return;
-    return [data.errv, "Текст ~ Ошибка"];
+    return [data.errv, "Texto ~ Erro"];
   },
 
 
@@ -37,53 +37,53 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.4</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.5</div>
     <tab-system>
 
-    <tab label="Варианты" icon="wizard">
+    <tab label="Опции" icon="wizard">
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
     <div id="xinxylaacao1">
-    <dialog-list id="branches" fields='["label", "description", "value", "emoji", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Вариант" dialogWidth="600" dialogHeight="400" listLabel="Варианты" listStyle="height: calc(100vh - 280px);" itemName="Item" itemHeight="28px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 28px;">
+    <dialog-list id="branches" fields='["label", "description", "value", "emoji", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Опция" dialogWidth="600" dialogHeight="400" listLabel="Опции" listStyle="height: calc(100vh - 280px);" itemName="Пункт" itemHeight="28px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 28px;">
     <div style="padding: 16px;background:rgba(0,0,0,0.3)">
     <span class="dbminputlabel">Exibir</span><br>
     <select id="formula" class="round">
-    <option value="0" selected>Всегда отображать / игнорировать сравнения ниже</option>
-    <option value="1">Отображать, если получено значение False</option>
-    <option value="2">Отображать, если получено значение True</option>
+    <option value="0" selected>Всегда отображать опцию</option>
+    <option value="1">Отобразить опцию, если получено значение False</option>
+    <option value="2">Отобразить опцию, если получено значение True</option>
   </select>
   <br>
      <table style="width:100%"><tr><td>
-       <span class="dbminputlabel">Значение А</span><br>
+       <span class="dbminputlabel">Значение A</span><br>
        <input id="val1" class="round" type="text">
        </td>
        <td>
-       <span class="dbminputlabel">Сравнения</span><br>
+       <span class="dbminputlabel">Сравнение</span><br>
        <select id="comparar" class="round">
        <option value="0">Значение A - существует</option>
        <option value="1" selected>Равно</option>
-       <option value="2">Точно так же</option>
+       <option value="2">Точно равно</option>
        <option value="3">Меньше чем</option>
        <option value="13">Меньше или равно</option>
-       <option value="4">Больше тогда</option>
+       <option value="4">Больше чем</option>
        <option value="12">Больше или равно</option>
-       <option value="5">Включают</option>
+       <option value="5">Содержит</option>
        <option value="6">Соответствует регулярному выражению</option>
-       <option value="14">Соответствует полному регулярному выражению</option>
-       <option value="7">Длина больше, чем</option>
-       <option value="8">Длина меньше, чем</option>
+       <option value="14">Полное соответствие регулярному выражению</option>
+       <option value="7">Длина больше</option>
+       <option value="8">Длина меньше</option>
        <option value="9">Длина равна</option>
        <option value="10">Начинается с</option>
-       <option value="11">Заканчивается</option>
-       <option value="16">Значение А имеет акценты?</option>
-       <option value="17">Включает слова  ["a" , "b" , "c"]</option>
-       <option value="18">Равны словам  ["a" , "b" , "c"]</option>
-       <option value="19">Значение A - это чётное число?</option>
-       <option value="20">Значение A - это нечетное число?</option>
-       <option value="21">Значение A является числом?</option>
-       <option value="24">Значение A - это текст?</option>
-       <option value="23">Значение A - это URL -адрес изображения?</option>
-       <option value="25">Значение A - это URL?</option>
+       <option value="11">Заканчивается на</option>
+       <option value="16">Значение A содержит акценты?</option>
+       <option value="17">Содержит слова ["a", "b", "c"]</option>
+       <option value="18">Равно словам ["a", "b", "c"]</option>
+       <option value="19">Значение A - четное число?</option>
+       <option value="20">Значение A - нечетное число?</option>
+       <option value="21">Значение A - число?</option>
+       <option value="24">Значение A - текст?</option>
+       <option value="23">Значение A - URL изображения?</option>
+       <option value="25">Значение A - URL?</option>
      </select>
       </td>
        <td>
@@ -101,17 +101,17 @@ module.exports = {
 
         <br>
 
-        <span class="dbminputlabel">Значение ~ не может быть повторено</span>
-        <input id="value" placeholder="Передано во временную переменную..." class="round" type="text">
+        <span class="dbminputlabel">Значение ~ Не должно повторяться</span>
+        <input id="value" placeholder="Передаётся во Временную Переменную..." class="round" type="text">
       </div>
       <div style="float: right; width: calc(50% - 12px);">
         <span class="dbminputlabel">Описание</span>
-        <input id="description" placeholder="Оставьте пустым, чтобы не использовалось!" class="round" type="text">
+        <input id="description" placeholder="Не обязательное поле" class="round" type="text">
 
         <br>
 
         <span class="dbminputlabel">Эмодзи</span>
-        <input id="emoji" placeholder="Оставьте пустым, чтобы не использовалось!" class="round" type="text">
+        <input id="emoji" placeholder="Не обязательное поле" class="round" type="text">
       </div>
 
       <br><br>
@@ -123,7 +123,7 @@ module.exports = {
 <div id="xinxylaacao2">
 
       <table><tr><td class="col">
-     <span class="dbminputlabel">Список ~ Имя</span><br>
+     <span class="dbminputlabel">Список ~ Название</span><br>
       <select id="listanome" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer10')">
         ${data.lists[isEvent ? 1 : 0]}
       </select>
@@ -151,7 +151,7 @@ module.exports = {
      <xinspace2>
 
      <table><tr><td class="col">
-     <span class="dbminputlabel">Список ~ Описание</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="ondesc" label="Актив"></dbm-checkbox></div><br>
+     <span class="dbminputlabel">Список ~ Описание</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="ondesc" label="Ativar"></dbm-checkbox></div><br>
       <select id="listadesc" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer30')">
         ${data.lists[isEvent ? 1 : 0]}
       </select>
@@ -165,7 +165,7 @@ module.exports = {
     <xinspace2>
 
     <table><tr><td class="col">
-    <span class="dbminputlabel">Список ~ Эмодзи</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="onemoji" label="Актив"></dbm-checkbox></div><br>
+    <span class="dbminputlabel">Список ~ Эмодзи</span><div style="float:right;margin-top:-5px"><dbm-checkbox id="onemoji" label="Ativar"></dbm-checkbox></div><br>
      <select id="listaemoji" class="round" value="7" onchange="glob.listChange(this, 'varNameContainer40')">
        ${data.lists[isEvent ? 1 : 0]}
      </select>
@@ -183,7 +183,7 @@ module.exports = {
    <input id="pagina" class="round" type="text" value="1">
    </td>
    <td class="col">
-   <span class="dbminputlabel">Варианты на странице</span><br>
+   <span class="dbminputlabel">Опций на Странице</span><br>
    <input id="porpag" class="round" type="text" value="25">
    </td></tr></table>
 
@@ -195,22 +195,22 @@ module.exports = {
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
 
-    <message-input dropdownLabel="Исходное сообщение" selectId="message" variableContainerId="varNameContainer" variableInputId="messageVarName"></message-input>
+    <message-input dropdownLabel="Сообщение" selectId="message" variableContainerId="varNameContainer" variableInputId="messageVarName"></message-input>
 
 <br><br><br><xinspace>
 
 <div style="float: left; width: calc(50% - 12px);">
-  <span class="dbminputlabel">Компоненты для редактирования</span><br>
+  <span class="dbminputlabel">Компоненты для Редактирования</span><br>
   <select id="type" class="round" onchange="glob.onButtonSelectTypeChange(this)">
-    <option value="allSelects">Все меню выбора</option>
-    <option value="sourceSelect" selected>Источник меню выбора</option>
-    <option value="findSelect">Выбранный меню выбора</option>
+    <option value="allSelects">Все выпадающие меню</option>
+    <option value="sourceSelect" selected>Исходное  меню</option>
+    <option value="findSelect">Конкретное  меню</option>
   </select>
 </div>
 
 <div style="float: right; width: calc(50% - 12px);">
   <div id="nameContainer">
-    <span class="dbminputlabel">Меню выбора перменная/ид</span><br>
+    <span class="dbminputlabel">Имя/ID меню</span><br>
     <input id="searchValue" class="round" type="text">
   </div>
 </div>
@@ -219,41 +219,41 @@ module.exports = {
 
 <span class="dbminputlabel">Действие</span><br>
 <select id="acao" class="round" onchange="glob.onComparisonChanged3(this)">
-  <option value="0" selected>Добавить параметры в меню</option>
-  <option value="1">Использовать только параметры в меню</option>
-  <option value="2">Добавить параметры в меню через списки</option>
-  <option value="3">Использовать только параметры в меню через списки</option>
+  <option value="0" selected>Добавить варианты в меню</option>
+  <option value="1">Использовать только варианты в меню</option>
+  <option value="2">Добавить варианты в меню через списки</option>
+  <option value="3">Использовать только варианты в меню через списки</option>
 </select>
 
 <br>
 
-<span class="dbminputlabel">Выберите источник меню</span><br>
-<input id="newname" class="round" placeholder="Оставьте пустым, чтобы не менять" type="text">
+<span class="dbminputlabel">Изменить имя меню</span><br>
+<input id="newname" class="round" placeholder="Не обязательное поле" type="text">
 
 <br>
 
 </div>
     </tab>
 
-    <tab label="Конфиг" icon="cogs">
+    <tab label="Конфигурация" icon="cogs">
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
     <table style="width:100%;"><tr>
-    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
     <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
     </tr></table>
     </div>
   
 
 <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-<dbm-checkbox id="errcmd" label="Отображение ошибки в консоли" checked></dbm-checkbox>
+<dbm-checkbox id="errcmd" label="Отображать ошибку в консоли" checked></dbm-checkbox>
 </div>
 
 <div style="padding-top:8px">
       <table>
         <tr>
-        <td class="col1"><span class="dbminputlabel">Ошибка в</span><br>
+        <td class="col1"><span class="dbminputlabel">Хранить ошибку</span><br>
         <select id="errs" value="0" class="round" onchange="glob.variableChange(this, 'varerrsv')">
           ${data.variables[0]}
         </select></td>
@@ -267,19 +267,19 @@ module.exports = {
       
 <div>
 <div style="float: left; width: 38%" id="xinext">
-<span class="dbminputlabel">Если возникает ошибка</span><br>
+<span class="dbminputlabel">При ошибке</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
 <option value="0" selected>Продолжить действия</option>
 <option value="1">Остановить последовательность действий</option>
 <option value="2">Перейти к действию</option>
-<option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к якорю действий</option>
-<option value="5">Выполнять действия ниже и останавиться</option>
-<option value="6">Выполнять действия ниже и продолжать</option>
+<option value="3">Пропустить действия</option>
+<option value="4">Перейти к якорю</option>
+<option value="5">Выполнить действия и остановиться</option>
+<option value="6">Выполнить действия и продолжить</option>
 </select>
 <br>
 </div>
-<div id="iffalseContainer" style="display: none; float: right; width: 60%;"><div id="xincontrol"><span id="xinelas" class="dbminputlabel">Для</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
+<div id="iffalseContainer" style="display: none; float: right; width: 60%;"><div id="xincontrol"><span id="xinelas" class="dbminputlabel">Para</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
 </div><br></div>
 <div id="containerxin" style="width:100%">
 <br><br>
@@ -321,7 +321,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -335,7 +335,7 @@ module.exports = {
     glob.onButtonSelectTypeChange(document.getElementById("type"));
     
     glob.formatItem = function (data) {
-      let result = `<table style="width:100%"><tr><td style="width:6%">${data.emoji}</td><td style="width:47%">Имя: ${data.label}</td><td style="width:47%">Значение: ${data.value}</td></tr></table>`;
+      let result = `<table style="width:100%"><tr><td style="width:6%">${data.emoji}</td><td style="width:47%">Название: ${data.label}</td><td style="width:47%">Значение: ${data.value}</td></tr></table>`;
       return result;
     };
 
@@ -358,10 +358,10 @@ module.exports = {
         document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
       }
       if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
+        document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
       }
       if (event.value == "4") {
-        document.querySelector("[id='xinelas']").innerText = (`Якоря название`);
+        document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
       }
     }
 
@@ -392,9 +392,13 @@ module.exports = {
     const type = data.type;
 
     let sourceSelect = null;
+    try{
+      if(cache.interaction == null || cache.interaction == "null" || cache.interaction == undefined || cache.interaction == "undefined"){
+      } else {
     if (cache.interaction.isSelectMenu()) {
       sourceSelect = cache.interaction.customId;
     }
+  }
 
 
 
@@ -641,7 +645,7 @@ module.exports = {
           .catch((err) => {
             
             if (data.errcmd === true) {
-              console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name)
+              console.log('Ошибка: ' + cache.toString() + ' - Действие ' + (cache.index + 1) + '# ' + data.name)
               console.log(err)
             }
 
@@ -669,6 +673,27 @@ module.exports = {
     } else {
       this.callNextAction(cache);
     }
+
+  } catch(err){
+    if (data.errcmd === true) {
+      console.log('Ошибка: ' + cache.toString() + ' - Действие ' + (cache.index + 1) + '# ' + data.name)
+      console.log(err)
+    }
+
+    this.storeValue(err, parseFloat(data.errs), this.evalMessage(data.errv, cache), cache)
+
+    if (data.iffalse == "5" || data.iffalse == "6") {
+
+      if (data.iffalse == "5") {
+        this.executeSubActions(data.actionserr, cache)
+      } else {
+        this.executeSubActionsThenNextAction(data.actionserr, cache)
+      }
+
+    } else {
+      this.executeResults(false, data, cache);
+    }
+  }
   },
 
 

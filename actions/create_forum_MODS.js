@@ -27,7 +27,7 @@ module.exports = {
   variableStorage(data, varType) {
     const type = parseInt(data.storage, 10);
     if (type !== varType) return;
-    return [data.varName, "Channel"];
+    return [data.varName, "Канал"];
   },
 
 
@@ -37,14 +37,14 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
     <div style="width: 100%; padding:5px 5px;height: calc(100vh - 170px);overflow:auto">
 
     <tab-system style="margin-top: 0;">
 
-		<tab label="Общий" icon="align left">
+		<tab label="Основное" icon="align left">
 				<div style="padding:8px">
 
         <span class="dbminputlabel">Имя</span><br>
@@ -53,12 +53,12 @@ module.exports = {
 <br>
 
 <table><tr><td class="sep3">
-<span class="dbminputlabel">Идентификатор категории</span><br>
-<input id= "categoryID" class="round" type="text" placeholder="Оставьте пустым, если не относится к категории">
+<span class="dbminputlabel">ID категории</span><br>
+<input id= "categoryID" class="round" type="text" placeholder="Не обязательное поле">
 </td>
 <td class="sep4">
 <span class="dbminputlabel">Позиция</span><br>
-<input id="position" class="round" type="text" placeholder="Оставьте пустым для стандарта">
+<input id="position" class="round" type="text" placeholder="Не обязательное поле">
 </td></tr></table>
 
 
@@ -77,16 +77,16 @@ module.exports = {
         <tab label="Теги" icon="tags">
 				<div style="width: 100%; padding:8px;height: calc(100vh - 220px);overflow:auto">
 
-        <dialog-list id="tags" fields='["name", "moderated", "emoji", "val1", "val2", "comparar", "formula"]' dialogTitle="Информацию о теге" dialogResizable dialogWidth="540" dialogHeight="500" listLabel="Теги" listStyle="height: calc(100vh - 280px);" itemName="Field" itemCols="1" itemHeight="25px;" itemTextFunction="'<table style=width:100%><tr><td style=width:50%>Имя: ' + data.name + '</td></tr></table>'" itemStyle="text-align: left; line-height: 25px;">
+        <dialog-list id="tags" fields='["name", "moderated", "emoji", "val1", "val2", "comparar", "formula"]' dialogTitle="Информация о ТЕГе" dialogResizable dialogWidth="540" dialogHeight="500" listLabel="ТЕГи" listStyle="height: calc(100vh - 280px);" itemName="Field" itemCols="1" itemHeight="25px;" itemTextFunction="'<table style=width:100%><tr><td style=width:50%>Тег: ' + data.name + '</td></tr></table>'" itemStyle="text-align: left; line-height: 25px;">
         <div style="height: calc(100vh - 60px);overflow:auto">
 
 <div style="padding: 16px;background:rgba(0,0,0,0.3)">
 
-<span class="dbminputlabel">Отображение тега</span><br>
+<span class="dbminputlabel">Конфигурация отображения тега</span><br>
 <select id="formula" class="round">
-<option value="0" selected>Установить тег / Игнорируйте сравнения ниже</option>
-<option value="1">Установить тег только в том случае если получено значение False</option>
-<option value="2">Установить тег только в том случае если получено значение True</option>
+<option value="0" selected>Всегда отображать тег</option>
+<option value="1">Отобразить тег, если получено значение False</option>
+<option value="2">Отобразить эмбед, если получено значение True</option>
 </select>
 
 <br>
@@ -98,54 +98,54 @@ module.exports = {
     <input id="val1" class="round" type="text">
   </td>
   <td style="width:33%;padding:0px 6px 0px 6px">
-  <span class="dbminputlabel">Сравнения</span><br>
-  <select id="comparar" class="round">
-  <optgroup label="Номер или текст">
-    <option value="0">Существует</option>
-    <option value="1" selected>Равно</option>
-    <option value="2">Точно так же</option>
-  </optgroup>
-  <optgroup label="Число">
-    <option value="3">Меньше чем</option>
-    <option value="13">Меньше или равно</option>
-    <option value="4">Больше тогда</option>
-    <option value="12">Больше или равно</option>
-    <option value="19">Это четное число?</option>
-    <option value="20">Это нечетное число?</option>
-    <option value="21">Это число?</option>
-  </optgroup>
-  <optgroup label="Текст">
-    <option value="6">Соответствует регулярному выражению</option>
-    <option value="14">Соответствует полному регулярному выражению</option>
-    <option value="7">Длина больше, чем</option>
-    <option value="8">Длина меньше, чем</option>
-    <option value="9">Длина равена</option>
-    <option value="10">Начинается с</option>
-    <option value="11">Заканчивается</option>
-    <option value="16">Есть ли у него акценты?</option>
-    <option value="18">Равны словам  ["a" , "b" , "c"]</option>
-    <option value="24">Это текст?</option>
-    <option value="23">Это URL адрес изображения?</option>
-    <option value="25">Это URL?</option>
-    <option value="26">Электронная почта существует?</option>
-  </optgroup>
-  <optgroup label="Текст ~ включает">
-    <option value="5">Включает в себя точно</option>
-    <option value="29">Включает ~ Игнорировать Нижний/Верхний Регистр</option>
-    <option value="30">Включает ~ Игнорировать акценты</option>
-    <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
-    <option value="17">Включает точно ["a" , "b" , "c"]</option>
-    <option value="27">Включает URL?</option>
-    <option value="28">Включите приглашение от Discord?</option>
-    <option value="32">Включает именно это слово</option>
-    <option value="33">Включает слово ~ игнорировать нижний/верхний регистр</option>
-    <option value="34">Включает слово ~ игнорировать ударения</option>
-    <option value="35">Включает слово ~ игнорировать акцентуации & строчные и заглавные</option>
-    <option value="36">Включает слова ~ используйте девственницы ~ игнорировать акцентуации & в Нижнем и верхнем регистре</option>
-  </optgroup>
-  <optgroup label="Другие">
-    <option value="22">Это список?</option>
-    </optgroup>
+    <span class="dbminputlabel">Сравнение</span><br>
+    <select id="comparar" class="round">
+      <optgroup label="Число или Текст">
+        <option value="0">Значение A - Существует</option>
+        <option value="1" selected>Равно</option>
+        <option value="2">Точно равно</option>
+      </optgroup>
+      <optgroup label="Число">
+        <option value="3">Меньше чем</option>
+        <option value="13">Меньше или равно</option>
+        <option value="4">Больше чем</option>
+        <option value="12">Больше или равно</option>
+        <option value="19">Значение A - Четное число?</option>
+        <option value="20">Значение A - Нечетное число?</option>
+        <option value="21">Значение A - Это число?</option>
+      </optgroup>
+      <optgroup label="Текст">
+        <option value="6">Соответствует регулярному выражению</option>
+        <option value="14">Соответствует полному регулярному выражению</option>
+        <option value="7">Длина больше чем</option>
+        <option value="8">Длина меньше чем</option>
+        <option value="9">Длина равна</option>
+        <option value="10">Начинается с</option>
+        <option value="11">Заканчивается на</option>
+        <option value="16">Содержит акценты?</option>
+        <option value="18">Равно словам ["a", "b", "c"]</option>
+        <option value="24">Является текстом?</option>
+        <option value="23">Является URL изображением?</option>
+        <option value="25">Является URL?</option>
+        <option value="26">Существует почта?</option>
+      </optgroup>
+      <optgroup label="Текст ~ Включает">
+        <option value="5">Точно включает</option>
+        <option value="29">Включает ~ Регистронезависимо</option>
+        <option value="30">Включает ~ Без учета акцентов</option>
+        <option value="31">Включает ~ Без учета акцентов и регистра</option>
+        <option value="17">Точное включение ["a", "b", "c"]</option>
+        <option value="27">Включает URL?</option>
+        <option value="28">Включает приглашение Discord?</option>
+        <option value="32">Точное включение слова</option>
+        <option value="33">Включает слово ~ Регистронезависимо</option>
+        <option value="34">Включает слово ~ Без учета акцентов</option>
+        <option value="35">Включает слово ~ Без учета акцентов и регистра</option>
+        <option value="36">Включает слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
+      </optgroup>
+      <optgroup label="Другое">
+        <option value="22">Значение A - Список?</option>
+      </optgroup>
     </select>
   </td>
   <td style="width:33%;">
@@ -168,15 +168,15 @@ module.exports = {
   <br>
 
   <div>
-  <span class="dbminputlabel">Разрешить применение тега только модераторам [true/false]</span><br>
+  <span class="dbminputlabel">Разрешить только модераторам применять теги [true/false]</span><br>
   <input id="moderated" class="round" type="text" value="false">
 </div>
 
 <br>
 
 <div>
-<span class="dbminputlabel">Emoji или пользовательский идентификатор emoji</span><br>
-<input id="emoji" class="round" type="text" placeholder="Оставьте пустым, чтобы не ставить">
+<span class="dbminputlabel">Эмодзи</span><br>
+<input id="emoji" class="round" type="text" placeholder="Не обязательное поле">
 </div>
 
   </div>
@@ -186,35 +186,35 @@ module.exports = {
         </div>
         </tab>
 
-		<tab label="Конфиг" icon="cogs">
+		<tab label="Конфигурация" icon="cogs">
 				<div style="width: 100%; padding:8px;height: calc(100vh - 220px);overflow:auto">
 
         <div>
         <table style="width:100%;"><tr>
-        <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+        <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное действие"></td>
         <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
         </tr></table>
         </div>
 
         <br> 
 
-        <span class="dbminputlabel">Медленный режим публикации</span><br>
-        <input id="slowmodepost" class="round" type="text" placeholder="Оставьте пустым, чтобы не использовалось!">
+        <span class="dbminputlabel">Медленный режим сообщений</span><br>
+        <input id="slowmodepost" class="round" type="text" placeholder="Не обязательное поле">
         
         <br>
 
-        <span class="dbminputlabel">Возрастное ограничение [true/false]</span><br>
+        <span class="dbminputlabel">Возрастное ограничение (NSFW?) [true/false]</span><br>
         <input id="nsfw" class="round" type="text" value="false">
         
         <br>
 
-        <span class="dbminputlabel">Эмодзи по умолчанию или пользовательский идентификатор эмодзи</span><br>
-        <input id="emoji" class="round" type="text" value="" placeholder="Оставьте пустым, чтобы отключить">
+        <span class="dbminputlabel">Эмодзи</span><br>
+        <input id="emoji" class="round" type="text" value="" placeholder="Не обязательное поле">
         
         <br>
         
         <span class="dbminputlabel">Причина</span><br>
-        <input id="reason" placeholder="Дополнительно" class="round" type="text">
+        <input id="reason" placeholder="Не обязательное поле" class="round" type="text">
         
         <br>
 
@@ -234,11 +234,11 @@ module.exports = {
         </div>
         </tab>
 
-        <tab label="Ошибка" icon="align left">
+        <tab label="Ошибки" icon="align left">
 				<div style="padding:8px">
         
         <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-        <dbm-checkbox id="errcmd" label="Выводить ли ошибку в консоль" checked></dbm-checkbox>
+        <dbm-checkbox id="errcmd" label="Отображать ошибку в консоль" checked></dbm-checkbox>
         </div>
 
         <br>
@@ -246,7 +246,7 @@ module.exports = {
         <div style="padding-top:8px">
         <table>
           <tr>
-          <td class="col1"><span class="dbminputlabel">Сохрнаить ошибку в</span><br>
+          <td class="col1"><span class="dbminputlabel">Хранить ошибку</span><br>
           <select id="errs" value="0" class="round" onchange="glob.variableChanged(this, 'varerrsv')">
             ${data.variables[0]}
           </select></td>
@@ -260,14 +260,14 @@ module.exports = {
         
         <div style="overflow:hidden"><xinspace>
         <div style="float: left; width: 38%" id="xinext">
-        <span class="dbminputlabel">Если не создался</span><br>
+        <span class="dbminputlabel">Если не создано</span><br>
         <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
         <option value="0" selected>Продолжить действия</option>
         <option value="1">Остановить последовательность действий</option>
         <option value="2">Перейти к действию</option>
-        <option value="3">Пропустить следующие действия</option>
-        <option value="4">Перейти к якорю действия</option>
-        <option value="5">Выполнение действий и остановить</option>
+        <option value="3">Пропустить действия</option>
+        <option value="4">Перейти к якорю</option>
+        <option value="5">Выполнить действия и остановиться</option>
         <option value="6">Выполнить действия и продолжить</option>
         </select>
         </div>
@@ -361,13 +361,13 @@ xinspace{padding:6px 0px 0px 0px;display:block}
         document.getElementById("xinext").style.width = "38%";
       }
       if (event.value == "2") {
-        document.querySelector("[id='xinelas']").innerText = (`Número da ação`);
+        document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
       }
       if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Pular ações`);
+        document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
       }
       if (event.value == "4") {
-        document.querySelector("[id='xinelas']").innerText = (`Nome da âncora`);
+        document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
       }
     }
 
@@ -381,7 +381,7 @@ xinspace{padding:6px 0px 0px 0px;display:block}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -623,7 +623,7 @@ xinspace{padding:6px 0px 0px 0px;display:block}
     catch (error) {
 
       if (data.errcmd === true) {
-        console.log('ERROR: ' + cache.toString() + ' - Action ' + (cache.index + 1) + '# ' + data.name)
+        console.log('Ошибка: ' + cache.toString() + ' - Действие ' + (cache.index + 1) + '# ' + data.name)
         console.log(error)
       }
 

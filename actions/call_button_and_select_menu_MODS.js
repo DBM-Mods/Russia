@@ -86,7 +86,7 @@ module.exports = {
 
         <tab-system>
 
-            <tab label="Кнопка и меню" icon="align left">
+            <tab label="Кнопка и Меню" icon="align left">
 
               <div style="overflow: auto; height: calc(100vh - 210px); padding: 5px;">
                 <span class="dbminputlabel">Тип вызова</span>
@@ -147,12 +147,12 @@ module.exports = {
 
                         <div id="divValue3">
                           <span class="dbminputlabel" style="float: left; margin-top: 5px;">Вариант</span>
-                          <input id="option" class="round" placeholder="Имя или значение варианта">
+                          <input id="option" class="round" placeholder="Имя или Значение варианта">
                         </div>
 
                         <div id="divValue4">
                           <span class="dbminputlabel" style="float: left; margin-top: 5px;">Вариант</span>
-                          <input id="option2" class="round" placeholder="Имя или значение варианта" name="is-eval">
+                          <input id="option2" class="round" placeholder="Имя или Значение варианта" name="is-eval">
                         </div>
                   
                       </div>
@@ -167,7 +167,7 @@ module.exports = {
 
             </tab>
 
-            <tab label="Конфиг" icon="cogs">
+            <tab label="Конфигурация" icon="cogs">
 
               <div style="overflow: auto; height: calc(100vh - 210px);">
                 <div id="flutuador" style="padding: 0px 0px 15px 0px; margin-top: 10px;">
@@ -175,7 +175,7 @@ module.exports = {
                     <td>
                         <span class="dbminputlabel">Описание действия</span>
                         <br>
-                        <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+                        <input type="text" class="round" id="description" placeholder="Не обязательное поле">
                     </td>
                     <td style="padding:0px 0px 0px 10px;width:70px">
                         <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -190,26 +190,26 @@ module.exports = {
                 <span class="dbminputlabel">Опции</span>
                 <br>
                 <div style="padding: 10px; background: rgba(0,0,0,0.2);">
-                  <dbm-checkbox id="errcmd" label="Отображение ошибки в консоли" checked></dbm-checkbox>
+                  <dbm-checkbox id="errcmd" label="Отобразить ошибку в консоли" checked></dbm-checkbox>
                 </div>
 
                 <br>
 
                 <div style="float: left; width: 40%">
-                    <span class="dbminputlabel">Если возникает ошибка</span>
+                    <span class="dbminputlabel">При ошибке</span>
                     <select id="iffalse" class="round" onchange="glob.change(this)">
-                        <option value="0" selected>Продолжать</option>
+                        <option value="0" selected>Продолжить действия</option>
                         <option value="1">Остановить последовательность действий</option>
                         <option value="2">Перейти к действию</option>
-                        <option value="3">Пропустить следующие действия</option>
-                        <option value="4">Перейти к якову действия</option>
-                        <option value="5">Выполнить действия и останавиться</option>
-                        <option value="99">Выполнять действия и продолжить</option>
+                        <option value="3">Пропустить действия</option>
+                        <option value="4">Перейти к якорю</option>
+                        <option value="5">Выполнить действия и остановиться</option>
+                        <option value="99">Выполнить действий и продолжить</option>
                     </select>
                 </div>
         
                 <div id="iffalseContainer" style="display: none; float: right; width: 55%;">
-                    <span id="xinelas" class="dbminputlabel">Для</span>
+                    <span id="xinelas" class="dbminputlabel">Para</span>
                     <br>
                     <input id="iffalseVal" class="round" name="actionxinxyla" type="text">
                 </div>
@@ -282,7 +282,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -376,18 +376,18 @@ module.exports = {
 
     const $tempButton = Mods.jsonPath(commands, '$..buttons[?(@.mode != "PERSISTENT")]');
     const $tempSelect = Mods.jsonPath(commands, '$..selectMenus[?(@.mode != "PERSISTENT")]');
-
+    
     const callType = Boolean(data.callType);
     const id = this.evalMessage(data.id, cache);
     const interaction = cache.interaction;
-
+    
     function erro(err) {
       if(data.errcmd) _this.displayError(data, cache, err);
 
       _this.storeValue(err, parseInt(data.storage), _this.evalMessage(data.varName, cache), cache);
 
       if(data.iffalse == "5") return _this.executeSubActions(data.actions, cache);
-      if(data.iffalse == "6") return _this.executeSubActionsThenNextAction(data.actions, cache);
+      if(data.iffalse == "99") return _this.executeSubActionsThenNextAction(data.actions, cache);
       
       return _this.executeResults(false, data, cache);
     }

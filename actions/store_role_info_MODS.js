@@ -9,40 +9,58 @@ module.exports = {
     author: '[XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
-    },
+  },
 
   subtitle(data, presets) {
     const info = [
-      "Объект роли",
-      "Идентификатор (ID) роли",
-      "Название роли",
-      "Цвет роли",
-      "Положение роли",
-      "Отметка времени (Timestamp) создания роли",
-      "Является ли роль упоминаемой?",
-      "Роль отделена от других?",
-      "Роль является управляемой?",
-      "Список участников роли",
-      "Дата создания роли",
-      "Список разрешений роли",
-      "Количество участников роли",
-      "Значок роли",
-      "Тег сообщения",
-      "Сервер роли",
-      "Идентификатор (ID) сервера роли",
-      "Роль редактируется?",
-      "Список идентификаторов (ID) участников роли",
-      "Список участников онлайн роли",
-      "Список участников офлайн роли",
-      "Список участников неактивных роли",
-      "Список участников не беспокоить роли",
-      "Количество участников онлайн роли",
-      "Количество участников офлайн роли",
-      "Количество участников неактивных роли",
-      "Количество участников не беспокоить роли",
+      "Объект Роли",
+      "ID Роли",
+      "Имя Роли",
+      "Цвет Роли",
+      "Позиция Роли",
+      "Временная метка создания Роли",
+      "Роль можно упомянуть?",
+      "Роль отделена от других",
+      "Роль управляема",
+      "Список участников Роли",
+      "Дата создания Роли",
+      "Список разрешений Роли",
+      "Количество участников Роли",
+      "Иконка Роли",
+      "Тег Роли",
+      "Сервер Роли",
+      "ID Сервера Роли",
+      "Роль можно редактировать?",
+      "Список ID участников Роли",
+      "Список онлайн-участников Роли",
+      "Список офлайн-участников Роли",
+      "Список отсутствующих участников Роли",
+      "Список занятых участников Роли",
+      "Всего онлайн-участников Роли",
+      "Всего офлайн-участников Роли",
+      "Всего отсутствующих участников Роли",
+      "Всего занятых участников Роли",
+      "Список имен участников Роли",
+      "Список аватарок участников Роли",
+      "Список участников с Ролью",
+      "Список ID людей с Ролью",
+      "Список имен людей с Ролью",
+      "Список аватарок людей с Ролью",
+      "Список ботов с Ролью",
+      "Список ID ботов с Ролью",
+      "Список имен ботов с Ролью",
+      "Список аватарок ботов с Ролью",
     ];
-    return `${presets.getRoleText(data.role, data.varName)} - ${info[parseInt(data.info, 10)]} для (${data.varName2})`;
-  },
+  if (data.descriptionx) {
+    desccor = data.descriptioncolor;
+  } else {
+    desccor = "none";
+  }
+
+  return data.description
+    ? `<font style="color:${desccor}">${data.description}</font>`
+    : `<font style="color:${desccor}">${presets.getRoleText(data.role, data.varName)} - ${info[parseInt(data.info, 10)]} для (${data.varName2})</font>`
+},
 
   variableStorage(data, varType) {
     const type = parseInt(data.storage, 10);
@@ -54,7 +72,7 @@ module.exports = {
         dataType = "Роль";
         break;
       case 1:
-        dataType = "Роль ID";
+        dataType = "ID роли";
         break;
       case 2:
         dataType = "Текст";
@@ -66,7 +84,7 @@ module.exports = {
         dataType = "Число";
         break;
       case 5:
-        dataType = "Отметка времени (Timestamp)";
+        dataType = "Timestamp";
         break;
       case 6:
       case 7:
@@ -76,10 +94,10 @@ module.exports = {
         dataType = "Boolean";
         break;
       case 9:
-        dataType = "Список участников";
+        dataType = "Список пользователей";
         break;
       case 10:
-        dataType = "Данные";
+        dataType = "Дата";
         break;
       case 11:
       case 12:
@@ -95,7 +113,7 @@ module.exports = {
         dataType = "Сервер";
         break;
       case 16:
-        dataType = "Сервер ID";
+        dataType = "ID сервера";
         break;
       case 17:
         dataType = "Boolean";
@@ -127,74 +145,261 @@ module.exports = {
       case 26:
         dataType = "Число";
         break;
+      case 27:
+        dataType = "Список";
+        break;
+      case 28:
+        dataType = "Список";
+        break;
+      case 29:
+        dataType = "Список";
+        break;
+      case 30:
+        dataType = "Список";
+        break;
+      case 31:
+        dataType = "Список";
+        break;
+      case 32:
+        dataType = "Список";
+        break;
+      case 33:
+        dataType = "Список";
+        break;
+      case 34:
+        dataType = "Список";
+        break;
+      case 35:
+        dataType = "Список";
+        break;
+      case 36:
+        dataType = "Список";
+        break;
     }
     return [data.varName2, dataType];
   },
 
 
-  fields: ["role", "varName", "info", "storage", "varName2"],
+  fields: ["role", "varName", "info", "storage", "varName2", "description", "descriptionx", "descriptioncolor"],
 
 
   html(isEvent, data) {
     return `
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;right:0px;z-index:999999">Версия 0.5</div>
-    <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.6</div>
+
+    <div style="width: 100%; padding:5px 0px;height: calc(100vh - 160px);overflow:auto">
+
+    <div id="flutuador" style="padding:0px 0px 15px 0px">
+    <table style="width:100%;"><tr>
+        <td>
+        <span class="dbminputlabel">Описание действия</span>
+        <br>
+        <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+        </td>
+        <td style="padding:0px 0px 0px 10px;width:70px">
+        <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
+            <dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox>
+        </div>
+        <br>
+        <input type="color" value="#ffffff" class="round" id="descriptioncolor">
+        </td>
+    </table>
+  </div>
+
 
 <role-input dropdownLabel="Роль" selectId="role" variableContainerId="varNameContainer" variableInputId="varName"></role-input>
 
 <br><br><br>
 
 <div style="padding-top: 8px;">
-	<span class="dbminputlabel">Информация об роли</span><br>
-	<select id="info" class="round">
-    <optgroup label="Информация о роли">
+	<span class="dbminputlabel">Информация о Роли</span><br>
+	<select id="info" class="round2">
+    <optgroup label="Информация о Роли">
 		<option value="0" selected>Роль - Объект</option>
-		<option value="1">ID роли</option>
-		<option value="2">Имя роли</option>
-		<option value="3">Цвет роли</option>
-		<option value="4">Положение роли</option>
-    <option value="14">Тег роли</option>
-    <option value="13">Значок роли</option>
-    <option value="12">Количество участников роли</option>
+    <option value="1">ID Роли</option>
+    <option value="2">Название Роли</option>
+    <option value="3">Цвет Роли</option>
+    <option value="4">Позиция Роли</option>
+    <option value="14">Тег Роли</option>
+    <option value="13">Иконка Роли</option>
     </optgroup>
-    <optgroup label="Условия роли">
-		<option value="6">Является ли роль упоминаемой?</option>
-		<option value="17">Роль редактируется?</option>
+    <optgroup label="Условия Роли">
+		<option value="6">Можно упомянуть Роль?</option>
+    <option value="17">Роль редактируема?</option>
     <option value="7">Роль отделена от других?</option>
-    <option value="8">Роль управляется ботом / интеграцией?</option>
+    <option value="8">Роль управляема ботом/интеграцией?</option>
     </optgroup>
-    <optgroup label="Даты роли">
-		<option value="5">Отметка времени (Timestamp) создания роли</option>
-    <option value="10">Дата создания роли</option>
+    <optgroup label="Дата Роли">
+		<option value="5">Метка времени создания Роли</option>
+    <option value="10">Дата создания Роли</option>
     </optgroup>
-    <optgroup label="Информация о роли сервера">
-    <option value="15">Сервер роли</option>
-    <option value="16">ID сервера роли</option>
+    <optgroup label="Информация о Роли">
+    <option value="15">Сервер Роли</option>
+    <option value="16">ID Сервера Роли</option>
     </optgroup>
-    <optgroup label="Информация о роли в списках">
-    <option value="9">Список участников должности</option>
-    <option value="18">Список идентификаторов (ID) участников роли</option>
-    <option value="11">Список разрешений роли</option>
-    <option value="19">Список участников онлайн роли</option>
-    <option value="20">Список участников офлайн роли</option>
-    <option value="21">Список участников неактивных роли</option>
-    <option value="22">Список участников не беспокоить роли</option>
-    <option value="23">Количество участников онлайн роли</option>
-    <option value="24">Количество участников офлайн роли</option>
-    <option value="25">Количество участников неактивных роли</option>
-    <option value="26">Количество участников не беспокоить роли</option>
+    <optgroup label="Счетчики Роли">
+    <option value="12">Количество участников Роли</option>
+    <option value="23">Общее количество онлайн участников Роли</option>
+    <option value="24">Общее количество офлайн участников Роли</option>
+    <option value="25">Общее количество отсутствующих участников Роли</option>
+    <option value="26">Общее количество занятых участников Роли</option>
+    </optgroup>
+    <optgroup label="Информация о Роли в списках">
+    <option value="9">Список участников Роли</option>
+    <option value="18">Список ID участников Роли</option>
+    <option value="27">Список имен участников Роли</option>
+    <option value="28">Список аватаров участников Роли</option>
+    <option value="11">Список разрешений Роли</option>
+    <option value="19">Список онлайн участников Роли</option>
+    <option value="20">Список офлайн участников Роли</option>
+    <option value="21">Список отсутствующих участников Роли</option>
+    <option value="22">Список занятых участников Роли</option>
+    <option value="29">Список людей в Роли</option>
+    <option value="30">Список ID людей в Роли</option>
+    <option value="31">Список имен людей в Роли</option>
+    <option value="32">Список аватаров людей в Роли</option>
+    <option value="33">Список ботов в Роли</option>
+    <option value="34">Список ID ботов в Роли</option>
+    <option value="35">Список имен ботов в Роли</option>
+    <option value="36">Список аватаров ботов в Роли</option>
     </optgroup>
 	</select>
+  <input type="text" id="filtrodoxinxyla" class="round" placeholder="Фильтр опций...">
 </div>
 
 <br>
 
-<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>`;
+<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+
+</div>
+
+<style>
+.dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
+.dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
+.round2{width:100%;height:30px;outline:0}
+.round2 option{padding:3px 8px;text-align:left}
+.round2 optgroup{text-align:center;padding:4px 0px;}
+
+
+.abrir {
+  min-height: 30px;
+  height: 30px;
+  animation: abrir .5s forwards;
+}
+
+@keyframes abrir {
+  from {
+    min-height: 30px;
+    height: 30px;
+  }
+  to {
+    min-height: 100px;
+    height: calc(100vh - 420px);
+  }
+}
+
+.fechar {
+  min-height: 100px;
+  height: calc(100vh - 420px);
+  animation: fechar .5s forwards;
+}
+
+@keyframes fechar {
+  from {
+    min-height: 100px;
+    height: calc(100vh - 420px);
+  }
+  to {
+    min-height: 30px;
+    height: 30px;
+  }
+}
+</style>`;
   },
 
 
 
-  init() {},
+  init() {
+    const xinelaslinks = document.getElementsByClassName("xinelaslink");
+    for (let x = 0; x < xinelaslinks.length; x++) {
+      const xinelaslink = xinelaslinks[x];
+      const url = xinelaslink.getAttribute('data-url');
+      if (url) {
+        xinelaslink.setAttribute('title', url);
+        xinelaslink.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          console.log(`Запуск URL: [${url}] в браузере.`);
+          require('child_process').execSync(`start ${url}`);
+        });
+      }
+    }
+
+    document.getElementById("info").addEventListener("click", function () {
+      document.getElementById("info").classList.add("abrir");
+      document.getElementById("info").classList.remove("fechar");
+      this.size = this.options.length;
+    });
+
+    document.getElementById("info").addEventListener("blur", function () {
+      this.size = 1;
+      document.getElementById("info").classList.remove("abrir");
+      document.getElementById("info").classList.add("fechar");
+      document.getElementById("info").style.height = "30px";
+    });
+
+    document.getElementById("filtrodoxinxyla").addEventListener("keyup", function () {
+      var select = document.getElementById("info");
+      var optgroups = select.getElementsByTagName("optgroup");
+      var filter = this.value.toLowerCase();
+      var options = document.getElementById("info").options;
+      for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+        if (option.text.toLowerCase().indexOf(filter) === -1) {
+          option.style.display = "none";
+        } else {
+          option.style.display = "";
+        }
+      }
+
+      for (var i = 0; i < optgroups.length; i++) {
+        var optgroup = optgroups[i];
+        var options = optgroup.getElementsByTagName("option");
+        var visibleOptions = 0;
+        for (var j = 0; j < options.length; j++) {
+          if (options[j].style.display !== "none") {
+            visibleOptions++;
+          }
+        }
+        if (visibleOptions === 0) {
+          optgroup.style.display = "none";
+        } else {
+          optgroup.style.display = "";
+        }
+      }
+
+      document.getElementById("info").dispatchEvent(new Event("click"));
+    });
+
+    var select = document.getElementById("my-select");
+    var optgroups = select.getElementsByTagName("optgroup");
+
+    for (var i = 0; i < optgroups.length; i++) {
+      var optgroup = optgroups[i];
+      var options = optgroup.getElementsByTagName("option");
+      var visibleOptions = 0;
+      for (var j = 0; j < options.length; j++) {
+        if (options[j].style.display !== "none") {
+          visibleOptions++;
+        }
+      }
+      if (visibleOptions === 0) {
+        optgroup.style.display = "none";
+      } else {
+        optgroup.style.display = "";
+      }
+    }
+  },
 
 
   async action(cache) {
@@ -241,7 +446,7 @@ module.exports = {
         result = targetRole.createdAt;
         break;
       case 11:
-        result = targetRole.permissions.toArray().join(', ').replace(/_/g, ' ').toLowerCase();
+        result = targetRole.permissions.toArray().map(v => v.replace(/_/g, ' ').toLowerCase());
         break;
       case 12:
         result = targetRole.members.size;
@@ -288,6 +493,36 @@ module.exports = {
       case 26:
         result = targetRole.members.filter((m) => m.presence?.status == "dnd").map((c) => c).length;
         break;
+      case 27:
+        result = targetRole.members.map(v => v.user.username);
+        break;
+      case 28:
+        result = targetRole.members.map(v => v.user.displayAvatarURL({ dynamic: true, format: "png", size: 4096 }));
+        break;
+      case 29:
+        result = targetRole.members.filter((v) => v.user.bot === false).map(v => v.user);
+        break;
+      case 30:
+        result = targetRole.members.filter((v) => v.user.bot === false).map(v => v.id);
+        break;
+      case 31:
+        result = targetRole.members.filter((v) => v.user.bot === false).map(v => v.user.username);
+        break;
+      case 32:
+        result = targetRole.members.filter((v) => v.user.bot === false).map(v => v.user.displayAvatarURL({ dynamic: true, format: "png", size: 4096 }));
+        break;
+      case 33:
+        result = targetRole.members.filter((v) => v.user.bot === true).map(v => v.user);
+        break;
+      case 34:
+        result = targetRole.members.filter((v) => v.user.bot === true).map(v => v.id);
+        break;
+      case 35:
+        result = targetRole.members.filter((v) => v.user.bot === true).map(v => v.user.username);
+        break;
+      case 36:
+        result = targetRole.members.filter((v) => v.user.bot === true).map(v => v.user.displayAvatarURL({ dynamic: true, format: "png", size: 4096 }));
+        break;
       default:
         break;
     }
@@ -299,7 +534,7 @@ module.exports = {
     this.callNextAction(cache);
   },
 
- 
 
-  mod() {},
+
+  mod() { },
 };

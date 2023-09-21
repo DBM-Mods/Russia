@@ -11,69 +11,69 @@ module.exports = {
 
   subtitle(data, presets) {
     const info = [
-      "объект сообщения",
-      "Идентификатор сообщения",
+      "Объект сообщения",
+      "ID сообщения",
       "Текст сообщения",
       "Автор сообщения",
       "Канал сообщения",
-      "Метка времени сообщения",
-      "Является ли сообщение фиксированным?",
-      "Является ли сообщение TTS?",
-      "Список вложений сообщения [объект]",
-      "Редактирование сообщения",
-      "Идентификатор сервера сообщения",
+      "Отметка времени сообщения",
+      "Сообщение закреплено?",
+      "Сообщение TTS?",
+      "Список вложений сообщения [Объект]",
+      "Изменения в сообщении",
+      "ID сервера сообщения",
       "",
       "Количество реакций на сообщение",
       "Список упомянутых пользователей",
-      "Count of Users Mentioned",
+      "Количество упомянутых пользователей",
       "URL сообщения",
       "Дата создания сообщения",
       "Длина содержимого сообщения",
       "Количество вложений в сообщении",
       "Сервер сообщения",
       "Тип сообщения",
-      "Идентификатор веб-крючка сообщения",
+      "ID вебхука сообщения",
       "Объект встраивания сообщения",
-      "embed title", "embed description", "embed object", "embed title",
-      "embed description", "embed url", "embed title", "embed description",
-      "embed url",
-      "embed color",
-      "Timestamp of the embed",
-      "Thumbnail from the embed",
-      "Изображение из вставки",
-      "Имя автора в embed",
-      "Иконка URL автора в embed",
-      "URL автора в embed", "URL автора в embed",
-      "Текст нижнего колонтитула из embed",
-      "Иконка URL футера из embed", "URL футера из embed",
-      "имя поля embed", "имя поля embed",
-      "Значение поля embed", "Значение поля embed", "embed field inline",
-      "Inline from embed field",
-      "Количество встраиваемых полей",
+      "Заголовок встраивания",
+      "Описание встраивания",
+      "URL встраивания",
+      "Цвет встраивания",
+      "Отметка времени встраивания",
+      "Миниатюра встраивания",
+      "Изображение встраивания",
+      "Имя автора встраивания",
+      "URL иконки автора встраивания",
+      "URL автора встраивания",
+      "Текст нижнего колонтитула встраивания",
+      "URL иконки нижнего колонтитула встраивания",
+      "Имя поля встраивания",
+      "Значение поля встраивания",
+      "Inline поля встраивания",
+      "Количество встраиваний",
       "Количество полей",
       "Объект взаимодействия",
-      "ID взаимодействия", "ID взаимодействия",
-      "Имя взаимодействия", "Имя взаимодействия",
+      "ID взаимодействия",
+      "Имя взаимодействия",
       "Тип взаимодействия",
-      "Идентификатор автора взаимодействия",
+      "ID автора взаимодействия",
       "Имя автора взаимодействия",
       "Дискриминатор автора взаимодействия",
-      "Метка автора взаимодействия",
+      "Тег автора взаимодействия",
       "Аватар автора взаимодействия",
-      "Всего строк",
-      "Всего компонентов в строке",
+      "Общее количество строк",
+      "Общее количество компонентов в строке",
       "Объект компонента",
       "ID компонента",
       "Тип компонента",
       "Метка компонента",
       "Стиль компонента",
-      "URL-адрес компонента",
+      "URL компонента",
       "Компонент включен/выключен",
-      "Component Placeholder",
-      "Минимальные значения меню",
-      "Максимальные значения меню",
-      "Параметры меню",
-      "Список вложений в сообщении [URL]",
+      "Заполнитель компонента",
+      "Минимальное количество значений в меню",
+      "Максимальное количество значений в меню",
+      "Опции меню",
+      "Список вложений сообщения [URL]",
     ];
 
     if (data.descriptionx) {
@@ -100,16 +100,16 @@ module.exports = {
         dataType = "ID";
         break;
       case 2:
-        dataType = "Text";
-        break
+        dataType = "Текст";
+        break;
       case 3:
-        dataType = "Member";
-        break
+        dataType = "Пользователь";
+        break;
       case 4:
-        dataType = "Channel";
+        dataType = "Канал";
         break;
       case 5:
-        dataType = "Text";
+        dataType = "Текст";
         break;
       case 6:
         dataType = "True/False";
@@ -118,93 +118,92 @@ module.exports = {
         dataType = "True/False";
         break;
       case 8:
-        dataType = "Data";
+        dataType = "Дата";
       case 9:
-        dataType = "List"; 
-        break;
+        dataType = "Список";
       case 12:
-        dataType = "Number";
-        break
+        dataType = "Число";
+        break;
       case 13:
-        dataType = "List";
+        dataType = "Список";
         break;
       case 14:
-        dataType = "Number";
-        break
+        dataType = "Число";
+        break;
       case 15:
         dataType = "URL";
-        break
+        break;
       case 16:
-        dataType = "Data";
-        break
+        dataType = "Дата";
+        break;
       case 17:
-        dataType = "Number";
+        dataType = "Число"
         break;
       case 18:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 19:
         dataType = "Сервер";
         break;
       case 20:
-        dataType = "Text";
-        break
+        dataType = "Текст";
+        break;
       case 21:
         dataType = "ID";
         break;
       case 22:
-        dataType = "Embed Message";
+        dataType = "Эмбед сообщение";
         break;
       case 23:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 24:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 25:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 26:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 27:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 28:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 29:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 30:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 31:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 32:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 33:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 34:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 35:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 36:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 37:
-        dataType = "Message Embed";
+        dataType = "Эмбед сообщение";
         break;
       case 38:
         dataType = "Число";
         break;
       case 39:
-        dataType = "Number";
+        dataType = "Число";
         break;
       case 40:
         dataType = "Взаимодействие";
@@ -222,55 +221,55 @@ module.exports = {
         dataType = "Пользователь взаимодействия";
         break;
       case 45:
-        dataType = "Interaction User";
+        dataType = "Пользователь взаимодействия";
         break;
       case 46:
-        dataType = "Interaction User";
+        dataType = "Пользователь взаимодействия";
         break;
       case 47:
-        dataType = "Interaction User";
+        dataType = "Пользователь взаимодействия";
         break;
       case 48:
-        dataType = "Interaction User";
+        dataType = "Пользователь взаимодействия";
         break;
       case 49:
         dataType = "Компонент";
         break;
       case 50:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 51:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 52:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 53:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 54:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 55:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 56:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 57:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 58:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 59:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 60:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
       case 61:
-        dataType = "Component";
+        dataType = "Компонент";
         break;
     }
     return [data.varName2, dataType];
@@ -281,7 +280,7 @@ module.exports = {
 
   html(isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.8</div>
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
@@ -289,7 +288,7 @@ module.exports = {
         <td>
           <span class="dbminputlabel">Описание действия</span>
           <br>
-          <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+          <input type="text" class="round" id="description" placeholder="Не обязательное поле">
         </td>
         <td style="padding:0px 0px 0px 10px;width:70px">
           <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -327,88 +326,88 @@ module.exports = {
       }
     </style>
 
-<message-input dropdownLabel="Сообщение" selectId="message" variableContainerId="varNameContainer" variableInputId="varName"></message-input>
+<message-input dropdownLabel="Mensagem" selectId="message" variableContainerId="varNameContainer" variableInputId="varName"></message-input>
 
 <br><br><br>
 
 <div style="padding-top: 8px;">
 	<span class="dbminputlabel">Информация</span><br>
 	<select id="info" class="round2" onchange="glob.onComparisonChanged(this)">
-  <option value="0" selected>Объект сообщения</option>
-  <option value="1">Идентификатор сообщения</option>
-  <option value="2">Текст сообщения</option>
-  <option value="3">Автор сообщения</option>
-  <option value="4">Канал сообщения</option>
-  <option value="5">Временная метка сообщения</option>
-  <option value="6">Подтверждено ли сообщение?</option>
-  <option value="7">Является ли сообщение TTS? </option>
-  <option value="8">Список вложений сообщения [объект]</option>
-  <option value="62">Список вложений сообщения [URL]</option>
-  <option value="9">Редактирование сообщения</option>
-  <option value="12">Количество реакций на сообщение</option>
-  <option value="13">Список пользователей, упомянутых в сообщении</option>
-  <option value="14">Количество пользователей, упомянутых в сообщении</option>
-  <option value="15">URL сообщения</option>
-  <option value="16">Дата создания сообщения</option>
-  <option value="17">Длина содержимого сообщения</option>
-  <option value="18">Количество вложений в сообщении</option>
-  <option value="10">Идентификатор сервера сообщений</option>
-  <option value="19">Сервер сообщений</option>
-  <option value="20">Тип сообщения</option>
-  <option value="21">Идентификатор вебхука сообщения</option>
-  <optgroup label="Информация о взаимодействии">
-  <option value="40">Объект взаимодействия</options>
-  <option value="41">ID взаимодействия</options>
-  <option value="42">Имя взаимодействия</options>
-  <option value="43">Тип взаимодействия</options>
-  <option value="44">Идентификатор автора взаимодействия</options>
-  <option value="45">Имя автора взаимодействия</options>
-  <option value="46">Идентификатор автора взаимодействия</options
-  <option value="47">Тэг автора взаимодействия</options>
-  <option value="48">Аватар автора взаимодействия</options>
-  <optgroup label="Встроенная информация">
-  <option value="22">Объект встраивания сообщения</option>
-  <option value="38">Количество вкраплений</options>
-  <option value="39">Количество полей</option>
-  <option value="23">Заголовок</options>
-  <option value="24">Описание</options>
-  <option value="25">Url</options>
-  <option value="26">Цвет</options>
-  <option value="27">Временная метка</options>
-  <option value="28">Эскиз</options>
-  <option value="29">Изображение</options>
-  <option value="30">Имя автора</options
-  <option value="31">Иконка URL-адреса автора</options>
-  <option value="32">Авторский URL</options>
-  <option value="33">Текст футера</options>
-  <option value="34">Урл иконки футера</options>
-  <option value="35">Имя поля</options>
-  <option value="36">Значение поля</options>
-  <option value="37">FieldInline</options>
-  <optgroup label="Информация о компоненте">
-  <option value="49">Общее количество строк</options>
-  <option value="50">Общее количество компонентов в ряду</options>
-  <option value="51">Объект компонента</options
-  <option value="52">Идентификатор компонента</options>
-  <option value="53">Тип компонента</options>
-  <option value="54">Маркировка компонента</options
-  <option value="55">Стиль компонента</options
-  <option value="56">URL компонента</options>
-  <option value="57">Компонент включен/выключен</options>
-  <option value="58">Пользователь компонента</options>
-  <option value="59">Минимальные значения меню</options>
-  <option value="60">Максимальные значения меню</options>
-  <option value="61">Опции меню</options>
+		<option value="0" selected>Объект сообщения</option>
+		<option value="1">ID сообщения</option>
+		<option value="2">Текст сообщения</option>
+		<option value="3">Автор сообщения</option>
+		<option value="4">Канал сообщения</option>
+		<option value="5">Отметка времени сообщения</option>
+		<option value="6">Сообщение закреплено?</option>
+    <option value="7">Сообщение TTS?</option>
+    <option value="8">Список вложений сообщения [Объект]</option>
+    <option value="62">Список вложений сообщения [URL]</option>
+		<option value="9">Изменения в сообщении</option>
+		<option value="12">Количество реакций на сообщение</option>
+		<option value="13">Список упомянутых пользователей в сообщении</option>
+		<option value="14">Количество упомянутых пользователей в сообщении</option>
+		<option value="15">URL сообщения</option>
+		<option value="16">Дата создания сообщения</option>
+		<option value="17">Длина содержимого сообщения</option>
+		<option value="18">Количество вложений в сообщении</option>
+		<option value="10">ID сервера сообщения</option>
+    <option value="19">Сервер сообщения</option>
+		<option value="20">Тип сообщения</option>
+		<option value="21">ID вебхука сообщения</option>
+    <optgroup label="Информации об интеракции">
+    <option value="40">Объект интеракции</option>
+    <option value="41">ID интеракции</option>
+    <option value="42">Имя интеракции</option>
+    <option value="43">Тип интеракции</option>
+    <option value="44">ID Автора интеракции</option>
+    <option value="45">Имя Автора интеракции</option>
+    <option value="46">Дискриминатор Автора интеракции</option>
+    <option value="47">Тег Автора интеракции</option>
+    <option value="48">Аватар Автора интеракции</option>
+    <optgroup label="Информации об Embed">
+    <option value="22">Объект Embed сообщения</option>
+    <option value="38">Количество Embeds</option>
+    <option value="39">Количество Fields</option>
+    <option value="23">Заголовок</option>
+    <option value="24">Описание</option>
+    <option value="25">URL</option>
+    <option value="26">Цвет</option>
+    <option value="27">Отметка времени</option>
+    <option value="28">Миниатюра</option>
+    <option value="29">Изображение</option>
+    <option value="30">Имя автора</option>
+    <option value="31">URL иконки автора</option>
+    <option value="32">URL автора</option>
+    <option value="33">Текст нижнего колонтитула</option>
+    <option value="34">URL иконки нижнего колонтитула</option>
+    <option value="35">Имя поля</option>
+    <option value="36">Значение поля</option>
+    <option value="37">Inline поля</option>
+    <optgroup label="Информации о компонентах">
+    <option value="49">Общее количество строк</option>
+    <option value="50">Общее количество компонентов в строке</option>
+    <option value="51">Объект компонента</option>
+    <option value="52">ID компонента</option>
+    <option value="53">Тип компонента</option>
+    <option value="54">Метка компонента</option>
+    <option value="55">Стиль компонента</option>
+    <option value="56">URL компонента</option>
+    <option value="57">Компонент включен/выключен</option>
+    <option value="58">Заполнитель компонента</option>
+    <option value="59">Минимальное количество значений в меню</option>
+    <option value="60">Максимальное количество значений в меню</option>
+    <option value="61">Опции меню</options>
     </optgroup>
 	</select>
-  <input type="text" id="filtrodoxinxyla" class="round" placeholder="Параметры фильтра...">
+  <input type="text" id="filtrodoxinxyla" class="round" placeholder="Фильтр опций...">
 </div><br><div style="width: 100%;display:none" id="containerxin2">
 <table style="width:100%"><tr><td style="padding:5px">
-<span class="dbminputlabel">Номер встраивания</span><br>
+<span class="dbminputlabel">Номер Эмбеда</span><br>
 <input id="embednumero" value="0" class="round" type="text">
 <br></td><td style="padding:5px">
 <div style="width: 100%;" id="containerxin">
-<span class="dbminputlabel">Номер поля</span><br>
+<span class="dbminputlabel">Номер Поля</span><br>
 <input id="field" value="0" class="round" type="text">
 <br>
 </div></td></tr></table></div>
@@ -473,7 +472,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Запуск URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

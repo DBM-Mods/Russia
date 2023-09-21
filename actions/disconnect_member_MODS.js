@@ -14,7 +14,9 @@ module.exports = {
     return `${presets.getMemberText(data.member, data.varName)}`;
   },
 
-  fields: ["member", "varName", "reason"],
+    fields: ["member", "varName", "reason"],
+
+
 
   html(isEvent, data) {
     return `
