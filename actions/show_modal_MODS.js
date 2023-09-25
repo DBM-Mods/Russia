@@ -1,25 +1,14 @@
 module.exports = {
-  //---------------------------------------------------------------------
-  // Action Name
-  //
-  // This is the name of the action displayed in the editor.
-  //---------------------------------------------------------------------
-
   name: "Show Modal MOD",
-
-  //---------------------------------------------------------------------
-  // Action Section
-  //
-  // This is the section the action will fall into.
-  //---------------------------------------------------------------------
-
   section: "Messaging",
+  meta: {
+    version: '2.1.7',
+    preciseCheck: true,
+    author: '[xinxyla - 172782058396057602]<br>[tempestdbm - 321400509326032897]',
+    authorUrl: 'https://github.com/DBM-Mods/Russia',
+    downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
+  },
 
-  //---------------------------------------------------------------------
-  // Action Subtitle
-  //
-  // This function generates the subtitle displayed next to the name.
-  //---------------------------------------------------------------------
 
   subtitle(data) {
     if (data.descriptionx == true) {
@@ -32,12 +21,6 @@ module.exports = {
       ? `<font style="color:${desccor}">${data.description}</font>`
       : `<font style="color:${desccor}">"${data.title}" с ${data.textInputs.length} меню</font>`;
   },
-
-  //---------------------------------------------------------------------
-  // Action Storage Function
-  //
-  // Stores the relevant variable info for the editor.
-  //---------------------------------------------------------------------
 
   variableStorage(data, varType) {
     let vars = [];
@@ -59,43 +42,14 @@ module.exports = {
     if (vars.length > 0) return vars;
   },
 
-  //---------------------------------------------------------------------
-  // Action Meta Data
-  //
-  // Helps check for updates and provides info if a custom mod.
-  // If this is a third-party mod, please set "author" and "authorUrl".
-  //
-  // It's highly recommended "preciseCheck" is set to false for third-party mods.
-  // This will make it so the patch version (0.0.X) is not checked.
-  //---------------------------------------------------------------------
-
-  meta: { version: "2.1.7", preciseCheck: true, author: null, authorUrl: null, downloadUrl: null },
-
-  //---------------------------------------------------------------------
-  // Action Fields
-  //
-  // These are the fields for the action. These fields are customized
-  // by creating elements with corresponding IDs in the HTML. These
-  // are also the names of the fields stored in the action's JSON data.
-  //---------------------------------------------------------------------
 
   fields: ["title", "textInputs", "description", "descriptionx", "descriptioncolor", "errcmd", "iffalse", "iffalseVal", "storageError", "varNameError", "actionsError"],
 
-  //---------------------------------------------------------------------
-  // Command HTML
-  //
-  // This function returns a string containing the HTML used for
-  // editing actions.
-  //
-  // The "isEvent" parameter will be true if this action is being used
-  // for an event. Due to their nature, events lack certain information,
-  // so edit the HTML to reflect this.
-  //---------------------------------------------------------------------
 
   html(isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Portugues/archive/refs/heads/main.zip">Обновление</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
     <tab-system>
 
@@ -195,19 +149,19 @@ module.exports = {
 
           <br>
 
-          <span class="dbminputlabel">Авто заполение</span>
+          <span class="dbminputlabel">Авто-заполение</span>
           <input id="value" placeholder="Не обязательное поле" class="round" type="text">
 
           <br>
 
           <table style="width: 100%;">
             <td>
-              <span class="dbminputlabel">Минимальная длина</span>
-              <input id="minLength" placeholder="0" class="round" type="text" value="1">
-            </td>
-            <td style="padding-left: 18px;">
               <span class="dbminputlabel">Максимальная длина</span>
               <input id="maxLength" placeholder="1000" class="round" type="text" value="1000">
+            </td>
+            <td style="padding-left: 18px;">
+              <span class="dbminputlabel">Минимальная длина</span>
+              <input id="minLength" placeholder="0" class="round" type="text" value="1">
             </td>
           </table>
 
@@ -347,14 +301,6 @@ module.exports = {
     </style>`;
   },
 
-  //---------------------------------------------------------------------
-  // Action Editor Init Code
-  //
-  // When the HTML is first applied to the action editor, this code
-  // is also run. This helps add modifications or setup reactionary
-  // functions for the DOM elements.
-  //---------------------------------------------------------------------
-
   init() {
     glob.formatItem = function (data) {
       const storage = ["Easter Egg", "Временная переменная", "Серваерная переменная", "Глобальная переменная"];
@@ -437,6 +383,8 @@ module.exports = {
   action(cache) {
     const data = cache.actions[cache.index];
     const _this = this;
+
+
 
     let componentsArr = [];
     const variables = [];
@@ -608,14 +556,12 @@ module.exports = {
       cont++;
 
       if (this.evalMessage(textInput.name, cache).length > 45) return erro("Имя меню не должно содержать более 45 символов.");
-      if (this.evalMessage(textInput.placeholder, cache).length > 100) return erro("Описание меню не должно содержать не более 100 символов.");
-      
-      const value = this.evalMessage(textInput.value, cache);
-      if (value.length > 4000) return erro("Вводимое значение не должно содержать более 4000 символов.");
 
       const id = "Modal-" + Math.floor(Math.random() * 1e12);
       const format = parseInt(textInput.formato);
       const textInputData = this.generateTextInput(textInput, id, cache);
+
+      const value = this.evalMessage(textInput.value, cache);
       if (value) textInputData.value = value;
 
       this.addTextInputToActionRowArray(componentsArr, this.evalMessage(textInput.row, cache), textInputData, cache);
@@ -636,6 +582,7 @@ module.exports = {
         };
       });
     }
+
 
     if (cache.interaction) {
       if (cache.interaction.showModal) {
@@ -658,7 +605,7 @@ module.exports = {
 
             switch (format) {
               case 1:
-                val = Number(val);
+                val = parseFloat(val);
                 break;
               case 2:
                 val = String(val);
@@ -677,13 +624,17 @@ module.exports = {
           this.callNextAction(cache);
         });
 
-        cache.interaction.showModal(modalData);
+   
+        cache.interaction.showModal(modalData).catch((err) => {erro(err)});
+       
+
       } else {
         erro("Невозможно показать модальное окно для текущего взаимодействия.");
       }
     } else {
       erro("Взаимодействие не найдено.");
     }
+
 
     function erro(err) {
       if (data.errcmd) _this.displayError(data, cache, err);
@@ -697,14 +648,6 @@ module.exports = {
     }
   },
 
-  //---------------------------------------------------------------------
-  // Action Bot Mod
-  //
-  // Upon initialization of the bot, this code is run. Using the bot's
-  // DBM namespace, one can add/modify existing functions if necessary.
-  // In order to reduce conflicts between mods, be sure to alias
-  // functions you wish to overwrite.
-  //---------------------------------------------------------------------
 
   mod() { },
 
