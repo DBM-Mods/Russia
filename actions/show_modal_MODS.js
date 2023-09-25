@@ -53,7 +53,7 @@ module.exports = {
 
     <tab-system>
 
-      <tab label="Модальное окно" icon="align left">
+      <tab label="Inputs" icon="align left">
 
       <div style="margin: 5px;">
       <span class="dbminputlabel">Заголовок модального окна</span>
