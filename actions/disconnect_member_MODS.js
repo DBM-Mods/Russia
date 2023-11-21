@@ -31,12 +31,12 @@ module.exports = {
   variableStorage(data, varType) {
     const type = parseInt(data.errs, 10);
     if (type !== varType) return;
-    return [data.errv, "Texto ~ Erro"];
+    return [data.errv, "Текст ~ Ошибка"];
   },
 
   html(isEvent, data) {
     return `
-    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновлять</div>
+    <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обнов</div>
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
     <div style="width: 100%; padding:1px 5px;height: calc(100vh - 160px);overflow:auto">
@@ -65,7 +65,7 @@ module.exports = {
 <br>
 <table>
   <tr>
-  <td class="col1"><span class="dbminputlabel">Сообщение об ошибке в</span><br>
+  <td class="col1"><span class="dbminputlabel">Сохранить ошибку в</span><br>
   <select id="errs" value="0" class="round" onchange="glob.variableChange(this, 'varNameContainer2')">
     ${data.variables[0]}
   </select></td>
