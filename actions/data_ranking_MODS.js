@@ -64,7 +64,7 @@ module.exports = {
 		<option value="3">Рейтинг по ID</option>
    		</select>
    		<div id="personalizado">
-   		<textarea id="resultFormat" rows="2" placeholder="РАНГ + ') ' + ТЭГ + ' : ' + ЗНАЧЕНИЕ + ' money'" style="width: 100%;" >РАНГ + ') ' + ТЭГ + ' : ' + ЗНАЧЕНИЕ + ' money'</textarea>
+   		<textarea id="resultFormat" rows="2" placeholder="RANK + ') ' + TAG + ' : ' + VALOR + ' money'" style="width: 100%;" >RANK + ') ' + TAG + ' : ' + VALOR + ' money'</textarea>
 		</div>
 		<div id="ranking">
 		<input id="rankid" class="round" type="text" placeholder="ID, чтобы узнать рейтинг">
