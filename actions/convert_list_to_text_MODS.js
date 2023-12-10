@@ -21,7 +21,7 @@ module.exports = {
 
     return data.description
       ? `<font style="color:${desccor}">${data.description}</font>`
-      : `<font style="color:${desccor}">Конвертер ${list[parseInt(data.list, 10)]} для текста</font>`
+      : `<font style="color:${desccor}">Конвертировать ${list[parseInt(data.list, 10)]} в текст</font>`
   },
 
 
@@ -154,13 +154,13 @@ module.exports = {
 <div style="padding: 16px;background:rgba(0,0,0,0.3)">
                  <span class="dbminputlabel">Редактировать</span><br>
                  <select id="formula" class="round">
-                 <option value="Editar" selected>Всегда редактируйте элемент</option>
-                 <option value="Falso">Редактирование только в том случае, если компаратор ложен</option>
-                 <option value="Verdadeiro">Редактирование только в том случае, если компаратор истинен</option>
+                 <option value="Всегда" selected>Всегда редактируйте элемент</option>
+                 <option value="False">Редактирование только в том случае, если компаратор ложен</option>
+                 <option value="True">Редактирование только в том случае, если компаратор истинен</option>
                </select>
                <br>
                   <table style="width:100%"><tr><td class="col">
-                    <span class="dbminputlabel">Valor A</span><br>
+                    <span class="dbminputlabel">Значение A</span><br>
                     <input id="val1" class="round" type="text">
                     </td>
                     <td class="col">
@@ -403,7 +403,7 @@ table{width:100%}
           val2 = this.evalMessage(data.itens[ix].val2, cache);
           resulty = true;
 
-          if (data.itens[ix].formula == "Falso" || data.itens[ix].formula == "Verdadeiro") {
+          if (data.itens[ix].formula == "False" || data.itens[ix].formula == "True") {
             const compare = parseInt(data.itens[ix].comparar, 10);
             switch (compare) {
               case 0:
@@ -487,7 +487,7 @@ table{width:100%}
             }
           }
 
-          if (data.itens[ix].formula == "Falso") {
+          if (data.itens[ix].formula == "False") {
             if (resulty == false) {
               resulty = true
             } else { resulty = false }
