@@ -60,7 +60,7 @@ module.exports = {
     <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.4</div>
 
     <tab-system style="margin-top: 0;">
-		<tab label="Converter" icon="align left">
+		<tab label="Конвертация" icon="align left">
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
     <table><tr><td class="col">
@@ -217,7 +217,7 @@ module.exports = {
 </div>
 </dialog-list>
 </tab>
-<tab label="Конфигурация" icon="cogs">
+<tab label="Конфиг" icon="cogs">
 <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
 
