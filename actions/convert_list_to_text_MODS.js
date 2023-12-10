@@ -114,7 +114,7 @@ module.exports = {
 
   <br>
   Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i]</span> для сбора информации из элемента списка, если он находится в формате JSON, пример <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i].user.username</span> Из списка "Пользователи севрера"
-  <br>Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">\\n</span> что бы перенести на следушию страницу.
+  <br>Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">\\n</span> что бы перенести на следушию строку.
   
   </div>
   <br>
