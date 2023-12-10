@@ -113,8 +113,8 @@ module.exports = {
   <dbm-checkbox id="endlib" label="Не показывайте стоимость каждого предмета"></dbm-checkbox>
 
   <br>
-  Use <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i]</span> для сбора информации из элемента списка, если он находится в формате JSON, пример <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i].user.username</span> da lista "Члены сервера"
-  <br>Use <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">\\n</span> para pular de linha
+  Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i]</span> для сбора информации из элемента списка, если он находится в формате JSON, пример <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i].user.username</span> Из списка "Пользователи севрера"
+  <br>Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">\\n</span> что бы перенести на следушию страницу.
   
   </div>
   <br>
@@ -122,11 +122,11 @@ module.exports = {
 
 </div>
 </tab>
-    <tab label="Пункты" icon="align left">
+    <tab label="Элементы" icon="align left">
     <div style="width: 100%; padding: 10px;height: calc(100vh - 210px);overflow:auto">
 
 
-  <span class="dbminputlabel">С каждым * пунктом</span><br>
+  <span class="dbminputlabel">С каждым * элементом</span><br>
 <input id="multi" class="round" type="text" value="0">
 
 <br>
@@ -149,7 +149,7 @@ module.exports = {
 
 </tab>
 
-<tab label="Редактировать пункты" icon="align left">
+<tab label="Изменить элементы" icon="align left">
 <dialog-list id="itens" fields='["posicao","start3","end3", "val1", "val2", "comparar", "formula"]' dialogTitle="Редактировать пункты" dialogWidth="500" dialogHeight="510" listLabel="Пункты" listStyle="height: calc(100vh - 250px);" itemName="Редактирование" itemCols="1" itemHeight="40px;" itemTextFunction="data.formula + ' / Позиция: ' + data.posicao" itemStyle="text-align: left; line-height: 40px;">
 <div style="padding: 16px;background:rgba(0,0,0,0.3)">
                  <span class="dbminputlabel">Редактировать</span><br>
@@ -217,20 +217,20 @@ module.exports = {
 </div>
 </dialog-list>
 </tab>
-<tab label="Config" icon="cogs">
+<tab label="Конфигурация" icon="cogs">
 <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
 
 <div style="padding-bottom: 12px;padding-top: 12px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действий</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы удалить"></td>
-<td style="padding:0px 0px 0px 10px;width:55px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+<td><span class="dbminputlabel">Описание действий</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td style="padding:0px 0px 0px 10px;width:55px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
 
-<span class="dbminputlabel">Ограничение количества элементов на странице</span><br><input type="text" class="round" id="limite" placeholder="Deixe vazio para desativar">
+<span class="dbminputlabel">Ограничение количества элементов на странице</span><br><input type="text" class="round" id="limite" placeholder="Оставьте пустым, чтобы отключить">
 <br>
-<span class="dbminputlabel">Страница</span><br><input type="text" class="round" id="pagina" value="1" placeholder="Deixe vazio para 1">
+<span class="dbminputlabel">Страница</span><br><input type="text" class="round" id="pagina" value="1" placeholder="Оставьте пустым для 1">
 <br>
 <div style="float: left; width: 35%;">
 	<span class="dbminputlabel">Всего страниц</span><br>
