@@ -89,17 +89,17 @@ module.exports = {
 
   </div>
     </tab>
-    <tab label="Все пункты" icon="align left">
+    <tab label="Все элементы" icon="align left">
 
 <div style="width: 100%; padding: 10px;height: calc(100vh - 210px);overflow:auto">
 
-<span class="dbminputlabel">Начало каждого пункта</span><br>
+<span class="dbminputlabel">Начало каждого элемента</span><br>
 <textarea id="istart" rows="3" style="width: 100%; white-space: nowrap; resize: yes;"></textarea>
 <br>
 <dbm-checkbox id="numero" label="Укажите номер позиции на каждом элементе"></dbm-checkbox>
 <br>
 	
-		<span class="dbminputlabel">Середина каждого пункта</span><br>
+		<span class="dbminputlabel">Середина каждого элемента</span><br>
     <textarea id="start" rows="3" style="width: 100%; white-space: nowrap; resize: yes;"></textarea>
 	
 <br>
