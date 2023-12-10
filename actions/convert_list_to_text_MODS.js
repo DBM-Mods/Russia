@@ -105,7 +105,7 @@ module.exports = {
 <br>
 	
       
-  <span class="dbminputlabel" name="xinelas">Конец каждого пункта</span> <div style="float:right;margin-top:-5px"><dbm-checkbox id="checkend" onchange="glob.onChange3(this)" label="EVAL ITEM"></dbm-checkbox></div><br>
+  <span class="dbminputlabel" name="xinelas">Конец каждого элемента</span> <div style="float:right;margin-top:-5px"><dbm-checkbox id="checkend" onchange="glob.onChange3(this)" label="EVAL ITEM"></dbm-checkbox></div><br>
   <div id="valor"><textarea id="end" rows="3" class="round" style="width:100%; white-space: nowrap; resize: yes;"></textarea></div>
   <div style="display:none" id="valoreval"><textarea id="endeval" rows="3" name="is-eval" class="round" style="width:100%; white-space: nowrap; resize: yes;"></textarea>
 <br>
@@ -150,7 +150,7 @@ module.exports = {
 </tab>
 
 <tab label="Изменить элементы" icon="align left">
-<dialog-list id="itens" fields='["posicao","start3","end3", "val1", "val2", "comparar", "formula"]' dialogTitle="Редактировать пункты" dialogWidth="500" dialogHeight="510" listLabel="Пункты" listStyle="height: calc(100vh - 250px);" itemName="Редактирование" itemCols="1" itemHeight="40px;" itemTextFunction="data.formula + ' / Позиция: ' + data.posicao" itemStyle="text-align: left; line-height: 40px;">
+<dialog-list id="itens" fields='["posicao","start3","end3", "val1", "val2", "comparar", "formula"]' dialogTitle="Редактирование элемента" dialogWidth="500" dialogHeight="510" listLabel="Элементы" listStyle="height: calc(100vh - 250px);" itemName="Редактирование" itemCols="1" itemHeight="40px;" itemTextFunction="data.formula + ' / Позиция: ' + data.posicao" itemStyle="text-align: left; line-height: 40px;">
 <div style="padding: 16px;background:rgba(0,0,0,0.3)">
                  <span class="dbminputlabel">Редактировать</span><br>
                  <select id="formula" class="round">
