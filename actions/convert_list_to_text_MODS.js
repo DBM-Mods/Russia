@@ -110,7 +110,7 @@ module.exports = {
   <div style="display:none" id="valoreval"><textarea id="endeval" rows="3" name="is-eval" class="round" style="width:100%; white-space: nowrap; resize: yes;"></textarea>
 <br>
 
-  <dbm-checkbox id="endlib" label="Не показывайте стоимость каждого предмета"></dbm-checkbox>
+  <dbm-checkbox id="endlib" label="Не показывать значение каждого элемента"></dbm-checkbox>
 
   <br>
   Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i]</span> для сбора информации из элемента списка, если он находится в формате JSON, пример <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i].user.username</span> Из списка "Пользователи севрера"
