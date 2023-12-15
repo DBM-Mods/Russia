@@ -121,7 +121,7 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 4.0</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 4.1</div>
 
     <div style="height:52px;overflow: hidden;padding-top: 3px;">
     <div style="width:100%" id="xin2"><send-reply-target-input dropdownLabel="Отправить" selectId="channel" variableInputId="varName"></send-reply-target-input>
@@ -616,7 +616,7 @@ module.exports = {
 
   <tab label="Меню" icon="list alternate">
   <div style="padding: 16px;text-align:center"id="xin5n">Вебхук не поддерживает меню</div>
-  <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto" id="xin5">
+  <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
 
       <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Информация о Меню" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 310px);" itemName="Меню" itemCols="1" itemHeight="80px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
@@ -1091,10 +1091,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         document.getElementById("xin1").style.display = "none";
         document.getElementById("xin2").style.display = "none";
         document.getElementById("xin3").style.display = "block";
-        document.getElementById("xin4").style.display = "none";
-        document.getElementById("xin5").style.display = "none";
-        document.getElementById("xin4n").style.display = null;
-        document.getElementById("xin5n").style.display = null;
         const myInput = document.querySelector("#reply")
         myInput.value = false
         const myInput2 = document.querySelector("#dontSend")
@@ -1128,10 +1124,6 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         document.getElementById("xin1").style.display = null;
         document.getElementById("xin2").style.display = "block";
         document.getElementById("xin3").style.display = "none";
-        document.getElementById("xin4").style.display = null;
-        document.getElementById("xin5").style.display = null;
-        document.getElementById("xin4n").style.display = "none";
-        document.getElementById("xin5n").style.display = "none";
         document.getElementById("corrigir").style.display = "block";
       }
     }
