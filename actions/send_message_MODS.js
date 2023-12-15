@@ -443,8 +443,7 @@ module.exports = {
   </tab>
 
   <tab label="Кнопки" icon="clone">
-  <div style="padding: 16px;text-align:center"id="xin4n">WebHook не поддерживает кнопки</div>
-  <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto" id="xin4">
+  <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
 
   <dialog-list id="buttons" fields='["name", "typeper", "type", "id", "row", "url", "emoji", "mode", "time", "actions", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Информация о Кнопке" dialogWidth="600" dialogHeight="600" listLabel="Кнопки" listStyle="height: calc(100vh - 310px);" itemName="Button" itemHeight="40px;" itemTextFunction="glob.formatItem2(data)" itemStyle="text-align: left; line-height: 40px;">
   <div style="padding: 16px;">
@@ -615,7 +614,6 @@ module.exports = {
 
 
   <tab label="Меню" icon="list alternate">
-  <div style="padding: 16px;text-align:center"id="xin5n">Вебхук не поддерживает меню</div>
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
 
       <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Информация о Меню" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 310px);" itemName="Меню" itemCols="1" itemHeight="80px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
