@@ -4,7 +4,7 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
+    author: '[xinxyla - 172782058396057602]<br>[Tempest - 321400509326032897]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
@@ -74,6 +74,11 @@ module.exports = {
       "Максимальное количество значений в меню",
       "Опции меню",
       "Список вложений сообщения [URL]",
+      "Является ли это сообщение ответом?",
+      "Объект ответного сообщения",
+      "Идентификатор ответного сообщения",
+      "Идентификатор сервера ответного сообщения",
+      "Идентификатор канала ответного сообщения",
     ];
 
     if (data.descriptionx) {
@@ -271,6 +276,24 @@ module.exports = {
       case 61:
         dataType = "Компонент";
         break;
+      case 62:
+        dataType = "Список";
+        break;
+      case 63:
+        dataType = "True/False";
+        break;
+      case 64:
+        dataType = "Объект";
+         break;
+      case 65:
+        dataType = "ID";
+        break;
+      case 66:
+        dataType = "ID";
+        break;
+      case 67:
+        dataType = "ID";
+        break;
     }
     return [data.varName2, dataType];
   },
@@ -281,7 +304,9 @@ module.exports = {
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.8</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 1.9</div>
+
+    <div style="width: 100%; padding:5px 0px;height: calc(100vh - 160px);overflow:auto">
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
       <table style="width:100%;"><tr>
@@ -300,33 +325,19 @@ module.exports = {
       </table>
     </div>
 
-    <style>
-      .dbmmodsbr1 {
-        position: absolute;
-        bottom: 0px;
-        border: 0px solid rgba(50,50,50,0.7);
-        background: rgba(0,0,0,0.7);
-        color: #999;
-        padding: 5px;
-        left: 0px;
-        z-index: 999999;
-        cursor: pointer
-      }
-
-      .dbmmodsbr2 {
-        position: absolute;
-        bottom: 0px;
-        border: 0px solid rgba(50,50,50,0.7);
-        background: rgba(0,0,0,0.7);
-        color: #999;
-        padding: 5px;
-        right: 0px;
-        z-index: 999999;
-        cursor: pointer
-      }
-    </style>
-
-<message-input dropdownLabel="Mensagem" selectId="message" variableContainerId="varNameContainer" variableInputId="varName"></message-input>
+    <div style="float: left; width: 35%;">
+    <span class="dbminputlabel">Сообщение</span><br>
+    <select id="message" class="round" onchange="glob.onChangeMode(this)">
+    <option value="0" selected>Командное сообщение</option>
+    <option value="1">Временная переменная</option>
+    <option value="2">Сервернная переменная</option>
+    <option value="3">Глобальнная переменная</option>
+    </select>
+    </div>
+    <div id="xinxylagatu" style="float: right; width: 60%;">
+    <span class="dbminputlabel">Имя переменной</span><br>
+      <input id="varName" class="round" type="text" list="variableList"><br>
+    </div>
 
 <br><br><br>
 
@@ -399,6 +410,13 @@ module.exports = {
     <option value="60">Максимальное количество значений в меню</option>
     <option value="61">Опции меню</options>
     </optgroup>
+    <optgroup label="Информация о ответном сообщении">
+    <option value="63">Является ли это сообщение ответом?</options>
+    <option value="64">Объект ответного сообщения</options>
+    <option value="65">Идентификатор ответного сообщения</options>
+    <option value="66">Идентификатор сервера ответного сообщения</options>
+    <option value="67">Идентификатор канала ответного сообщения</options>
+    </optgroup>
 	</select>
   <input type="text" id="filtrodoxinxyla" class="round" placeholder="Фильтр опций...">
 </div><br><div style="width: 100%;display:none" id="containerxin2">
@@ -419,39 +437,69 @@ module.exports = {
 <span class="dbminputlabel">Номер компонента</span><br>
 <input id="comp2" value="0" class="round" type="text">
 <br></div>
-</td></tr></table></div>
+</td></tr></table>
 
 <store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
 
+</div>
 <style>
+.dbmmodsbr1 {
+  position: absolute;
+  bottom: 0px;
+  border: 0px solid rgba(50,50,50,0.7);
+  background: rgba(0,0,0,0.7);
+  color: #999;
+  padding: 5px;
+  left: 0px;
+  z-index: 999999;
+  cursor: pointer
+}
+.dbmmodsbr2 {
+  position: absolute;
+  bottom: 0px;
+  border: 0px solid rgba(50,50,50,0.7);
+  background: rgba(0,0,0,0.7);
+  color: #999;
+  padding: 5px;
+  right: 0px;
+  z-index: 999999;
+  cursor: pointer
+}
+
 .round2{width:100%;height:30px;outline:0}
 .round2 option{padding:3px 8px;text-align:left}
 .round2 optgroup{text-align:center;padding:4px 0px;}
 
 .abrir {
+  min-height: 30px;
   height: 30px;
   animation: abrir .5s forwards;
 }
-
 @keyframes abrir {
   from {
+    min-height: 30px;
     height: 30px;
   }
   to {
     height: 130px;
+    min-height: 100px;
+    height: calc(100vh - 420px);
   }
 }
-
 .fechar {
   height: 130px;
+  min-height: 100px;
+  height: calc(100vh - 420px);
   animation: fechar .5s forwards;
 }
-
 @keyframes fechar {
   from {
     height: 130px;
+    min-height: 100px;
+    height: calc(100vh - 420px);
   }
   to {
+    min-height: 30px;
     height: 30px;
   }
 }
@@ -477,6 +525,18 @@ module.exports = {
         });
       }
     }
+
+    glob.onChangeMode = function (message) {
+      if (parseInt(message.value) == 0) {
+        document.getElementById("xinxylagatu").style.display = "none";
+      } else {
+        document.getElementById("xinxylagatu").style.display = null;
+      }
+    }
+
+    glob.onChangeMode(document.getElementById("message"));
+
+
 
     document.getElementById("info").addEventListener("click", function () {
       document.getElementById("info").classList.add("abrir");
@@ -568,7 +628,7 @@ module.exports = {
         document.getElementById("containerxin3").style.display = "block";
         document.getElementById("containerxin4").style.display = "none";
       }
-      if (event.value == 62) {
+      if (event.value >= 62) {
         document.getElementById("containerxin2").style.display = "none";
         document.getElementById("containerxin3").style.display = "none";
         document.getElementById("containerxin4").style.display = "none";
@@ -1020,8 +1080,22 @@ module.exports = {
       case 62:
         result = msg.attachments.map((t) => t.attachment);
         break;
+      case 63:
+        result = msg.type === 'REPLY' && msg.reference?.messageId !== undefined;
+        break;
+      case 64:
+        result = msg.reference;
+        break;
+      case 65:
+        result = msg.reference?.messageId;
+        break;
+      case 66:
+        result = msg.reference?.guildId;
+        break;
+      case 67:
+        result = msg.reference?.channelId;
+        break;
     }
-
     if (result !== undefined) {
       const storage = parseInt(data.storage, 10);
       const varName2 = this.evalMessage(data.varName2, cache);
@@ -1030,5 +1104,5 @@ module.exports = {
     this.callNextAction(cache);
   },
 
-  mod() {},
+  mod() { },
 };
