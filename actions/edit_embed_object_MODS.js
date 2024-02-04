@@ -4,7 +4,7 @@ module.exports = {
   meta: {
     version: '2.1.7',
     preciseCheck: true,
-    author: '[XinXyla - 172782058396057602]',
+    author: '[xinxyla - 172782058396057602]',
     authorUrl: 'https://github.com/DBM-Mods/Russia',
     downloadURL: 'https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip',
   },
@@ -20,7 +20,7 @@ module.exports = {
     const storage = presets.variables;
 
     return data.description
-    ? `<font style="color:${desccor}">${data.description}</font>`
+    ? `<font style="color:${desccor}">${data.descriptionsub}</font>`
     : `<font style="color:${desccor}">${storage[parseInt(data.storage, 10)]} (${data.varName})</font>`
   },
 
@@ -63,19 +63,19 @@ module.exports = {
     'fieldName',
     'fieldDescription',
     'fieldInline',
-    , 'descriptioncolor', 'description', 'descriptionx',
+    , 'descriptioncolor', 'descriptionsub', 'descriptionx',
   ],
 
   html(_isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновить</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.4</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.6</div>
 
     <div style="width: 100%; padding:5px 5px;height: calc(100vh - 160px);overflow:auto">
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="descriptionsub" placeholder="Не обязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -151,11 +151,11 @@ module.exports = {
       document.getElementById('color').type = 'color'
       document.getElementById('btr1').style.display = 'none';
       document.getElementById('btr2').style.display = 'block';
-      })()"><button class="tiny compact ui icon button">Цвет</button></a><a id="btr2" style="cursor:pointer;display:none" onclick="(function(){
+      })()"><button class="tiny compact ui icon button">Выбор</button></a><a id="btr2" style="cursor:pointer;display:none" onclick="(function(){
         document.getElementById('color').type = 'text';
         document.getElementById('btr1').style.display = 'block';
         document.getElementById('btr2').style.display = 'none';
-        })()"><button class="tiny compact ui icon button">Texto</button></a><td></tr></table>
+        })()"><button class="tiny compact ui icon button">Вручную</button></a><td></tr></table>
     </div>
   </div><br><br><br>
   <div style="padding-top: 8px;">
@@ -244,7 +244,7 @@ module.exports = {
   </div><br><br><br>
   <div style="padding-top: 8px;">
   <div style="width: 40%;">
-  <span class="dbminputlabel">Редакт подвал (Footer)</span><br>
+  <span class="dbminputlabel">Редакт (Footer)</span><br>
     <select id="Edit9" class="round" onchange="glob.onChange9(this)">
       <option value=0 selected>Сохранить содержание</option>
       <option value=1>Редактировать содержимое</option>
@@ -252,13 +252,13 @@ module.exports = {
     </select>
   </div><br>
   <div id="Input9" style="display: none; width: 100%;">
-  <span class="dbminputlabel">Подвал (Footer)</span><br>
+  <span class="dbminputlabel">(Footer)</span><br>
     <textarea id="footer" rows="3" style="width: 100%; font-family: monospace; white-space: nowrap; resize: yes;"></textarea><br>
   </div>
 </div>
 <div style="padding-top: 8px;">
   <div style="float: left; width: 40%;">
-  <span class="dbminputlabel">Редакт значок URL подвал</span><br>
+  <span class="dbminputlabel">Редакт значок URL (Footer)</span><br>
     <select id="Edit10" class="round" onchange="glob.onChange10(this)">
       <option value=0 selected>Сохранить содержание</option>
       <option value=1>Редактировать содержимое</option>
@@ -266,7 +266,7 @@ module.exports = {
     </select>
   </div>
   <div id="Input10" style="display: none; float: right; width: 55%;">
-  <span class="dbminputlabel">URL адрес значка подвал (Footer)</span><br>
+  <span class="dbminputlabel">URL адрес значка (Footer)</span><br>
     <input id="footerIcon" class="round" type="text">
   </div>
 </div><br><br><br>
@@ -281,7 +281,7 @@ module.exports = {
       </select>
     </div>
     <div id="Input11" style="display: none; float: right; width: 55%;">
-    <span class="dbminputlabel">URL Timestamp</span><br>
+    <span class="dbminputlabel">Timestamp</span><br>
       <input id="timestamp" class="round" type="text">
     </div>
   </div><br><br><br>
@@ -775,8 +775,8 @@ module.exports = {
       switch (Edit12) {
         case 1:
           if (embed.fields.length > fieldNum) {
-            embed.fields[fieldNum].name = fieldName;
-            embed.fields[fieldNum].value = fieldDescription;
+            embed.fields[fieldNum].name = fieldName || '\u200B';
+            embed.fields[fieldNum].value = fieldDescription || '\u200B';
             switch (fieldInline) {
               case 1:
                 embed.fields[fieldNum].inline = true;
@@ -796,9 +796,13 @@ module.exports = {
           embed.fields = [];
           break;
         case 4: {
+          
+          if(embed.fields.length > 0) {}
+          else{embed.fields = []}
+
           const field = {};
-          field.name = fieldName;
-          field.value = fieldDescription;
+          field.name = fieldName || '\u200B';
+          field.value = fieldDescription || '\u200B';
           field.inline = fieldInline;
           switch (fieldInline) {
             case 1:
