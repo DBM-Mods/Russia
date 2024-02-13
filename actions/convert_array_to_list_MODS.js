@@ -33,29 +33,23 @@ module.exports = {
     return [data.varName2, 'Список'];
   },
 
-  fields: ['storage', 'varName', 'valor', 'storage2', 'varName2', "descriptioncolor", "description", "descriptionx"],
+  fields: ['storage', 'varName', 'valor', 'storage2', 'varName2', "descriptioncolor", "description", "descriptionx", "undefined"],
 
   html(isEvent, data) {
     return `
     <div class="dbmmodsbr1 xinelaslink" data-url="https://github.com/DBM-Mods/Russia/archive/refs/heads/main.zip">Обновление</div>
-    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.1</div>
+    <div class="dbmmodsbr2 xinelaslink" data-url="https://github.com/DBM-Mods/Russia">Версия 0.2</div>
 
-<div style="padding-bottom: 12px;padding-top: 12px">
-<table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действий</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
-<td style="padding:0px 0px 0px 10px;width:55px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
-</tr></table>
-</div>
+<tab-system style="margin-top: 0;">
+<tab label="Конвертация" icon="align left">
+<div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
 <retrieve-from-variable allowSlashParams dropdownLabel="Переменная" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></retrieve-from-variable>
-</div><br><br><br>
-<div style="display: table; width: 100%;">
-  <div style="display: table-cell;">
-  <span class="dbminputlabel">Значение</span>
-    <input id="valor" class="round" type="text">
-  </div>
-</div><br>
-<div style="padding-top: 8px;">
+
+<br><br><br>
+<span class="dbminputlabel">Значение</span><br><input type="text" class="round" id="valor">
+<br>
+
   <div style="float: left; width: 35%;">
   <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage2" class="round">
@@ -68,7 +62,29 @@ module.exports = {
   </div>
 </div>
 
+</tab>
+
+<tab label="Конфигурация" icon="cogs">
+<div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
+
+
+<div style="padding-bottom: 12px;padding-top: 12px">
+<table style="width:100%;"><tr>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td style="padding:0px 0px 0px 10px;width:55px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
+</tr></table>
+</div>
+
+<span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
+<dbm-checkbox id="undefined" label="Исключить undefined" checked></dbm-checkbox>
+</div><br></div>
+
+  </tab>
+  </tab-system></div>
+
 <style>
+table{width:100%}
+.col{padding:0px 5px;width:50%}
 
 .dbmmodsbr1{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;left:0px;z-index:999999;cursor:pointer}
 .dbmmodsbr2{position:absolute;bottom:0px;border: 0px solid rgba(50,50,50,0.7);background:rgba(0,0,0,0.7);color:#999;padding:5px;right:0px;z-index:999999;cursor:pointer}
@@ -105,7 +121,12 @@ module.exports = {
     const valor = this.evalMessage(data.valor, cache);
 
     var params = arrey.map(item => item[valor]);
-    var paramsWithoutUndefined = params.filter(item => item !== undefined);
+
+    if (data.undefined) {
+      var paramsWithoutUndefined = params.filter(item => item !== undefined);
+    } else {
+      paramsWithoutUndefined = params;
+    }
 
     const storage2 = parseInt(data.storage2, 10);
     const varName2 = this.evalMessage(data.varName2, cache);
