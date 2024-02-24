@@ -89,7 +89,7 @@ module.exports = {
 
   <tab-system>
   <tab label="Данные" icon="cloud download">
-  <div style="padding:8px">
+  <div style="width: 100%; padding:8px;height: calc(100vh - 210px);overflow:auto">
 
   <retrieve-from-variable allowSlashParams dropdownLabel="Переменная" selectId="storage1" variableContainerId="varNameContainer" variableInputId="Text"></retrieve-from-variable>
 
@@ -100,7 +100,7 @@ module.exports = {
   </tab>
 
   <tab label="Инфо" icon="question circle">
-  <div style="padding:8px">
+  <div style="width: 100%; padding:8px;height: calc(100vh - 210px);overflow:auto">
   
   <dialog-list id="branches" fields='["info", "storage", "varName"]' dialogResizable dialogTitle="Store Invite" dialogWidth="600" dialogHeight="200" listLabel="Список" listStyle="height: calc(100vh - 320px);" itemName="Item" itemHeight="28px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 28px;">
         
