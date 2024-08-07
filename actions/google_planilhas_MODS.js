@@ -11,16 +11,16 @@ module.exports = {
 
   subtitle(data, presets) {
     const info = [
-      "Acrescentar",
-      "Alterar valores",
-      "Atualizar valor",
-      "Limpar valores",
-      "Consultar",
-      "Buscar valor exato da coluna",
-      "Buscar linhas [Matches Regex]"
+      "Добавлять",
+      "Изменить значения",
+      "Обновить значение",
+      "Очистить значения",
+      "Консультировать",
+      "Получить точное значение столбца",
+      "Выборка строк [Regex Matches]"
     ];
     const info2 = [
-      "[Texto]",
+      "[Текст]",
       "[JSON]",
     ];
 
@@ -36,7 +36,7 @@ module.exports = {
 
     return data.description
       ? `<font style="color:${desccor}">${data.description}</font>`
-      : `<font style="color:${desccor}">${bug}${terminal} ${info[parseInt(data.acao, 10)]} em ${data.coluna} - ${info2[parseInt(data.stringifyOutput, 10)]}</font>`
+      : `<font style="color:${desccor}">${bug}${terminal} ${info[parseInt(data.acao, 10)]} в ${data.coluna} - ${info2[parseInt(data.stringifyOutput, 10)]}</font>`
   },
 
 
