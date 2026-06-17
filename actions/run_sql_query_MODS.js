@@ -241,7 +241,7 @@ module.exports = {
 <br>
       
       <table><tr><td class="col1">
-      <span class="dbminputlabel">Хранить соединение</span><br />
+      <span class="dbminputlabel">Сохранить соединение</span><br />
         <select id="store_source_conn_storage" class="round" onchange="glob.variableChange(this, 'varNameContainer3')">
           ${data.variables[0]}
         </select>

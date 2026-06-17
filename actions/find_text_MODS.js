@@ -70,7 +70,7 @@ html: function(isEvent, data) {
 <table><tr><td class="col1">
 <span class="dbminputlabel">Если не найдено</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-<option value="0">Продолжать</option>
+<option value="0">Продолжить выполнение действий</option>
 <option value="1" selecionado>Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>

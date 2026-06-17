@@ -22,7 +22,7 @@
 
     return data.description
     ? `<font style="color:${desccor}">${data.description}</font>`
-    : `<font style="color:${desccor}">Получение текста из изображения "${data.image}" и хранить в ${storage[parseInt(data.storage, 10)]} (${data.varName})</font>`
+    : `<font style="color:${desccor}">Получить текст из изображения "${data.image}" и сохранить в ${storage[parseInt(data.storage, 10)]} (${data.varName})</font>`
   },
 
 

@@ -23,7 +23,7 @@ module.exports = {
 
     return data.description
       ? `<font style="color:${desccor}">${data.description}</font>`
-      : `<font style="color:${desccor}">Преобразовать масив ${storeTypes[parseInt(data.storage, 10)]} (${data.varName}) в список ${
+      : `<font style="color:${desccor}">Преобразовать массив ${storeTypes[parseInt(data.storage, 10)]} (${data.varName}) в список ${
       storeTypes[parseInt(data.storage2, 10)]
     } (${data.varName2})</font>`
   },

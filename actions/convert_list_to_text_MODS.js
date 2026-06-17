@@ -113,7 +113,7 @@ module.exports = {
   <dbm-checkbox id="endlib" label="Не показывать значение каждого элемента"></dbm-checkbox>
 
   <br>
-  <br>Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">\\n</span> что бы перенести на следушию строку.
+  <br>Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">\\n</span>, чтобы перейти на следующую строку.
   Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i]</span> для сбора информации из элемента списка, если он в формате JSON, например <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i].user.username</span> из списка "Пользователи сервера"
   
   </div>

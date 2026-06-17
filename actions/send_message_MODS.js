@@ -151,7 +151,7 @@ module.exports = {
       <div style="margin-top:-4px;float:left;text-align:left;position:relative"><dbm-checkbox id="mentions" style="font-size:12px" label="@ Уведомление участника /роли" checked></dbm-checkbox></div>
     
     
-      <div id="contador" style="float:right;text-align:right;position:relative;width:22%">0 caracteres</div>
+      <div id="contador" style="float:right;text-align:right;position:relative;width:22%">0 символов</div>
     </div>
   </tab>
 
@@ -589,7 +589,7 @@ module.exports = {
 
       <br>
 
-      <span class="dbminputlabel">Линия действия (1 - 5)</span>
+      <span class="dbminputlabel">Строка компонента (1 - 5)</span>
       <input id="row" placeholder="Необязательное поле" class="round" type="text">
 
       <br>
@@ -617,7 +617,7 @@ module.exports = {
   <tab label="Меню" icon="list alternate">
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
 
-      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Информация о Меню" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 310px);" itemName="Меню" itemCols="1" itemHeight="80px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
+      <dialog-list id="selectMenus" fields='["placeholder", "id", "tempVarName", "row", "min", "max", "mode", "time", "options", "actions", "disabled"]' dialogTitle="Информация о меню" dialogWidth="800" dialogHeight="700" listLabel="Меню" listStyle="height: calc(100vh - 310px);" itemName="Меню" itemCols="1" itemHeight="80px;" itemTextFunction="glob.formatItem3(data)" itemStyle="text-align: left; line-height: 40px;">
         <div style="padding: 16px;">
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
             <span class="dbminputlabel">Имя меню</span>
@@ -650,12 +650,12 @@ module.exports = {
             <dbm-checkbox id="disabled" style="margin-top: 15px;" label="Отключить меню"></dbm-checkbox>
           </div>
           <div style="width: calc(33% - 16px); float: left; margin-right: 16px;">
-            <span class="dbminputlabel">Уникальный идентефикатор (ID)</span>
+            <span class="dbminputlabel">Уникальный идентификатор (ID)</span>
             <input id="id" placeholder="Оставьте пустым для авто-генерации" class="round" type="text">
 
             <br>
 
-            <span class="dbminputlabel">Линия действия (1 - 5)</span>
+            <span class="dbminputlabel">Строка компонента (1 - 5)</span>
             <input id="row" placeholder="Необязательное поле" class="round" type="text">
 
             <br>

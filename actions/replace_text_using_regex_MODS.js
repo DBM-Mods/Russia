@@ -37,7 +37,7 @@ module.exports = {
     variableStorage(data, varType) {
         const type = parseInt(data.storage, 10);
         if (type !== varType) return;
-        return [data.varName, "Texto"];
+        return [data.varName, "Текст"];
     },
 
     //---------------------------------------------------------------------
@@ -91,7 +91,7 @@ module.exports = {
               <td>
                 <span class="dbminputlabel">Описание действия</span>
                 <br>
-                <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+                <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать.">
               </td>
               <td style="padding:0px 0px 0px 10px;width:70px">
                 <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -109,7 +109,7 @@ module.exports = {
           <br>
 
           <span class="dbminputlabel">Regex</span>
-          <textarea id="regex" rows="3" placeholder="Введите здесь regex ..."></textarea>
+          <textarea id="regex" rows="3" placeholder="Введите здесь Regex ..."></textarea>
 
          <br>
 
@@ -127,7 +127,7 @@ module.exports = {
           <br>
 
 		  <div style="float: left; width: 35%;">
-		    <span class="dbminputlabel">Хранить в</span><br>
+		    <span class="dbminputlabel">Сохранить в</span><br>
 			  <select id="storage" class="round">
 				  ${data.variables[1]}
 			  </select>
@@ -184,7 +184,7 @@ module.exports = {
                 xinelaslink.setAttribute('title', url);
                 xinelaslink.addEventListener('click', (e) => {
                     e.stopImmediatePropagation();
-                    console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+                    console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
                     require('child_process').execSync(`start ${url}`);
                 });
             }

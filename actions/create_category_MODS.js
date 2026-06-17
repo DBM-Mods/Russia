@@ -41,7 +41,7 @@ module.exports = {
 <td class="sep1">
 <span class="dbminputlabel">Если не создано</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-<option value="0" selected>Продолжать</option>
+<option value="0" selected>Продолжить выполнение действий</option>
 <option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>

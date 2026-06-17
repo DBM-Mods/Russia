@@ -46,7 +46,7 @@ module.exports = {
     <div id="xinxylaacao1">
     <dialog-list id="branches" fields='["label", "description", "value", "emoji", "val1", "val2", "comparar", "formula"]' dialogResizable dialogTitle="Опция" dialogWidth="600" dialogHeight="400" listLabel="Опции" listStyle="height: calc(100vh - 280px);" itemName="Пункт" itemHeight="28px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 28px;">
     <div style="padding: 16px;background:rgba(0,0,0,0.3)">
-    <span class="dbminputlabel">Exibir</span><br>
+    <span class="dbminputlabel">Отображение</span><br>
     <select id="formula" class="round">
     <option value="0" selected>Всегда отображать опцию</option>
     <option value="1">Отобразить опцию, если получено значение False</option>
@@ -69,7 +69,7 @@ module.exports = {
        <option value="12">Больше или равно</option>
        <option value="5">Содержит</option>
        <option value="6">Соответствует Regex</option>
-       <option value="14">Полное соответствие Regex</option>
+       <option value="14">Полностью соответствует Regex</option>
        <option value="7">Длина больше</option>
        <option value="8">Длина меньше</option>
        <option value="9">Длина равна</option>

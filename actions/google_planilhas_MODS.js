@@ -17,7 +17,7 @@ module.exports = {
       "Очистить значения",
       "Консультировать",
       "Получить точное значение столбца",
-      "Выборка строк [RegExp Matches]"
+      "Поиск строк по Regex"
     ];
     const info2 = [
       "[Текст]",
@@ -84,7 +84,7 @@ module.exports = {
       <option value="3">Очистить значения</option>
       <option value="4">Консультировать</option>
       <option value="5">Получить строку [точное значение столбца]</option>
-      <option value="6">Выборка строк [RegExp Matches]</option>
+      <option value="6">Поиск строк по Regex</option>
       </optgroup>
       </select>
 

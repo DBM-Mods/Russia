@@ -81,7 +81,7 @@ module.exports = {
 <div style="float: left; width: 44%">
 <span class="dbminputlabel">Поиск команды</span><br>
   <select id="searchCommandBy" class="round" onchange="glob.onChangeSame(this)">
-  <option value="2" selected>Та же команда по тексту</option>
+  <option value="2" selected>Та же текстовая команда</option>
   <option value="3">Та же команда взаимодействия</option>
     <option value="0">Имя</option>
     <option value="1">ID</option>

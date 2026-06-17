@@ -11,7 +11,7 @@ module.exports = {
 
   subtitle(data, presets) {
     const info = [
-     'Объект Реакции',
+     'Объект реакции',
      'Общее количество реакций',
      'Общее количество реакций пользователей',
      'Общее количество реакций ботов',
@@ -104,7 +104,7 @@ module.exports = {
 <table><tr><td class="col1">
 <span class="dbminputlabel">Тип</span><br>
 <select id="tipo" class="round">
-		<option value="0" selected>Icone</option>
+		<option value="0" selected>Иконка</option>
 	</select></td><td class="col2">
 <div style="width: 100%;" id="containerxin">
 <span class="dbminputlabel">Эмодзи</span><br>
@@ -116,7 +116,7 @@ module.exports = {
 	<span class="dbminputlabel">Инфомарция</span><br>
 	<select id="info" class="round">
    <optgroup label="Общее">
-		<option value="0" selected>Объект Реакции</option>
+		<option value="0" selected>Объект реакции</option>
     <option value="1">Общее количество реакций</option>
     <option value="2">Общее количество реакций пользователей</option>
     <option value="3">Общее количество реакций ботов</option>

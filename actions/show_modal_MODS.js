@@ -53,7 +53,7 @@ module.exports = {
 
     <tab-system>
 
-      <tab label="Inputs" icon="align left">
+      <tab label="Поля ввода" icon="align left">
 
       <div style="margin: 5px;">
       <span class="dbminputlabel">Заголовок модального окна</span>
@@ -66,9 +66,9 @@ module.exports = {
 
           <span class="dbminputlabel">Конфигурация отображения</span>
           <select id="formula" class="round">
-            <option value="0" selected>Всегда отображать меню</option>
-            <option value="1">Отобразить меню, если получено значение False</option>
-            <option value="2">Отобразить меню, если получено значение True</option>
+            <option value="0" selected>Всегда показывать поле</option>
+            <option value="1">Показать поле, если получено значение False</option>
+            <option value="2">Показать поле, если получено значение True</option>
           </select>
 
           <br>
@@ -83,7 +83,7 @@ module.exports = {
                 <span class="dbminputlabel">Сравнение</span>
                 <select id="comparar" class="round">
                     <optgroup label="Число или Текст">
-                        <option value="0">Значение A - Существует</option>
+                        <option value="0">Значение A существует</option>
                         <option value="1" selected>Равно</option>
                         <option value="2">Точно равно</option>
                     </optgroup>
@@ -92,41 +92,41 @@ module.exports = {
                         <option value="13">Меньше или равно</option>
                         <option value="4">Больше чем</option>
                         <option value="12">Больше или равно</option>
-                        <option value="19">Значение A - Четное число?</option>
-                        <option value="20">Значение A - Нечетное число?</option>
-                        <option value="21">Значение A - Число?</option>
+                        <option value="19">Значение A - чётное число?</option>
+                        <option value="20">Значение A - нечётное число?</option>
+                        <option value="21">Значение A - число?</option>
                     </optgroup>
                     <optgroup label="Текст">
-                        <option value="6">Соответствует регулярному выражению</option>
-                        <option value="14">Соответствует полному регулярному выражению</option>
+                        <option value="6">Соответствует Regex</option>
+                        <option value="14">Полностью соответствует Regex</option>
                         <option value="7">Длина больше чем</option>
                         <option value="8">Длина меньше чем</option>
                         <option value="9">Длина равна</option>
                         <option value="10">Начинается с</option>
                         <option value="11">Заканчивается на</option>
-                        <option value="16">Значение A - Содержит акценты?</option>
+                        <option value="16">Значение A - содержит акценты?</option>
                         <option value="18">Равно словам ["a", "b", "c"]</option>
-                        <option value="24">Значение A - Текст?</option>
+                        <option value="24">Значение A - текст?</option>
                         <option value="23">Значение A - URL изображения?</option>
-                        <option value="25">Значение A - URL?</option>
+                        <option value="25">Значение A - это URL?</option>
                         <option value="26">Значение A - Email существует?</option>
                     </optgroup>
-                    <optgroup label="Текст ~ Включает">
-                        <option value="5">Точно включает</option>
-                        <option value="29">Включает ~ Без учета регистра</option>
-                        <option value="30">Включает ~ Без учета акцентов</option>
-                        <option value="31">Включает ~ Без учета акцентов и регистра</option>
-                        <option value="17">Точно включает слова ["a", "b", "c"]</option>
-                        <option value="27">Включает URL?</option>
-                        <option value="28">Включает приглашение Discord?</option>
-                        <option value="32">Точно включает слово</option>
-                        <option value="33">Включает слово ~ Без учета регистра</option>
-                        <option value="34">Включает слово ~ Без учета акцентов</option>
-                        <option value="35">Включает слово ~ Без учета акцентов и регистра</option>
-                        <option value="36">Включает слова ~ разделенные запятыми ~ Без учета акцентов и регистра</option>
+                    <optgroup label="Текст ~ содержит">
+                        <option value="5">Точно содержит</option>
+                        <option value="29">Содержит ~ без учёта регистра</option>
+                        <option value="30">Содержит ~ без учёта акцентов</option>
+                        <option value="31">Содержит ~ без учёта акцентов и регистра</option>
+                        <option value="17">Точно содержит слова ["a", "b", "c"]</option>
+                        <option value="27">Содержит URL?</option>
+                        <option value="28">Содержит приглашение Discord?</option>
+                        <option value="32">Точно содержит слово</option>
+                        <option value="33">Содержит слово ~ без учёта регистра</option>
+                        <option value="34">Содержит слово ~ без учёта акцентов</option>
+                        <option value="35">Содержит слово ~ без учёта акцентов и регистра</option>
+                        <option value="36">Содержит слова, разделённые запятыми ~ без учёта акцентов и регистра</option>
                     </optgroup>
                     <optgroup label="Другое">
-                        <option value="22">Значение A - Список?</option>
+                        <option value="22">Значение A - список?</option>
                     </optgroup>
                 </select>
               </td>
@@ -149,8 +149,8 @@ module.exports = {
 
           <br>
 
-          <span class="dbminputlabel">Авто-заполение</span>
-          <input id="value" placeholder="Не обязательное поле" class="round" type="text">
+          <span class="dbminputlabel">Автозаполнение</span>
+          <input id="value" placeholder="Необязательное поле" class="round" type="text">
 
           <br>
 
@@ -169,14 +169,14 @@ module.exports = {
 
           <table style="width: 100%;">
             <td>
-              <span class="dbminputlabel">Линия действия</span>
+              <span class="dbminputlabel">Строка компонента</span>
               <input id="row" placeholder="От 1 до 5" class="round" type="text">
             </td>
             <td style="padding-left: 15px;">
               <span class="dbminputlabel">Стиль</span>
               <select id="style" class="round">
                 <option value="SHORT">Короткий (в строку)</option>
-                <option value="PARAGRAPH">Параграф (в несколько строк)</option>
+                <option value="PARAGRAPH">Многострочный</option>
               </select>
             </td>
             <td style="padding-left: 15px;">
@@ -200,7 +200,7 @@ module.exports = {
 
           <br>
           
-          <store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
+          <store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
 
         </div>
       </dialog-list>
@@ -214,7 +214,7 @@ module.exports = {
                 <td>
                   <span class="dbminputlabel">Описание действия</span>
                   <br>
-                  <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+                  <input type="text" class="round" id="description" placeholder="Необязательное поле">
                 </td>
                 <td style="padding:0px 0px 0px 10px; width:70px";>
                   <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -229,25 +229,25 @@ module.exports = {
         <span class="dbminputlabel">Опции</span>
         <br>
         <div style="padding: 10px; background: rgba(0,0,0,0.2);">
-        <dbm-checkbox id="errcmd" label="Отображать ошибку в консоли" checked></dbm-checkbox>
+        <dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
         </div>
         <br>
 
         <div style="float: left; width: 35%">
           <span class="dbminputlabel">При ошибке</span>
           <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-            <option value="0">Продолжить действия</option>
-            <option value="1" selecionado>Остановить последовательность действий</option>
+            <option value="0">Продолжить выполнение действий</option>
+            <option value="1" selecionado>Остановить выполнение действий</option>
             <option value="2">Перейти к действию</option>
             <option value="3">Пропустить действия</option>
             <option value="4">Перейти к якорю</option>
-            <option value="5">Выполнить действия и остановится</option>
+            <option value="5">Выполнить действия и остановиться</option>
             <option value="99">Выполнить действия и продолжить</option>
           </select>
         </div>
   
         <div id="iffalseContainer" style="display: none; float: right; width: 55%;">
-          <span id="xinelasT" class="dbminputlabel">Para</span>
+          <span id="xinelasT" class="dbminputlabel">Значение</span>
           <input id="iffalseVal" class="round" type="text">
         </div>
   
@@ -257,7 +257,7 @@ module.exports = {
 
         <div id="divValueError">
         <div style="float: left; width: 35%;">
-          <span class="dbminputlabel">Хранить ошибку в</span>
+          <span class="dbminputlabel">Сохранить ошибку в</span>
           <select id="storageError" class="round" onchange="glob.variableChangeError(this, 'varNameContainer')">
             ${data.variables[0]}
           </select>
@@ -303,7 +303,7 @@ module.exports = {
 
   init() {
     glob.formatItem = function (data) {
-      const storage = ["Easter Egg", "Временная переменная", "Серваерная переменная", "Глобальная переменная"];
+      const storage = ["Easter Egg", "Временная переменная", "Серверная переменная", "Глобальная переменная"];
 
       let result = `<div style="display: inline-block; width: 100%; padding-left: 8px"><div style="float: left; width: calc(100% - 200px); overflow: hidden; text-align: left;">Имя: ${data.name}<br>Формат: `;
 
@@ -325,7 +325,7 @@ module.exports = {
           break;
       }
 
-      return result += `</div><div style="float: right; width: 190px; text-align: left; padding: 0px 10px 0px 0px;">Стиль: ${data.style == "SHORT" ? "Строка" : "Параграф"}<br>${storage[parseInt(data.storage)]} (${data.varName})</div></div>`;
+      return result += `</div><div style="float: right; width: 190px; text-align: left; padding: 0px 10px 0px 0px;">Стиль: ${data.style == "SHORT" ? "Строка" : "Многострочный"}<br>${storage[parseInt(data.storage)]} (${data.varName})</div></div>`;
     };
 
     glob.onComparisonChanged = function (event) {

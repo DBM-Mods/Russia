@@ -258,7 +258,7 @@ module.exports = {
 </div>
   </tab>
 
-  <tab label="Хранить и поиск" icon="point">
+  <tab label="Сохранение и поиск" icon="point">
   <div style="padding:8px">
 
   <dialog-list id="branches" fields='["info", "storage", "varName"]' dialogResizable dialogTitle="Store" dialogWidth="600" dialogHeight="400" listLabel="Информация" listStyle="height: calc(100vh - 270px);" itemName="Item" itemHeight="28px;" itemTextFunction="glob.formatItem(data)" itemStyle="line-height: 28px;">

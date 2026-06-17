@@ -72,7 +72,7 @@ module.exports = {
     </table>
   </div>
   
-  <message-input dropdownLabel="Mensagem" selectId="message" variableContainerId="varNameContainer" variableInputId="varName"></message-input>
+  <message-input dropdownLabel="Сообщение" selectId="message" variableContainerId="varNameContainer" variableInputId="varName"></message-input>
   
   <br><br><br>
   
@@ -139,8 +139,8 @@ module.exports = {
      <option value="21">Это число?</option>
    </optgroup>
    <optgroup label="Текст">
-     <option value="6">Соответствует регулярному выражению</option>
-     <option value="14">Соответствует полному регулярному выражению</option>
+     <option value="6">Соответствует Regex</option>
+     <option value="14">Полностью соответствует Regex</option>
      <option value="7">Длина больше, чем</option>
      <option value="8">Длина меньше, чем</option>
      <option value="9">Длина равена</option>

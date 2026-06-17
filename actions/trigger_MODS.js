@@ -198,7 +198,7 @@ module.exports = {
 
 <span class="dbminputlabel">Trigger</span><br>
     <select id="acao" class="round">
-    <option value="0" selected>Остановится и ждитать, когда будет выполенен тригер действия</option>
+    <option value="0" selected>Остановиться и дождаться выполнения действия триггера</option>
     <option value="1">Продолжить выполнение действий (Это повлияет на непрерывность действий триггера в разделе "Действие")</option>
 </select>
 </div>
