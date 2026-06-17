@@ -634,15 +634,15 @@ customaction.name = "WrexMODS";
 customaction.section = "JSON Things";
 customaction.author = "General Wrex";
 customaction.version = "1.8.3";
-customaction.short_description = "Necessário para alguns mods. Não faz nada";
+customaction.short_description = "Необходимо для некоторых модов. Ничего не делает";
 
 customaction.html = function() { 
 	return `
 <div id ="wrexdiv" style="width: 550px; height: 350px; overflow-y: scroll;">
      <p>
-		<u>Dependências de Wrexmods:</u><br><br>
-		Esta não é uma ação, mas é necessária para as ações nesta categoria.<br><br> 
-		<b> Criar esta ação não fará nada </b>
+		<u>Зависимости Wrexmods:</u><br><br>
+		Это не действие, но оно необходимо для действий в этой категории.<br><br> 
+		<b>Создание этого действия ничего не делает</b>
 	</p>
 </div>`	
 };

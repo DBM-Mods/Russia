@@ -188,7 +188,7 @@ break;
 </div><br>
 <div>
   <div style="float: left; width: 35%;">
-  <span class="dbminputlabel">Хранить в</span><br>
+  <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage" class="round">
       ${data.variables[1]}
     </select>

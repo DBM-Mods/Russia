@@ -45,7 +45,7 @@ module.exports = {
                 <br>
 
                 <span class="dbminputlabel">Причина</span>
-                <input type="text" class="round" id="reason" placeholder="Не обязательное поле">
+                <input type="text" class="round" id="reason" placeholder="Необязательное поле">
 
                 <br>
 
@@ -70,17 +70,17 @@ module.exports = {
                 </div>
 
                 <span class="dbminputlabel">Описание</span>
-                <textarea type="text" class="round" id="descricao" placeholder="Не обязательное поле"></textarea>
+                <textarea type="text" class="round" id="descricao" placeholder="Необязательное поле"></textarea>
 
                 <br>
 
                 <table style="width: 100%;">
                     <td>
-                        <span class="dbminputlabel">Timestamp начала</span>
+                        <span class="dbminputlabel">Время начала (timestamp)</span>
                         <input type="text" class="round" id="startTime">
                     </td>
                     <td style="padding-left: 18px;">
-                        <span class="dbminputlabel">Timestamp окончания</span>
+                        <span class="dbminputlabel">Время окончания (timestamp)</span>
                         <input type="text" class="round" id="endTime">
                     </td>
                 </table>
@@ -92,7 +92,7 @@ module.exports = {
 
                 <br>
 
-                <store-in-variable allowNone dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer3" variableInputId="varName3"></store-in-variable>
+                <store-in-variable allowNone dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer3" variableInputId="varName3"></store-in-variable>
             </div>
         </tab>
         <tab label="Конфигурация" icon="cogs">
@@ -102,7 +102,7 @@ module.exports = {
                 <td>
                 <span class="dbminputlabel">Описание действия</span>
                 <br>
-                <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+                <input type="text" class="round" id="description" placeholder="Необязательное поле">
                 </td>
                 <td style="padding:0px 0px 0px 10px;width:70px">
                 <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -117,7 +117,7 @@ module.exports = {
             <span class="dbminputlabel">Опции</span>
             <br>
             <div style="padding: 10px; background: rgba(0,0,0,0.2);">
-                <dbm-checkbox id="errcmd" label="Отображать ошибку в консоли" checked></dbm-checkbox>
+                <dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
             </div>
 
             <br>
@@ -125,8 +125,8 @@ module.exports = {
             <div style="float: left; width: 40%">
                 <span class="dbminputlabel">Если канал не найден</span>
                 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-                <option value="0">Продолжить действия</option>
-                <option value="1">Остановить последовательность действий</option>
+                <option value="0">Продолжить выполнение действий</option>
+                <option value="1">Остановить выполнение действий</option>
                 <option value="2">Перейти к действию</option>
                 <option value="3">Пропустить действия</option>
                 <option value="4">Перейти к якорю</option>
@@ -163,7 +163,7 @@ module.exports = {
                 xinelaslink.setAttribute("title", url);
                 xinelaslink.addEventListener("click", (e) => {
                     e.stopImmediatePropagation();
-                    console.log(`Запуск URL: [${url}] в браузере.`);
+                    console.log(`Открываю URL: [${url}] в браузере.`);
                     require("child_process").execSync(`start ${url}`);
                 });
             }
@@ -198,7 +198,7 @@ module.exports = {
             }
 
             if (event.value == "3") {
-                document.querySelector("[id='xinelasT']").innerText = "Количество действий";
+                document.querySelector("[id='xinelasT']").innerText = "Количество действий для пропуска";
             }
 
             if (event.value == "4") {

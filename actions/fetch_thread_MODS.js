@@ -40,7 +40,7 @@ module.exports = {
           <td>
           <span class="dbminputlabel">Описание действия</span>
           <br>
-          <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+          <input type="text" class="round" id="description" placeholder="Необязательное поле">
           </td>
           <td style="padding:0px 0px 0px 10px;width:70px">
           <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -63,7 +63,7 @@ module.exports = {
      </div>
  
      <div style="float: left; width: 35%;">
-       <span class="dbminputlabel">Хранить в</span>
+       <span class="dbminputlabel">Сохранить в</span>
        <select id="storage" class="round">
          ${data.variables[1]}
        </select>
@@ -74,12 +74,12 @@ module.exports = {
       <div style="float: left; width: 40%">
         <span class="dbminputlabel">Если ветка не обнаружена</span>
         <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-            <option value="0" selecionado>Продолжить действия</option>
-            <option value="1">Остановить последовательность действий</option>
+            <option value="0" selecionado>Продолжить выполнение действий</option>
+            <option value="1">Остановить выполнение действий</option>
             <option value="2">Перейти к действию</option>
             <option value="3">Пропустить действия</option>
             <option value="4">Перейти к якорю</option>
-            <option value="5">Выполнить действия и остановиться</option>
+            <option value="5">Выполнить действия и остановитьсяся</option>
             <option value="99">Выполнить действия и продолжить</option>
         </select>
       </div>
@@ -112,7 +112,7 @@ module.exports = {
       }
 
       if (event.value == "3") {
-        document.querySelector("[id='xinelasT']").innerText = "Количество действий";
+        document.querySelector("[id='xinelasT']").innerText = "Количество действий для пропуска";
       }
 
       if (event.value == "4") {

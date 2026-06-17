@@ -313,7 +313,7 @@ module.exports = {
         <td>
           <span class="dbminputlabel">Описание действия</span>
           <br>
-          <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+          <input type="text" class="round" id="description" placeholder="Необязательное поле">
         </td>
         <td style="padding:0px 0px 0px 10px;width:70px">
           <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -439,7 +439,7 @@ module.exports = {
 <br></div>
 </td></tr></table>
 
-<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+<store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
 
 </div>
 <style>
@@ -520,7 +520,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

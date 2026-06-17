@@ -41,7 +41,7 @@ module.exports = {
   <option value="3">Все</option>
 </select>
 </td><td>
-<span class="dbminputlabel">Вывод в консоль</span><br>
+<span class="dbminputlabel">Выводить в консоль</span><br>
   <select id="console" class="round">
   <option value="0" selected>Отключено</option>
   <option value="1">Включено</option>

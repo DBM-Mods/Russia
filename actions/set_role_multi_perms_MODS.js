@@ -34,7 +34,7 @@ module.exports = {
   
       <div id="flutuador" style="padding:0px 0px 15px 0px">
   <table style="width:100%;"><tr>
-  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное окно"></td>
+  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное окно"></td>
   <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
   </tr></table>
   </div>
@@ -149,7 +149,7 @@ module.exports = {
   
   <div style="padding-top: 8px;">
     <span class="dbminputlabel">Причина</span>
-    <input id="reason" placeholder="Не обязательное поле" class="round" type="text">
+    <input id="reason" placeholder="Необязательное поле" class="round" type="text">
   </div>
   
   
@@ -158,8 +158,8 @@ module.exports = {
   <div style="float: left; width: 50%">
   <span class="dbminputlabel">При ошибке</span><br>
   <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-  <option value="0" selecionado>Продолжить действия</option>
-  <option value="1">Остановить последовательность действий</option>
+  <option value="0" selecionado>Продолжить выполнение действий</option>
+  <option value="1">Остановить выполнение действий</option>
   <option value="2">Перейти к действию</option>
   <option value="3">Пропустить действия</option>
   <option value="4">Перейти к якорю</option>
@@ -214,7 +214,7 @@ module.exports = {
          xinelaslink.setAttribute('title', url);
          xinelaslink.addEventListener('click', (e) => {
             e.stopImmediatePropagation();
-            console.log(`Запуск URL: [${url}] в браузере.`);
+            console.log(`Открываю URL: [${url}] в браузере.`);
             require('child_process').execSync(`start ${url}`);
           });
         }

@@ -34,7 +34,7 @@ module.exports = {
 
 <br>
 
-<retrieve-from-variable allowSlashParams dropdownLabel="Url изображения" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></retrieve-from-variable
+<retrieve-from-variable allowSlashParams dropdownLabel="URL изображения" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></retrieve-from-variable
 
 <br><br><br><br>
 
@@ -42,11 +42,11 @@ module.exports = {
 <div style="float: left; width: 40%">
 <span class="dbminputlabel">Если эмодзи не добавлен</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-<option value="0" selecionado>Продолжить действия</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="0" selecionado>Продолжить выполнение действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к якорю действий</option>
+<option value="4">Перейти к якорю действия</option>
 </select>
 </div>
 <div id="iffalseContainer" style="display: none; float: right; width: 55%;"><span id="xinelas" class="dbminputlabel">Para</span><br><input id="iffalseVal" class="round" name="actionxinxyla" type="text"></div>
@@ -95,7 +95,7 @@ module.exports = {
       document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
     }
     if (event.value == "3") {
-      document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
+      document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска для пропуска`);
     }
     if (event.value == "4") {
       document.querySelector("[id='xinelas']").innerText = (`Название якоря`);

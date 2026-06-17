@@ -128,7 +128,7 @@ module.exports = {
 
     <div id="seppath">
     <table><tr><td class="col3">
-    <span class="dbminputlabel">Json путь / Имя столбца</span> 
+    <span class="dbminputlabel">JSON-путь / Имя столбца</span> 
     <input id="path" class="round"; style="width: 100%;" placeholder="Оставьте пустым, чтобы сохранить все" type="text">
     </td>
     <td class="col4">
@@ -276,7 +276,7 @@ module.exports = {
           }
         })()'>
 
-        <span class="dbminputlabel" style="float: left";>JSON путь / Имя колонки</span>
+        <span class="dbminputlabel" style="float: left";>JSON-путь / Имя колонки</span>
         <span class="xinelaslink dbminputlabel" style="float: right; cursor: pointer; text-decoration: underline;" data-url="http://goessner.net/articles/JsonPath/index.html#e2">Примеры</span>
         <input type="text" class="round" id="jsonPath">
 
@@ -301,7 +301,7 @@ module.exports = {
         <br>
 
         <div style="float: left; width: 35%;">
-            <span class="dbminputlabel">Хранить в</span>
+            <span class="dbminputlabel">Сохранить в</span>
             <select id="storage" class="round">
                 ${data.variables[1]}
             </select>
@@ -321,7 +321,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
     <table style="width:100%;"><tr>
-    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
     <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
     </tr></table>
     </div>
@@ -330,7 +330,7 @@ module.exports = {
     
 
 <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-<dbm-checkbox id="errcmd" label="Отображать ошибку в консоли" checked></dbm-checkbox>
+<dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
 </div>
 
 <br>
@@ -340,12 +340,12 @@ module.exports = {
       <div style="float: left; width: 38%" id="xinext">
       <span class="dbminputlabel">При ошибке</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-      <option value="0" selected>Продолжить действия</option>
-      <option value="1">Остановить последовательность действий</option>
+      <option value="0" selected>Продолжить выполнение действий</option>
+      <option value="1">Остановить выполнение действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить действия</option>
       <option value="4">Перейти к якорю</option>
-      <option value="5">Выполнить действия и остановиться</option>
+      <option value="5">Выполнить действия и остановитьсяся</option>
       <option value="6">Выполнить действия и продолжить</option>
       </select>
       <br>
@@ -360,7 +360,7 @@ module.exports = {
       <div style="padding-top:8px">
       <table>
         <tr>
-        <td class="col1"><span class="dbminputlabel">Хранить ошибку в</span><br>
+        <td class="col1"><span class="dbminputlabel">Сохранить ошибку в</span><br>
         <select id="errs" value="0" class="round" onchange="glob.variableChange(this, 'varerrsv')">
           ${data.variables[0]}
         </select></td>
@@ -416,10 +416,10 @@ module.exports = {
       <tr><td class="cols">>=</td><td class="cols">Больше или равно</td></tr>
       <tr><td class="cols">@></td><td class="cols">Содержит</td></tr>
       <tr><td class="cols"><@</td><td class="cols">Содержится в</td></tr>
-      <tr><td class="cols">~</td><td class="cols">Соответствует регулярному выражению, учитывает регистр</td></tr>
-      <tr><td class="cols">~*</td><td class="cols">Соответствует регулярному выражению, не учитывает регистр</td></tr>
-      <tr><td class="cols">!~</td><td class="cols">Не соответствует регулярному выражению, учитывает регистр</td></tr>
-      <tr><td class="cols">!~*</td><td class="cols">Не соответствует регулярному выражению, не учитывает регистр</td></tr>
+      <tr><td class="cols">~</td><td class="cols">Соответствует Regex, учитывает регистр</td></tr>
+      <tr><td class="cols">~*</td><td class="cols">Соответствует Regex, не учитывает регистр</td></tr>
+      <tr><td class="cols">!~</td><td class="cols">Не соответствует Regex, учитывает регистр</td></tr>
+      <tr><td class="cols">!~*</td><td class="cols">Не соответствует Regex, не учитывает регистр</td></tr>
       </table>
       
       </tl><br>
@@ -560,11 +560,11 @@ module.exports = {
         const sequelize = new Sequelize(database || 'database', username || 'username', password || 'password', options)
 
         document.getElementById('checkConnection_lbl').setAttribute('class', 'ui basic label yellow')
-        document.getElementById('checkConnection_lbl').innerHTML = 'Checando...'
+        document.getElementById('checkConnection_lbl').innerHTML = 'Проверка...'
 
         function isValid(bool, message = false) {
           document.getElementById('checkConnection_lbl').setAttribute('class', `ui basic label ${bool ? 'green' : 'red'}`)
-          document.getElementById('checkConnection_lbl').innerHTML = ((bool ? 'Válido' : 'Inválido') + (message ? `: ${message}` : ''))
+          document.getElementById('checkConnection_lbl').innerHTML = ((bool ? 'Действительно' : 'Недействительно') + (message ? `: ${message}` : ''))
         }
 
         sequelize.authenticate()
@@ -588,7 +588,7 @@ module.exports = {
           xinelaslink.setAttribute('title', url);
           xinelaslink.addEventListener('click', (e) => {
             e.stopImmediatePropagation();
-            console.log(`Запуск URL: [${url}] в браузере.`);
+            console.log(`Открываю URL: [${url}] в браузере.`);
             require('child_process').execSync(`start ${url}`);
           });
         }
@@ -878,7 +878,7 @@ module.exports = {
             if (err && err.original) {
 
               if (data.errcmd === true) {
-                console.log('Ошибка: ' + cache.toString() + ' - Действие ' + (cache.index + 1) + '# ' + data.name);
+                console.log('Ошибка: ' + cache.toString() + ' - действие ' + (cache.index + 1) + '# ' + data.name);
                 console.log(err.original);
               }
 
@@ -903,7 +903,7 @@ module.exports = {
       }).catch((err) => {
 
         if (data.errcmd === true) {
-          console.log('Ошибка: ' + cache.toString() + ' - Действие ' + (cache.index + 1) + '# ' + data.name)
+          console.log('Ошибка: ' + cache.toString() + ' - действие ' + (cache.index + 1) + '# ' + data.name)
           console.log(err)
         }
 
@@ -926,7 +926,7 @@ module.exports = {
     } catch (error) {
 
       if (data.errcmd === true) {
-        console.log('Ошибка: ' + cache.toString() + ' - Действие ' + (cache.index + 1) + '# ' + data.name);
+        console.log('Ошибка: ' + cache.toString() + ' - действие ' + (cache.index + 1) + '# ' + data.name);
         console.log(`${error.stack ? error.stack : error}`);
       }
 

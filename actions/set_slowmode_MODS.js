@@ -26,7 +26,7 @@ module.exports = {
     <div style="position:absolute;bottom:0px;border: 1px solid #222;background:#000;color:#999;padding:3px;left:0px;z-index:999999">dbmmods.com</div>
 
 <div style="padding-top: 8px;">
-<channel-input dropdownLabel="Канал" selectId="Canal" variableContainerId="varNameContainer" variableInputId="varName"></channel-input>
+<channel-input dropdownLabel="Канал" selectId="Канал" variableContainerId="varNameContainer" variableInputId="varName"></channel-input>
 
   <div id="varNameContainer" style="display: none; padding-left: 5%; float: left; width: 65%;">
   <span class="dbminputlabel">Имя переменной</span><br>
@@ -38,7 +38,7 @@ module.exports = {
   <span class="dbminputlabel">Время в секундах</span><br>
     <input id="segundos" class="round" type="text" steps="5"><br>
     <span class="dbminputlabel">Причина</span><br>
-    <input id="reason" class="round" type="text" placeholder="Не обязательное поле"><br>
+    <input id="reason" class="round" type="text" placeholder="Необязательное поле"><br>
   </div>
 </div>
   <div id="varNameContainer2" style="display: none; padding-left: 5%; float: left; width: 65%;">

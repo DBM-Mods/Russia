@@ -16,7 +16,7 @@ subtitle: function(data) {
 variableStorage: function(data, varType) {
 	const type = parseInt(data.storage);
 	if(type !== varType) return;
-	let dataType = 'Número';
+	let dataType = 'Число';
 	return ([data.varName, dataType]);
 },
 
@@ -43,7 +43,7 @@ html: function(isEvent, data) {
 	</select>
 	</td>
 	<td class="col2">
-	<span class="dbminputlabel">Найдите текст</span><br>
+	<span class="dbminputlabel">Найти текст</span><br>
 		<input id="find" class="round" type="text">
 		</td></tr></table>
 
@@ -71,7 +71,7 @@ html: function(isEvent, data) {
 <span class="dbminputlabel">Если не найдено</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
 <option value="0">Продолжать</option>
-<option value="1" selecionado>Остановить последовательность действий</option>
+<option value="1" selecionado>Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>
 <option value="4">Перейти к якорю действия</option>

@@ -14,10 +14,10 @@ module.exports = {
     3
 
     const info = [
-      "Перенаправить всё в Консоль",
+      "Вывести всё в консоль",
       "Перенаправить всё в файл .txt",
-      "Сохранить в файл .txt и также вывести в Консоль",
-      "Сохранить в файл .txt и также вывести в Консоль с датой и временем",
+      "Сохранить в файл .txt и также вывести в консоль",
+      "Сохранить в файл .txt и также вывести в консоль с датой и временем",
     ]
 
     if (data.descriptionx == true) {
@@ -43,7 +43,7 @@ module.exports = {
   
       <div id="flutuador" style="padding:0px 0px 15px 0px">
   <table style="width:100%;"><tr>
-  <td><span class="dbminputlabel">Описание действий</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+  <td><span class="dbminputlabel">Описание действий</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
   <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
   </tr></table>
   </div>
@@ -51,10 +51,10 @@ module.exports = {
 
         <span class="dbminputlabel">Выводы консоли</span><br>
         <select id="console" class="round" onchange="glob.onComparisonChanged(this)">
-          <option value="0" selected>Перенаправить всё в Консоль</option>
+          <option value="0" selected>Вывести всё в консоль</option>
           <option value="1">Перенаправить всё в файл .txt</option>
-          <option value="2">Сохранить в файл .txt и также вывести в Консоль</option>
-          <option value="3">Сохранить в файл .txt и также вывести в Консоль с датой и временем</option>
+          <option value="2">Сохранить в файл .txt и также вывести в консоль</option>
+          <option value="3">Сохранить в файл .txt и также вывести в консоль с датой и временем</option>
         </select><br>
         </td></tr></table>
 
@@ -87,7 +87,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -137,7 +137,7 @@ module.exports = {
 
     if (data.console == "0") {
 
-      console.log('Все журналы теперь будут перенаправлены в консольный журнал');
+      console.log('Все логи теперь будут выводиться в консоль');
 
       console.log = logger.log.bind(logger);
 

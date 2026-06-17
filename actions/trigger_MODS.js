@@ -38,7 +38,7 @@ module.exports = {
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
 <span class="dbminputlabel">Информация</span><br>
-<textarea id="storage" rows="2" placeholder="Insira a informação aqui..." style="width: 100%; font-family: monospace; white-space: nowrap;"></textarea>
+<textarea id="storage" rows="2" placeholder="Введите информацию здесь..." style="width: 100%; font-family: monospace; white-space: nowrap;"></textarea>
 
 <br>
 <div style="width: 100%">
@@ -61,7 +61,7 @@ module.exports = {
       <option value="21">Это число?</option>
       </optgroup>
       <optgroup label="Текст">
-			<option value="6">Соответствует регулярному выражению</option>
+			<option value="6">Соответствует Regex</option>
       <option value="14">Совпадает с полным регулярным выражении</option>
       <option value="7">Длина больше, чем</option>
 			<option value="8">Длина меньше, чем</option>
@@ -71,7 +71,7 @@ module.exports = {
       <option value="16">Есть ли в нем акценты?/option>
       <option value="18">Это как слова  ["a" , "b" , "c"]</option>
       <option value="24">Это текст?</option>
-      <option value="23">Это URL-адрес изображения?</option>
+      <option value="23">Это URL изображения?</option>
       <option value="25">Это URL?</option>
       <option value="26">Существует ли электронная почта?</option>
     </optgroup>
@@ -81,7 +81,7 @@ module.exports = {
     <option value="30">Включает ~ игнорировать акцентуации</option>
     <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
     <option value="17">Включает в себя точно ["a" , "b" , "c"]</option>
-    <option value="27">Включает ли она какие-либо URL-адреса?</option>
+    <option value="27">Содержит URL?</option>
     <option value="28">Включает ли оно приглашение в Discord?</option>
     <option value="32">Включает в себя именно слово</option>
     <option value="33">Включает слово ~ Игнорировать строчные прописные/прописные буквы</option>
@@ -140,12 +140,12 @@ module.exports = {
     <div style="float: left; width: 38%" id="xinext">
     <span class="dbminputlabel">Если триггер запущен</span><br>
     <select id="iftrue" class="round" onchange="glob.onComparisonChanged2(this)">
-    <option value="0" selected>Продолжить действия</option>
-    <option value="1">Остановить последовательность действий</option>
+    <option value="0" selected>Продолжить выполнение действий</option>
+    <option value="1">Остановить выполнение действий</option>
     <option value="2">Перейти к действию</option>
     <option value="3">Пропустить следующие действия</option>
     <option value="4">Перейти к якорю действия</option>
-    <option value="5">Выполнение действий и остановка</option>
+    <option value="5">Выполнить действия и остановиться</option>
     <option value="6">Выполнить действия и продолжить</option>
     </select>
     <br>
@@ -164,12 +164,12 @@ module.exports = {
     <div style="float: left; width: 38%" id="xinext">
     <span class="dbminputlabel">Если триггер истекает</span><br>
     <select id="iffalse" class="round" onchange="glob.onComparisonChanged3(this)">
-    <option value="0" selected>Продолжить действия</option>
-    <option value="1">Остановить последовательность действий</option>
+    <option value="0" selected>Продолжить выполнение действий</option>
+    <option value="1">Остановить выполнение действий</option>
     <option value="2">Перейти к действию</option>
     <option value="3">Пропустить следующие действия</option>
     <option value="4">Перейти к якорю действия</option>
-    <option value="5">Выполнение действий и остановка</option>
+    <option value="5">Выполнить действия и остановиться</option>
     <option value="6">Выполнить действия и продолжить</option>
     </select>
     <br>
@@ -190,7 +190,7 @@ module.exports = {
 
     <div style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -199,7 +199,7 @@ module.exports = {
 <span class="dbminputlabel">Trigger</span><br>
     <select id="acao" class="round">
     <option value="0" selected>Остановится и ждитать, когда будет выполенен тригер действия</option>
-    <option value="1">Продолжить действия (Это повлияет на непрерывность действий триггера в разделе "Действие")</option>
+    <option value="1">Продолжить выполнение действий (Это повлияет на непрерывность действий триггера в разделе "Действие")</option>
 </select>
 </div>
 </tab>
@@ -250,7 +250,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`URL-адрес запуска: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

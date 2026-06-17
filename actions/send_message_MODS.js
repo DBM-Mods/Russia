@@ -146,7 +146,7 @@ module.exports = {
   <tab label="Текст" icon="align left">
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
     
-      <textarea id="message" class="dbm_monospace" rows="6" placeholder="Напишите сообщение. Не обязательное поле" style="height: calc(100vh - 310px); white-space: nowrap;"></textarea>
+      <textarea id="message" class="dbm_monospace" rows="6" placeholder="Напишите сообщение. Необязательное поле" style="height: calc(100vh - 310px); white-space: nowrap;"></textarea>
       <br>       <div style="margin-top:-4px;float:left;text-align:left;position:relative"><dbm-checkbox style="font-size:12px" id="messageoff" label="Добавить/заменить текст" checked></dbm-checkbox></div>
       <div style="margin-top:-4px;float:left;text-align:left;position:relative"><dbm-checkbox id="mentions" style="font-size:12px" label="@ Уведомление участника /роли" checked></dbm-checkbox></div>
     
@@ -156,7 +156,7 @@ module.exports = {
   </tab>
 
 
-  <tab label="Эмбеды" icon="book image">
+  <tab label="Embed-сообщения" icon="book image">
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
 
       <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl", "formula", "val1", "comparar", "val2"]' dialogTitle="Информация об Эмбеде" dialogResizable dialogWidth="750" dialogHeight="550" listLabel="Эмбеды" listStyle="height: calc(100vh - 310px);" itemName="Embed" itemCols="1" itemHeight="60px;" itemTextFunction="'<div style=margin-left:-10px;background:'+data.color+';float:left;width:10px;overflow:hidden;height:60px;><br></div><div style=float:left;width:59%;overflow:hidden;margin-left:5px;> Название: ' + data.title + ' <br> Описание: ' + data.description + '</div><div style=float:right;width:39%;overflow:hidden;>Автор: '+ data.author +' <br>Поля: ' + data.fields.length + (data.formula == 1 || data.formula == 2 ? '<span style=float:right title=Condição_ligada> 🔘 </span>' : '') + '</div>'" itemStyle="text-align: left; line-height: 30px;">
@@ -186,7 +186,7 @@ module.exports = {
                     <span class="dbminputlabel">Сравнение</span><br>
                     <select id="comparar" class="round">
                       <optgroup label="Число или Текст">
-                        <option value="0">Значение A - Существует</option>
+                        <option value="0">Значение A существует</option>
                         <option value="1" selected>Равно</option>
                         <option value="2">Абсолютно равно</option>
                       </optgroup>
@@ -200,8 +200,8 @@ module.exports = {
                         <option value="21">Значение A - Число?</option>
                       </optgroup>
                       <optgroup label="Текст">
-                        <option value="6">Соответствует регулярному выражению</option>
-                        <option value="14">Соответствует полному регулярному выражению</option>
+                        <option value="6">Соответствует Regex</option>
+                        <option value="14">Полностью соответствует Regex</option>
                         <option value="7">Длина больше, чем</option>
                         <option value="8">Длина меньше, чем</option>
                         <option value="9">Длина равна</option>
@@ -211,7 +211,7 @@ module.exports = {
                         <option value="18">Равно словам ["a", "b", "c"]</option>
                         <option value="24">Значение A - Текст?</option>
                         <option value="23">Значение A - URL изображения?</option>
-                        <option value="25">Значение A - URL?</option>
+                        <option value="25">Значение A - это URL?</option>
                         <option value="26">Значение A - Электронная почта существует?</option>
                       </optgroup>
                       <optgroup label="Текст ~ Содержит">
@@ -229,7 +229,7 @@ module.exports = {
                         <option value="36">Содержит слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
                       </optgroup>
                       <optgroup label="Другое">
-                        <option value="22">Значение A - Список?</option>
+                        <option value="22">Значение A - список?</option>
                       </optgroup>
                     </select>
                   </td>
@@ -261,13 +261,13 @@ module.exports = {
                 <td style="width:33%;vertical-align: top;padding:0px 6px 0px 6px">
 
                 <span class="dbminputlabel">Автор текст</span><br>
-                <input id="author" class="round" type="text" placeholder="Не обязательное поле">
+                <input id="author" class="round" type="text" placeholder="Необязательное поле">
 
                 <br>
 
 
                   <span class="dbminputlabel">URL</span><br>
-                  <input id="url" class="round" type="text" placeholder="Не обязательное поле">
+                  <input id="url" class="round" type="text" placeholder="Необязательное поле">
 
                 </td>
 
@@ -275,7 +275,7 @@ module.exports = {
 
                                                 
                 <span class="dbminputlabel">Автор URL</span><br>
-                <input id="authorUrl" class="round" type="text" placeholder="Не обязательное поле">
+                <input id="authorUrl" class="round" type="text" placeholder="Необязательное поле">
 
                 <br>
 
@@ -286,7 +286,7 @@ module.exports = {
                 </tr></table>
 
                 <span class="dbminputlabel">Описание</span><br>
-                <textarea id="description" class="dbm_monospace" rows="7" placeholder="Не обязательное поле"></textarea>
+                <textarea id="description" class="dbm_monospace" rows="7" placeholder="Необязательное поле"></textarea>
 
                 <br>
 
@@ -314,7 +314,7 @@ module.exports = {
     <span class="dbminputlabel">Сравнение</span><br>
     <select id="comparar" class="round">
       <optgroup label="Число или Текст">
-        <option value="0">Значение A - Существует</option>
+        <option value="0">Значение A существует</option>
         <option value="1" selected>Равно</option>
         <option value="2">Абсолютно равно</option>
       </optgroup>
@@ -328,8 +328,8 @@ module.exports = {
         <option value="21">Значение A - Число?</option>
       </optgroup>
       <optgroup label="Текст">
-        <option value="6">Соответствует регулярному выражению</option>
-        <option value="14">Соответствует полному регулярному выражению</option>
+        <option value="6">Соответствует Regex</option>
+        <option value="14">Полностью соответствует Regex</option>
         <option value="7">Длина больше, чем</option>
         <option value="8">Длина меньше, чем</option>
         <option value="9">Длина равна</option>
@@ -339,7 +339,7 @@ module.exports = {
         <option value="18">Равно словам ["a", "b", "c"]</option>
         <option value="24">Значение A - Текст?</option>
         <option value="23">Значение A - URL изображения?</option>
-        <option value="25">Значение A - URL?</option>
+        <option value="25">Значение A - это URL?</option>
         <option value="26">Значение A - Электронная почта существует?</option>
       </optgroup>
       <optgroup label="Текст ~ Содержит">
@@ -357,7 +357,7 @@ module.exports = {
         <option value="36">Содержит слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
       </optgroup>
       <optgroup label="Другое">
-        <option value="22">Значение A - Список?</option>
+        <option value="22">Значение A - список?</option>
       </optgroup>
     </select>
   </td>
@@ -389,7 +389,7 @@ module.exports = {
   <br><br><br>
 
   <span class="dbminputlabel">Значение поля</span><br>
-  <textarea id="value" class="dbm_monospace" rows="7" placeholder="Не обязательное поле" style="height: calc(100vh - 320px); white-space: nowrap;"></textarea>
+  <textarea id="value" class="dbm_monospace" rows="7" placeholder="Необязательное поле" style="height: calc(100vh - 320px); white-space: nowrap;"></textarea>
 
 </div></div>
 </dialog-list>
@@ -404,7 +404,7 @@ module.exports = {
                 <table style="width:100%"><tr><td style="width:30%;vertical-align: top">
                 
               <span class="dbminputlabel">Цвет</span><div style="float:right;margin-top:-6px"><dbm-checkbox id="colorrandom" style="font-size:12px" label="Рандом"></dbm-checkbox></div><br>
-              <table style="width:100%"><tr><td><input id="color" name="actionxinxyla" class="round" type="text" placeholder="Не обязательное поле"><td>
+              <table style="width:100%"><tr><td><input id="color" name="actionxinxyla" class="round" type="text" placeholder="Необязательное поле"><td>
               <td style="width:40px;text-align:center"><a id="btr1" style="cursor:pointer" onclick="(function(){
                  document.getElementById('color').type = 'color'
                 document.getElementById('btr1').style.display = 'none';
@@ -432,7 +432,7 @@ module.exports = {
                 <br>
 
                 <span class="dbminputlabel">Футер текст</span>
-                <textarea id="footerText" class="dbm_monospace" rows="3" placeholder="Не обязательное поле"></textarea>
+                <textarea id="footerText" class="dbm_monospace" rows="3" placeholder="Необязательное поле"></textarea>
 
               </div>
 
@@ -483,7 +483,7 @@ module.exports = {
                 <span class="dbminputlabel">Сравнение</span><br>
                 <select id="comparar" class="round">
                   <optgroup label="Число или Текст">
-                    <option value="0">Значение A - Существует</option>
+                    <option value="0">Значение A существует</option>
                     <option value="1" selected>Равно</option>
                     <option value="2">Абсолютно равно</option>
                   </optgroup>
@@ -497,8 +497,8 @@ module.exports = {
                     <option value="21">Значение A - Число?</option>
                   </optgroup>
                   <optgroup label="Текст">
-                    <option value="6">Соответствует регулярному выражению</option>
-                    <option value="14">Соответствует полному регулярному выражению</option>
+                    <option value="6">Соответствует Regex</option>
+                    <option value="14">Полностью соответствует Regex</option>
                     <option value="7">Длина больше, чем</option>
                     <option value="8">Длина меньше, чем</option>
                     <option value="9">Длина равна</option>
@@ -508,7 +508,7 @@ module.exports = {
                     <option value="18">Равно словам ["a", "b", "c"]</option>
                     <option value="24">Значение A - Текст?</option>
                     <option value="23">Значение A - URL изображения?</option>
-                    <option value="25">Значение A - URL?</option>
+                    <option value="25">Значение A - это URL?</option>
                     <option value="26">Значение A - Электронная почта существует?</option>
                   </optgroup>
                   <optgroup label="Текст ~ Содержит">
@@ -526,7 +526,7 @@ module.exports = {
                     <option value="36">Содержит слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
                   </optgroup>
                   <optgroup label="Другое">
-                    <option value="22">Значение A - Список?</option>
+                    <option value="22">Значение A - список?</option>
                   </optgroup>
                 </select>
               </td>
@@ -590,12 +590,12 @@ module.exports = {
       <br>
 
       <span class="dbminputlabel">Линия действия (1 - 5)</span>
-      <input id="row" placeholder="Не обязательное поле" class="round" type="text">
+      <input id="row" placeholder="Необязательное поле" class="round" type="text">
 
       <br>
 
       <span class="dbminputlabel">Эмодзи</span>
-      <input id="emoji" placeholder="Не обязательное поле" class="round" type="text">
+      <input id="emoji" placeholder="Необязательное поле" class="round" type="text">
 
       <br>
 
@@ -656,7 +656,7 @@ module.exports = {
             <br>
 
             <span class="dbminputlabel">Линия действия (1 - 5)</span>
-            <input id="row" placeholder="Не обязательное поле" class="round" type="text">
+            <input id="row" placeholder="Необязательное поле" class="round" type="text">
 
             <br>
 
@@ -690,7 +690,7 @@ module.exports = {
                       <span class="dbminputlabel">Сравнение</span><br>
                       <select id="comparar" class="round">
                       <optgroup label="Число или Текст">
-                        <option value="0">Значение A - Существует</option>
+                        <option value="0">Значение A существует</option>
                         <option value="1" selected>Равно</option>
                         <option value="2">Абсолютно равно</option>
                       </optgroup>
@@ -704,8 +704,8 @@ module.exports = {
                         <option value="21">Значение A - Число?</option>
                       </optgroup>
                       <optgroup label="Текст">
-                        <option value="6">Соответствует регулярному выражению</option>
-                        <option value="14">Соответствует полному регулярному выражению</option>
+                        <option value="6">Соответствует Regex</option>
+                        <option value="14">Полностью соответствует Regex</option>
                         <option value="7">Длина больше, чем</option>
                         <option value="8">Длина меньше, чем</option>
                         <option value="9">Длина равна</option>
@@ -715,7 +715,7 @@ module.exports = {
                         <option value="18">Равно словам ["a", "b", "c"]</option>
                         <option value="24">Значение A - Текст?</option>
                         <option value="23">Значение A - URL изображения?</option>
-                        <option value="25">Значение A - URL?</option>
+                        <option value="25">Значение A - это URL?</option>
                         <option value="26">Значение A - Электронная почта существует?</option>
                       </optgroup>
                       <optgroup label="Текст ~ Содержит">
@@ -733,7 +733,7 @@ module.exports = {
                         <option value="36">Содержит слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
                       </optgroup>
                       <optgroup label="Другое">
-                        <option value="22">Значение A - Список?</option>
+                        <option value="22">Значение A - список?</option>
                       </optgroup>
                       </select>
                     </td>
@@ -762,7 +762,7 @@ module.exports = {
                 <br>
 
                 <span class="dbminputlabel">Эмодзи</span>
-                <input id="emoji" placeholder="Не обязательное поле" class="round" type="text">
+                <input id="emoji" placeholder="Необязательное поле" class="round" type="text">
 
                 <br>
 
@@ -881,7 +881,7 @@ module.exports = {
             <span class="dbminputlabel">Сравнение</span><br>
             <select id="comparar" class="round">
             <optgroup label="Число или Текст">
-              <option value="0">Значение A - Существует</option>
+              <option value="0">Значение A существует</option>
               <option value="1" selected>Равно</option>
               <option value="2">Абсолютно равно</option>
             </optgroup>
@@ -895,8 +895,8 @@ module.exports = {
               <option value="21">Значение A - Число?</option>
             </optgroup>
             <optgroup label="Текст">
-              <option value="6">Соответствует регулярному выражению</option>
-              <option value="14">Соответствует полному регулярному выражению</option>
+              <option value="6">Соответствует Regex</option>
+              <option value="14">Полностью соответствует Regex</option>
               <option value="7">Длина больше, чем</option>
               <option value="8">Длина меньше, чем</option>
               <option value="9">Длина равна</option>
@@ -906,7 +906,7 @@ module.exports = {
               <option value="18">Равно словам ["a", "b", "c"]</option>
               <option value="24">Значение A - Текст?</option>
               <option value="23">Значение A - URL изображения?</option>
-              <option value="25">Значение A - URL?</option>
+              <option value="25">Значение A - это URL?</option>
               <option value="26">Значение A - Электронная почта существует?</option>
             </optgroup>
             <optgroup label="Текст ~ Содержит">
@@ -924,7 +924,7 @@ module.exports = {
               <option value="36">Содержит слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
             </optgroup>
             <optgroup label="Другое">
-              <option value="22">Значение A - Список?</option>
+              <option value="22">Значение A - список?</option>
             </optgroup>
               </select>
             </td>
@@ -1009,7 +1009,7 @@ module.exports = {
           <br></div></div>
 
           <span class="dbminputlabel">Имя файла</span>
-          <input id="name" class="round" type="text" placeholder="Не обязательное поле">
+          <input id="name" class="round" type="text" placeholder="Необязательное поле">
 
           <br>
 
@@ -1028,7 +1028,7 @@ module.exports = {
     <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow-y: scroll;overflow-x: hidden;">
     <div style="padding-bottom: 12px;padding-top: 12px">
     <table style="width:100%;"><tr>
-    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
     <td style="padding:0px 0px 0px 10px;width:55px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
     </tr></table>
     </div>
@@ -1051,7 +1051,7 @@ module.exports = {
       <xinspace>
       <dbm-checkbox id="removeComps" label="Удалить или не отправлять кнопки/меню"></dbm-checkbox>
       <xinspace>
-      <dbm-checkbox id="removeEmbeds" label="Удалить или не отправлять Эмбеды"></dbm-checkbox>
+      <dbm-checkbox id="removeEmbeds" label="Удалить или не отправлять Embed-сообщения"></dbm-checkbox>
       <xinspace>
       <dbm-checkbox id="removeAttachments" label="Удалить или не отправлять вложения"></dbm-checkbox>
       <xinspace>
@@ -1074,7 +1074,7 @@ module.exports = {
 
    
       <div style="padding-top: 12px">
-        <store-in-variable allowNone dropdownLabel="Хранить в" selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer2"></store-in-variable>
+        <store-in-variable allowNone dropdownLabel="Сохранить в" selectId="storage" variableInputId="varName2" variableContainerId="varNameContainer2"></store-in-variable>
       </div>
 
       <br><br><br>
@@ -1131,12 +1131,12 @@ module.exports = {
     <div id="divValueError2" style="float: left; width: 38%">
       <span class="dbminputlabel">Если возникает ошибка</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-        <option value="0">Продолжить действия</option>
-        <option value="1" selecionado>Остановить последовательность действий</option>
+        <option value="0">Продолжить выполнение действий</option>
+        <option value="1" selecionado>Остановить выполнение действий</option>
         <option value="2">Перейти к действию</option>
         <option value="3">Пропустить следующие действия</option>
         <option value="4">Перейти к якорю</option>
-        <option value="5">Выполнить действия и остановиться</option>
+        <option value="5">Выполнить действия и остановитьсяся</option>
         <option value="99">Выполнить действия и продолжить</option>
       </select>
     </div>
@@ -1280,7 +1280,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           result += "Отправить переменную: " + data.canvasnome;
           break;
       }
-      result += (data.formula == 1 || data.formula == 2 ? '<div style="float:right" title="Condição ligada">🔘 </div>' : '') + "</div>";
+      result += (data.formula == 1 || data.formula == 2 ? '<div style="float:right" title="Условие включено">🔘 </div>' : '') + "</div>";
       return result;
     }
 
@@ -1297,7 +1297,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
           result += data.emoji + ' ' + data.name;
           break;
       }
-      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>" + data.id + (data.formula == 1 || data.formula == 2 ? '<span title="Condição ligada"> 🔘 </span>' : '') + "</td></tr></table></div>";
+      result += "</td><td style='width:120px;text-align:right;padding:0px 10px 0px 0px'>" + data.id + (data.formula == 1 || data.formula == 2 ? '<span title="Условие включено"> 🔘 </span>' : '') + "</td></tr></table></div>";
       return result;
     }
 
@@ -1321,7 +1321,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

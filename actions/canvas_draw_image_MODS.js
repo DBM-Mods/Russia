@@ -40,7 +40,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -65,7 +65,7 @@ module.exports = {
     <span class="dbminputlabel">Соединение с изображением</span><br>
     <select id="storage2" class="round" style="width: 100%" onchange="glob.onChangexin2(this)">
       ${data.variables[1]}
-      <option value="10">Локально/Web URL</option>
+      <option value="10">Локальный файл / URL</option>
     </select>
     </td>
     <td id="controlador2" style="padding:0px 0px 0px 8px">
@@ -73,7 +73,7 @@ module.exports = {
       <input id="varName2" class="round" type="text" list="variableList">
     </td>
     <td id="controlador3" style="padding:0px 0px 0px 8px">
-    <span class="dbminputlabel">Локально/Web URL</span><br>
+    <span class="dbminputlabel">Локальный файл / URL</span><br>
     <input id="local" class="round" type="text" placeholder="resources/output.png">
   </td>
   </tr>
@@ -82,11 +82,11 @@ module.exports = {
   <br>
     <div style="float: left; width: 50%;padding:0px 5px 0px 0px">
     <span class="dbminputlabel">Ширина (px или %)</span><br>
-      <input id="width" class="round" type="text" placeholder="Оставьте пустым для значения по умолчанию" value="100%"><br>
+      <input id="width" class="round" type="text" placeholder="Оставьте пустым, чтобы использовать значение по умолчанию" value="100%"><br>
   </div>
   <div style="float: right; width: 50%;padding:0px">
   <span class="dbminputlabel">Высота (px или %)</span><br>
-    <input id="height" class="round" type="text" placeholder="Оставьте пустым для значения по умолчанию" value="100%"><br>
+    <input id="height" class="round" type="text" placeholder="Оставьте пустым, чтобы использовать значение по умолчанию" value="100%"><br>
   </div>
 
   </div>
@@ -242,7 +242,7 @@ table{width:100%}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

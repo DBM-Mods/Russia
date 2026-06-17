@@ -37,7 +37,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -81,7 +81,7 @@ module.exports = {
 
     <br><br><br>
 
-    <store-in-variable allowNone dropdownLabel="Хранить в" selectId="storage3" variableContainerId="varNameContainer3" variableInputId="varName3"></store-in-variable>
+    <store-in-variable allowNone dropdownLabel="Сохранить в" selectId="storage3" variableContainerId="varNameContainer3" variableInputId="varName3"></store-in-variable>
 
   </tab>
 
@@ -107,12 +107,12 @@ module.exports = {
       <span class="dbminputlabel">При ошибке</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
         <option value="0">Продолжение действий</option>
-        <option value="1" selecionado>Остановить последовательность действий</option>
+        <option value="1" selecionado>Остановить выполнение действий</option>
         <option value="2">Перейти к действию</option>
         <option value="3">Пропустить следующие действия</option>
         <option value="4">Перейдите к якорю действия</option>
-        <option value="5">Выполнять действия и останавится</option>
-        <option value="99">Выполнять действия и продолжить</option>
+        <option value="5">Выполнить действия и остановитьсяся</option>
+        <option value="99">Выполнить действия и продолжить</option>
       </select>
     </div>
 
@@ -131,10 +131,10 @@ module.exports = {
   <tab label="Помощь" icon="help">
 
   <center>
-  <tlt><b>Mensagem de origem</b></tlt>
+  <tlt><b>Исходное сообщение</b></tlt>
   <tl><span style="color:Khaki">Это сообщение, на которое бот даст свой ответ.</span></tl><br>
   <center>
-  <tlt><b>Objeto</b></tlt>
+  <tlt><b>Объект</b></tlt>
   <tl><span style="color:Khaki">Это сообщение, сохраненное в действии "Отправить сообщение" с установленной опцией "Не отправлять сообщение"; его также можно получить с помощью действия "Сохранить информацию о сообщении > Объект".</span></tl><br>
 
   </div>

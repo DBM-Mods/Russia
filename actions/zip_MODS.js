@@ -63,7 +63,7 @@ module.exports = {
     <div style="margin: 5px;">
         <table style="width: 100%;">
             <td>
-            <span class="dbminputlabel">Хранить в</span>
+            <span class="dbminputlabel">Сохранить в</span>
             <input type="text" id="path" class="round" placeholder="./resources/zips">
             </td>
             <td style="padding-left: 18px;">
@@ -168,7 +168,7 @@ module.exports = {
                     <td>
                         <span class="dbminputlabel">Описание действия</span>
                         <br>
-                        <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+                        <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать.">
                     </td>
                     <td style="padding:0px 0px 0px 10px;width:70px">
                         <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -191,11 +191,11 @@ module.exports = {
           <span class="dbminputlabel">Если ошибка</span>
           <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
             <option value="0">Продолжение действий</option>
-            <option value="1" selecionado>Остановить последовательность действий</option>
+            <option value="1" selecionado>Остановить выполнение действий</option>
             <option value="2">Перейти к действию</option>
             <option value="3">Пропустить следующие действия</option>
             <option value="4">Перейти к якорю действия</option>
-            <option value="5">Выполненить действия и остановиться</option>
+            <option value="5">Выполнить действия и остановитьсяся</option>
             <option value="99">Выполнить действия и продолжить</option>
           </select>
         </div>
@@ -236,7 +236,7 @@ module.exports = {
                 xinelaslink.setAttribute("title", url);
                 xinelaslink.addEventListener("click", (e) => {
                     e.stopImmediatePropagation();
-                    console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+                    console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
                     require("child_process").execSync(`start ${url}`);
                 });
             }

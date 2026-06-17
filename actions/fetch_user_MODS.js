@@ -35,8 +35,8 @@ module.exports = {
 <div style="float: left; width: 48%">
       <span class="dbminputlabel">Если пользователь не существует</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-      <option value="0">Продолжить действия</option>
-      <option value="1" selecionado>Остановить последовательность действий</option>
+      <option value="0">Продолжить выполнение действий</option>
+      <option value="1" selecionado>Остановить выполнение действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующий действия</option>
       <option value="4">Перейти к якорю</option>
@@ -47,7 +47,7 @@ module.exports = {
 <br><br><br>
 <div style="padding-top: 8px;">
   <div style="float: left; width: 35%;">
-  <span class="dbminputlabel">Хранить в</span><br>
+  <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage" class="round">
       ${data.variables[1]}
     </select>

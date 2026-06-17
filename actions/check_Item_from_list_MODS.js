@@ -22,7 +22,7 @@ module.exports = {
       'Server Variable',
       'Global Variable',
     ];
-    const info = ['Так же, как и', 'Включают', 'Соответствует регулярному выражению','Меньше, чем', 'Меньше или равно', 'Больше, чем', 'Больше или равно', 'Длина больше, чем', 'Длина меньше, чем', 'Длина равна', 'Начинается с', 'Заканчивается на'];
+    const info = ['Так же, как и', 'Включают', 'Соответствует Regex','Меньше, чем', 'Меньше или равно', 'Больше, чем', 'Больше или равно', 'Длина больше, чем', 'Длина меньше, чем', 'Длина равна', 'Начинается с', 'Заканчивается на'];
      return `Поиск ${info[parseInt(data.buscadoxin)]} "${data.item}" в "${data.varName}"`;
   },
 
@@ -54,7 +54,7 @@ module.exports = {
 			<select id="buscadoxin" class="round">
 				<option value="0" selected>Так же, как и</option>
 				<option value="1">Включают</option>
-        <option value="2">Соответствует регулярному выражению</option>
+        <option value="2">Соответствует Regex</option>
         <option value="7">Длина больше, чем</option>
         <option value="8">Длина меньше, чем</option>
         <option value="9">Длина равна</option>

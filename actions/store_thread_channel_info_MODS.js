@@ -125,7 +125,7 @@ module.exports = {
 
 <br>
 
-<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="storageVarName"></store-in-variable>`;
+<store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="storageVarName"></store-in-variable>`;
   },
 
 

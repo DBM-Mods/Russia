@@ -136,7 +136,7 @@ module.exports = {
 <br>
 
 <table><tr><td class="col1">
-  <span class="dbminputlabel">Хранить в</span><br>
+  <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage" class="round">
       ${data.variables[1]}
     </select>

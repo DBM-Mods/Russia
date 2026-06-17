@@ -126,7 +126,7 @@ module.exports = {
                 <dialog-list id="valuesExpert" fields='["key", "task2", "value", "jsonPath2"]' dialogTitle="Управление Ключём" dialogWidth="540" dialogHeight="270" listLabel="Ключи" listStyle="height: 35vh;" itemName="key" itemCols="1" itemHeight="30px;" itemTextFunction="\`<span style='padding: 3px; letter-spacing: 1px; background-color: rgba(0, 0, 0, 0.3);border-radius: 5px'>\`+data.task2+\`</span> - Путь: <span style='padding: 3px; letter-spacing: 1px; background-color: rgba(0, 0, 0, 0.3);border-radius: 5px'>\`+data.jsonPath2+\`</span> - <span style='padding: 3px; letter-spacing: 1px; background-color: rgba(0, 0, 0, 0.3);border-radius: 5px'>&quot;\`+data.key+\`&quot;: \`+data.value+\`</span>\`" itemStyle="text-align: left; line-height: 30px;">
                   <div style="padding: 16px;">
                     <div style="width: 80%;float:left;">
-                      <span class="dbminputlabel">JSON путь</span><br>
+                      <span class="dbminputlabel">JSON-путь</span><br>
                       <input id="jsonPath2" class="round" type="text" value="json?. (...)" placeholder="Крутой чел умеет этим пользоваться (вместо '/' - '?.' вместо 'Индекс' - '[индекс]')"><br>
                     </div>
                     <div style="padding-left: 2.5%;width: 17.5%;float:left;">
@@ -277,11 +277,11 @@ module.exports = {
       <input id="filePath" class="round" type="text" onchange="glob.fileext()" value="./data/" placeholder="./data/top.json"> <img onclick="document.getElementById('blcbg').style.display = null; document.getElementById('selectpath').style.display = null;document.getElementById('closepath').style.display = null" style="cursor: pointer;right: 0; margin-top: -25px;margin-right: 4%;position: absolute;filter: invert(1) opacity(0.5)" src="https://images-ext-1.discordapp.net/external/kI1YG6DhcpzESJ5OQo4WaqQIxhuva2VKC8Q84mz3S88/https/i.imgur.com/wSvljNY.png?width=20&amp;height=20" /> <span id="ext" style="position:absolute;font-size: 12px; color: red">Файла не существует, создадим! 😇</span>
       <br>
       <div style="width:75%;float:left;">
-        <span class="dbminputlabel">JSON путь</span><br>
+        <span class="dbminputlabel">JSON-путь</span><br>
         <input id="jsonPath" class="round" type="text" placeholder="Оставь пустым если здесь впервые"> </div>
       <div style="float:left;padding-left: 2.5%;width: 25%;">
         <span class="dbminputlabel">Индекс</span><br>
-        <input id="index" class="round" onchange="glob.index(this)" type="text" value="N" placeholder="N - нету">
+        <input id="index" class="round" onchange="glob.index(this)" type="text" value="N" placeholder="N - нет">
         <img onclick="document.getElementById('indexfinder').style.display = null;document.getElementById('blcbg').style.display = null;" style="cursor: pointer;right: 0; margin-top: -25px;margin-right: 4%;position: absolute;filter: invert(1) opacity(0.5)" src="https://images-ext-1.discordapp.net/external/kI1YG6DhcpzESJ5OQo4WaqQIxhuva2VKC8Q84mz3S88/https/i.imgur.com/wSvljNY.png?width=20&amp;height=20" />
         <span id="invalidIndex" style="position:absolute;font-size: 12px; color: red">Индекс только из чисел!</span> </div>
       <br>
@@ -314,7 +314,7 @@ module.exports = {
           display: none !important
         }
         </style>
-        <div class="12"> <span class="dbminputlabel">Название (используется в "JSON путь")</span>
+        <div class="12"> <span class="dbminputlabel">Название (используется в "JSON-путь")</span>
           <br>
           <input id="title" class="round" onchange="glob.text(this)" type="text" placeholder="">
           <br> </div>

@@ -103,7 +103,7 @@ module.exports = {
         <option value="12">Больше или равно</option>
         <option value="5">Содержит</option>
         <option value="6">Соответствует Regex</option>
-        <option value="14">Соответствует полному Regex</option>
+        <option value="14">Полностью соответствует Regex</option>
         <option value="7">Длина больше</option>
         <option value="8">Длина меньше</option>
         <option value="9">Длина равна</option>
@@ -163,7 +163,7 @@ module.exports = {
   
   <table>
   <tr>
-  <td class="sep1"><span class="dbminputlabel">Хранить в</span><br>
+  <td class="sep1"><span class="dbminputlabel">Сохранить в</span><br>
   <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer2')">
     ${data.variables[0]}
   </select></td>
@@ -180,7 +180,7 @@ module.exports = {
 
   <div id="flutuador" style="padding:0px 0px 15px 0px">
   <table style="width:100%;"><tr>
-  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
   <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
   </tr></table>
   </div>
@@ -303,7 +303,7 @@ module.exports = {
        xinelaslink.setAttribute('title', url);
        xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

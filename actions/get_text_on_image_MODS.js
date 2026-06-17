@@ -29,7 +29,7 @@
     variableStorage (data, varType) {
       const type = parseInt(data.storage)
       if (type !== varType) return
-      return ([data.varName, 'Texto'])
+      return ([data.varName, 'Текст'])
     },
   
     fields: ["image", "lang", "storage", "debug", "varName","descriptioncolor","description","descriptionx","iffalse", "iffalseVal", "errcmd", "errs", "errv", "actionserr"], 
@@ -43,12 +43,12 @@
   
       <div id="flutuador" style="padding:0px 0px 15px 0px">
   <table style="width:100%;"><tr>
-  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
   <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
   </tr></table>
   </div>
       
-        <span class="dbminputlabel">URL локального/веб-изображения</span><br>
+        <span class="dbminputlabel">Локальный файл / URL изображения</span><br>
         <input id="image" class="round" type="text"><br>
 
         <table style="width:100%"><tr><td style="padding:0px 4px 0px 0px">
@@ -66,12 +66,12 @@
 
       
         
-        <store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
+        <store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer" variableInputId="varName"></store-in-variable>
 
         <br><br><br>
 
         <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(50,50,50,0.5)">
-<dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
+<dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
 </div>
 
 <br>
@@ -81,12 +81,12 @@
       <div style="float: left; width: 38%" id="xinext">
       <span class="dbminputlabel">При возникновении ошибки</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-      <option value="0" selected>Продолжить действия</option>
-      <option value="1">Остановить последовательность действий</option>
+      <option value="0" selected>Продолжить выполнение действий</option>
+      <option value="1">Остановить выполнение действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующие действия</option>
       <option value="4">Перейти к якорю действия</option>
-      <option value="5">Выполнение действий и остановка</option>
+      <option value="5">Выполнить действия и остановиться</option>
       <option value="6">Выполнить действия и продолжить</option>
       </select>
       <br>
@@ -131,7 +131,7 @@ span.xinelaslink:hover {
          xinelaslink.setAttribute('title', url);
          xinelaslink.addEventListener('click', (e) => {
             e.stopImmediatePropagation();
-            console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+            console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
             require('child_process').execSync(`start ${url}`);
           });
         }
@@ -153,13 +153,13 @@ span.xinelaslink:hover {
           document.getElementById("xinext").style.width = "38%";
         }
         if (event.value == "2") {
-          document.querySelector("[id='xinelas']").innerText = (`Número da ação`);
+          document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
         }
         if (event.value == "3") {
-          document.querySelector("[id='xinelas']").innerText = (`Pular ações`);
+          document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
         }
         if (event.value == "4") {
-          document.querySelector("[id='xinelas']").innerText = (`Nome da âncora`);
+          document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
         }
       }
   

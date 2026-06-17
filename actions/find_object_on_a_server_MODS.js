@@ -115,8 +115,8 @@ module.exports = {
 <table><tr><td class="col1">
 <span class="dbminputlabel">Если объект не найден</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-<option value="0" selecionado>Продолжить действия</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="0" selecionado>Продолжить выполнение действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить действия</option>
 <option value="4">Перейти к якорю</option>
@@ -134,7 +134,7 @@ module.exports = {
 <br>
 
 <table><tr><td class="col1">
-<span class="dbminputlabel">Хранить в</span><br>
+<span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage" class="round">
         ${data.variables[1]}
     </select>

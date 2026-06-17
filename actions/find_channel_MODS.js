@@ -98,7 +98,7 @@ module.exports = {
     <td>
     <span class="dbminputlabel">Описание действия</span>
     <br>
-    <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+    <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать.">
     </td>
     <td style="padding:0px 0px 0px 10px;width:70px">
     <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -113,13 +113,13 @@ module.exports = {
 <div style="float: left; width: 40%;">
     <span class="dbminputlabel">Поиск</span>
     <select id="info" class="round">
-        <option value="0" selected>(ID) Идентификатор канала</option>
+        <option value="0" selected>ID канала</option>
         <option value="1">Название канала</option>
         <option value="5">Название канала включает</option>
         <option value="2">Тема канала</option>
         <option value="6">Тематика канала включает в себя</option>
         <option value="3">Положение канала</option>
-        <option value="4">(ID) Идентификатор категории канала</option>
+        <option value="4">ID категории канала</option>
     </select>
 </div>
 <div style="float: right; width: 55%;">
@@ -166,14 +166,14 @@ module.exports = {
 <br><br><br>
 
 <div style="float: left; width: 40%">
-  <span class="dbminputlabel">Если нету канала</span>
+  <span class="dbminputlabel">Если нет канала</span>
   <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-  <option value="0">Продолжить действия</option>
-  <option value="1" selecionado>Остановить последовательность действий</option>
+  <option value="0">Продолжить выполнение действий</option>
+  <option value="1" selecionado>Остановить выполнение действий</option>
   <option value="2">Перейти к действию</option>
   <option value="3">Пропустить следующие действия</option>
-  <option value="4">Перейти к якорю действий</option>
-  <option value="5">Выполнить действия и останавливиться</option>
+  <option value="4">Перейти к якорю действия</option>
+  <option value="5">Выполнить действия и остановитьсяся</option>
   <option value="99">Выполнить действия и продолжить</option>
   </select>
 </div>

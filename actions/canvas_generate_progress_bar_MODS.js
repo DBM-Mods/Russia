@@ -50,7 +50,7 @@ module.exports = {
      <tab label="Конфигурация" icon="cogs">
 <div style="padding:0px 5px;padding-top:8px;height: calc(100vh - 200px);overflow:auto">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
 <td style="padding:0px 5px 0px 5px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 
@@ -84,7 +84,7 @@ module.exports = {
     <span class="dbminputlabel">Изображение</span><br>
     <select id="storage2" class="round" style="width: 100%" onchange="glob.onChangexin2(this)">
       ${data.variables[1]}
-      <option value="10">Локальный / URL изображения</option>
+      <option value="10">Локальный файл / URL изображения</option>
     </select>
   </td>
   <td id="controlador2x" style="padding:0px 0px 0px 8px">
@@ -92,7 +92,7 @@ module.exports = {
     <input id="varName2" class="round" type="text" list="variableList">
   </td>
   <td id="controlador3x" style="padding:0px 0px 0px 8px">
-  <span class="dbminputlabel">Локальный / URL изображения</span><br>
+  <span class="dbminputlabel">Локальный файл / URL изображения</span><br>
   <input id="local2" class="round" type="text" placeholder="resources/output.png">
 </td>
 </tr>
@@ -146,10 +146,10 @@ module.exports = {
 <table style="width:100%;">
 		<tr>
 			<td id="controlador1">
-				<span class="dbminputlabel">Хранить в</span><br>
+				<span class="dbminputlabel">Сохранить в</span><br>
 				<select id="storage" class="round" style="width: 100%" onchange="glob.onChangexin(this)">
 					${data.variables[1]}
-          <option value="10">Сохранить локально</option>
+          <option value="10">Сохранить в файл</option>
 				</select>
 			</td>
 			<td id="controlador2">
@@ -157,7 +157,7 @@ module.exports = {
 				<input id="varName" class="round" type="text" list="variableList">
 			</td>
       <td id="controlador3">
-      <span class="dbminputlabel">Путь (Сохранить в локально)</span><br>
+      <span class="dbminputlabel">Путь для локального сохранения</span><br>
       <input id="local" class="round" type="text" placeholder="resources/output.png">
     </td>
 		</tr>
@@ -255,7 +255,7 @@ module.exports = {
 <div style="float: left; width: 100%;" id="xinxyludoc">
 <span class="dbminputlabel">Тип цвета</span>
 <select id="tipocor" class="round" onchange="glob.onChange0(this)">
-  <option value="10">Nenhuma</option>
+  <option value="10">Нет</option>
   <option value="0" selected>Цвет (HEX или RGBA)</option>
   <option value="1">Цвет градиента / EVAL</option>
   <option value="2">Цвет градиента / Выбор</option>
@@ -292,7 +292,7 @@ module.exports = {
 <input id="posicao" class="round" type="text" placeholder="От 0 до 100">
 <br>
 
-<span class="dbminputlabel">цвет (HEX, RGBA или название цвета)</span><br>
+<span class="dbminputlabel">Цвет (HEX, RGBA или название цвета)</span><br>
 <table style="width:100%"><tr><td><input id="cor" name="actionxinxyla" class="round" type="text" placeholder="#000000 или rgba(0,0,0,0.5)"><td>
 <td style="width:40px;text-align:center;padding:4px"><a id="btr1b" style="cursor:pointer" onclick="(function(){
   document.getElementById('cor').type = 'color'

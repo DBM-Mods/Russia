@@ -177,9 +177,9 @@ module.exports = {
 		<span class="dbminputlabel">Пятно тени</span><br>
 		<input id="blur" class="round" type="text" value="0" placeholder="Необходимо">
 		</td>
-		<td style="width:100px"><span class="dbminputlabel">+ Перемещение тени X</span><br>
+		<td style="width:100px"><span class="dbminputlabel">Смещение тени X</span><br>
 		<input id="shadowh" class="round" type="text" value="0" placeholder="По желанию"></td>
-		<td style="width:100px"><span class="dbminputlabel">+ Перемещение тени Y</span><br>
+		<td style="width:100px"><span class="dbminputlabel">Смещение тени Y</span><br>
 		<input id="shadowv" class="round" type="text" value="0" placeholder="По желанию"></td>
 		</tr></table>
 		</div>
@@ -204,7 +204,7 @@ module.exports = {
 			<div style="padding:12px 6px">
 			<table style="width:100%"><tr>
 			<td style="width:48%">
-			<span class="dbminputlabel">Источник текста (Локально / URL)</span><br>
+			<span class="dbminputlabel">Источник текста (локальный файл / URL)</span><br>
 				<input id="fontPath" class="round" type="text" value="fonts/">
 			</td>
 			<td style="width:48%">

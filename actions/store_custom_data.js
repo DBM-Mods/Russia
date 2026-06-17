@@ -142,7 +142,7 @@
       <span class="dbminputlabel">Путь к файлу</span><br>
       <input id="filePath" class="round" type="text" onchange="glob.fileext()" value="./data/" placeholder="./data/top.json">
       <img onclick="document.getElementById('blcbg').style.display = null; document.getElementById('selectpath').style.display = null;document.getElementById('closepath').style.display = null" style="cursor: pointer;right: 0; margin-top: -25px;margin-right: 4%;position: absolute;filter: invert(1) opacity(0.5)" src="https://images-ext-1.discordapp.net/external/kI1YG6DhcpzESJ5OQo4WaqQIxhuva2VKC8Q84mz3S88/https/i.imgur.com/wSvljNY.png?width=20&height=20"/><br>
-      <span class="dbminputlabel">JSON путь*</span><br>
+      <span class="dbminputlabel">JSON-путь*</span><br>
       <input id="jsonPath" onchange="glob.onJSONpath(this)" class="round" type="text" placeholder="\${tempVars('serverID')}/economy"><br>
       <style>
             .si {

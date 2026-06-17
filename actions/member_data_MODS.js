@@ -32,7 +32,7 @@ module.exports = {
     <tab-system style="margin-top: 20px;">
 
 
-  <tab label="Membro" icon="align left">
+  <tab label="Участник" icon="align left">
   <div id="xin">
   <div id="xinelas">
   <member-input dropdownLabel="Пользователь" selectId="member" variableContainerId="varNameContainer" variableInputId="varName"></member-input>
@@ -80,8 +80,8 @@ module.exports = {
         <option value="4">Больше чем</option>
         <option value="12">Больше или равно</option>
         <option value="5">Содержит</option>
-        <option value="6">Соответствует регулярному выражению</option>
-        <option value="14">Соответствует полному регулярному выражению</option>
+        <option value="6">Соответствует Regex</option>
+        <option value="14">Полностью соответствует Regex</option>
         <option value="7">Длина больше чем</option>
         <option value="8">Длина меньше чем</option>
         <option value="9">Длина равна</option>
@@ -141,7 +141,7 @@ module.exports = {
   
   <table>
   <tr>
-  <td class="sep1"><span class="dbminputlabel">Хранить в</span><br>
+  <td class="sep1"><span class="dbminputlabel">Сохранить в</span><br>
   <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer2')">
     ${data.variables[0]}
   </select></td>

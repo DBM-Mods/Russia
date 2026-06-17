@@ -38,7 +38,7 @@ if(data.acao == 0){tipo = "Заблокировать"} else {tipo = "Разбл
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -51,7 +51,7 @@ if(data.acao == 0){tipo = "Заблокировать"} else {tipo = "Разбл
 
       <br>
 
-    <span class="dbminputlabel">Идентификатор (ID) пользователя</span><br>
+    <span class="dbminputlabel">ID пользователя</span><br>
     <input class="round" id="User" placeholder="">
 
 <br>
@@ -68,7 +68,7 @@ if(data.acao == 0){tipo = "Заблокировать"} else {tipo = "Разбл
 </div>
 
 <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(255,255,255,0.2)">
-<dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
+<dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
 </div>
 
 <br>
@@ -78,12 +78,12 @@ if(data.acao == 0){tipo = "Заблокировать"} else {tipo = "Разбл
 <div style="float: left; width: 38%" id="xinxylafalse">
 <span class="dbminputlabel">Произошла ошибка</span><br>
   <select id="iffalse" class="round" onchange="glob.onChangeFalse(this)">
-  <option value="0" selected>Продолжить действия</option>
-  <option value="1">Остановить последовательность действий</option>
+  <option value="0" selected>Продолжить выполнение действий</option>
+  <option value="1">Остановить выполнение действий</option>
   <option value="2">Перейти к действию</option>
   <option value="3">Пропустить следующие действия</option>
   <option value="4">Перейти к якорю действия</option>
-  <option value="5">Выполнение действий и остановится</option>
+  <option value="5">Выполнить действия и остановитьсяся</option>
   <option value="6">Выполнить действия и продолжить</option>
   </select>
   <br>
@@ -116,7 +116,7 @@ if(data.acao == 0){tipo = "Заблокировать"} else {tipo = "Разбл
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

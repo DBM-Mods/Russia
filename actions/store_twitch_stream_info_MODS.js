@@ -100,13 +100,13 @@ module.exports = {
           </optgroup>
           <optgroup label="Статус">
                 <option value="6">Статус трансляции (true / false)</option>
-                <option value="7">Ошибка действия (null если нету)</option>
+                <option value="7">Ошибка действия (null, если нет)</option>
         </select>
   
         <br>
   
         <div style="float: left; width: 35%;">
-            <span class="dbminputlabel">Хранить в</span>
+            <span class="dbminputlabel">Сохранить в</span>
             <select id="storage" class="round">
                 ${data.variables[1]}
             </select>
@@ -138,14 +138,14 @@ module.exports = {
         <tab label="Конфиг" icon="settings">
         <div style="padding:8px">
         <table style="width:100%;"><tr>
-      <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+      <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
       <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
       </tr></table>
       
       <br>
       
       <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-      <dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
+      <dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
       </div>
     </table>
 
@@ -169,7 +169,7 @@ table{width:100%}
         const { glob, document } = this;
       
         glob.formatItem = function (data) {
-            let result = '<div style="display: inline-block; width: 200px; padding-left: 8px;">Хранить "';
+            let result = '<div style="display: inline-block; width: 200px; padding-left: 8px;">Сохранить "';
             const info = parseInt(data.info);
           
             switch (info) {
@@ -211,7 +211,7 @@ table{width:100%}
               xinelaslink.setAttribute("title", url);
               xinelaslink.addEventListener("click", (e) => {
                 e.stopImmediatePropagation();
-                console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+                console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
                 require("child_process").execSync(`start ${url}`);
               });
             }

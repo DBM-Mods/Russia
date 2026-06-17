@@ -34,7 +34,7 @@ module.exports = {
                 <td>
                     <span class="dbminputlabel">Описание действия</span>
                     <br>
-                    <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+                    <input type="text" class="round" id="description" placeholder="Необязательное поле">
                 </td>
                 <td style="padding: 0px 0px 0px 10px; width: 70px;">
                     <div style="float: left; padding: 0px 0px 0px 7px; margin-top: -5px">
@@ -56,7 +56,7 @@ module.exports = {
     <select id="acao" class="round">
         <option value="0" selected>Дождаться выполнения всех действий и продолжить</option>
         <option value="1">Дождаться выполнения всех действий и остановиться</option>
-        <option value="2">Продолжить действия и выполнить контейнер вместе</option>
+        <option value="2">Продолжить выполнение действий и выполнить контейнер</option>
     </select>
 `;
     },

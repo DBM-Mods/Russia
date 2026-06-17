@@ -54,11 +54,11 @@ module.exports = {
 
 <table><tr><td class="sep3">
 <span class="dbminputlabel">ID категории</span><br>
-<input id= "categoryID" class="round" type="text" placeholder="Не обязательное поле">
+<input id= "categoryID" class="round" type="text" placeholder="Необязательное поле">
 </td>
 <td class="sep4">
 <span class="dbminputlabel">Позиция</span><br>
-<input id="position" class="round" type="text" placeholder="Не обязательное поле">
+<input id="position" class="round" type="text" placeholder="Необязательное поле">
 </td></tr></table>
 
 
@@ -101,7 +101,7 @@ module.exports = {
     <span class="dbminputlabel">Сравнение</span><br>
     <select id="comparar" class="round">
       <optgroup label="Число или Текст">
-        <option value="0">Значение A - Существует</option>
+        <option value="0">Значение A существует</option>
         <option value="1" selected>Равно</option>
         <option value="2">Точно равно</option>
       </optgroup>
@@ -110,13 +110,13 @@ module.exports = {
         <option value="13">Меньше или равно</option>
         <option value="4">Больше чем</option>
         <option value="12">Больше или равно</option>
-        <option value="19">Значение A - Четное число?</option>
-        <option value="20">Значение A - Нечетное число?</option>
-        <option value="21">Значение A - Это число?</option>
+        <option value="19">Значение A - четное число?</option>
+        <option value="20">Значение A - нечетное число?</option>
+        <option value="21">Значение A - число?</option>
       </optgroup>
       <optgroup label="Текст">
-        <option value="6">Соответствует регулярному выражению</option>
-        <option value="14">Соответствует полному регулярному выражению</option>
+        <option value="6">Соответствует Regex</option>
+        <option value="14">Полностью соответствует Regex</option>
         <option value="7">Длина больше чем</option>
         <option value="8">Длина меньше чем</option>
         <option value="9">Длина равна</option>
@@ -125,8 +125,8 @@ module.exports = {
         <option value="16">Содержит акценты?</option>
         <option value="18">Равно словам ["a", "b", "c"]</option>
         <option value="24">Является текстом?</option>
-        <option value="23">Является URL изображением?</option>
-        <option value="25">Является URL?</option>
+        <option value="23">Это URL изображения?</option>
+        <option value="25">Это URL?</option>
         <option value="26">Существует почта?</option>
       </optgroup>
       <optgroup label="Текст ~ Включает">
@@ -135,8 +135,8 @@ module.exports = {
         <option value="30">Включает ~ Без учета акцентов</option>
         <option value="31">Включает ~ Без учета акцентов и регистра</option>
         <option value="17">Точное включение ["a", "b", "c"]</option>
-        <option value="27">Включает URL?</option>
-        <option value="28">Включает приглашение Discord?</option>
+        <option value="27">Содержит URL?</option>
+        <option value="28">Содержит приглашение Discord?</option>
         <option value="32">Точное включение слова</option>
         <option value="33">Включает слово ~ Регистронезависимо</option>
         <option value="34">Включает слово ~ Без учета акцентов</option>
@@ -144,7 +144,7 @@ module.exports = {
         <option value="36">Включает слова ~ используйте запятые ~ Без учета акцентов и регистра</option>
       </optgroup>
       <optgroup label="Другое">
-        <option value="22">Значение A - Список?</option>
+        <option value="22">Значение A - список?</option>
       </optgroup>
     </select>
   </td>
@@ -176,7 +176,7 @@ module.exports = {
 
 <div>
 <span class="dbminputlabel">Эмодзи</span><br>
-<input id="emoji" class="round" type="text" placeholder="Не обязательное поле">
+<input id="emoji" class="round" type="text" placeholder="Необязательное поле">
 </div>
 
   </div>
@@ -191,7 +191,7 @@ module.exports = {
 
         <div>
         <table style="width:100%;"><tr>
-        <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное действие"></td>
+        <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное действие"></td>
         <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
         </tr></table>
         </div>
@@ -199,7 +199,7 @@ module.exports = {
         <br> 
 
         <span class="dbminputlabel">Медленный режим сообщений</span><br>
-        <input id="slowmodepost" class="round" type="text" placeholder="Не обязательное поле">
+        <input id="slowmodepost" class="round" type="text" placeholder="Необязательное поле">
         
         <br>
 
@@ -209,19 +209,19 @@ module.exports = {
         <br>
 
         <span class="dbminputlabel">Эмодзи</span><br>
-        <input id="emoji" class="round" type="text" value="" placeholder="Не обязательное поле">
+        <input id="emoji" class="round" type="text" value="" placeholder="Необязательное поле">
         
         <br>
         
         <span class="dbminputlabel">Причина</span><br>
-        <input id="reason" placeholder="Не обязательное поле" class="round" type="text">
+        <input id="reason" placeholder="Необязательное поле" class="round" type="text">
         
         <br>
 
         
         <table>
         <tr>
-        <td class="sep1"><span class="dbminputlabel">Хранить в</span><br>
+        <td class="sep1"><span class="dbminputlabel">Сохранить в</span><br>
         <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer')">
           ${data.variables[0]}
         </select></td>
@@ -238,7 +238,7 @@ module.exports = {
 				<div style="padding:8px">
         
         <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-        <dbm-checkbox id="errcmd" label="Отображать ошибку в консоль" checked></dbm-checkbox>
+        <dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
         </div>
 
         <br>
@@ -246,7 +246,7 @@ module.exports = {
         <div style="padding-top:8px">
         <table>
           <tr>
-          <td class="col1"><span class="dbminputlabel">Хранить ошибку</span><br>
+          <td class="col1"><span class="dbminputlabel">Сохранить ошибку в</span><br>
           <select id="errs" value="0" class="round" onchange="glob.variableChanged(this, 'varerrsv')">
             ${data.variables[0]}
           </select></td>
@@ -262,12 +262,12 @@ module.exports = {
         <div style="float: left; width: 38%" id="xinext">
         <span class="dbminputlabel">Если не создано</span><br>
         <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-        <option value="0" selected>Продолжить действия</option>
-        <option value="1">Остановить последовательность действий</option>
+        <option value="0" selected>Продолжить выполнение действий</option>
+        <option value="1">Остановить выполнение действий</option>
         <option value="2">Перейти к действию</option>
         <option value="3">Пропустить действия</option>
         <option value="4">Перейти к якорю</option>
-        <option value="5">Выполнить действия и остановиться</option>
+        <option value="5">Выполнить действия и остановитьсяся</option>
         <option value="6">Выполнить действия и продолжить</option>
         </select>
         </div>
@@ -381,7 +381,7 @@ xinspace{padding:6px 0px 0px 0px;display:block}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -623,7 +623,7 @@ xinspace{padding:6px 0px 0px 0px;display:block}
     catch (error) {
 
       if (data.errcmd === true) {
-        console.log('Ошибка: ' + cache.toString() + ' - Действие ' + (cache.index + 1) + '# ' + data.name)
+        console.log('Ошибка: ' + cache.toString() + ' - действие ' + (cache.index + 1) + '# ' + data.name)
         console.log(error)
       }
 

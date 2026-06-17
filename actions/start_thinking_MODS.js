@@ -43,7 +43,7 @@ module.exports = {
   </div>
 
 <br>
-<dbm-checkbox id="errcmd" label="Отобразить ошибку в консоли"></dbm-checkbox>
+<dbm-checkbox id="errcmd" label="Вывести ошибку в консоль"></dbm-checkbox>
 
 <br>
 
@@ -51,12 +51,12 @@ module.exports = {
 <div style="float: left; width: 38%" id="xinext">
 <span class="dbminputlabel">При ошибке</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-<option value="0" selected>Продолжить действия</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="0" selected>Продолжить выполнение действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить действия</option>
 <option value="4">Использовать якорь</option>
-<option value="5">Выполнить действия и остановиться</option>
+<option value="5">Выполнить действия и остановитьсяся</option>
 <option value="6">Выполнить действия и продолжить</option>
 </select>
 </div>
@@ -95,7 +95,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -120,7 +120,7 @@ module.exports = {
         document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
       }
       if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+        document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
       }
       if (event.value == "4") {
         document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);

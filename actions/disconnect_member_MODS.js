@@ -42,7 +42,7 @@ module.exports = {
     <div style="width: 100%; padding:1px 5px;height: calc(100vh - 160px);overflow:auto">
 
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 <br>
@@ -53,7 +53,7 @@ module.exports = {
 
 <div style="padding-top: 8px;">
 	<span class="dbminputlabel">Причина</span><br>
-	<textarea id="reason" class="dbm_monospace" rows="5" placeholder="Не обязательное поле" style="white-space: nowrap; resize: none;"></textarea>
+	<textarea id="reason" class="dbm_monospace" rows="5" placeholder="Необязательное поле" style="white-space: nowrap; resize: none;"></textarea>
 
 
   <br>
@@ -81,12 +81,12 @@ module.exports = {
 <div style="float: left; width: 38%" id="xinext">
 <span class="dbminputlabel">При ошибке</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-<option value="0" selected>Продолжить действия</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="0" selected>Продолжить выполнение действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить действия</option>
 <option value="4">Перейти к якорю</option>
-<option value="5">Выполнить действия и остановиться</option>
+<option value="5">Выполнить действия и остановитьсяся</option>
 <option value="6">Выполнить действия и продолжить</option>
 </select>
 <br>
@@ -134,7 +134,7 @@ table{width:100%}
         document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
       }
       if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+        document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
       }
       if (event.value == "4") {
         document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
@@ -176,8 +176,8 @@ table{width:100%}
       const server = cache.server;
       if (!server?.members) {
 
-        if (data.errcmd === true) { console.log("Кэш сервера не найден") }
-        this.storeValue("Кэш сервера не найден", data.errs, this.evalMessage(data.errv, cache), cache)
+        if (data.errcmd === true) { console.log("Кеш сервера не найден") }
+        this.storeValue("Кеш сервера не найден", data.errs, this.evalMessage(data.errv, cache), cache)
         if (data.iffalse == "5" || data.iffalse == "6") {
 
           if (data.iffalse == "5") {

@@ -25,7 +25,7 @@ module.exports = {
   variableStorage(data, varType) {
     const type = parseInt(data.errs, 10);
     if (type !== varType) return;
-    return [data.errv, "Texto ~ Erro" ];
+    return [data.errv, "Текст ~ Ошибка" ];
   },
 
   fields: ["opcao", "member", "varName", "tempo", "time", "reason", "iffalse", "iffalseVal", "descriptioncolor", "description", "descriptionx", "errcmd", "errs", "errv", "actionserr"],
@@ -79,7 +79,7 @@ module.exports = {
 <tab label="Конфиг" icon="settings">
 <div style="padding: 8px;height: calc(100vh - 210px);overflow-y: auto;overflow-x: hidden;width:100%">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 <br>
@@ -92,12 +92,12 @@ module.exports = {
 <span class="dbminputlabel">Если возникает ошибка</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
 <option value="0" selected>Продолжать</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к якову действия</option>
-<option value="5">Выполнять действия и останавливаться</option>
-<option value="6">Выполнять действия и продолжать</option>
+<option value="4">Перейти к якорю действия</option>
+<option value="5">Выполнить действия и остановитьсяся</option>
+<option value="6">Выполнить действия и продолжить</option>
 </select>
 <br>
 </div>
@@ -112,7 +112,7 @@ module.exports = {
 <div style="padding-top:8px">
 <table>
   <tr>
-  <td class="col1"><span class="dbminputlabel">Сообщение об ошибке в</span><br>
+  <td class="col1"><span class="dbminputlabel">Сохранить ошибку в</span><br>
   <select id="errs" value="0" class="round" onchange="glob.variableChange(this, 'varNameContainer2')">
     ${data.variables[0]}
   </select></td>
@@ -161,7 +161,7 @@ table{width:100%}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -233,7 +233,7 @@ table{width:100%}
       const server = cache.server;
       if (!server?.members) {
 
-        this.storeValue("Кэш сервера не найден", data.errs, this.evalMessage(data.errv, cache), cache)
+        this.storeValue("Кеш сервера не найден", data.errs, this.evalMessage(data.errv, cache), cache)
         if(data.iffalse == "5" || data.iffalse == "6"){
 
           if(data.iffalse == "5"){

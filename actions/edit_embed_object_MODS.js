@@ -75,7 +75,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="descriptionsub" placeholder="Не обязательное поле"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="descriptionsub" placeholder="Необязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -83,14 +83,14 @@ module.exports = {
 
   <div style="padding-top: 8px;">
     <div style="float: left; width: 40%;">
-    <span class="dbminputlabel">Embed Объект</span><br>
+    <span class="dbminputlabel">Объект Embed</span><br>
       <select id="storage" class="round" onchange="glob.refreshVariableList(this)">
         ${data.variables[1]}
       </select>
     </div>
     <div style="float: right; width: 55%;">
     <span class="dbminputlabel">Имя переменной</span><br>
-      <input id="varName" placeholder="Embed Объект" class="round" type="text" list="variableList" oninput="glob.onChange13(this)">
+      <input id="varName" placeholder="Объект Embed" class="round" type="text" list="variableList" oninput="glob.onChange13(this)">
     </div>
   </div><br><br><br>
   <div style="padding-top: 8px;">
@@ -109,7 +109,7 @@ module.exports = {
   </div><br><br><br>
   <div style="padding-top: 8px;">
     <div style="float: left; width: 40%;">
-    <span class="dbminputlabel">Редактировать URL</span><br>
+    <span class="dbminputlabel">Изменить URL</span><br>
       <select id="Edit1" class="round" onchange="glob.onChange1(this)">
         <option value=0 selected>Сохранить содержание</option>
         <option value=1>Редактировать содержимое</option>
@@ -160,7 +160,7 @@ module.exports = {
   </div><br><br><br>
   <div style="padding-top: 8px;">
     <div style="float: left; width: 40%;">
-    <span class="dbminputlabel">Редактировать URL изоб</span><br>
+    <span class="dbminputlabel">Изменить URL изображения</span><br>
       <select id="Edit4" class="round" onchange="glob.onChange4(this)">
         <option value=0 selected>Сохранить содержание</option>
         <option value=1>Редактировать содержимое</option>
@@ -181,7 +181,7 @@ module.exports = {
   </div>
   <div style="padding-top: 8px;">
     <div style="float: left; width: 40%;">
-    <span class="dbminputlabel">Редактировать URL мини</span><br>
+    <span class="dbminputlabel">Изменить URL миниатюры</span><br>
       <select id="Edit5" class="round" onchange="glob.onChange5(this)">
         <option value=0 selected>Сохранить содержание</option>
         <option value=1>Редактировать содержимое</option>
@@ -190,7 +190,7 @@ module.exports = {
       </select>
     </div>
     <div id="Input5" style="display: none; float: right; width: 55%;">
-      <div id="Input5placeholder"><span class="dbminputlabel">URL адрес миниатюры</span></div>
+      <div id="Input5placeholder"><span class="dbminputlabel">URL-адрес миниатюры</span></div>
       <input id="thumbUrl" class="round" type="text">
     </div>
   </div><br><br><br>
@@ -216,7 +216,7 @@ module.exports = {
   </div><br><br><br>
   <div style="padding-top: 8px;">
     <div style="float: left; width: 40%;">
-    <span class="dbminputlabel">Редактировать URL автора</span><br>
+    <span class="dbminputlabel">Изменить URL автора</span><br>
       <select id="Edit7" class="round" onchange="glob.onChange7(this)">
         <option value=0 selected>Сохранить содержание</option>
         <option value=1>Редактировать содержимое</option>
@@ -230,7 +230,7 @@ module.exports = {
   </div><br><br><br>
   <div style="padding-top: 8px;">
     <div style="float: left; width: 40%;">
-    <span class="dbminputlabel">Редакт значок URL автора</span><br>
+    <span class="dbminputlabel">Изменить URL значка автора</span><br>
       <select id="Edit8" class="round" onchange="glob.onChange8(this)">
         <option value=0 selected>Сохранить содержание</option>
         <option value=1>Редактировать содержимое</option>
@@ -238,13 +238,13 @@ module.exports = {
       </select>
     </div>
     <div id="Input8" style="display: none; float: right; width: 55%;">
-    <span class="dbminputlabel">Значок URL автора</span><br>
+    <span class="dbminputlabel">URL значка автора</span><br>
       <input id="authorIcon" class="round" type="text">
     </div>
   </div><br><br><br>
   <div style="padding-top: 8px;">
   <div style="width: 40%;">
-  <span class="dbminputlabel">Редакт (Footer)</span><br>
+  <span class="dbminputlabel">Редакт (футер)</span><br>
     <select id="Edit9" class="round" onchange="glob.onChange9(this)">
       <option value=0 selected>Сохранить содержание</option>
       <option value=1>Редактировать содержимое</option>
@@ -252,13 +252,13 @@ module.exports = {
     </select>
   </div><br>
   <div id="Input9" style="display: none; width: 100%;">
-  <span class="dbminputlabel">(Footer)</span><br>
+  <span class="dbminputlabel">(футер)</span><br>
     <textarea id="footer" rows="3" style="width: 100%; font-family: monospace; white-space: nowrap; resize: yes;"></textarea><br>
   </div>
 </div>
 <div style="padding-top: 8px;">
   <div style="float: left; width: 40%;">
-  <span class="dbminputlabel">Редакт значок URL (Footer)</span><br>
+  <span class="dbminputlabel">Изменить URL значка футера</span><br>
     <select id="Edit10" class="round" onchange="glob.onChange10(this)">
       <option value=0 selected>Сохранить содержание</option>
       <option value=1>Редактировать содержимое</option>
@@ -266,13 +266,13 @@ module.exports = {
     </select>
   </div>
   <div id="Input10" style="display: none; float: right; width: 55%;">
-  <span class="dbminputlabel">URL адрес значка (Footer)</span><br>
+  <span class="dbminputlabel">URL-адрес значка (футер)</span><br>
     <input id="footerIcon" class="round" type="text">
   </div>
 </div><br><br><br>
   <div style="padding-top: 8px;">
     <div style="float: left; width: 40%;">
-    <span class="dbminputlabel">Редактировать Timestamp</span><br>
+    <span class="dbminputlabel">Изменить timestamp</span><br>
       <select id="Edit11" class="round" onchange="glob.onChange11(this)">
         <option value=0 selected>Сохранить содержание</option>
         <option value=1>Изменить на текущую временную метку</option>

@@ -42,10 +42,10 @@ module.exports = {
 <span class="dbminputlabel">Если не создано</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
 <option value="0" selected>Продолжать</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к якову действия</option>
+<option value="4">Перейти к якорю действия</option>
 </select>
 </td>
 <td class="sep2">
@@ -61,7 +61,7 @@ module.exports = {
 
 <table>
 <tr>
-<td class="sep1"><span class="dbminputlabel">Хранить в</span><br>
+<td class="sep1"><span class="dbminputlabel">Сохранить в</span><br>
 <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer')">
   ${data.variables[0]}
 </select></td>
@@ -92,7 +92,7 @@ table{width:100%}
       document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
     }
     if (event.value == "3") {
-      document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+      document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
     }
     if (event.value == "4") {
       document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);

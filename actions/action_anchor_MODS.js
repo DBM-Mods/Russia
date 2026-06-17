@@ -42,7 +42,7 @@ module.exports = {
 
   <div style="float: left; width: 100%;">
   <span class="dbminputlabel">Описание действия</span><br>
-    <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+    <input type="text" class="round" id="description" placeholder="Необязательное поле">
   </div>
 
   </div>
@@ -51,10 +51,10 @@ module.exports = {
   <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
   <span class="dbminputlabel">Использование</span>
   <select id="config" class="round" onchange="glob.onComparisonChanged(this)">
-    <option value="0" selected>Продолжить действия</option>
-    <option value="1">Остановить действия</option>
-    <option value="2">Использовать действия из спика ниже и продолжить</option>
-    <option value="3">Использовать действия из спика ниже и остановиться</option>
+    <option value="0" selected>Продолжить выполнение действий</option>
+    <option value="1">Остановить выполнение действий</option>
+    <option value="2">Выполнить действия из списка ниже и продолжить</option>
+    <option value="3">Выполнить действия из списка ниже и остановиться</option>
   </select>
 <br>
 <div id="containerxin">
@@ -94,7 +94,7 @@ module.exports = {
        xinelaslink.setAttribute('title', url);
        xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

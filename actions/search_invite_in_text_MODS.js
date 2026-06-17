@@ -128,7 +128,7 @@ module.exports = {
         <br>
   
         <div style="float: left; width: 35%;">
-            <span class="dbminputlabel">Хранить в</span>
+            <span class="dbminputlabel">Сохранить в</span>
             <select id="storage" class="round">
                 ${data.variables[1]}
             </select>
@@ -148,20 +148,20 @@ module.exports = {
   <tab label="Конфиг" icon="settings">
   <div style="padding:8px">
   <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 
 <br>
 
 <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-<dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
+<dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
 </div>
 </table>
 
 <div id="divValueError">
 <div style="float: left; width: 35%;">
- <span class="dbminputlabel">Хранить ошибку в</span>
+ <span class="dbminputlabel">Сохранить ошибку в</span>
  <select id="storageError" class="round" onchange="glob.variableChangeError(this, 'varNameContainer')">
    ${data.variables[0]}
  </select>
@@ -181,13 +181,13 @@ module.exports = {
 <div style="float: left; width: 38%" id="xinext">
 <span class="dbminputlabel">Если возникает ошибка</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-<option value="0" selected>Продолжить действия</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="0" selected>Продолжить выполнение действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующий действия</option>
 <option value="4">Перейти к якорю действия</option>
-<option value="5">Выполнить действия ниже и остановиться</option>
-<option value="6">Выполнить действия ниже и продолжить</option>
+<option value="5">Выполнить действия и остановитьсяся</option>
+<option value="6">Выполнить действия и продолжить</option>
 </select>
 </div>
 
@@ -242,7 +242,7 @@ init() {
           document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
       }
       if (event.value == "3") {
-          document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+          document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
       }
       if (event.value == "4") {
           document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
@@ -262,7 +262,7 @@ init() {
   glob.variableChangeError(document.getElementById("storageError"));
   
     glob.formatItem = function (data) {
-        let result = '<div style="display: inline-block; width: 200px; padding-left: 8px;">Хранить "';
+        let result = '<div style="display: inline-block; width: 200px; padding-left: 8px;">Сохранить "';
         const info = parseInt(data.info);
       
         switch (info) {
@@ -304,7 +304,7 @@ init() {
           xinelaslink.setAttribute("title", url);
           xinelaslink.addEventListener("click", (e) => {
             e.stopImmediatePropagation();
-            console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+            console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
             require("child_process").execSync(`start ${url}`);
           });
         }

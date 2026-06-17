@@ -21,7 +21,7 @@ module.exports = {
 
 		return data.description
 			? `<font style="color:${desccor}">${data.description}</font>`
-			: `<font style="color:${desccor}">(${classic[parseInt(data.sorte)]}) ${list[parseInt(data.list)]} (${data.varName}) para ${list[parseInt(data.storage)]} (${data.varName2})</font>`
+			: `<font style="color:${desccor}">(${classic[parseInt(data.sorte)]}) ${list[parseInt(data.list)]} (${data.varName}) в ${list[parseInt(data.storage)]} (${data.varName2})</font>`
 	},
 
 
@@ -44,7 +44,7 @@ module.exports = {
 		<table style="width:100%;"><tr>
 		  <td>
 			<span class="dbminputlabel">Описание действия</span><br>
-			<input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+			<input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать.">
 		  </td>
 		  <td style="padding:0px 0px 0px 10px;width:70px">
 			<div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -87,7 +87,7 @@ module.exports = {
 	</div><br>
 	<div>
 		<div style="float: left; width: 35%;">
-		<span class="dbminputlabel">Хранить в</span><br>
+		<span class="dbminputlabel">Сохранить в</span><br>
 			<select id="storage" class="round">
 				${data.variables[1]}
 			</select>
@@ -142,7 +142,7 @@ module.exports = {
 				xinelaslink.setAttribute('title', url);
 				xinelaslink.addEventListener('click', (e) => {
 					e.stopImmediatePropagation();
-					console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+					console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
 					require('child_process').execSync(`start ${url}`);
 				});
 			}

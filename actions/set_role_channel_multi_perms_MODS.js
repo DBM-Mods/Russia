@@ -275,7 +275,7 @@ module.exports = {
 
 <div style="padding-top: 8px;">
   <span class="dbminputlabel">Причина</span>
-  <input id="reason" placeholder="Не обязательное поле" class="round" type="text">
+  <input id="reason" placeholder="Необязательное поле" class="round" type="text">
 </div>
 
 
@@ -284,8 +284,8 @@ module.exports = {
 <div style="float: left; width: 50%">
 <span class="dbminputlabel">Если разрешения не установлены</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-<option value="0" selecionado>Продолжить действия</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="0" selecionado>Продолжить выполнение действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить действия</option>
 <option value="4">Перейти к якорю</option>

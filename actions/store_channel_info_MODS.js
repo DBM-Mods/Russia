@@ -160,7 +160,7 @@ module.exports = {
         <td>
         <span class="dbminputlabel">Описание действия</span>
         <br>
-        <input type="text" class="round" id="description" placeholder="Не обязательно поле">
+        <input type="text" class="round" id="description" placeholder="Необязательное поле">
         </td>
         <td style="padding:0px 0px 0px 10px;width:70px">
         <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -301,7 +301,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

@@ -36,7 +36,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
     <table style="width:100%;"><tr>
-    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное действие"></td>
+    <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное действие"></td>
     <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
     </tr></table>
     </div>
@@ -49,11 +49,11 @@ module.exports = {
 <div style="padding-top: 8px;">
   <div style="float: left; width: calc(50% - 12px);">
     <span class="dbminputlabel">Имя</span><br>
-    <input id="channelName" class="round" type="text" placeholder="Не обязательное поле">
+    <input id="channelName" class="round" type="text" placeholder="Необязательное поле">
   </div>
   <div style="float: right; width: calc(50% - 12px);">
     <span class="dbminputlabel">Причина</span>
-    <input id="reason" placeholder="Не обязательное поле" class="round" type="text">
+    <input id="reason" placeholder="Необязательное поле" class="round" type="text">
   </div>
 </div>
 
@@ -73,17 +73,17 @@ module.exports = {
         <br>
 
         <span class="dbminputlabel">Режим медленного режима (в секундах)</span><br>
-        <input id="slowmode" class="round" type="text" placeholder="Не обязательное поле">
+        <input id="slowmode" class="round" type="text" placeholder="Необязательное поле">
 
         <br>
 
         <span class="dbminputlabel">Блокировка сообщений [true/false]</span><br>
-        <input id="locked" class="round" type="text" placeholder="Не обязательное поле">
+        <input id="locked" class="round" type="text" placeholder="Необязательное поле">
 
         <br>
   
         <span class="dbminputlabel">Список тегов [режим EVAL]</span><br>
-        <input id="tags" name="is-eval" class="round" type="text" placeholder="Не обязательное поле">
+        <input id="tags" name="is-eval" class="round" type="text" placeholder="Необязательное поле">
         <br>
         [] = Удалить все теги<br>
         ['1118344873095987211' , '1118344873095988452'] = Добавить 2 тега
@@ -116,7 +116,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

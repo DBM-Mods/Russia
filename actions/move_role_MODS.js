@@ -30,8 +30,8 @@ module.exports = {
     <tr>
     <td class="xin1"><span class="dbminputlabel">Если не удалось переместить</span><br>
     <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-    <option value="0" selected>Продолжить действия</option>
-    <option value="1">Остановить последовательность действий</option>
+    <option value="0" selected>Продолжить выполнение действий</option>
+    <option value="1">Остановить выполнение действий</option>
     <option value="2">Перейти к действию</option>
     <option value="3">Пропустить действия</option>
     <option value="4">Перейти к якорю</option>

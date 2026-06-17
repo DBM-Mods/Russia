@@ -66,7 +66,7 @@ module.exports = {
       <br>
 
       <div style="float: left; width: 35%;">
-        <span class="dbminputlabel">Хранить в</span><br>
+        <span class="dbminputlabel">Сохранить в</span><br>
           <select id="storage" class="round">
             ${data.variables[1]}
           </select>
@@ -103,7 +103,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

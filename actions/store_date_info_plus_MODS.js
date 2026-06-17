@@ -48,7 +48,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -107,15 +107,15 @@ module.exports = {
             </select>
         </div>
         <div id="buildMode" style="display: none; float: right; width: 62%">
-        <span class="dbminputlabel">Построить  (<span class="xinelaslink" data-url="https://momentjs.com/docs/#/displaying/format/">Documento</span>)</span><br>
-            <input id="buildInput" class="round" placeholder="Ex: DD/MM/YYYY [às] HH:mm:ss">
+        <span class="dbminputlabel">Сформировать (<span class="xinelaslink" data-url="https://momentjs.com/docs/#/displaying/format/">Документация</span>)</span><br>
+            <input id="buildInput" class="round" placeholder="Пример: DD/MM/YYYY [в] HH:mm:ss">
         </div><br><br><br>
         <span class="dbminputlabel">Часовой пояс (<span class="xinelaslink" data-url="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">Timezones</span>)</span><br>
         <input id="timezone" class="round" type="text" value="Europe/Moscow" placeholder="Ex: Europe/Moscow (оставьте пустым для локального времени)">
         <br>
 
         <div style="float: left; width: 35%">
-        <span class="dbminputlabel">Хранить в</span><br>
+        <span class="dbminputlabel">Сохранить в</span><br>
             <select id="storage" class="round">
                 ${data.variables[1]}
             </select>
@@ -222,7 +222,7 @@ module.exports = {
            xinelaslink.setAttribute('title', url);
            xinelaslink.addEventListener('click', (e) => {
               e.stopImmediatePropagation();
-              console.log(`Запуск URL: [${url}] в браузере.`);
+              console.log(`Открываю URL: [${url}] в браузере.`);
               require('child_process').execSync(`start ${url}`);
             });
           }
@@ -377,8 +377,8 @@ module.exports = {
              result = date.format(buildInput);
           }
 
-          if (result === "Data invalida") {
-             return console.log('Неверная дата! Убедитесь, что ваша дата корректна в "Store Date Info Plus". Обычно дата выглядит как дата создания сервера. (переменные работают)');
+          if (result === "Неверная дата") {
+             return console.log('Неверная дата! Проверьте корректность даты в "Store Date Info Plus". Обычно дата выглядит как дата создания сервера. (переменные работают)');
           }
     
           if (result !== undefined) {

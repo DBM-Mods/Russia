@@ -34,7 +34,7 @@ module.exports = {
 <br><br><br>
 <div style="padding-top: 3px;">
 <span class="dbminputlabel">Описание</span><br>
-		  <textarea id="templatedescricao" name="templatedescricao" rows="3" placeholder="Не обязательное поле" style="width: 99%; font-family: monospace; white-space: nowrap;"></textarea>
+		  <textarea id="templatedescricao" name="templatedescricao" rows="3" placeholder="Необязательное поле" style="width: 99%; font-family: monospace; white-space: nowrap;"></textarea>
       Максимум 120 символов
 	  </div>
     <br>

@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Parse From Stored Json MOD',
+  name: 'Parse From Stored JSON MOD',
   section: 'JSON Things',
   meta: {
     version: '2.1.7',
@@ -10,8 +10,8 @@ module.exports = {
   },
 
   subtitle(data) {
-    const storage = ['', 'Variavel Temporária', 'Variavel Servidor', 'Variavel Global'];
-    return `JSON => ${storage[parseInt(data.varStorage, 10)]} (${data.jsonObjectVarName}) para ${storage[parseInt(data.storage, 10)]} (${data.varName})`;
+    const storage = ['', 'Временная переменная', 'Переменная сервера', 'Глобальная переменная'];
+    return `JSON => ${storage[parseInt(data.varStorage, 10)]} (${data.jsonObjectVarName}) в ${storage[parseInt(data.storage, 10)]} (${data.varName})`;
   },
 
   variableStorage(data, varType) {
@@ -55,10 +55,10 @@ ${data.variables[1]}
 <span class="dbminputlabel">Если возникает ошибка</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
 <option value="0" selected>Продолжать</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующие действия</option>
-<option value="4">Перейти к якову действия</option>
+<option value="4">Перейти к якорю действия</option>
 </select>
 </td>
 <td class="sep2">
@@ -74,7 +74,7 @@ ${data.variables[1]}
 
 <table>
 <tr>
-<td class="sep1"><span class="dbminputlabel">Хранить в</span><br>
+<td class="sep1"><span class="dbminputlabel">Сохранить в</span><br>
 <select id="storage" class="round">
   ${data.variables[1]}
 </select></td>
@@ -190,7 +190,7 @@ table{width:100%}
             success: false,
           });
           this.storeValue(errorJson, storage, varName, cache);
-          console.log(`1: Разобрать из сохраненного мода Json: Ошибка недопустимого JSON, или путь определен правильно? [${path}]`)
+          console.log(`1: Разбор сохранённого JSON MOD: Ошибка недопустимого JSON, или путь определен правильно? [${path}]`)
           deuerro = "2"
         } else if (!outValue || outValue.success === null) {
           const errorJson = JSON.stringify({
@@ -199,12 +199,12 @@ table{width:100%}
             success: false,
           });
           this.storeValue(errorJson, storage, varName, cache);
-          console.log(`2: Разобрать из сохраненного мода Json: Ошибка недопустимого JSON, или путь определен правильно? [${path}]`)
+          console.log(`2: Разбор сохранённого JSON MOD: Ошибка недопустимого JSON, или путь определен правильно? [${path}]`)
           deuerro = "2"
         } else {
           this.storeValue(outValue, storage, varName, cache);
           if (DEBUG == true) {
-            console.log(`Синтаксический анализ из сохраненного Json MOD: JSON [${jsonObjectVarName}] Были сохранены значения [${path}] для [${varName}]`);
+            console.log(`Синтаксический анализ из сохраненного JSON MOD: JSON [${jsonObjectVarName}] Значения сохранены [${path}] для [${varName}]`);
           }
         }
       }
@@ -215,7 +215,7 @@ table{width:100%}
         success: false,
       });
       this.storeValue(errorJson, storage, varName, cache);
-      console.error(`Синтаксический анализ из сохраненного Json MOD: Ошибка: ${errorJson} хранится для [${varName}]`);
+      console.error(`Синтаксический анализ из сохраненного JSON MOD: Ошибка: ${errorJson} сохранена в [${varName}]`);
       deuerro = "2"
     }
 

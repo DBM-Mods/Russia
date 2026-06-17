@@ -20,7 +20,7 @@ module.exports = {
 
       const info = [
         "Объект голосового канала",
-        "(ID) Идентификатор голосового канала",
+        "ID голосового канала",
         "Название голосового канала",
         "Положение голосового канала",
         "Лимит пользователей голосового канала",
@@ -53,7 +53,7 @@ module.exports = {
         dataType = "Объект";
         break;
       case 1:
-        dataType = "(ID) Идентификатор";
+        dataType = "ID";
         break;
       case 2:
         dataType = "Текст";
@@ -110,7 +110,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -123,7 +123,7 @@ module.exports = {
 	<span class="dbminputlabel">Информация об канале</span><br>
 	<select id="info" class="round">
 		<option value="0" selected>Объект голосового канала</option>
-		<option value="1">(ID) Идентификатор голосового канала</option>
+		<option value="1">ID голосового канала</option>
 		<option value="2">Название голосового канала</option>
 		<option value="3">Положение голосового канала</option>
 		<option value="4">Лимит пользователей голосового канала</option>
@@ -143,7 +143,7 @@ module.exports = {
 
 <br>
 
-<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+<store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
 
 </div>
 
@@ -167,7 +167,7 @@ module.exports = {
      xinelaslink.setAttribute('title', url);
      xinelaslink.addEventListener('click', (e) => {
         e.stopImmediatePropagation();
-        console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+        console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
         require('child_process').execSync(`start ${url}`);
       });
     }

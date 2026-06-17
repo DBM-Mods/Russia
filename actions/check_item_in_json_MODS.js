@@ -24,7 +24,7 @@ module.exports = {
       `Меньше, чем "${data.value}"`,
       `Больше, чем "${data.value}"`,
       `Включает "${data.value}"`,
-      `Соответствует регулярному выражению "${data.value}"`,
+      `Соответствует Regex "${data.value}"`,
       `Длина больше, чем "${data.value}"`,
       `Длина меньше, чем "${data.value}"`,
       `Длина равна "${data.value}"`,
@@ -32,7 +32,7 @@ module.exports = {
       `Заканчивается на "${data.value}"`,
       `Больше или равно "${data.value}"`,
       `Меньше или равно "${data.value}"`,
-      `Соответствует полному регулярному выражению "${data.value}"`,
+      `Полностью соответствует Regex "${data.value}"`,
       `Между ${data.value} и ${data.value2}`,
       "Содержит ударения?",
       `Включает слова "${data.value}"`,
@@ -66,7 +66,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -96,8 +96,8 @@ module.exports = {
     <option value="26">Включает ~ Игнорировать регистр</option>
     <option value="27">Включает ~ Игнорировать ударения</option>
     <option value="28">Включает ~ Игнорировать ударения и регистр</option>
-    <option value="6">Соответствует регулярному выражению</option>
-    <option value="14">Соответствует полному регулярному выражению</option>
+    <option value="6">Соответствует Regex</option>
+    <option value="14">Полностью соответствует Regex</option>
     <option value="7">Длина больше, чем</option>
     <option value="8">Длина меньше, чем</option>
     <option value="9">Длина равна</option>
@@ -138,12 +138,12 @@ module.exports = {
   <div style="float: left; width: 38%" id="xinext2">
   <span class="dbminputlabel">Если элемент найден</span><br>
   <select id="iftrue" class="round" onchange="glob.onComparisonChanged2(this)">
-  <option value="0" selected>Продолжить действия</option>
-  <option value="1">Остановить последовательность действий</option>
+  <option value="0" selected>Продолжить выполнение действий</option>
+  <option value="1">Остановить выполнение действий</option>
   <option value="2">Перейти к действию</option>
   <option value="3">Пропустить следующие действия</option>
   <option value="4">Перейти к якорю действия</option>
-  <option value="5">Выполнение действий и остановить</option>
+  <option value="5">Выполнить действия и остановитьсяся</option>
   <option value="6">Выполнить действия и продолжить</option>
   </select>
   </div>
@@ -169,12 +169,12 @@ module.exports = {
   <div style="float: left; width: 38%" id="xinext">
   <span class="dbminputlabel">Если элемент не найден</span><br>
   <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-  <option value="0" selected>Продолжить действия</option>
-  <option value="1">Остановить последовательность действий</option>
+  <option value="0" selected>Продолжить выполнение действий</option>
+  <option value="1">Остановить выполнение действий</option>
   <option value="2">Перейти к действию</option>
   <option value="3">Пропустить следующие действия</option>
   <option value="4">Перейти к якорю действия</option>
-  <option value="5">Выполнение действий и остановить</option>
+  <option value="5">Выполнить действия и остановитьсяся</option>
   <option value="6">Выполнить действия и продолжить</option>
   </select>
   </div>
@@ -294,7 +294,7 @@ xinspace{padding:5px 0px 0px 0px;display:block}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

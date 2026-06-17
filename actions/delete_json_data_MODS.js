@@ -32,7 +32,7 @@ module.exports = {
 
 <div style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -44,7 +44,7 @@ module.exports = {
 
 <div style="float: left; width: 100%; padding-top: 20px;">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">JSON путь</span><br><input type="text" class="round" id="patchJson" placeholder="Через &quot;/&quot; Например: Билеты/номер билета"></td>
+<td><span class="dbminputlabel">JSON-путь</span><br><input type="text" class="round" id="patchJson" placeholder="Через &quot;/&quot; Например: Билеты/номер билета"></td>
 <td style="padding:0px 0px 0px 15px;width:85px"><div style="float:left"><span class="dbminputlabel"> Индекс </span></div><br><input type="text" value="N" class="round" placeholder="&quot;N&quot;" id="indexVal"></td>
 </tr></table>
 </div>
@@ -67,7 +67,7 @@ module.exports = {
 		 xinelaslink.setAttribute('title', url);
 		 xinelaslink.addEventListener('click', (e) => {
 			e.stopImmediatePropagation();
-			console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+			console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
 			require('child_process').execSync(`start ${url}`);
 		  });
 		}
@@ -92,7 +92,7 @@ module.exports = {
 			dataPatchJson = '[\"' + dataPatchJson.replaceAll('/', '\"]?.[\"') + '\"]';
 			if (eval('jsonText' + dataPatchJson + '') == undefined) {
 				console.error('Ошибка в действии \"Delete Json Data\":\n' +
-				'Неверно указан Json путь.\n\n' +
+				'Неверно указан JSON-путь.\n\n' +
 				'Если вы не знаете как работает JSON-путь, вам может помочь сайт https://jsonpathfinder.com' +
 				'\nПросто скопируйте Patch с сайта, убрав \"x.\" вначале и заменив последующие точки на \"/\".')
 			} else {
@@ -117,7 +117,7 @@ module.exports = {
 			dataPatchJson = '[\"' + dataPatchJson.replaceAll('/', '\"]?.[\"') + '\"]';
 			if (eval('jsonText' + dataPatchJson + '[dataIndexVal]') == undefined) {
 				console.error('Ошибка в действии \"Delete Json Data\":\n' +
-				'Неверно указан Json путь.\n\n' +
+				'Неверно указан JSON-путь.\n\n' +
 				'Если вы не знаете как работает JSON-путь, вам может помочь сайт https://jsonpathfinder.com' +
 				'\nПросто скопируйте Patch с сайта, убрав \"x.\" вначале и заменив последующие точки на \"/\".')
 			} else {

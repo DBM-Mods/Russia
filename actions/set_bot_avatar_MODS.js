@@ -35,7 +35,7 @@ module.exports = {
             <td>
             <span class="dbminputlabel">Описание действия</span>
             <br>
-            <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+            <input type="text" class="round" id="description" placeholder="Необязательное поле">
             </td>
             <td style="padding:0px 0px 0px 10px;width:70px">
             <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -55,7 +55,7 @@ module.exports = {
         <span class="dbminputlabel">Опции</span>
         <br>
         <div style="padding:10px;background:rgba(0,0,0,0.2)">
-            <dbm-checkbox id="errcmd" label="Отобразить ошибку в консоли" checked></dbm-checkbox>
+            <dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
         </div>
 
         <br>
@@ -63,12 +63,12 @@ module.exports = {
         <div style="float: left; width: 40%">
             <span class="dbminputlabel">При ошибке</span>
             <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-                <option value="0">Продолжить действия</option>
-                <option value="1">Остановить последовательность действий</option>
+                <option value="0">Продолжить выполнение действий</option>
+                <option value="1">Остановить выполнение действий</option>
                 <option value="2">Перейти к действию</option>
                 <option value="3">Пропустить действия</option>
                 <option value="4">Перейти к якорю</option>
-                <option value="5">Выполнить действия и остановиться</option>
+                <option value="5">Выполнить действия и остановитьсяся</option>
                 <option value="99">Выполнить действия и продолжить</option>
             </select>
         </div>
@@ -126,7 +126,7 @@ module.exports = {
       }
 
       if (event.value == "3") {
-        document.querySelector("[id='xinelasT']").innerText = "Количество действий";
+        document.querySelector("[id='xinelasT']").innerText = "Количество действий для пропуска";
       }
 
       if (event.value == "4") {

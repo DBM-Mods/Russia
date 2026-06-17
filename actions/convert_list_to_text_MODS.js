@@ -113,8 +113,8 @@ module.exports = {
   <dbm-checkbox id="endlib" label="Не показывать значение каждого элемента"></dbm-checkbox>
 
   <br>
-  Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i]</span> для сбора информации из элемента списка, если он находится в формате JSON, пример <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i].user.username</span> Из списка "Пользователи севрера"
   <br>Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">\\n</span> что бы перенести на следушию строку.
+  Используйте <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i]</span> для сбора информации из элемента списка, если он в формате JSON, например <span style="background:rgba(0,0,0,0.8);color:lime;padding:2px;">list[i].user.username</span> из списка "Пользователи сервера"
   
   </div>
   <br>
@@ -166,7 +166,7 @@ module.exports = {
                     <td class="col">
                     <span class="dbminputlabel">Сравнить</span><br>
                     <select id="comparar" class="round">
-                    <option value="0">Значение A - Существующее</option>
+                    <option value="0">Значение A существует</option>
                     <option value="1" selected>Равный</option>
                     <option value="2">Точно так же</option>
                     <option value="3">Менее</option>
@@ -187,7 +187,7 @@ module.exports = {
                     <option value="19">Является ли значение A четным числом?</option>
                     <option value="20">Является ли значение A нечетным числом?</option>
                     <option value="21">Является ли значение A числом?</option>
-                    <option value="24">Значение A - это текст?</option>
+                    <option value="24">Значение A - текст?</option>
                     <option value="23">Является ли значение A URL-адресом изображения?</option>
                     <option value="25">Значение A - это URL?</option>
                   </select>
@@ -223,7 +223,7 @@ module.exports = {
 
 <div style="padding-bottom: 12px;padding-top: 12px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действий</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td><span class="dbminputlabel">Описание действий</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:55px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>

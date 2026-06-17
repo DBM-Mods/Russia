@@ -14,14 +14,14 @@ module.exports = {
   subtitle(data, presets) {
     const info = [
       "Объект Роли",
-      "ID Роли",
+      "ID роли",
       "Имя Роли",
       "Цвет Роли",
       "Позиция Роли",
       "Временная метка создания Роли",
-      "Роль можно упомянуть?",
-      "Роль отделена от других",
-      "Роль управляема",
+      "Роль можно упоминать?",
+      "Роль отображается отдельно",
+      "Роль управляется ботом/интеграцией",
       "Список участников Роли",
       "Дата создания Роли",
       "Список разрешений Роли",
@@ -29,9 +29,9 @@ module.exports = {
       "Иконка Роли",
       "Тег Роли",
       "Сервер Роли",
-      "ID Сервера Роли",
+      "ID сервера роли",
       "Роль можно редактировать?",
-      "Список ID участников Роли",
+      "Список ID участников с ролью",
       "Список онлайн-участников Роли",
       "Список офлайн-участников Роли",
       "Список отсутствующих участников Роли",
@@ -42,14 +42,14 @@ module.exports = {
       "Всего занятых участников Роли",
       "Список имен участников Роли",
       "Список аватарок участников Роли",
-      "Список участников с Ролью",
-      "Список ID людей с Ролью",
-      "Список имен людей с Ролью",
-      "Список аватарок людей с Ролью",
-      "Список ботов с Ролью",
-      "Список ID ботов с Ролью",
-      "Список имен ботов с Ролью",
-      "Список аватарок ботов с Ролью",
+      "Список участников с ролью",
+      "Список ID пользователей с ролью",
+      "Список имён пользователей с ролью",
+      "Список аватаров пользователей с ролью",
+      "Список ботов с ролью",
+      "Список ID ботов с ролью",
+      "Список имён ботов с ролью",
+      "Список аватаров ботов с ролью",
     ];
   if (data.descriptionx) {
     desccor = data.descriptioncolor;
@@ -195,7 +195,7 @@ module.exports = {
         <td>
         <span class="dbminputlabel">Описание действия</span>
         <br>
-        <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+        <input type="text" class="round" id="description" placeholder="Необязательное поле">
         </td>
         <td style="padding:0px 0px 0px 10px;width:70px">
         <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -216,8 +216,8 @@ module.exports = {
 	<span class="dbminputlabel">Информация о Роли</span><br>
 	<select id="info" class="round2">
     <optgroup label="Информация о Роли">
-		<option value="0" selected>Роль - Объект</option>
-    <option value="1">ID Роли</option>
+		<option value="0" selected>Объект роли</option>
+    <option value="1">ID роли</option>
     <option value="2">Название Роли</option>
     <option value="3">Цвет Роли</option>
     <option value="4">Позиция Роли</option>
@@ -225,10 +225,10 @@ module.exports = {
     <option value="13">Иконка Роли</option>
     </optgroup>
     <optgroup label="Условия Роли">
-		<option value="6">Можно упомянуть Роль?</option>
-    <option value="17">Роль редактируема?</option>
-    <option value="7">Роль отделена от других?</option>
-    <option value="8">Роль управляема ботом/интеграцией?</option>
+		<option value="6">Можно упоминать роль?</option>
+    <option value="17">Роль можно редактировать?</option>
+    <option value="7">Роль отображается отдельно?</option>
+    <option value="8">Роль управляется ботом/интеграцией ботом/интеграцией?</option>
     </optgroup>
     <optgroup label="Дата Роли">
 		<option value="5">Метка времени создания Роли</option>
@@ -236,7 +236,7 @@ module.exports = {
     </optgroup>
     <optgroup label="Информация о Роли">
     <option value="15">Сервер Роли</option>
-    <option value="16">ID Сервера Роли</option>
+    <option value="16">ID сервера роли</option>
     </optgroup>
     <optgroup label="Счетчики Роли">
     <option value="12">Количество участников Роли</option>
@@ -247,7 +247,7 @@ module.exports = {
     </optgroup>
     <optgroup label="Информация о Роли в списках">
     <option value="9">Список участников Роли</option>
-    <option value="18">Список ID участников Роли</option>
+    <option value="18">Список ID участников с ролью</option>
     <option value="27">Список имен участников Роли</option>
     <option value="28">Список аватаров участников Роли</option>
     <option value="11">Список разрешений Роли</option>
@@ -256,11 +256,11 @@ module.exports = {
     <option value="21">Список отсутствующих участников Роли</option>
     <option value="22">Список занятых участников Роли</option>
     <option value="29">Список людей в Роли</option>
-    <option value="30">Список ID людей в Роли</option>
+    <option value="30">Список ID пользователей с ролью</option>
     <option value="31">Список имен людей в Роли</option>
     <option value="32">Список аватаров людей в Роли</option>
     <option value="33">Список ботов в Роли</option>
-    <option value="34">Список ID ботов в Роли</option>
+    <option value="34">Список ID ботов с ролью</option>
     <option value="35">Список имен ботов в Роли</option>
     <option value="36">Список аватаров ботов в Роли</option>
     </optgroup>
@@ -270,7 +270,7 @@ module.exports = {
 
 <br>
 
-<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+<store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
 
 </div>
 
@@ -329,7 +329,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

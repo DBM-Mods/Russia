@@ -12,7 +12,7 @@ module.exports = {
   subtitle(data) {
     const info = [
       'Имя команды',
-      '(ID) Идентификатор команды',
+      'ID команды',
       'Тип команды',
       'Ограничение команды',
       'Требуется первичное разрешение',
@@ -84,7 +84,7 @@ module.exports = {
   <option value="2" selected>Та же команда по тексту</option>
   <option value="3">Та же команда взаимодействия</option>
     <option value="0">Имя</option>
-    <option value="1">(ID) Идентификатор</option>
+    <option value="1">ID</option>
   </select>
 </div>
 <div id="vtsContainer" style="display: none; float: right; width: 55%">
@@ -95,7 +95,7 @@ module.exports = {
 <span class="dbminputlabel">Информация</span><br>
   <select id="info" class="round">
   <option value="0" selecionado>Имя команды</option>
-  <option value="1">(ID) Идентификатор команды</option>
+  <option value="1">ID команды</option>
   <option value="2">Тип команды</option>
   <option value="3">Ограничение команды</option>
   <option value="4">Требуется первичное разрешение</option>
@@ -108,7 +108,7 @@ module.exports = {
   </select>
 </div><br><br><br>
 <div style="float: left; width: 35%; padding-top: 12px">
-<span class="dbminputlabel">Хранить в</span><br>
+<span class="dbminputlabel">Сохранить в</span><br>
   <select id="storage" class="round">
     ${data.variables[1]}
   </select>
@@ -182,20 +182,20 @@ module.exports = {
         result = jp.query(command, '$.._id');
         break;
       case 2:
-        if(jp.query(command, '$..comType') == "0"){ result = "Comando por texto" }
-        if(jp.query(command, '$..comType') == "1"){ result = "Inclui a palavra na mensagem" }
-        if(jp.query(command, '$..comType') == "2"){ result = "Expressão regular" }
-        if(jp.query(command, '$..comType') == "3"){ result = "Qualquer mensagem" }
-        if(jp.query(command, '$..comType') == "4"){ result = "Comando de barra" }
-        if(jp.query(command, '$..comType') == "5"){ result = "Menu de comando do usuário" }
-        if(jp.query(command, '$..comType') == "6"){ result = "Menu de comando da mensagem" }
+        if(jp.query(command, '$..comType') == "0"){ result = "Текстовая команда" }
+        if(jp.query(command, '$..comType') == "1"){ result = "Содержит слово в сообщении" }
+        if(jp.query(command, '$..comType') == "2"){ result = "Регулярное выражение" }
+        if(jp.query(command, '$..comType') == "3"){ result = "Любое сообщение" }
+        if(jp.query(command, '$..comType') == "4"){ result = "Слэш-команда" }
+        if(jp.query(command, '$..comType') == "5"){ result = "Контекстное меню пользователя" }
+        if(jp.query(command, '$..comType') == "6"){ result = "Контекстное меню сообщения" }
         break;
       case 3:
-        if(jp.query(command, '$..restriction') == "0"){ result = "Nenhuma" }
-        if(jp.query(command, '$..restriction') == "1"){ result = "Somente no servidor" }
-        if(jp.query(command, '$..restriction') == "2"){ result = "Somente o dono do servidor" }
-        if(jp.query(command, '$..restriction') == "3"){ result = "Somente mensagens diretas" }
-        if(jp.query(command, '$..restriction') == "4"){ result = "Somente o dono do bot" }
+        if(jp.query(command, '$..restriction') == "0"){ result = "Нет" }
+        if(jp.query(command, '$..restriction') == "1"){ result = "Только на сервере" }
+        if(jp.query(command, '$..restriction') == "2"){ result = "Только владелец сервера" }
+        if(jp.query(command, '$..restriction') == "3"){ result = "Только личные сообщения" }
+        if(jp.query(command, '$..restriction') == "4"){ result = "Только владелец бота" }
         break;
       case 4:
         result = JSON.stringify(jp.query(command, '$..permissions')).slice(2, -2).replace('_', ' ').toLowerCase();

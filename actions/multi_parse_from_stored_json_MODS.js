@@ -5,7 +5,7 @@ module.exports = {
   // This is the name of the action displayed in the editor.
   //---------------------------------------------------------------------
 
-  name: "Multi Parse From Stored Json MOD",
+  name: "Multi Parse From Stored JSON MOD",
 
   //---------------------------------------------------------------------
   // Action Section
@@ -164,7 +164,7 @@ module.exports = {
                 <br>
         
                 <div style="float: left; width: 35%;">
-                  <span class="dbminputlabel">Хранить в</span>
+                  <span class="dbminputlabel">Сохранить в</span>
                   <select id="storage" class="round">
                     ${data.variables[1]}
                   </select>
@@ -184,7 +184,7 @@ module.exports = {
                 <td>
                   <span class="dbminputlabel">Описание действия</span>
                   <br>
-                  <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+                  <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать.">
                 </td>
                 <td style="padding:0px 0px 0px 10px; width:70px";>
                   <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -220,7 +220,7 @@ module.exports = {
         xinelaslink.setAttribute("title", url);
         xinelaslink.addEventListener("click", (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require("child_process").execSync(`start ${url}`);
         });
       }
@@ -310,7 +310,7 @@ module.exports = {
               success: false
             });
             this.storeValue(errorJson, storage, varName, cache);
-            this.displayError(data, cache, `1: Multi Parse From Stored Json MOD: Invalid JSON error, правильно ли установлен путь? [${path}]`);
+            this.displayError(data, cache, `1: Multi Parse From Stored JSON MOD: Invalid JSON error, правильно ли установлен путь? [${path}]`);
             continue;
 
           } else if (!outValue || outValue.success === null) {
@@ -321,12 +321,12 @@ module.exports = {
               success: false
             });
             this.storeValue(errorJson, storage, varName, cache);
-            this.displayError(data, cache, `2: Multi Parse From Stored Json MOD: Ошибка Invalid JSON, правильно ли задан путь? [${path}]`);
+            this.displayError(data, cache, `2: Multi Parse From Stored JSON MOD: Ошибка Invalid JSON, правильно ли задан путь? [${path}]`);
             continue;
 
           } else {
             this.storeValue(outValue, storage, varName, cache);
-            if (branch.debug) console.log(`Multi Parse From Stored Json MOD: JSON [${jsonObjectVarName}] Значения от [${path}] до [${varName}] были сохранены`);
+            if (branch.debug) console.log(`Multi Parse From Stored JSON MOD: JSON [${jsonObjectVarName}] Значения от [${path}] до [${varName}] были сохранены`);
           }
         }
       } catch (error) {
@@ -336,7 +336,7 @@ module.exports = {
           success: false,
         });
         this.storeValue(errorJson, storage, varName, cache);
-        this.displayError(data, cache, `Multi Parse From Stored Json MOD: Ошибка: ${errorJson} сохранен для [${varName}].`);
+        this.displayError(data, cache, `Multi Parse From Stored JSON MOD: Ошибка: ${errorJson} сохранён в [${varName}].`);
         continue;
       }
     }

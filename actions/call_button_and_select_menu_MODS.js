@@ -105,7 +105,7 @@ module.exports = {
 
                 <br>
 
-                <span class="dbminputlabel" id="label">Идентификатор (ID) кнопки</span>
+                <span class="dbminputlabel" id="label">ID кнопки</span>
                 <input id="id" type="text" class="round">
 
                 <div id="divValue">
@@ -175,7 +175,7 @@ module.exports = {
                     <td>
                         <span class="dbminputlabel">Описание действия</span>
                         <br>
-                        <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+                        <input type="text" class="round" id="description" placeholder="Необязательное поле">
                     </td>
                     <td style="padding:0px 0px 0px 10px;width:70px">
                         <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -190,7 +190,7 @@ module.exports = {
                 <span class="dbminputlabel">Опции</span>
                 <br>
                 <div style="padding: 10px; background: rgba(0,0,0,0.2);">
-                  <dbm-checkbox id="errcmd" label="Отобразить ошибку в консоли" checked></dbm-checkbox>
+                  <dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
                 </div>
 
                 <br>
@@ -198,13 +198,13 @@ module.exports = {
                 <div style="float: left; width: 40%">
                     <span class="dbminputlabel">При ошибке</span>
                     <select id="iffalse" class="round" onchange="glob.change(this)">
-                        <option value="0" selected>Продолжить действия</option>
-                        <option value="1">Остановить последовательность действий</option>
+                        <option value="0" selected>Продолжить выполнение действий</option>
+                        <option value="1">Остановить выполнение действий</option>
                         <option value="2">Перейти к действию</option>
                         <option value="3">Пропустить действия</option>
                         <option value="4">Перейти к якорю</option>
-                        <option value="5">Выполнить действия и остановиться</option>
-                        <option value="99">Выполнить действий и продолжить</option>
+                        <option value="5">Выполнить действия и остановитьсяся</option>
+                        <option value="99">Выполнить действия и продолжить</option>
                     </select>
                 </div>
         
@@ -220,7 +220,7 @@ module.exports = {
 
                 <div id="divValue2" style="margin-top: 10px;">
                   <div style="float: left; width: 35%;">
-                    <span class="dbminputlabel">Хранить ошибку в</span>
+                    <span class="dbminputlabel">Сохранить ошибку в</span>
                     <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer')">
                       ${data.variables[0]}
                     </select>
@@ -282,7 +282,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -304,10 +304,10 @@ module.exports = {
 
     glob.onChange = function(event) {
       if(event.value == "0") {
-        document.getElementById("label").textContent = "Идентификатор (ID) кнопки";
+        document.getElementById("label").textContent = "ID кнопки";
         document.getElementById("divValue").style.display = "none";
       } else {
-        document.getElementById("label").textContent = "Идентификатор (ID) меню";
+        document.getElementById("label").textContent = "ID меню";
         document.getElementById("divValue").style.display = "block";
       }
     }
@@ -392,7 +392,7 @@ module.exports = {
       return _this.executeResults(false, data, cache);
     }
 
-    if(!interaction) return erro("Кэш взаимодействия не найден!");
+    if(!interaction) return erro("Кеш взаимодействия не найден!");
 
     const waitForCompletion = callType == true;
     let callback = null;
@@ -420,7 +420,7 @@ module.exports = {
 
       if(data.listType == "0") {
         const branches = data.branches;
-        if(branches.length == 0) return erro("Список должен содержать хотя бы однин вариант!");
+        if(branches.length == 0) return erro("Список должен содержать хотя бы один вариант!");
 
         for(var i = 0; i < branches.length; i++) {
           const option = branches[i];
@@ -438,8 +438,8 @@ module.exports = {
       } else {
         options = this.getVariable(parseInt(data.storage2), this.evalMessage(data.varName2, cache), cache);
 
-        if(!Array.isArray(options)) return erro("Введите действительный список!");
-        if(options.length == 0) return erro("Список должен содержать хотя бы однин вариант!");
+        if(!Array.isArray(options)) return erro("Введите корректный список!");
+        if(options.length == 0) return erro("Список должен содержать хотя бы один вариант!");
       }
 
       const values = options;

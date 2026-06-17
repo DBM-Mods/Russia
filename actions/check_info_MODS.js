@@ -35,7 +35,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -64,8 +64,8 @@ module.exports = {
       <option value="21">Это число?</option>
       </optgroup>
       <optgroup label="Текст">
-			<option value="6">Соответствует регулярному выражению</option>
-      <option value="14">Соответствует полному регулярному выражению</option>
+			<option value="6">Соответствует Regex</option>
+      <option value="14">Полностью соответствует Regex</option>
       <option value="7">Длина длиннее, чем</option>
 			<option value="8">Длина ниже, чем</option>
 			<option value="9">Длина равен</option>
@@ -74,7 +74,7 @@ module.exports = {
       <option value="16">У вас есть акценты?</option>
       <option value="18">Равны словам  ["a" , "b" , "c"]</option>
       <option value="24">Это текст?</option>
-      <option value="23">Это URL -адрес изображения?</option>
+      <option value="23">Это URL изображения?</option>
       <option value="25">Это URL?</option>
       <option value="26">Электронная почта существует?</option>
     </optgroup>
@@ -84,8 +84,8 @@ module.exports = {
     <option value="30">Включает ~ игнорировать акцентуации</option>
     <option value="31">Включает в себя ~ игнорировать строчные и заглавные & акцентуации</option>
     <option value="17">Включает в себя точно ["a" , "b" , "c"]</option>
-    <option value="27">Включает URL?</option>
-    <option value="28">Включите приглашение от Discord?</option>
+    <option value="27">Содержит URL?</option>
+    <option value="28">Содержит приглашение Discord?</option>
     <option value="32">Включает именно это слово</option>
     <option value="33">Включает слово ~ Игнорировать крошечный/пропись</option>
     <option value="34">Включает слово ~ Игнорировать акценты</option>
@@ -160,7 +160,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

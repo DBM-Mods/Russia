@@ -27,7 +27,7 @@ module.exports = {
     } else {
       desccor = 'none'
     }
-    const info = ['точно такой же как', 'содержит', 'соответствует регулярному выражению', 'меньше чем', 'меньше или равно', 'больше чем', 'больше или равно', 'длина больше чем', 'длина меньше чем', 'длина равна', 'начинается с', 'заканчивается на', 'содержит символы', 'является URL-адресом изображения', 'является URL-адресом', 'не является URL-адресом изображения', 'не является URL-адресом', 'является числом', 'является текстом', 'содержит ~ игнорировать регистр', 'содержит ~ игнорировать акценты', 'содержит ~ игнорировать акценты и регистр'];
+    const info = ['точно такой же как', 'содержит', 'соответствует Regex', 'меньше чем', 'меньше или равно', 'больше чем', 'больше или равно', 'длина больше чем', 'длина меньше чем', 'длина равна', 'начинается с', 'заканчивается на', 'содержит символы', 'является URL-адресом изображения', 'является URL-адресом', 'не является URL-адресом изображения', 'не является URL-адресом', 'является числом', 'является текстом', 'содержит ~ игнорировать регистр', 'содержит ~ игнорировать акценты', 'содержит ~ игнорировать акценты и регистр'];
     return data.description
       ? `<font style="color:${desccor}">${data.description}</font>`
       : `<font style="color:${desccor}">Искать ${info[parseInt(data.buscadoxin)]} "${data.item}" в "${data.varName}"</font>`;
@@ -50,7 +50,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -74,7 +74,7 @@ module.exports = {
         <option value="19">Содержит ~ Регистр не учитывается</option>
         <option value="20">Содержит ~ Учитываются акценты</option>
         <option value="21">Содержит ~ Регистр и акценты не учитываются</option>
-        <option value="2">Соответствует регулярному выражению</option>
+        <option value="2">Соответствует Regex</option>
         <option value="7">Длина больше чем</option>
         <option value="8">Длина меньше чем</option>
         <option value="9">Длина равна</option>
@@ -85,7 +85,7 @@ module.exports = {
         <option value="5">Больше чем</option>
         <option value="6">Больше или равно</option>
         <option value="12">Содержит символы</option>
-        <option value="13">Это URL-адрес изображения</option>
+        <option value="13">Это URL изображения</option>
         <option value="14">Это URL-адрес</option>
         <option value="15">Не является URL-адресом изображения</option>
         <option value="16">Не является URL-адресом</option>
@@ -99,7 +99,7 @@ module.exports = {
 
 
 <table><tr><td class="col1">
-  <span class="dbminputlabel">Хранить в</span><br>
+  <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage" class="round">
       ${data.variables[1]}
     </select>
@@ -114,8 +114,8 @@ module.exports = {
 <table><tr><td class="col1">
 <span class="dbminputlabel">Если не найдено</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-<option value="0">Продолжить действия</option>
-<option value="1" selecionado>Остановить последовательность действий</option>
+<option value="0">Продолжить выполнение действий</option>
+<option value="1" selecionado>Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить действия</option>
 <option value="4">Перейти к якорю</option>
@@ -152,7 +152,7 @@ table{width:100%}
         document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
       }
       if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+        document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
       }
       if (event.value == "4") {
         document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
@@ -193,7 +193,7 @@ table{width:100%}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

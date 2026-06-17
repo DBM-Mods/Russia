@@ -88,7 +88,7 @@ module.exports = {
   </td></tr></table>
   </div><br>
   <div style="float: left; width: 35%;">
-  <span class="dbminputlabel">Хранить в</span><br>
+  <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage2" class="round" onchange="glob.variableChange(this, 'varNameContainer3')">
       ${data.variables[0]}
     </select>

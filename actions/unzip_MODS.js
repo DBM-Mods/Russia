@@ -42,7 +42,7 @@ module.exports = {
       <td>
           <span class="dbminputlabel">Описание действия</span>
           <br>
-          <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+          <input type="text" class="round" id="description" placeholder="Необязательное поле">
       </td>
       <td style="padding:0px 0px 0px 10px;width:70px">
           <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -70,7 +70,7 @@ module.exports = {
 
             <div id="divValueError">
         <div style="float: left; width: 35%;">
-          <span class="dbminputlabel">Хранить ошибку в</span>
+          <span class="dbminputlabel">Сохранить ошибку в</span>
           <select id="storageError" class="round" onchange="glob.variableChangeError(this, 'varNameContainer')">
             ${data.variables[0]}
           </select>
@@ -90,13 +90,13 @@ module.exports = {
 <div style="float: left; width: 38%" id="xinext">
 <span class="dbminputlabel">Если возникает ошибка</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-<option value="0" selected>Продолжить действия</option>
-<option value="1">Остановить последовательность действий</option>
+<option value="0" selected>Продолжить выполнение действий</option>
+<option value="1">Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить следующий действия</option>
 <option value="4">Перейти к якорю действия</option>
-<option value="5">Выполнить действия ниже и остановиться</option>
-<option value="6">Выполнить действия ниже и продолжить</option>
+<option value="5">Выполнить действия и остановитьсяся</option>
+<option value="6">Выполнить действия и продолжить</option>
 </select>
 </div>
 
@@ -182,7 +182,7 @@ module.exports = {
                 document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
             }
             if (event.value == "3") {
-                document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+                document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
             }
             if (event.value == "4") {
                 document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);

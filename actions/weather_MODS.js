@@ -30,160 +30,160 @@ module.exports = {
 
                 switch (parseInt(data.branches[i].info)) {
                     case 0:
-                        tipo = "Objeto";
+                        tipo = "Объект";
                         break;
                     case 1:
-                        tipo = "Objeto";
+                        tipo = "Объект";
                         break;
                     case 2:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 3:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 4:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 5:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 6:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 7:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 8:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 9:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 10:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 11:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 12:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 13:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 14:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 15:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 16:
-                        tipo = "Número"
+                        tipo = "Число"
                         break;
                     case 17:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 18:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 19:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 20:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 21:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 22:
-                        tipo = "Número"
+                        tipo = "Число"
                         break;
                     case 23:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 24:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 25:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 26:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 27:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 28:
-                        tipo = "Número"
+                        tipo = "Число"
                         break;
                     case 29:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 30:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 31:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 32:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 33:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 34:
-                        tipo = "Número"
+                        tipo = "Число"
                         break;
                     case 35:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 36:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 37:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 38:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 39:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 40:
-                        tipo = "Número"
+                        tipo = "Число"
                         break;
                     case 41:
-                        tipo = "Número";
+                        tipo = "Число";
                         break;
                     case 42:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 43:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 44:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 45:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 46:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 47:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 48:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 49:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 50:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                     case 51:
-                        tipo = "Texto";
+                        tipo = "Текст";
                         break;
                 }
 
@@ -229,7 +229,7 @@ module.exports = {
   <span class="dbminputlabel">Тип измерения</span><br>
   <select id="degreeType" class="round">
     <option value="F">Фаренгейт</option>
-    <option value="C" selected>Цельсия</option>
+    <option value="C" selected>Цельсий</option>
   </select>
   </td>
   
@@ -241,7 +241,7 @@ module.exports = {
 
   <span class="dbminputlabel">Язык</span><br>
   <select id="idioma" class="round">
-  <option value="0">Português</option>
+  <option value="0">Русский</option>
   <option value="1">English</option>
   <option value="2" selected>Русский</option>
   <option value="3">Français</option>
@@ -331,7 +331,7 @@ module.exports = {
     <br>
  
     <div style="float: left; width: 35%; padding-top: 8px;">
-    <span class="dbminputlabel">Хранить в</span><br>
+    <span class="dbminputlabel">Сохранить в</span><br>
       <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer')">
         ${data.variables[1]}
       </select>
@@ -350,14 +350,14 @@ module.exports = {
   <tab label="Конфиг" icon="settings">
   <div style="padding:8px">
   <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 
 <br>
 
 <span class="dbminputlabel">Опции</span><br><div style="padding:10px;background:rgba(0,0,0,0.2)">
-<dbm-checkbox id="errcmd" label="Вывести ошибку на консоль" checked></dbm-checkbox>
+<dbm-checkbox id="errcmd" label="Вывести ошибку в консоль" checked></dbm-checkbox>
 </div>
 
 <br>
@@ -365,12 +365,12 @@ module.exports = {
       <div style="float: left; width: 38%" id="xinext">
       <span class="dbminputlabel">При возникновении ошибки</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged2(this)">
-      <option value="0" selected>Продолжить действия</option>
-      <option value="1">Остановить последовательность действий</option>
+      <option value="0" selected>Продолжить выполнение действий</option>
+      <option value="1">Остановить выполнение действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующие действия</option>
       <option value="4">Перейти к якорю действия</option>
-      <option value="5">Выполнение действий и остановить</option>
+      <option value="5">Выполнить действия и остановитьсяся</option>
       <option value="6">Выполнить действия и продолжить</option>
       </select>
       <br>
@@ -427,7 +427,7 @@ table{width:100%}
                 xinelaslink.setAttribute('title', url);
                 xinelaslink.addEventListener('click', (e) => {
                     e.stopImmediatePropagation();
-                    console.log(`URL-адрес запуска: [${url}] в браузере по умолчанию.`);
+                    console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
                     require('child_process').execSync(`start ${url}`);
                 });
             }
@@ -449,13 +449,13 @@ table{width:100%}
               document.getElementById("xinext").style.width = "38%";
             }
             if (event.value == "2") {
-              document.querySelector("[id='xinelas']").innerText = (`Número da ação`);
+              document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
             }
             if (event.value == "3") {
-              document.querySelector("[id='xinelas']").innerText = (`Pular ações`);
+              document.querySelector("[id='xinelas']").innerText = (`Пропустить действия`);
             }
             if (event.value == "4") {
-              document.querySelector("[id='xinelas']").innerText = (`Nome da âncora`);
+              document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);
             }
           }
 
@@ -658,7 +658,7 @@ table{width:100%}
                 let error = err
                 if(response == [] || err == null || err == "null"){
                     
-                    if (idioma == 0) {error = "A Cidade não foi encontrada"}
+                    if (idioma == 0) {error = "Город не найден"}
                     if (idioma == 1) {error = "City not found"}
                     if (idioma == 2) {error = "Город не найден"}
                     if (idioma == 3) {error = "Ville introuvable"}
@@ -886,7 +886,7 @@ table{width:100%}
                         if (info == 3 || info == 11 || info == 15 || info == 18 || info == 20 || info == 24 || info == 30 || info == 36 || info == 42) {
 
                             list = ["Light Rain and Snow", "Rain and Snow", "Mostly Sunny", "Rain Showers", "Mostly Clear", "Partly Cloudy", "Light Rain", "Rain", "Mostly Cloudy", "Smoke", "Partly Sunny", "Cloudy", "Haze", "South", "North", "West", "East", "Norteeast", "Southwest", "Southwest", "Northeast", "Southeast", "Northwest", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Sunny", "Clear", "Fair", "Heavy T-Storms", "T-Storms", "Suleast", "Sulwest", "Light Snow", "Snow Showers", "Snow", "Nortewest"]
-                            list2 = ["Chuva e neve leves", "Chuva e neve", "Céu principalmente ensolarado", "Pancadas de chuva", "Céu parcialmente claro", "Céu parcialmente nublado", "Chuva leve", "Chuva", "Céu predominantemente nublado", "Céu com muita fumaça", "Céu parcialmente ensolarado", "Nublado", "Neblina", "Sul", "Norte", "Oeste", "Leste", "Nordeste", "Sudoeste", "Sudoeste", "Nordeste", "Sudeste", "Noroeste", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado", "Domingo", "Céu ensolarado", "Céu claro", "Céu claro", "Trovoadas pesadas", "Trovoadas", "Sudeste", "Sudoeste", "Pouca Neve", "Chuvas de neve", "Neve", "Noroeste"]
+                            list2 = ["Легкий дождь со снегом", "Дождь со снегом", "Преимущественно солнечно", "Ливневый дождь", "Преимущественно ясно", "Переменная облачность", "Легкий дождь", "Дождь", "Преимущественно облачно", "Дымка", "Частично солнечно", "Облачно", "Туман", "Юг", "Север", "Запад", "Восток", "Северо-восток", "Юго-запад", "Юго-запад", "Северо-восток", "Юго-восток", "Северо-запад", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье", "Солнечно", "Ясно", "Ясно", "Сильные грозы", "Грозы", "Юго-восток", "Юго-запад", "Небольшой снег", "Снегопад", "Снег", "Северо-запад"]
                             for (var id = 0; id <= list.length; id++) {
                                 result = result.replace(list[id], list2[id]);
                             }

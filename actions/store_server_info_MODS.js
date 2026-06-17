@@ -22,7 +22,7 @@ module.exports = {
       "Стандартный канал сервера",
       "AFK-канал сервера",
       "Системный канал сервера",
-      "Стандартная роль сервера",
+      "Роль сервера по умолчанию",
       "Владелец сервера (Объект)",
       "Бот сервера",
       "Список каналов сервера",
@@ -115,12 +115,12 @@ module.exports = {
       "Список имен событий на сервере",
       "Общее количество событий на сервере",
       "Список ID событий на сервере",
-      "Роль Server Booster",
+      "Роль бустера сервера",
       "Список участников с ускорением в порядке ускорения",
-      "Список участников с Тайм-аутом (сейчас)",
-      "Общее количество участников с Тайм-аутом (сейчас)",
-      "Общее количество участников когда-либо получивших Тайм-аут",
-      "Список участников когда-либо получивших Тайм-аут",
+      "Список участников с тайм-аутом сейчас",
+      "Общее количество участников с тайм-аутом сейчас",
+      "Общее количество участников когда-либо получивших тайм-аут",
+      "Список участников когда-либо получивших тайм-аут",
     ];
 
     if (data.descriptionx) {
@@ -156,7 +156,7 @@ module.exports = {
         dataType = "Текст";
         break;
       case 5:
-        dataType = "URL значок сервера";
+        dataType = "URL иконки сервера";
         break;
       case 6:
         dataType = "Текст";
@@ -273,7 +273,7 @@ module.exports = {
         dataType = "Число";
         break;
       case 46:
-        dataType = "URL Баннера сервера";
+        dataType = "URL баннера сервера";
         break;
       case 47:
         dataType = "Список";
@@ -395,7 +395,7 @@ module.exports = {
         <td>
           <span class="dbminputlabel">Описание действия</span>
           <br>
-          <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+          <input type="text" class="round" id="description" placeholder="Необязательное поле">
         </td>
         <td style="padding:0px 0px 0px 10px;width:70px">
           <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -427,7 +427,7 @@ module.exports = {
       <option value="9">Системный канал сервера</option>
       <option value="21">Большой сервер</option>
       <option value="43">Фильтр контента сервера</option>
-      <option value="10">Стандартная роль сервера</option>
+      <option value="10">Роль сервера по умолчанию</option>
       <option value="12">Бот сервера</option>
       <option value="20">Сервер доступен</option>
       </optgroup>
@@ -439,7 +439,7 @@ module.exports = {
       <optgroup label="Информация о преимуществах сервера">
       <option value="44">Количество ускорений сервера</option>
       <option value="45">Уровень ускорения сервера</option>
-      <option value="103">Роль Server Booster</option>
+      <option value="103">Роль бустера сервера</option>
       <option value="104">Список участников с ускорением в порядке ускорения</option>
       </optgroup>
       <optgroup label="Счетчики">
@@ -454,8 +454,8 @@ module.exports = {
       <option value="70">Общее количество участников в голосовых каналах</option>
       <option value="98">Общее количество стикеров на сервере</option>
       <option value="101">Общее количество событий на сервере</option>
-      <option value="106">Общее количество участников с Тайм-аутом (сейчас)</option>
-      <option value="107">Общее количество участников когда-либо получивших Тайм-аут</option>
+      <option value="106">Общее количество участников с тайм-аутом сейчас</option>
+      <option value="107">Общее количество участников когда-либо получивших тайм-аут</option>
       </optgroup>
       <optgroup label="Информация о сообществе на сервере">
       <option value="54">Сервер в партнерстве</option>
@@ -463,7 +463,7 @@ module.exports = {
       <option value="56">ID канала правил сервера</option>
       <option value="4">Предпочитаемый язык сервера</option>
       <option value="40">Сервер подтвержден</option>
-      <option value="52">Активирован премиум-серверный прогресс-бар</option>
+      <option value="52">Включён прогресс буста сервера</option>
       <option value="46">URL баннера сервера</option>
       <option value="47">Список возможностей сервера</option>
       <option value="49">Пользовательский URL-адрес сервера</option>
@@ -521,8 +521,8 @@ module.exports = {
       <option value="99">Список событий на сервере</option>
       <option value="100">Список имен событий на сервере</option>
       <option value="102">Список ID событий на сервере</option>
-      <option value="105">Список участников с Тайм-аутом (сейчас)</option>
-      <option value="108">Список участников когда-либо получивших Тайм-аут</option>
+      <option value="105">Список участников с тайм-аутом сейчас</option>
+      <option value="108">Список участников когда-либо получивших тайм-аут</option>
       </optgroup>
       <optgroup label="Информация о владельце сервера">
       <option value="48">ID владельца сервера</option>
@@ -551,7 +551,7 @@ module.exports = {
 
 <br>
 
-<store-in-variable dropdownLabel="Хранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
+<store-in-variable dropdownLabel="Сохранить в" selectId="storage" variableContainerId="varNameContainer2" variableInputId="varName2"></store-in-variable>
 
 </div>
 

@@ -11,17 +11,17 @@ module.exports = {
 
   subtitle(data) {
     const info = [
-    "Localizar por conteúdo",
-    "Localizar por ID",
-    "Localizar por timestamp",
-    "Localizar por usuário",
-    "Localizar mensagens de BOTs",
-    "Localizar mensagens de Humanos",
-    "Localizar mensagens fixadas",
-    `Localizar mensagens entre ${data.search} e ${data.search2 || "Timestamp atual"}`,
-    `Localizar mensagens com o comprimento igual a ${data.search}`,
-    `Localizar mensagens com o comprimento maior que ${data.search}`,
-    `Localizar mensagens com o comprimento menor que ${data.search}`,
+    "Найти по содержимому",
+    "Найти по ID",
+    "Найти по timestamp",
+    "Найти по пользователю",
+    "Найти сообщения ботов",
+    "Найти сообщения людей",
+    "Найти закрепленные сообщения",
+    `Найти сообщения между ${data.search} e ${data.search2 || "Текущий timestamp"}`,
+    `Найти сообщения с длиной, равной ${data.search}`,
+    `Найти сообщения с длиной больше ${data.search}`,
+    `Найти сообщения с длиной меньше ${data.search}`,
     ];
 
     if (data.descriptionx) {
@@ -37,7 +37,7 @@ module.exports = {
 
   variableStorage(data, varType) {
     if (parseInt(data.storage, 10) !== varType) return;
-    return [data.varName3, "Mensagem"];
+    return [data.varName3, "Сообщение"];
   },
 
   fields: ["channel", "info", "member", "search", "search2", "storage", "varName", "varName2", "varName3", "description", "descriptionx", "descriptioncolor", "iffalse", "iffalseVal"],
@@ -86,15 +86,15 @@ module.exports = {
         <select id="info" class="round" onchange="glob.change(this)">
           <option value="0" selected>Содержание</option>
           <option value="1">Найти по (ID) идентификатору</option>
-          <option value="2">Найдите по (timestamp) временной метке</option>
-          <option value="7">Найдите сообщение между двумя (timestamp) временными метками</option>
+          <option value="2">Найти по (timestamp) временной метке</option>
+          <option value="7">Найти сообщение между двумя (timestamp) временными метками</option>
           <option value="3">Поиск по пользователю</option>
           <option value="4">Найти сообщение от ботов</option>
           <option value="5">Найти сообщение от людей</option>
           <option value="6">Найти закрепленное сообщение</option>
           <option value="8">Найти сообщение с длиной (равной)</option>
           <option value="9">Найти сообщение с длиной (больше чем)</option>
-          <option value="10">Найдите сообщение с длиной (меньше чем)</option>
+          <option value="10">Найти сообщение с длиной (меньше чем)</option>
         </select>
       </div>
 
@@ -117,7 +117,7 @@ module.exports = {
 
     <div>
       <div style="float: left; width: 35%;">
-      <span class="dbminputlabel">Хранить в</span><br>
+      <span class="dbminputlabel">Сохранить в</span><br>
         <select id="storage" class="round">
           ${data.variables[1]}
         </select>
@@ -128,9 +128,9 @@ module.exports = {
       </div>
     </div><br><br><br>
     <div>
-      <u>Nota:</u><br>
-      Этот мод может найти сообщения только <b>conteúdo</b> В последних 100 сообщениях.<br>
-      Если есть несколько сообщений с одним и тем же контентом, бот всегда будет использовать самое старое сообщение (после начала).
+      <u>Примечание:</u><br>
+      Этот мод может найти сообщения только <b>содержимому</b> В последних 100 сообщениях.<br>
+      Если есть несколько сообщений с одним и тем же контентом, бот будет использовать самое старое сообщение (после начала).
     </div>
   </tab>
 
@@ -140,7 +140,7 @@ module.exports = {
         <td>
           <span class="dbminputlabel">Описание действия</span>
           <br>
-          <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!">
+          <input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать.">
         </td>
         <td style="padding:0px 0px 0px 10px;width:70px">
           <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -155,10 +155,10 @@ module.exports = {
     <br>
 
     <div style="float: left; width: 40%">
-      <span class="dbminputlabel">Если вы не можете найти</span>
+      <span class="dbminputlabel">Если не найдено</span>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
           <option value="0" selecionado>Продолжать</option>
-          <option value="1">Остановить последовательность действий</option>
+          <option value="1">Остановить выполнение действий</option>
           <option value="2">Перейти к действию</option>
           <option value="3">Пропустить следующие действия</option>
           <option value="4">Перейти к якорю</option>
@@ -211,7 +211,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] В вашем браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

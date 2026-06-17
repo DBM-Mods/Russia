@@ -35,7 +35,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -64,8 +64,8 @@ module.exports = {
       <option value="21">Является числом?</option>
       </optgroup>
       <optgroup label="Текст">
-			<option value="6">Соответствует регулярному выражению</option>
-      <option value="14">Соответствует полному регулярному выражению</option>
+			<option value="6">Соответствует Regex</option>
+      <option value="14">Полностью соответствует Regex</option>
       <option value="7">Длина больше чем</option>
       <option value="8">Длина меньше чем</option>
       <option value="9">Длина равна</option>
@@ -74,8 +74,8 @@ module.exports = {
       <option value="16">Содержит акценты?</option>
       <option value="18">Равно словам ["a", "b", "c"]</option>
       <option value="24">Является текстом?</option>
-      <option value="23">Является URL изображением?</option>
-      <option value="25">Является URL?</option>
+      <option value="23">Это URL изображения?</option>
+      <option value="25">Это URL?</option>
       <option value="26">Существует почта?</option>
     </optgroup>
     <optgroup label="Текст ~ Включает">
@@ -84,8 +84,8 @@ module.exports = {
     <option value="30">Включает ~ Без учета акцентов</option>
     <option value="31">Включает ~ Без учета акцентов и регистра</option>
     <option value="17">Точное включение ["a", "b", "c"]</option>
-    <option value="27">Включает URL?</option>
-    <option value="28">Включает приглашение Discord?</option>
+    <option value="27">Содержит URL?</option>
+    <option value="28">Содержит приглашение Discord?</option>
     <option value="32">Точное включение слова</option>
     <option value="33">Включает слово ~ Регистронезависимо</option>
     <option value="34">Включает слово ~ Без учета акцентов</option>
@@ -157,7 +157,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

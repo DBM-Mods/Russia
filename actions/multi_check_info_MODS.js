@@ -140,7 +140,7 @@ module.exports = {
               <option value="21">Это число?</option>
               <option value="24">Это текст?</option>
               <option value="22">Это список?</option>
-              <option value="23">Это URL-адрес изображения?</option>
+              <option value="23">Это URL изображения?</option>
               <option value="25">Это URL?</option>
             </select>
           </div>
@@ -250,7 +250,7 @@ module.exports = {
           result += "Это список?";
           break;
         case "23":
-          result += "Это URL-адрес изображения?";
+          result += "Это URL изображения?";
           break;
         case "24":
           result += "Это текст?";

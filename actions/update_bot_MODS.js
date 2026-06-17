@@ -50,7 +50,7 @@ module.exports = {
       <br>
 
 <div style="float: left; width: 35%; padding-top: 8px;">
-<span class="dbminputlabel">Хранить в</span><br>
+<span class="dbminputlabel">Сохранить в</span><br>
   <select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer')">
   ${data.variables[0]}
   </select>
@@ -65,8 +65,8 @@ module.exports = {
 <div style="float: left; width: 40%">
 <span class="dbminputlabel">Если не обновлено</span><br>
 <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-<option value="0">Продолжить действия</option>
-<option value="1" selected>Остановить последовательность действий</option>
+<option value="0">Продолжить выполнение действий</option>
+<option value="1" selected>Остановить выполнение действий</option>
 <option value="2">Перейти к действию</option>
 <option value="3">Пропустить действия</option>
 <option value="4">Перейти к якорю</option>

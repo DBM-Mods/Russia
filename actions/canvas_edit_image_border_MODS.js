@@ -208,9 +208,9 @@ module.exports = {
 	<span class="dbminputlabel">Размазать тени</span><br>
 	<input id="blur" class="round" type="text" value="0" placeholder="Дополнительно">
 	</td>
-	<td style="width:100px"><span class="dbminputlabel">+ Теневое волочение X</span><br>
+	<td style="width:100px"><span class="dbminputlabel">+ Смещение тени X</span><br>
 	<input id="shadowh" class="round" type="text" value="0" placeholder="Дополнительно"></td>
-	<td style="width:100px"><span class="dbminputlabel">+ Теневое волочение Y</span><br>
+	<td style="width:100px"><span class="dbminputlabel">+ Смещение тени Y</span><br>
 	<input id="shadowv" class="round" type="text" value="0" placeholder="Дополнительно"></td>
 	</tr></table>
 
@@ -241,7 +241,7 @@ module.exports = {
   
   <div style="padding:8px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -270,7 +270,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

@@ -11,7 +11,7 @@ meta: {
   },
 
 subtitle: function(data) {
-	const info = ['Добавление', 'Вычитание', 'Умножение', 'Разделение', 'Округлять', 'Округлить в A. S.', 'Абсолютный', 'Округлить вверх', 'Округлить вниз', 'Факториал', 'Поднят (экспоненты)', 'Укоренено (корни)', 'Синус', 'Косинус', 'Тангенс', 'Синусная дуга', 'Косинус', 'Касательная дуга', '% от числа', 'Увеличить на %', 'Уменьшить по %', 'Значение Pi', 'Значение числа Эйлера', 'Квадратный корень', 'Случайное число между', 'По Фаренгейту по Цельсию', 'По Цельсию в Фаренгейт', 'Параметры Цельсия', 'По Фаренгейту В Кельвин', 'Кельвин в градус Цельсия', 'Кельвин в Фаренгейт', 'Кубический корень'];
+	const info = ['Добавление', 'Вычитание', 'Умножение', 'Разделение', 'Округлять', 'Округлить в A. S.', 'Абсолютный', 'Округлить вверх', 'Округлить вниз', 'Факториал', 'Поднят (экспоненты)', 'Укоренено (корни)', 'Синус', 'Косинус', 'Тангенс', 'Синусная дуга', 'Косинус', 'Касательная дуга', '% от числа', 'Увеличить на %', 'Уменьшить по %', 'Значение Pi', 'Значение числа Эйлера', 'Квадратный корень', 'Случайное число между', 'По Фаренгейту по Цельсию', 'По Цельсию в Фаренгейт', 'Параметры Цельсий', 'По Фаренгейту В Кельвин', 'Кельвин в градус Цельсий', 'Кельвин в Фаренгейт', 'Кубический корень'];
 	return `${info[data.info]}`;
 },
 	
@@ -79,7 +79,7 @@ html: function(isEvent, data) {
 			<option value="26">По Цельсию в Фаренгейт</option>
 			<option value="27">По Цельсию в Кельвин</option>
 			<option value="28">По Фаренгейту В Кельвин</option>
-			<option value="29">Кельвин в градус Цельсия</option>
+			<option value="29">Кельвин в градус Цельсий</option>
 			<option value="30">Кельвин в Фаренгейт</option>
 </select>
 <br>
@@ -264,19 +264,19 @@ init: function() {
 			dom2.style.display = null;
 			dom2p.style.width = "100%";
 			document.querySelector("[name='Meio']").innerText = (``);
-			document.querySelector("[name='Informativo']").innerText = (`Преобразовать Фаренгейт (значение 1) для Цельсия\nПримеры: 100°F = 37,7°C`);
+			document.querySelector("[name='Informativo']").innerText = (`Преобразовать Фаренгейт (значение 1) для Цельсий\nПримеры: 100°F = 37,7°C`);
 		} else if (value == 26) {
 			dom.style.display = "none";
 			dom2.style.display = null;
 			dom2p.style.width = "100%";
 			document.querySelector("[name='Meio']").innerText = (``);
-			document.querySelector("[name='Informativo']").innerText = (`Преобразовать Цельсия (доблесть 1) для Фаренгейта\nПримеры: 100°C = 212°F`);
+			document.querySelector("[name='Informativo']").innerText = (`Преобразовать Цельсий (доблесть 1) для Фаренгейта\nПримеры: 100°C = 212°F`);
 		} else if (value == 27) {
 			dom.style.display = "none";
 			dom2.style.display = null;
 			dom2p.style.width = "100%";
 			document.querySelector("[name='Meio']").innerText = (``);
-			document.querySelector("[name='Informativo']").innerText = (`Преобразовать Цельсия (значение 1) для Кельвина\nПримеры: 100°C = 373,15 K`);
+			document.querySelector("[name='Informativo']").innerText = (`Преобразовать Цельсий (значение 1) для Кельвина\nПримеры: 100°C = 373,15 K`);
 		} else if (value == 28) {
 			dom.style.display = "none";
 			dom2.style.display = null;
@@ -288,7 +288,7 @@ init: function() {
 			dom2.style.display = null;
 			dom2p.style.width = "100%";
 			document.querySelector("[name='Meio']").innerText = (``);
-			document.querySelector("[name='Informativo']").innerText = (`Кельвин преобразован (значение 1) для Цельсия\nПримеры: 100 K = -173,15°C`);
+			document.querySelector("[name='Informativo']").innerText = (`Кельвин преобразован (значение 1) для Цельсий\nПримеры: 100 K = -173,15°C`);
 		} else if (value == 30) {
 			dom.style.display = "none";
 			dom2.style.display = null;

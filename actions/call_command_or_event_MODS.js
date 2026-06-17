@@ -51,7 +51,7 @@ module.exports = {
       <td>
         <span class="dbminputlabel">Описание действия</span>
         <br>
-        <input type="text" class="round" id="description" placeholder="Не обязательное действие">
+        <input type="text" class="round" id="description" placeholder="Необязательное действие">
       </td>
       <td style="padding:0px 0px 0px 10px;width:70px">
         <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -93,7 +93,7 @@ module.exports = {
 <span class="dbminputlabel">Тип источника</span><br>
   <select id="sourcetype" class="round" onchange="glob.onChange1(this)">
     <option value="0" selected>Выберите из списка</option>
-    <option value="1">Вставьте идентификатор команды/события</option>
+    <option value="1">Введите ID команды/события</option>
     <option value="2">Вставьте название команды/события</option>
     <option value="3">Та же команда</option>
     <option value="4">То же событие</option>
@@ -171,7 +171,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в вашем браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -292,7 +292,7 @@ module.exports = {
 
     if (data.sourcetype == "1") {
       id = source2
-      if (!id) return console.log('Введите идентификатор команды/события!')
+      if (!id) return console.log('Введите ID команды/события!')
     }
 
     let name;

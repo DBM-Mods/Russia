@@ -45,7 +45,7 @@ module.exports = {
     </div>
 
     <div style="float: right; width: 55%;">
-      <span class="dbminputlabel">JSON путь</span><br>
+      <span class="dbminputlabel">JSON-путь</span><br>
       <input class='round' id='jsonPath' placeholder="profile/money" style="width: 97%"><br>
     </div>
 

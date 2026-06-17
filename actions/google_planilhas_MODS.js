@@ -17,7 +17,7 @@ module.exports = {
       "Очистить значения",
       "Консультировать",
       "Получить точное значение столбца",
-      "Выборка строк [Regex Matches]"
+      "Выборка строк [RegExp Matches]"
     ];
     const info2 = [
       "[Текст]",
@@ -48,12 +48,12 @@ module.exports = {
 
     if (type == varType) {
       vars.push(data.varName);
-      vars.push("Texto ~ Log");
+      vars.push("Текст ~ Лог");
     }
 
     if (typeError == varType) {
       vars.push(data.errv);
-      vars.push("Texto ~ Erro");
+      vars.push("Текст ~ Ошибка");
     }
 
     if (vars.length > 0) return vars;
@@ -84,7 +84,7 @@ module.exports = {
       <option value="3">Очистить значения</option>
       <option value="4">Консультировать</option>
       <option value="5">Получить строку [точное значение столбца]</option>
-      <option value="6">Выборка строк [Regex Matches]</option>
+      <option value="6">Выборка строк [RegExp Matches]</option>
       </optgroup>
       </select>
 
@@ -130,7 +130,7 @@ module.exports = {
     <div style="width: 100%; padding:10px 5px;height: calc(100vh - 210px);overflow:auto">
 
     <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 <br>
@@ -152,7 +152,7 @@ module.exports = {
 
   <table>
         <tr>
-        <td class="col1"><span class="dbminputlabel">Сообщение об ошибке в</span><br>
+        <td class="col1"><span class="dbminputlabel">Сохранить ошибку в</span><br>
         <select id="errs" value="0" class="round" onchange="glob.variableChange(this, 'varerrsv')">
           ${data.variables[0]}
         </select></td>
@@ -167,13 +167,13 @@ module.exports = {
       <div style="float: left; width: 38%" id="xinext">
       <span class="dbminputlabel">Если возникает ошибка</span><br>
       <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-      <option value="0" selected>Продолжить действия</option>
+      <option value="0" selected>Продолжить выполнение действий</option>
       <option value="1">Пропустить следующий действия</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить следующий действия</option>
       <option value="4">Перейти к якорю действи</option>
-      <option value="5">Выполнить действия ниже и остановиться</option>
-      <option value="6">Выполнить действия ниже и продолжить</option>
+      <option value="5">Выполнить действия и остановитьсяся</option>
+      <option value="6">Выполнить действия и продолжить</option>
       </select>
       <br>
       </div>
@@ -236,7 +236,7 @@ module.exports = {
 
          <tlt><b>Настроить МОД</b></tlt>
     <tl><table>
-    <tr><td class="cols">1 - Скопируйте идентификатор спика, присутствующий в его URL-адресе "находится в # https://docs.google.com/spreadsheets/d/##########/edit?gid=0#gid=0"</span></button>
+    <tr><td class="cols">1 - Скопируйте идентификатор списка, присутствующий в его URL-адресе "находится в # https://docs.google.com/spreadsheets/d/##########/edit?gid=0#gid=0"</span></button>
 <br>
 2 - Поместите идентификатор на вкладку Конфигурация > Идентификатор (id) списка , присутствующего в этом действии<br>
 3 - Все готово, чтобы иметь возможность использовать ее
@@ -329,7 +329,7 @@ tlt{background:rgba(0,0,0,0.2);border: 1px solid rgba(50,50,50,0.2);padding:4px;
         document.querySelector("[id='xinelas']").innerText = (`Номер действия`);
       }
       if (event.value == "3") {
-        document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+        document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
       }
       if (event.value == "4") {
         document.querySelector("[id='xinelas']").innerText = (`Имя якоря`);

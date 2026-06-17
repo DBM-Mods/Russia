@@ -330,7 +330,7 @@ module.exports = {
                     <table style="width: 100%;">
                         <tr>
                             <td><span class="dbminputlabel">Описание действия</span><br><input type="text"
-                                    class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+                                    class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
                             <td style="padding:0px 0px 0px 10px;width:55px">
                                 <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox
                                         id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color"
@@ -382,12 +382,12 @@ module.exports = {
                     <div id="divValueError2" style="float: left; width: 45%; padding:0px 10px 0px 0px;">
                         <span class="dbminputlabel">При возникновении ошибки</span>
                         <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-                            <option value="0" selected>Продолжить действия</option>
-                            <option value="1">Остановить последовательность действий</option>
+                            <option value="0" selected>Продолжить выполнение действий</option>
+                            <option value="1">Остановить выполнение действий</option>
                             <option value="2">Перейти к действию</option>
                             <option value="3">Пропустить следующие действия</option>
                             <option value="4">Перейти к якорю действия</option>
-                            <option value="5">Выполнение действий и остановка</option>
+                            <option value="5">Выполнить действия и остановиться</option>
                             <option value="6">Выполнить действия и продолжить</option>
                         </select>
                     </div>
@@ -498,9 +498,9 @@ module.exports = {
                     <tl>
                     Если вы хотите отправить одному или нескольким получателям, либо в полях <button
                             class="tiny compact ui icon button"><b>На</b></button>, <button
-                            class="tiny compact ui icon button"><b>Отправить с копией</b></button> ou <button
+                            class="tiny compact ui icon button"><b>Отправить с копией</b></button> или <button
                             class="tiny compact ui icon button"><b>Отправить со слепой копией</b></button>,
-                        utilize a formatação a seguir:<br><br>
+                        используйте следующий формат:<br><br>
     
                         <b>· Если только один получатель:</b><br>
                         "Имя человека" &lt;email@exemple.com&gt<br><br>
@@ -570,7 +570,7 @@ module.exports = {
                 xinelaslink.setAttribute('title', url);
                 xinelaslink.addEventListener('click', (e) => {
                     e.stopImmediatePropagation();
-                    console.log(`Запуск URL: [${url}] в вашем браузере по умолчанию.`);
+                    console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
                     require('child_process').execSync(`start ${url}`);
                 });
             }

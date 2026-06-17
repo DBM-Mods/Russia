@@ -22,22 +22,22 @@ module.exports = {
       "Вас могут заблокировать?",
       "Вас можно выгнать?",
       "",
-      "Вы находитесь в голосовом канале?",
+      "Пользователь в голосовом канале?",
       "Может ли он управляться пользователем?",
-      "Являетесь ли вы владельцем бота?",
-      "Вы в муте?",
-      "Вы без звука?",
-      "Вы являетесь автором команды?",
-      "Являетесь ли вы нынешним владельцем сервера?",
-      "Ты на канале AFK?",
-      "Вы пробустили сервер?",
-      "Являетесь ли вы пользователем?",
-      "Вы находитесь на текущем сервере?",
-      "Были ли вы забанены на текущем сервере?",
-      "Есть ли у вас приглашения на текущем сервере?",
+      "Владелец бота?",
+      "Отключен микрофон?",
+      "Отключен звук?",
+      "Автор команды?",
+      "Пользователь является владельцем сервера?",
+      "Пользователь в AFK-канале?",
+      "Пользователь забустил сервер?",
+      "Это пользователь?",
+      "Пользователь на текущем сервере?",
+      "Пользователь забанен на текущем сервере?",
+      "У пользователя есть приглашения на текущем сервере?",
       "Ты в теме/постишь?",
-      "Вы наказаны на сервере?",
-      "Вы когда-нибудь были заземлены на сервере?",
+      "У пользователя есть тайм-аут на сервере?",
+      "Пользователь когда-либо получал тайм-аут на сервере?",
     ];
 
     return data.description
@@ -56,7 +56,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -66,27 +66,27 @@ module.exports = {
 </div><br><br><br>
 <div>
   <div style="float: left; width: 100%;padding-top:8px">
-  <span class="dbminputlabel">Проверьте, что участник</span><br>
+  <span class="dbminputlabel">Проверить участника</span><br>
     <select id="info" class="round" onchange="glob.change(this)">
       <option value="0" selected>Это бот?</option>
-      <option value="13">Являетесь ли вы пользователем?</option>
+      <option value="13">Это пользователь?</option>
       <option value="1">Могут заблокировать?</option>
       <option value="2">Могут выгнать?</option>
-      <option value="4">Находитесь в голосовом канале?</option>
+      <option value="4">В голосовом канале?</option>
       <option value="5">Может ли он управляться пользователем?</option>
-      <option value="6">Являетесь ли вы владельцем бота?</option>
-      <option value="7">В муте?</option>
-      <option value="8">Без звука?</option>
+      <option value="6">Владелец бота?</option>
+      <option value="7">Отключен микрофон?</option>
+      <option value="8">Отключен звук?</option>
       ${!isEvent && '<option value="9">Являетесь автором команды?</option>'}
-      <option value="10">Являетесь ли вы нынешним владельцем сервера?</option>
-      <option value="11">В канале AFK?</option>
-      <option value="12">Поднял (забустил) сервер?</option>
-      <option value="14">Находится ли на текущем сервере?</option>
-      <option value="15">Был ли заблокирован на текущем сервере?</option>
-      <option value="16">Есть ли приглашения на текущем сервере?</option>
+      <option value="10">Пользователь является владельцем сервера?</option>
+      <option value="11">В AFK-канале?</option>
+      <option value="12">Забустил сервер?</option>
+      <option value="14">На текущем сервере?</option>
+      <option value="15">Забанен на текущем сервере?</option>
+      <option value="16">Есть приглашения на текущем сервере?</option>
       <option value="17">Ты в теме/постишь?</option>
-      <option value="18">В муте на сервере?</option>
-      <option value="19">Были ли вы когда-нибудь муте на сервере?</option>
+      <option value="18">Есть тайм-аут на сервере?</option>
+      <option value="19">Когда-либо получал тайм-аут на сервере?</option>
     </select>
   </div>
 </div><br><br><br>
@@ -136,7 +136,7 @@ xinspace{padding:10px 0px 0px 0px;display:block}
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }
@@ -154,7 +154,7 @@ xinspace{padding:10px 0px 0px 0px;display:block}
     const { Files } = this.getDBM();
 
     if (!member) {
-      console.error('Вам необходимо предоставить участнику какого-либо типа для действия "Проверить наличие участника".');
+      console.error('Необходимо указать участника любого типа для действия "Проверить наличие участника".');
       return this.executeResults(false, data, cache);
     }
 
@@ -255,7 +255,7 @@ xinspace{padding:10px 0px 0px 0px;display:block}
         result = member.communicationDisabledUntilTimestamp > 0
         break;
       default:
-        console.log('Проверьте действие "Проверить, является ли пользователь участником"! Что-то не так...');
+        console.log('Проверьте действие "Проверить участника": что-то пошло не так...');
         break;
     }
     this.executeResults(result, data?.branch ?? data, cache);

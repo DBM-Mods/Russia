@@ -40,7 +40,7 @@ module.exports = {
             <td>
                 <span class="dbminputlabel">Описание действия</span>
                 <br>
-                <input type="text" class="round" id="description" placeholder="Не обязательное поле">
+                <input type="text" class="round" id="description" placeholder="Необязательное поле">
             </td>
             <td style="padding:0px 0px 0px 10px;width:70px">
                 <div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px">
@@ -106,8 +106,8 @@ module.exports = {
 <div style="float: left; width: 40%">
   <span class="dbminputlabel">В случае отсутствия</span>
   <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-      <option value="0" selecionado>Продолжить действия</option>
-      <option value="1">Остановить последовательность действий</option>
+      <option value="0" selecionado>Продолжить выполнение действий</option>
+      <option value="1">Остановить выполнение действий</option>
       <option value="2">Перейти к действию</option>
       <option value="3">Пропустить действия</option>
       <option value="4">Перейти к якорю</option>
@@ -123,7 +123,7 @@ module.exports = {
 <br><br><br><br>
       
 <div style="float: left; width: 35%;">
-    <span class="dbminputlabel">Хранить в</span>
+    <span class="dbminputlabel">Сохранить в</span>
     <select id="storage" class="round">
         ${data.variables[1]}
     </select>
@@ -143,7 +143,7 @@ module.exports = {
                     xinelaslink.setAttribute('title', url);
                     xinelaslink.addEventListener('click', (e) => {
                         e.stopImmediatePropagation();
-                        console.log(`Запуск URL: [${url}] в браузере.`);
+                        console.log(`Открываю URL: [${url}] в браузере.`);
                         require('child_process').execSync(`start ${url}`);
                     });
                 }
@@ -171,7 +171,7 @@ module.exports = {
             }
 
             if (event.value == "3") {
-                document.querySelector("[id='xinelas']").innerText = (`Количество действий`);
+                document.querySelector("[id='xinelas']").innerText = (`Количество действий для пропуска`);
             }
 
             if (event.value == "4") {

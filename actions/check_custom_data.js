@@ -110,7 +110,7 @@ module.exports = {
     </div>
     <!-- ----------------------------- -->
     <div style="width: 60%; float: left; padding-left: 5%;">
-      <span class="dbminputlabel">JSON Путь</span> <br>
+      <span class="dbminputlabel">JSON-путь</span> <br>
       <input id="jsonPath" class="round" type="text">
     </div>
     </div> <br><br><br>

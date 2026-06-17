@@ -25,7 +25,7 @@ module.exports = {
       "Меньше, чем",
       "Больше, чем",
       "Включает",
-      "Соответствует регулярному выражению",
+      "Соответствует Regex",
       "Длина больше, чем",
       "Длина меньше, чем",
       "Длина равна",
@@ -33,7 +33,7 @@ module.exports = {
       "Заканчивается на",
       "Больше или равно",
       "Меньше или равно",
-      "Соответствует полному регулярному выражению",
+      "Полностью соответствует Regex",
       'Между ${data.value} и ${data.value2}',
       "Содержит ударения?",
       'Включает слова ["а", "б", "ц"]',
@@ -59,7 +59,7 @@ module.exports = {
 
   variableStorage(data, varType) {
     if (parseInt(data.storage2, 10) !== varType) return;
-    return ([data.varName2, "Lista"]);
+    return ([data.varName2, "Список"]);
   },
 
   fields: ['storage', 'varName', 'type', 'value', 'value2', 'coluna', 'storage2', 'varName2','descriptioncolor','description','descriptionx', 'iffalse', 'iffalseVal', 'actionsno'],
@@ -73,7 +73,7 @@ module.exports = {
 
     <div id="flutuador" style="padding:0px 0px 15px 0px">
 <table style="width:100%;"><tr>
-<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовалось!"></td>
+<td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Оставьте пустым, чтобы не использовать."></td>
 <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
 </tr></table>
 </div>
@@ -101,8 +101,8 @@ module.exports = {
     <option value="26">Включает ~ Игнорировать регистр</option>
     <option value="27">Включает ~ Игнорировать ударения</option>
     <option value="28">Включает ~ Игнорировать ударения и регистр</option>
-    <option value="6">Соответствует регулярному выражению</option>
-    <option value="14">Соответствует полному регулярному выражению</option>
+    <option value="6">Соответствует Regex</option>
+    <option value="14">Полностью соответствует Regex</option>
     <option value="7">Длина больше, чем</option>
     <option value="8">Длина меньше, чем</option>
     <option value="9">Длина равна</option>
@@ -138,7 +138,7 @@ module.exports = {
   <br><br><br></div>
 
   <div style="float: left; width: 35%; padding-top: 8px;">
-    <span class="dbminputlabel">Хранить в</span><br>
+    <span class="dbminputlabel">Сохранить в</span><br>
     <select id="storage2" class="round">
       ${data.variables[1]}
     </select>
@@ -154,12 +154,12 @@ module.exports = {
   <div style="float: left; width: 38%" id="xinext">
   <span class="dbminputlabel">Если элемент не найден</span><br>
   <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-  <option value="0" selected>Продолжить действия</option>
-  <option value="1">Остановить последовательность действий</option>
+  <option value="0" selected>Продолжить выполнение действий</option>
+  <option value="1">Остановить выполнение действий</option>
   <option value="2">Перейти к действию</option>
   <option value="3">Пропустить следующие действия</option>
   <option value="4">Перейти к якорю действия</option>
-  <option value="5">Выполнение действий и остановить</option>
+  <option value="5">Выполнить действия и остановитьсяся</option>
   <option value="6">Выполнить действия и продолжить</option>
   </select>
   </div>
@@ -251,7 +251,7 @@ table{width:100%}
        xinelaslink.setAttribute('title', url);
        xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в браузере по умолчанию.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

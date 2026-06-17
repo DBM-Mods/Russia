@@ -111,7 +111,7 @@ module.exports = {
 
   <div style="padding:0px 0px 15px 0px">
   <table style="width:100%;"><tr>
-  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Не обязательное поле"></td>
+  <td><span class="dbminputlabel">Описание действия</span><br><input type="text" class="round" id="description" placeholder="Необязательное поле"></td>
   <td style="padding:0px 0px 0px 10px;width:70px"><div style="float:left;padding:0px 0px 0px 7px;margin-top:-5px"><dbm-checkbox id="descriptionx" label="Цвет (вкл)"></dbm-checkbox></div><br><input type="color" value="#ffffff" class="round" id="descriptioncolor"></td>
   </tr></table>
   </div>
@@ -136,12 +136,12 @@ module.exports = {
     <div style="float: left; width: 60%" id="xinext">
     <span class="dbminputlabel">Если не удалось удалить</span><br>
     <select id="iffalse" class="round" onchange="glob.onComparisonChanged(this)">
-    <option value="0" selected>Продолжить действия</option>
-    <option value="1">Остановить последовательность действий</option>
+    <option value="0" selected>Продолжить выполнение действий</option>
+    <option value="1">Остановить выполнение действий</option>
     <option value="2">Перейти к действию</option>
     <option value="3">Пропустить следующий действия</option>
     <option value="4">Перейти к якорю действия</option>
-    <option value="5">Выполнить действия и остановиться</option>
+    <option value="5">Выполнить действия и остановитьсяся</option>
     <option value="6">Выполнить действия и продолжить</option>
     </select>
     </div>
@@ -212,7 +212,7 @@ module.exports = {
         xinelaslink.setAttribute('title', url);
         xinelaslink.addEventListener('click', (e) => {
           e.stopImmediatePropagation();
-          console.log(`Запуск URL: [${url}] в стандартном браузере.`);
+          console.log(`Открываю URL: [${url}] в браузере по умолчанию.`);
           require('child_process').execSync(`start ${url}`);
         });
       }

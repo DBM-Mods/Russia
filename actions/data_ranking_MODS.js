@@ -58,7 +58,7 @@ module.exports = {
 <br>
 		<span class="dbminputlabel">Вернуть как</span><br>
 		<select id="retornar" class="round" style="width: 100%;" onchange="glob.onChange1(this)">
-		<option value="0" selected>Json объект</option>
+		<option value="0" selected>JSON-объект</option>
 		<option value="1">Персонализированный / список</option>
 		<option value="2">Персонализированный / текст</option>
 		<option value="3">Рейтинг по ID</option>
@@ -72,7 +72,7 @@ module.exports = {
 <br>
 		<table>
   		<tr>
- 		<td class="sep1"><span class="dbminputlabel">Хранить в</span><br>
+ 		<td class="sep1"><span class="dbminputlabel">Сохранить в</span><br>
  		<select id="storage" class="round" onchange="glob.variableChange(this, 'varNameContainer2')">
   		${data.variables[1]}
   		</select></td>
