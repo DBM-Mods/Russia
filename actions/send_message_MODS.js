@@ -156,7 +156,7 @@ module.exports = {
   </tab>
 
 
-  <tab label="Embed-сообщения" icon="book image">
+  <tab label="Embed" icon="book image">
   <div style="width: 100%; padding:8px;height: calc(100vh - 250px);overflow:auto">
 
       <dialog-list id="embeds" fields='["title", "url", "color", "colorrandom", "timestamp", "timestampper", "imageUrl", "thumbUrl", "description", "fields", "author", "authorUrl", "authorIcon", "footerText", "footerIconUrl", "formula", "val1", "comparar", "val2"]' dialogTitle="Информация об Эмбеде" dialogResizable dialogWidth="750" dialogHeight="550" listLabel="Эмбеды" listStyle="height: calc(100vh - 310px);" itemName="Embed" itemCols="1" itemHeight="60px;" itemTextFunction="'<div style=margin-left:-10px;background:'+data.color+';float:left;width:10px;overflow:hidden;height:60px;><br></div><div style=float:left;width:59%;overflow:hidden;margin-left:5px;> Название: ' + data.title + ' <br> Описание: ' + data.description + '</div><div style=float:right;width:39%;overflow:hidden;>Автор: '+ data.author +' <br>Поля: ' + data.fields.length + (data.formula == 1 || data.formula == 2 ? '<span style=float:right title=Condição_ligada> 🔘 </span>' : '') + '</div>'" itemStyle="text-align: left; line-height: 30px;">
